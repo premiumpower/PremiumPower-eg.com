@@ -43,25 +43,54 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.75rem;
             font-weight: bold;
             font-size: 1.25rem;
-            color: #2563eb;
             cursor: pointer;
             text-decoration: none;
         }
 
-        .logo-circle {
+        /* PayPal-inspired logo mark */
+        .logo-mark {
+            position: relative;
             width: 32px;
             height: 32px;
-            background: #2563eb;
-            border-radius: 50%;
+        }
+
+        .logo-mark::before,
+        .logo-mark::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 10px;
+        }
+
+        .logo-mark::before {
+            background: #003087;
+            transform: translateX(3px);
+            opacity: 0.95;
+        }
+
+        .logo-mark::after {
+            background: #1994ff;
+            transform: translateX(-3px);
+            opacity: 0.95;
+        }
+
+        .logo-text {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            font-size: 0.875rem;
+            align-items: baseline;
+            gap: 0.25rem;
+        }
+
+        .logo-text-primary {
+            color: #111827;
+            font-weight: 700;
+        }
+
+        .logo-text-secondary {
+            color: #2563eb;
+            font-weight: 700;
         }
 
         .nav-items {
@@ -574,8 +603,11 @@
         <div class="container">
             <nav>
                 <a href="#" class="logo" onclick="showPage('home')">
-                    <div class="logo-circle">P</div>
-                    <span>Premium Power</span>
+                    <div class="logo-mark"></div>
+                    <div class="logo-text">
+                        <span class="logo-text-primary">Premium</span>
+                        <span class="logo-text-secondary">Power</span>
+                    </div>
                 </a>
                 <ul class="nav-items">
                     <li><a onclick="showPage('home')">Home</a></li>
@@ -1048,19 +1080,27 @@
                     <div class="card text-center">
                         <div style="font-size: 2rem; margin-bottom: 1rem;">📞</div>
                         <h3>Phone</h3>
-                        <p>+1 (555) 123-4567</p>
+                        <p>
+                            <a href="tel:01032521321" style="color: #2563eb; text-decoration: none;">
+                                0103 2521 321
+                            </a>
+                        </p>
                         <p style="font-size: 0.875rem; color: #6b7280;">Available 24/7</p>
                     </div>
                     <div class="card text-center">
                         <div style="font-size: 2rem; margin-bottom: 1rem;">📧</div>
                         <h3>Email</h3>
-                        <p>info@premiumpower.com</p>
+                        <p>
+                            <a href="mailto:info@premiumpower-eg.com" style="color: #2563eb; text-decoration: none;">
+                                info@premiumpower-eg.com
+                            </a>
+                        </p>
                         <p style="font-size: 0.875rem; color: #6b7280;">Response within 24 hours</p>
                     </div>
                     <div class="card text-center">
                         <div style="font-size: 2rem; margin-bottom: 1rem;">📍</div>
                         <h3>Address</h3>
-                        <p>123 Energy Street<br>Power City, PC 12345</p>
+                        <p>40 Elhegaz street<br>Heliopolis</p>
                     </div>
                 </div>
 
@@ -1185,9 +1225,19 @@
                 <div class="footer-section">
                     <h4>Contact</h4>
                     <ul>
-                        <li>📞 +1 (555) 123-4567</li>
-                        <li>📧 info@premiumpower.com</li>
-                        <li>📍 123 Energy Street, Power City, PC 12345</li>
+                        <li>
+                            📞
+                            <a href="tel:01032521321" style="color: #d1d5db; text-decoration: none;">
+                                0103 2521 321
+                            </a>
+                        </li>
+                        <li>
+                            📧
+                            <a href="mailto:info@premiumpower-eg.com" style="color: #d1d5db; text-decoration: none;">
+                                info@premiumpower-eg.com
+                            </a>
+                        </li>
+                        <li>📍 40 Elhegaz street, Heliopolis</li>
                     </ul>
                 </div>
             </div>
