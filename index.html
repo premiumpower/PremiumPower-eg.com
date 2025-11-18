@@ -60,10 +60,22 @@
     .menu-toggle{display:none;background:none;border:none;font-size:1.4rem;cursor:pointer}
 
     /* Hero */
-    .hero{background:linear-gradient(90deg,var(--primary),var(--primary-2));color:var(--white);padding:4.25rem 0;text-align:center}
+    .hero{position:relative;color:var(--white);padding:3.75rem 0;text-align:center;overflow:hidden}
+    .hero__bg{
+      position:absolute;inset:0;background:linear-gradient(90deg,rgba(37,99,235,0.9),rgba(30,64,175,0.9));
+      z-index:0;
+    }
+    .hero__content{position:relative;z-index:2}
     .hero h1{font-size:2.6rem;margin-bottom:0.8rem;font-weight:800;line-height:1.05}
-    .hero p{color:rgba(255,255,255,0.92);font-size:1.05rem;margin-bottom:1.5rem}
+    .hero p{color:rgba(255,255,255,0.92);font-size:1.05rem;margin-bottom:1.25rem}
     .hero-buttons{display:flex;gap:0.9rem;justify-content:center;flex-wrap:wrap}
+
+    /* Decorative image area in hero */
+    .hero-visual{
+      margin-top:1.5rem;border-radius:12px;overflow:hidden;box-shadow:0 8px 30px rgba(2,6,23,0.35);max-width:980px;margin-left:auto;margin-right:auto;
+    }
+    .hero-visual img{width:100%;height:auto;display:block;object-fit:cover}
+
     .btn{padding:0.7rem 1.6rem;border-radius:8px;border:none;cursor:pointer;font-weight:600;text-decoration:none;display:inline-block}
     .btn-primary{background:var(--white);color:var(--primary)}
     .btn-primary:hover{background:#f3f4f6}
@@ -80,7 +92,7 @@
     .grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem}
     .grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.25rem}
     .grid-5{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem}
-    .card{background:var(--white);padding:1.25rem;border-radius:10px;box-shadow:var(--card-shadow);transition:box-shadow .2s}
+    .card{background:var(--white);padding:1.25rem;border-radius:10px;box-shadow:var(--card-shadow);transition:box-shadow .2s;overflow:hidden}
     .card:hover{box-shadow:0 10px 20px rgba(0,0,0,0.08)}
     .card h3{font-size:1.125rem;margin-bottom:0.6rem;color:var(--text)}
     .card p{color:var(--muted);margin-bottom:0.75rem}
@@ -95,6 +107,10 @@
     .feature-item{display:flex;gap:0.9rem;align-items:flex-start}
     .feature-icon{color:var(--accent);font-weight:700;font-size:1.25rem;flex-shrink:0}
     .feature-text{color:var(--muted)}
+
+    /* Product / image within card */
+    .card-image{width:100%;height:160px;border-radius:8px;overflow:hidden;margin-bottom:0.85rem}
+    .card-image img{width:100%;height:100%;object-fit:cover;display:block}
 
     /* Table */
     table{width:100%;border-collapse:collapse;margin-top:1rem;background:var(--white);border-radius:8px;overflow:hidden;box-shadow:var(--card-shadow)}
@@ -113,6 +129,10 @@
     .faq-item h4{font-weight:700;margin-bottom:0.5rem;color:var(--text)}
     .faq-item p{color:var(--muted)}
 
+    /* Contact side image */
+    .contact-visual{border-radius:8px;overflow:hidden;box-shadow:var(--card-shadow);margin-bottom:1rem}
+    .contact-visual img{width:100%;height:auto;display:block;object-fit:cover}
+
     /* Footer */
     footer{background:var(--text);color:#d1d5db;padding:2.25rem 0}
     .footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.25rem;margin-bottom:1.5rem}
@@ -129,9 +149,10 @@
     /* Responsive */
     @media (max-width: 900px){
       .hero h1{font-size:2rem}
-      .hero{padding:3rem 0}
+      .hero{padding:2.5rem 0}
       .contact-container{grid-template-columns:1fr}
       .grid-5{grid-template-columns:repeat(2,1fr)}
+      .card-image{height:140px}
     }
     @media (max-width: 768px){
       .nav-items{display:none;position:absolute;top:64px;right:0;background:var(--white);width:100%;padding:1rem;border-top:1px solid #eef2ff;flex-direction:column;gap:0.5rem}
@@ -140,6 +161,8 @@
       nav{padding:0 12px}
       .footer-bottom{flex-direction:column;align-items:flex-start}
       h2{font-size:1.35rem}
+      .card-image{height:120px}
+      .hero-visual{display:none} /* hide large hero image on small screens */
     }
 
     /* Focus-visible for accessibility */
@@ -175,12 +198,25 @@
   <!-- HOME PAGE -->
   <main id="home" class="page active" role="main" aria-labelledby="homeTitle">
     <section class="hero" aria-labelledby="homeTitle">
-      <div class="container">
+      <div class="hero__bg" aria-hidden="true"></div>
+      <div class="container hero__content">
         <h1 id="homeTitle">Reliable Power Solutions</h1>
         <p>Premium diesel generators and power systems for businesses, factories, and contractors</p>
         <div class="hero-buttons">
           <a class="btn btn-primary" href="#" onclick="showPage('contact');return false">Get Started →</a>
           <a class="btn btn-secondary" href="#" onclick="showPage('about');return false">Learn More</a>
+        </div>
+
+        <!-- Hero visual: composite power image (Unsplash royalty-free examples) -->
+        <div class="hero-visual" aria-hidden="false">
+          <picture>
+            <source srcset="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1600&q=80&auto=format&fit=crop 1600w,
+                             https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=80&auto=format&fit=crop 1200w,
+                             https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80&auto=format&fit=crop 800w"
+                    sizes="(min-width:900px) 980px, 100vw">
+            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=80&auto=format&fit=crop"
+                 alt="Diesel generator in industrial site with technicians working" loading="lazy">
+          </picture>
         </div>
       </div>
     </section>
@@ -220,21 +256,45 @@
         <div class="grid-2">
           <article class="card">
             <h3>Diesel Generator Sales</h3>
+            <div class="card-image" aria-hidden="false">
+              <picture>
+                <source srcset="https://images.unsplash.com/photo-1516022676310-4f85a0e9c4f0?w=1200&q=80&auto=format&fit=crop 1200w,https://images.unsplash.com/photo-1516022676310-4f85a0e9c4f0?w=800&q=80&auto=format&fit=crop 800w" sizes="(min-width:600px) 420px, 100vw">
+                <img src="https://images.unsplash.com/photo-1516022676310-4f85a0e9c4f0?w=800&q=80&auto=format&fit=crop" alt="Close-up of diesel generator engine components" loading="lazy">
+              </picture>
+            </div>
             <p>We supply high-quality diesel generators for homes, businesses, industrial facilities, data centers, and construction sites.</p>
           </article>
 
           <article class="card">
             <h3>Power Consultation</h3>
+            <div class="card-image">
+              <picture>
+                <source srcset="https://images.unsplash.com/photo-1548095115-45697e6ea7f6?w=1200&q=80&auto=format&fit=crop 1200w,https://images.unsplash.com/photo-1548095115-45697e6ea7f6?w=800&q=80&auto=format&fit=crop 800w" sizes="(min-width:600px) 420px,100vw">
+                <img src="https://images.unsplash.com/photo-1548095115-45697e6ea7f6?w=800&q=80&auto=format&fit=crop" alt="Engineer reviewing power load diagrams on tablet" loading="lazy">
+              </picture>
+            </div>
             <p>We guide clients through load calculation, selection, and installation planning to ensure the right solution for the site.</p>
           </article>
 
           <article class="card">
             <h3>After-Sales Support</h3>
+            <div class="card-image">
+              <picture>
+                <source srcset="https://images.unsplash.com/photo-1542317854-0a1e9185c7d5?w=1200&q=80&auto=format&fit=crop 1200w,https://images.unsplash.com/photo-1542317854-0a1e9185c7d5?w=800&q=80&auto=format&fit=crop 800w" sizes="(min-width:600px) 420px,100vw">
+                <img src="https://images.unsplash.com/photo-1542317854-0a1e9185c7d5?w=800&q=80&auto=format&fit=crop" alt="Technician servicing generator set" loading="lazy">
+              </picture>
+            </div>
             <p>Continuous maintenance guidance and technical support to maximize uptime and lifetime value.</p>
           </article>
 
           <article class="card">
             <h3>End-to-End Experience</h3>
+            <div class="card-image">
+              <picture>
+                <source srcset="https://images.unsplash.com/photo-1500522144261-ea64433bbe27?w=1200&q=80&auto=format&fit=crop 1200w,https://images.unsplash.com/photo-1500522144261-ea64433bbe27?w=800&q=80&auto=format&fit=crop 800w" sizes="(min-width:600px) 420px,100vw">
+                <img src="https://images.unsplash.com/photo-1500522144261-ea64433bbe27?w=800&q=80&auto=format&fit=crop" alt="Delivered generator on truck at site ready for installation" loading="lazy">
+              </picture>
+            </div>
             <p>From needs assessment to delivery and support, we simplify the process for technically diverse customers.</p>
           </article>
         </div>
@@ -300,9 +360,17 @@
   <!-- ABOUT PAGE -->
   <main id="about" class="page" role="main" aria-labelledby="aboutTitle">
     <section class="hero" aria-labelledby="aboutTitle">
-      <div class="container">
+      <div class="hero__bg" aria-hidden="true" style="opacity:0.95"></div>
+      <div class="container hero__content">
         <h1 id="aboutTitle">About Premium Power</h1>
         <p>Powering businesses with reliability, expertise, and trust</p>
+
+        <div class="hero-visual" style="max-width:900px;margin-top:1rem">
+          <picture>
+            <source srcset="https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=1600&q=80&auto=format&fit=crop 1600w,https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=1200&q=80&auto=format&fit=crop 1200w" sizes="(min-width:900px) 900px,100vw">
+            <img src="https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=1200&q=80&auto=format&fit=crop" alt="Factory with generator backup infrastructure" loading="lazy">
+          </picture>
+        </div>
       </div>
     </section>
 
@@ -354,7 +422,8 @@
   <!-- PRODUCTS PAGE -->
   <main id="products" class="page" role="main" aria-labelledby="productsTitle">
     <section class="hero" aria-labelledby="productsTitle">
-      <div class="container">
+      <div class="hero__bg" aria-hidden="true"></div>
+      <div class="container hero__content">
         <h1 id="productsTitle">Our Products & Services</h1>
         <p>Comprehensive power solutions for every need</p>
       </div>
@@ -366,9 +435,15 @@
         <div class="grid-2">
           <article class="card">
             <h3>Residential Generators</h3>
+            <div class="card-image" aria-hidden="false">
+              <picture>
+                <source srcset="https://images.unsplash.com/photo-1600663378895-1f3b7f3b2d6b?w=1200&q=80&auto=format&fit=crop 1200w,https://images.unsplash.com/photo-1600663378895-1f3b7f3b2d6b?w=800&q=80&auto=format&fit=crop 800w" sizes="(min-width:600px) 420px,100vw">
+                <img src="https://images.unsplash.com/photo-1600663378895-1f3b7f3b2d6b?w=800&q=80&auto=format&fit=crop" alt="Compact residential generator installed in backyard" loading="lazy">
+              </picture>
+            </div>
             <p style="color:var(--primary);font-weight:600">5-20 kW</p>
             <p>Compact and reliable generators ideal for homes and small offices.</p>
-            <ul style="margin:0.8rem 0 1rem;list-style:none;padding-left:0;color:var(--muted)">
+            <ul style="margin:0.6rem 0 1rem;list-style:none;padding-left:0;color:var(--muted)">
               <li>✓ Quiet operation</li><li>✓ Fuel efficient</li><li>✓ Easy maintenance</li><li>✓ Portable</li>
             </ul>
             <a class="btn btn-primary" href="#" onclick="showPage('contact');return false" style="display:block;text-align:center">Get Quote</a>
@@ -376,9 +451,15 @@
 
           <article class="card">
             <h3>Commercial Generators</h3>
+            <div class="card-image">
+              <picture>
+                <source srcset="https://images.unsplash.com/photo-1509395176047-4a66953fd231?w=1200&q=80&auto=format&fit=crop 1200w,https://images.unsplash.com/photo-1509395176047-4a66953fd231?w=800&q=80&auto=format&fit=crop 800w" sizes="(min-width:600px) 420px,100vw">
+                <img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?w=800&q=80&auto=format&fit=crop" alt="Commercial generator set at a business facility" loading="lazy">
+              </picture>
+            </div>
             <p style="color:var(--primary);font-weight:600">25-100 kW</p>
             <p>Heavy-duty generators for businesses and commercial facilities.</p>
-            <ul style="margin:0.8rem 0 1rem;list-style:none;padding-left:0;color:var(--muted)">
+            <ul style="margin:0.6rem 0 1rem;list-style:none;padding-left:0;color:var(--muted)">
               <li>✓ High performance</li><li>✓ Extended runtime</li><li>✓ Professional support</li><li>✓ Scalable</li>
             </ul>
             <a class="btn btn-primary" href="#" onclick="showPage('contact');return false" style="display:block;text-align:center">Get Quote</a>
@@ -386,9 +467,15 @@
 
           <article class="card">
             <h3>Industrial Generators</h3>
+            <div class="card-image">
+              <picture>
+                <source srcset="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?w=1200&q=80&auto=format&fit=crop 1200w,https://images.unsplash.com/photo-1518779578993-ec3579fee39f?w=800&q=80&auto=format&fit=crop 800w" sizes="(min-width:600px) 420px,100vw">
+                <img src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?w=800&q=80&auto=format&fit=crop" alt="Large industrial generator inside a power plant" loading="lazy">
+              </picture>
+            </div>
             <p style="color:var(--primary);font-weight:600">100-500 kW</p>
             <p>Powerful generators for factories, data centers, and industrial operations.</p>
-            <ul style="margin:0.8rem 0 1rem;list-style:none;padding-left:0;color:var(--muted)">
+            <ul style="margin:0.6rem 0 1rem;list-style:none;padding-left:0;color:var(--muted)">
               <li>✓ Maximum reliability</li><li>✓ 24/7 support</li><li>✓ Custom configurations</li><li>✓ Prime power rated</li>
             </ul>
             <a class="btn btn-primary" href="#" onclick="showPage('contact');return false" style="display:block;text-align:center">Get Quote</a>
@@ -396,9 +483,15 @@
 
           <article class="card">
             <h3>Construction Generators</h3>
+            <div class="card-image">
+              <picture>
+                <source srcset="https://images.unsplash.com/photo-1546484959-f3a2ef2a7d0d?w=1200&q=80&auto=format&fit=crop 1200w,https://images.unsplash.com/photo-1546484959-f3a2ef2a7d0d?w=800&q=80&auto=format&fit=crop 800w" sizes="(min-width:600px) 420px,100vw">
+                <img src="https://images.unsplash.com/photo-1546484959-f3a2ef2a7d0d?w=800&q=80&auto=format&fit=crop" alt="Generator on construction site with rugged housing" loading="lazy">
+              </picture>
+            </div>
             <p style="color:var(--primary);font-weight:600">10-150 kW</p>
             <p>Rugged generators built for construction sites and temporary power needs.</p>
-            <ul style="margin:0.8rem 0 1rem;list-style:none;padding-left:0;color:var(--muted)">
+            <ul style="margin:0.6rem 0 1rem;list-style:none;padding-left:0;color:var(--muted)">
               <li>✓ Durable design</li><li>✓ Weather resistant</li><li>✓ Quick deployment</li><li>✓ Cost effective</li>
             </ul>
             <a class="btn btn-primary" href="#" onclick="showPage('contact');return false" style="display:block;text-align:center">Get Quote</a>
@@ -411,9 +504,9 @@
       <div class="container">
         <h2>Our Services</h2>
         <div class="grid-3">
-          <article class="card text-center"><div class="card-icon">⚡</div><h3>Generator Sales</h3><p>Wide selection of high-quality diesel generators</p></article>
-          <article class="card text-center"><div class="card-icon">🔧</div><h3>Technical Consultation</h3><p>Load calculation, sizing and installation planning</p></article>
-          <article class="card text-center"><div class="card-icon">📞</div><h3>After-Sales Support</h3><p>Maintenance, repairs and optimization</p></article>
+          <article class="card text-center"><div class="card-image" style="height:140px"><img src="https://images.unsplash.com/photo-1516251193007-45ef944ab0c6?w=800&q=80&auto=format&fit=crop" alt="Power distribution control panel" loading="lazy"></div><div class="card-icon">⚡</div><h3>Generator Sales</h3><p>Wide selection of high-quality diesel generators</p></article>
+          <article class="card text-center"><div class="card-image" style="height:140px"><img src="https://images.unsplash.com/photo-1526378729101-4f6f2b82d6c6?w=800&q=80&auto=format&fit=crop" alt="Engineer consulting on-site with laptop" loading="lazy"></div><div class="card-icon">🔧</div><h3>Technical Consultation</h3><p>Load calculation, sizing and installation planning</p></article>
+          <article class="card text-center"><div class="card-image" style="height:140px"><img src="https://images.unsplash.com/photo-1476370648495-8e0b7f2602a8?w=800&q=80&auto=format&fit=crop" alt="Technician repairing industrial equipment" loading="lazy"></div><div class="card-icon">📞</div><h3>After-Sales Support</h3><p>Maintenance, repairs and optimization</p></article>
         </div>
       </div>
     </section>
@@ -448,7 +541,8 @@
   <!-- CONTACT PAGE -->
   <main id="contact" class="page" role="main" aria-labelledby="contactTitle">
     <section class="hero" aria-labelledby="contactTitle">
-      <div class="container">
+      <div class="hero__bg" aria-hidden="true" style="opacity:0.95"></div>
+      <div class="container hero__content">
         <h1 id="contactTitle">Contact Us</h1>
         <p>Get in touch with our team for inquiries, quotes, and support</p>
       </div>
@@ -514,7 +608,7 @@
             <p id="formStatus" class="text-gray" style="margin-top:0.6rem;font-size:0.95rem"></p>
           </div>
 
-          <!-- FAQ -->
+          <!-- FAQ + image -->
           <aside>
             <h2>Frequently Asked Questions</h2>
             <div class="faq-item">
@@ -540,6 +634,13 @@
             <div class="faq-item">
               <h4>Do you offer financing options?</h4>
               <p>We work with financing partners to provide accessible purchase options. Ask our team for current programs.</p>
+            </div>
+
+            <div class="contact-visual" aria-hidden="false">
+              <picture>
+                <source srcset="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=1200&q=80&auto=format&fit=crop 1200w,https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800&q=80&auto=format&fit=crop 800w" sizes="(min-width:600px) 420px,100vw">
+                <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800&q=80&auto=format&fit=crop" alt="Technician talking to client near generators" loading="lazy">
+              </picture>
             </div>
           </aside>
         </div>
@@ -631,15 +732,11 @@
 
     // Single-page-like navigation
     function showPage(pageId){
-      // hide all pages
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-      // show requested
       const selected = document.getElementById(pageId);
       if(selected) selected.classList.add('active');
-      // close nav on small screens
       const nav = document.getElementById('navItems');
       if(nav.classList.contains('show')){ nav.classList.remove('show'); document.getElementById('menuToggle').setAttribute('aria-expanded','false'); }
-      // scroll to top
       window.scrollTo({top:0,behavior:'smooth'});
     }
 
@@ -653,13 +750,11 @@
       const subject = form.subject.value;
       const message = form.message.value.trim();
 
-      // Basic validation
       if(!name || !email || !subject || !message){
         status.textContent = 'Please complete all required fields.';
         status.style.color = 'crimson';
         return;
       }
-      // Email basic pattern
       const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if(!emailPattern.test(email)){
         status.textContent = 'Please enter a valid email address.';
@@ -667,18 +762,16 @@
         return;
       }
 
-      // Simulated submission (replace with real integration)
       status.textContent = 'Sending...';
       status.style.color = 'var(--muted)';
       setTimeout(() => {
-        // Reset form and show success
         form.reset();
         status.textContent = 'Thank you for your message! We will get back to you soon.';
         status.style.color = 'green';
       }, 800);
     }
 
-    // Optional: keyboard-friendly navigation (Enter on nav links)
+    // Accessibility: allow Enter to activate nav links
     document.querySelectorAll('.nav-items a').forEach(a => {
       a.addEventListener('keydown', e => {
         if(e.key === 'Enter') a.click();
