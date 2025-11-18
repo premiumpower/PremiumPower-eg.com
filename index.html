@@ -11,13 +11,16 @@
     :root{
       --primary: #2563eb;
       --primary-2: #1e40af;
+      --primary-light: #3b82f6;
       --accent: #10b981;
+      --accent-dark: #059669;
       --text: #111827;
       --muted: #6b7280;
       --bg-light: #f9fafb;
       --bg-dark: #1f2937;
       --white: #ffffff;
       --card-shadow: 0 1px 3px rgba(0,0,0,0.08);
+      --card-shadow-hover: 0 10px 25px rgba(0,0,0,0.12);
     }
 
     /* Reset */
@@ -37,167 +40,320 @@
     /* Header / Nav */
     header{
       position:sticky;top:0;z-index:1000;
-      background:var(--white);box-shadow:0 1px 3px rgba(0,0,0,0.06)
+      background:rgba(255,255,255,0.98);
+      backdrop-filter:blur(10px);
+      box-shadow:0 1px 3px rgba(0,0,0,0.08);
+      transition:all 0.3s ease;
+    }
+    header.scrolled{
+      box-shadow:0 4px 12px rgba(0,0,0,0.1);
     }
     nav{
       display:flex;align-items:center;justify-content:space-between;padding:0.75rem 0;
       height:64px;
     }
-    .logo{display:flex;align-items:center;gap:0.6rem;text-decoration:none;color:var(--text);cursor:pointer}
-    .logo-mark{width:34px;height:34px;position:relative;border-radius:6px;flex:0 0 34px}
-    .logo-mark::before,.logo-mark::after{content:'';position:absolute;inset:0;border-radius:6px}
-    .logo-mark::before{background:#003087;transform:translateX(3px);opacity:0.95}
-    .logo-mark::after{background:#1994ff;transform:translateX(-3px);opacity:0.95}
-    .logo-text{font-weight:700}
+    .logo{display:flex;align-items:center;gap:0.6rem;text-decoration:none;color:var(--text);cursor:pointer;transition:transform 0.2s}
+    .logo:hover{transform:scale(1.03)}
+    .logo-mark{
+      width:36px;height:36px;position:relative;border-radius:8px;flex:0 0 36px;
+      background:linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+      box-shadow:0 2px 8px rgba(37,99,235,0.3);
+    }
+    .logo-mark::before{
+      content:'⚡';
+      position:absolute;
+      inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:1.2rem;
+      color:white;
+    }
+    .logo-text{font-weight:700;font-size:1.1rem}
     .logo-text .secondary{color:var(--primary)}
 
     .nav-items{display:flex;gap:1.5rem;align-items:center;list-style:none}
-    .nav-items a{color:#374151;text-decoration:none;font-weight:500;cursor:pointer}
+    .nav-items a{
+      color:#374151;text-decoration:none;font-weight:500;cursor:pointer;
+      position:relative;padding:0.25rem 0;transition:color 0.2s;
+    }
+    .nav-items a::after{
+      content:'';position:absolute;bottom:0;left:0;width:0;height:2px;
+      background:var(--primary);transition:width 0.3s ease;
+    }
+    .nav-items a:hover::after,.nav-items a:focus-visible::after{width:100%}
     .nav-items a:hover,.nav-items a:focus-visible{color:var(--primary);outline:none}
-    .btn-quote{background:var(--primary);color:var(--white);padding:0.45rem 0.9rem;border-radius:6px;border:none;cursor:pointer;font-weight:600}
-    .btn-quote:hover,.btn-quote:focus-visible{background:#1d4ed8;outline:none}
+    .btn-quote{
+      background:linear-gradient(135deg, var(--primary) 0%, var(--primary-2) 100%);
+      color:var(--white);padding:0.5rem 1.2rem;border-radius:8px;border:none;cursor:pointer;
+      font-weight:600;transition:all 0.3s ease;box-shadow:0 2px 8px rgba(37,99,235,0.3);
+    }
+    .btn-quote:hover,.btn-quote:focus-visible{
+      transform:translateY(-2px);box-shadow:0 4px 12px rgba(37,99,235,0.4);outline:none;
+    }
 
     .menu-toggle{display:none;background:none;border:none;font-size:1.4rem;cursor:pointer}
 
     /* Hero */
-    .hero{position:relative;color:var(--white);padding:3.75rem 0;text-align:center;overflow:hidden}
+    .hero{position:relative;color:var(--white);padding:4.5rem 0;text-align:center;overflow:hidden}
     .hero__bg{
-      position:absolute;inset:0;background:linear-gradient(90deg,rgba(37,99,235,0.9),rgba(30,64,175,0.9));
+      position:absolute;inset:0;
+      background:linear-gradient(135deg,rgba(37,99,235,0.95),rgba(30,64,175,0.92));
       z-index:0;
     }
+    .hero__bg::before{
+      content:'';position:absolute;inset:0;
+      background:url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+      opacity:0.3;
+    }
     .hero__content{position:relative;z-index:2}
-    .hero h1{font-size:2.6rem;margin-bottom:0.8rem;font-weight:800;line-height:1.05}
-    .hero p{color:rgba(255,255,255,0.92);font-size:1.05rem;margin-bottom:1.25rem}
-    .hero-buttons{display:flex;gap:0.9rem;justify-content:center;flex-wrap:wrap}
+    .hero h1{
+      font-size:3rem;margin-bottom:1rem;font-weight:800;line-height:1.1;
+      text-shadow:0 2px 10px rgba(0,0,0,0.2);
+      animation:fadeInUp 0.8s ease;
+    }
+    .hero p{
+      color:rgba(255,255,255,0.95);font-size:1.2rem;margin-bottom:1.5rem;
+      text-shadow:0 1px 3px rgba(0,0,0,0.1);
+      animation:fadeInUp 0.8s ease 0.2s both;
+    }
+    .hero-buttons{
+      display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;
+      animation:fadeInUp 0.8s ease 0.4s both;
+    }
 
     /* Decorative image area in hero */
     .hero-visual{
-      margin-top:1.5rem;border-radius:12px;overflow:hidden;box-shadow:0 8px 30px rgba(2,6,23,0.35);max-width:980px;margin-left:auto;margin-right:auto;
+      margin-top:2rem;border-radius:16px;overflow:hidden;
+      box-shadow:0 20px 60px rgba(2,6,23,0.4);
+      max-width:980px;margin-left:auto;margin-right:auto;
+      animation:fadeInUp 0.8s ease 0.6s both;
+      transition:transform 0.3s ease;
     }
+    .hero-visual:hover{transform:scale(1.02)}
     .hero-visual img{width:100%;height:auto;display:block;object-fit:cover}
 
-    .btn{padding:0.7rem 1.6rem;border-radius:8px;border:none;cursor:pointer;font-weight:600;text-decoration:none;display:inline-block}
-    .btn-primary{background:var(--white);color:var(--primary)}
-    .btn-primary:hover{background:#f3f4f6}
-    .btn-secondary{background:transparent;color:var(--white);border:2px solid rgba(255,255,255,0.12)}
-    .btn-secondary:hover{background:rgba(255,255,255,0.06)}
+    @keyframes fadeInUp{
+      from{opacity:0;transform:translateY(30px)}
+      to{opacity:1;transform:translateY(0)}
+    }
+
+    .btn{
+      padding:0.75rem 1.8rem;border-radius:10px;border:none;cursor:pointer;
+      font-weight:600;text-decoration:none;display:inline-block;
+      transition:all 0.3s ease;font-size:1rem;
+    }
+    .btn-primary{
+      background:var(--white);color:var(--primary);
+      box-shadow:0 4px 12px rgba(255,255,255,0.3);
+    }
+    .btn-primary:hover{background:#f3f4f6;transform:translateY(-2px);box-shadow:0 6px 20px rgba(255,255,255,0.4)}
+    .btn-secondary{
+      background:rgba(255,255,255,0.1);color:var(--white);
+      border:2px solid rgba(255,255,255,0.3);backdrop-filter:blur(10px);
+    }
+    .btn-secondary:hover{background:rgba(255,255,255,0.2);border-color:rgba(255,255,255,0.5)}
 
     /* Sections */
-    section{padding:3.25rem 0}
+    section{padding:4rem 0}
     section.light{background:var(--bg-light)}
-    section.dark{background:var(--bg-dark);color:var(--white)}
-    h2{font-size:1.75rem;text-align:center;margin-bottom:1.75rem;color:var(--text)}
+    section.dark{
+      background:linear-gradient(135deg, #1f2937 0%, #111827 100%);
+      color:var(--white);position:relative;overflow:hidden;
+    }
+    section.dark::before{
+      content:'';position:absolute;inset:0;
+      background:url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100%" height="100%" fill="url(%23dots)"/></svg>');
+      opacity:0.5;
+    }
+    h2{
+      font-size:2rem;text-align:center;margin-bottom:2.5rem;color:var(--text);
+      position:relative;display:inline-block;width:100%;
+    }
+    h2::after{
+      content:'';position:absolute;bottom:-10px;left:50%;transform:translateX(-50%);
+      width:60px;height:4px;background:linear-gradient(90deg, var(--primary), var(--accent));
+      border-radius:2px;
+    }
 
     /* Grids & cards */
-    .grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem}
-    .grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.25rem}
-    .grid-5{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem}
-    .card{background:var(--white);padding:1.25rem;border-radius:10px;box-shadow:var(--card-shadow);transition:box-shadow .2s;overflow:hidden}
-    .card:hover{box-shadow:0 10px 20px rgba(0,0,0,0.08)}
-    .card h3{font-size:1.125rem;margin-bottom:0.6rem;color:var(--text)}
+    .grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}
+    .grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem}
+    .grid-5{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1.25rem}
+    .card{
+      background:var(--white);padding:1.75rem;border-radius:16px;
+      box-shadow:var(--card-shadow);transition:all 0.3s ease;
+      overflow:hidden;border:1px solid rgba(0,0,0,0.05);
+    }
+    .card:hover{
+      box-shadow:var(--card-shadow-hover);
+      transform:translateY(-5px);
+      border-color:rgba(37,99,235,0.2);
+    }
+    .card h3{font-size:1.25rem;margin-bottom:0.75rem;color:var(--text)}
     .card p{color:var(--muted);margin-bottom:0.75rem}
 
-    .card-icon{width:48px;height:48px;background:var(--primary);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 0.9rem;color:var(--white);font-size:1.25rem}
+    .card-icon{
+      width:56px;height:56px;
+      background:linear-gradient(135deg, var(--primary), var(--primary-light));
+      border-radius:14px;display:flex;align-items:center;justify-content:center;
+      margin:0 auto 1rem;color:var(--white);font-size:1.5rem;
+      box-shadow:0 4px 12px rgba(37,99,235,0.3);
+    }
 
     .text-center{text-align:center}
-    .value-item h4{font-weight:700;margin-bottom:0.35rem;color:var(--text)}
-    .value-item p{font-size:0.9rem;color:var(--muted)}
+    .value-item{
+      background:var(--white);padding:1.5rem;border-radius:12px;
+      box-shadow:var(--card-shadow);transition:all 0.3s ease;
+      text-align:center;
+    }
+    .value-item:hover{transform:translateY(-3px);box-shadow:var(--card-shadow-hover)}
+    .value-item h4{font-weight:700;margin-bottom:0.5rem;color:var(--text)}
+    .value-item p{font-size:0.95rem;color:var(--muted)}
 
-    .features-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
-    .feature-item{display:flex;gap:0.9rem;align-items:flex-start}
-    .feature-icon{color:var(--accent);font-weight:700;font-size:1.25rem;flex-shrink:0}
-    .feature-text{color:var(--muted)}
+    .features-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem}
+    .feature-item{
+      display:flex;gap:1rem;align-items:flex-start;
+      background:var(--white);padding:1.25rem;border-radius:12px;
+      box-shadow:var(--card-shadow);transition:all 0.3s ease;
+    }
+    .feature-item:hover{transform:translateX(5px);box-shadow:var(--card-shadow-hover)}
+    .feature-icon{
+      color:var(--accent);font-weight:700;font-size:1.5rem;flex-shrink:0;
+      width:36px;height:36px;display:flex;align-items:center;justify-content:center;
+      background:rgba(16,185,129,0.1);border-radius:8px;
+    }
+    .feature-text{color:var(--muted);line-height:1.6}
 
     /* Product / image within card */
-    .card-image{width:100%;height:160px;border-radius:8px;overflow:hidden;margin-bottom:0.85rem}
-    .card-image img{width:100%;height:100%;object-fit:cover;display:block}
+    .card-image{
+      width:100%;height:200px;border-radius:12px;overflow:hidden;
+      margin-bottom:1rem;position:relative;
+    }
+    .card-image img{
+      width:100%;height:100%;object-fit:cover;display:block;
+      transition:transform 0.4s ease;
+    }
+    .card:hover .card-image img{transform:scale(1.08)}
+    .card-image::after{
+      content:'';position:absolute;inset:0;
+      background:linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.1) 100%);
+    }
 
     /* Table */
-    table{width:100%;border-collapse:collapse;margin-top:1rem;background:var(--white);border-radius:8px;overflow:hidden;box-shadow:var(--card-shadow)}
-    thead{background:var(--primary);color:var(--white)}
-    th,td{padding:0.9rem;text-align:left;border-bottom:1px solid #eef2ff}
-    tbody tr:hover{background:#f8fbff}
+    table{
+      width:100%;border-collapse:collapse;margin-top:1.5rem;
+      background:var(--white);border-radius:12px;overflow:hidden;
+      box-shadow:var(--card-shadow);
+    }
+    thead{
+      background:linear-gradient(135deg, var(--primary), var(--primary-2));
+      color:var(--white);
+    }
+    th,td{padding:1rem;text-align:left;border-bottom:1px solid #eef2ff}
+    tbody tr{transition:background 0.2s}
+    tbody tr:hover{background:#f0f7ff}
 
     /* Contact */
-    .contact-container{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
-    .form-group{margin-bottom:1rem}
-    label{display:block;margin-bottom:0.35rem;font-weight:600;color:var(--text);font-size:0.95rem}
-    input,select,textarea{width:100%;padding:0.6rem;border:1px solid #e5e7eb;border-radius:8px;font-family:inherit;font-size:1rem}
-    textarea{min-height:140px;resize:vertical}
-    input:focus,textarea:focus,select:focus{outline:none;box-shadow:0 0 0 3px rgba(37,99,235,0.12);border-color:var(--primary)}
-    .faq-item{background:var(--white);padding:1rem;border-radius:8px;box-shadow:var(--card-shadow);margin-bottom:0.75rem}
-    .faq-item h4{font-weight:700;margin-bottom:0.5rem;color:var(--text)}
+    .contact-container{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem}
+    .form-group{margin-bottom:1.25rem}
+    label{
+      display:block;margin-bottom:0.5rem;font-weight:600;
+      color:var(--text);font-size:0.95rem;
+    }
+    input,select,textarea{
+      width:100%;padding:0.75rem;border:2px solid #e5e7eb;
+      border-radius:10px;font-family:inherit;font-size:1rem;
+      transition:all 0.3s ease;
+    }
+    textarea{min-height:150px;resize:vertical}
+    input:focus,textarea:focus,select:focus{
+      outline:none;box-shadow:0 0 0 4px rgba(37,99,235,0.1);
+      border-color:var(--primary);
+    }
+    .faq-item{
+      background:var(--white);padding:1.25rem;border-radius:12px;
+      box-shadow:var(--card-shadow);margin-bottom:1rem;
+      border-left:4px solid var(--primary);
+      transition:all 0.3s ease;
+    }
+    .faq-item:hover{transform:translateX(5px);box-shadow:var(--card-shadow-hover)}
+    .faq-item h4{font-weight:700;margin-bottom:0.6rem;color:var(--text)}
     .faq-item p{color:var(--muted)}
 
     /* Contact side image */
-    .contact-visual{border-radius:8px;overflow:hidden;box-shadow:var(--card-shadow);margin-bottom:1rem}
+    .contact-visual{
+      border-radius:12px;overflow:hidden;box-shadow:var(--card-shadow);
+      margin-bottom:1.5rem;transition:transform 0.3s ease;
+    }
+    .contact-visual:hover{transform:scale(1.02)}
     .contact-visual img{width:100%;height:auto;display:block;object-fit:cover}
 
     /* Footer */
-    footer{background:var(--text);color:#d1d5db;padding:2.25rem 0}
-    .footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.25rem;margin-bottom:1.5rem}
-    .footer-section h4{color:var(--white);margin-bottom:0.6rem}
-    .footer-section a{color:#d1d5db;text-decoration:none}
+    footer{background:#0f172a;color:#cbd5e1;padding:3rem 0 1.5rem}
+    .footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2rem;margin-bottom:2rem}
+    .footer-section h4{color:var(--white);margin-bottom:1rem;font-size:1.1rem}
+    .footer-section a{color:#cbd5e1;text-decoration:none;transition:color 0.2s}
     .footer-section a:hover{color:var(--white)}
-    .footer-bottom{border-top:1px solid rgba(255,255,255,0.06);padding-top:1rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:0.9rem}
+    .footer-section ul{list-style:none;padding-left:0}
+    .footer-section ul li{margin-bottom:0.5rem}
+    .footer-bottom{
+      border-top:1px solid rgba(255,255,255,0.1);padding-top:1.5rem;
+      display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+      font-size:0.9rem;
+    }
 
     /* Utility */
     .mb-1{margin-bottom:0.5rem}.mb-2{margin-bottom:1rem}.mb-3{margin-bottom:1.5rem}
     .text-gray{color:var(--muted)} .text-blue{color:var(--primary)}
     .hidden{display:none}
 
-    /* Numbered image styling */
-    .numbered-image {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: #2563eb;
-      color: white;
-      font-size: 5rem;
-      font-weight: bold;
-      font-family: Arial, sans-serif;
-    }
-
     /* Responsive */
     @media (max-width: 900px){
-      .hero h1{font-size:2rem}
-      .hero{padding:2.5rem 0}
+      .hero h1{font-size:2.2rem}
+      .hero{padding:3rem 0}
       .contact-container{grid-template-columns:1fr}
       .grid-5{grid-template-columns:repeat(2,1fr)}
-      .card-image{height:140px}
-      .numbered-image { font-size: 4rem; }
+      .card-image{height:180px}
     }
     @media (max-width: 768px){
-      .nav-items{display:none;position:absolute;top:64px;right:0;background:var(--white);width:100%;padding:1rem;border-top:1px solid #eef2ff;flex-direction:column;gap:0.5rem}
+      .nav-items{
+        display:none;position:absolute;top:64px;right:0;
+        background:rgba(255,255,255,0.98);backdrop-filter:blur(10px);
+        width:100%;padding:1rem;border-top:1px solid #eef2ff;
+        flex-direction:column;gap:0.75rem;box-shadow:0 4px 12px rgba(0,0,0,0.1);
+      }
       .nav-items.show{display:flex}
       .menu-toggle{display:block}
       nav{padding:0 12px}
       .footer-bottom{flex-direction:column;align-items:flex-start}
-      h2{font-size:1.35rem}
-      .card-image{height:120px}
-      .hero-visual{display:none} /* hide large hero image on small screens */
-      .numbered-image { font-size: 3rem; }
+      h2{font-size:1.5rem}
+      .card-image{height:160px}
+      .hero-visual{display:none}
+      .hero h1{font-size:1.8rem}
+      section{padding:3rem 0}
     }
 
     /* Focus-visible for accessibility */
-    :focus-visible{outline:3px solid rgba(37,99,235,0.18);outline-offset:2px}
+    :focus-visible{outline:3px solid rgba(37,99,235,0.3);outline-offset:2px;border-radius:4px}
 
     /* Page visibility (single page behavior) */
     .page{display:none}
     .page.active{display:block}
+
+    /* Scroll animation */
+    .scroll-reveal{opacity:0;transform:translateY(30px);transition:all 0.6s ease}
+    .scroll-reveal.revealed{opacity:1;transform:translateY(0)}
   </style>
 </head>
 <body>
-  <header role="banner">
+  <header role="banner" id="mainHeader">
     <div class="container">
       <nav role="navigation" aria-label="Main navigation">
         <a class="logo" href="#" onclick="showPage('home');return false" aria-label="Go to home">
           <span class="logo-mark" aria-hidden="true"></span>
           <span class="logo-text">Premium <span class="secondary">Power</span></span>
         </a>
-
         <ul class="nav-items" id="navItems" role="menubar">
           <li role="none"><a role="menuitem" href="#" onclick="showPage('home');return false">Home</a></li>
           <li role="none"><a role="menuitem" href="#" onclick="showPage('about');return false">About</a></li>
@@ -205,7 +361,6 @@
           <li role="none"><a role="menuitem" href="#" onclick="showPage('contact');return false">Contact</a></li>
           <li role="none"><button class="btn-quote" onclick="showPage('contact');return false">Get Quote</button></li>
         </ul>
-
         <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false" onclick="toggleMenu()">☰</button>
       </nav>
     </div>
@@ -222,51 +377,49 @@
           <a class="btn btn-primary" href="#" onclick="showPage('contact');return false">Get Started →</a>
           <a class="btn btn-secondary" href="#" onclick="showPage('about');return false">Learn More</a>
         </div>
-
-        <!-- Hero visual: numbered image -->
-        <div class="hero-visual" aria-hidden="false">
-          <div class="numbered-image">1</div>
+        <div class="hero-visual">
+          <img src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=1200&h=600&fit=crop" alt="Industrial diesel generator in operation">
         </div>
       </div>
     </section>
 
-    <section>
+    <section class="scroll-reveal">
       <div class="container">
         <h2>About Premium Power</h2>
-        <p style="text-align:center;max-width:900px;margin:0 auto 1.25rem;color:var(--muted)">
+        <p style="text-align:center;max-width:900px;margin:0 auto 2rem;color:var(--muted);font-size:1.05rem">
           Premium Power is a modern energy solutions company specializing in the supply, sales, and support of diesel generators and reliable power systems. We combine technical competence with customer-first thinking to ensure continuous electricity where it matters most.
         </p>
 
         <div class="grid-3">
-          <article class="card text-center" aria-labelledby="r1">
-            <div class="card-icon" aria-hidden="true">⚡</div>
-            <h3 id="r1">Reliable Power</h3>
+          <article class="card text-center">
+            <div class="card-icon">⚡</div>
+            <h3>Reliable Power</h3>
             <p>High-quality generators built for demanding conditions</p>
           </article>
 
-          <article class="card text-center" aria-labelledby="r2">
-            <div class="card-icon" aria-hidden="true">🛡️</div>
-            <h3 id="r2">Expert Support</h3>
+          <article class="card text-center">
+            <div class="card-icon">🛡️</div>
+            <h3>Expert Support</h3>
             <p>Technical guidance from experienced professionals</p>
           </article>
 
-          <article class="card text-center" aria-labelledby="r3">
-            <div class="card-icon" aria-hidden="true">👥</div>
-            <h3 id="r3">Customer First</h3>
+          <article class="card text-center">
+            <div class="card-icon">👥</div>
+            <h3>Customer First</h3>
             <p>Dedicated support throughout the product lifetime</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="light">
+    <section class="light scroll-reveal">
       <div class="container">
         <h2>What We Do</h2>
         <div class="grid-2">
           <article class="card">
             <h3>Diesel Generator Sales</h3>
-            <div class="card-image" aria-hidden="false">
-              <div class="numbered-image">2</div>
+            <div class="card-image">
+              <img src="https://images.unsplash.com/photo-1581092918484-8313e1f7a1e2?w=600&h=400&fit=crop" alt="Modern diesel generator unit">
             </div>
             <p>We supply high-quality diesel generators for homes, businesses, industrial facilities, data centers, and construction sites.</p>
           </article>
@@ -274,7 +427,7 @@
           <article class="card">
             <h3>Power Consultation</h3>
             <div class="card-image">
-              <div class="numbered-image">3</div>
+              <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=600&h=400&fit=crop" alt="Engineers reviewing power system plans">
             </div>
             <p>We guide clients through load calculation, selection, and installation planning to ensure the right solution for the site.</p>
           </article>
@@ -282,7 +435,7 @@
           <article class="card">
             <h3>After-Sales Support</h3>
             <div class="card-image">
-              <div class="numbered-image">4</div>
+              <img src="https://images.unsplash.com/photo-1581092160607-ee67248ab3ea?w=600&h=400&fit=crop" alt="Technician performing generator maintenance">
             </div>
             <p>Continuous maintenance guidance and technical support to maximize uptime and lifetime value.</p>
           </article>
@@ -290,7 +443,7 @@
           <article class="card">
             <h3>End-to-End Experience</h3>
             <div class="card-image">
-              <div class="numbered-image">5</div>
+              <img src="https://images.unsplash.com/photo-1581092918484-8f72b62a0674?w=600&h=400&fit=crop" alt="Complete power generation facility">
             </div>
             <p>From needs assessment to delivery and support, we simplify the process for technically diverse customers.</p>
           </article>
@@ -298,32 +451,32 @@
       </div>
     </section>
 
-    <section>
+    <section class="scroll-reveal">
       <div class="container">
         <h2>Our Core Values</h2>
         <div class="grid-5">
           <div class="value-item">
-            <div style="font-size:1.5rem;margin-bottom:0.5rem;">✓</div>
+            <div style="font-size:2rem;margin-bottom:0.5rem;color:var(--accent)">✓</div>
             <h4>Reliability</h4>
             <p>Products you can depend on</p>
           </div>
           <div class="value-item">
-            <div style="font-size:1.5rem;margin-bottom:0.5rem;">✓</div>
+            <div style="font-size:2rem;margin-bottom:0.5rem;color:var(--accent)">✓</div>
             <h4>Transparency</h4>
             <p>Honest advice and fair pricing</p>
           </div>
           <div class="value-item">
-            <div style="font-size:1.5rem;margin-bottom:0.5rem;">✓</div>
+            <div style="font-size:2rem;margin-bottom:0.5rem;color:var(--accent)">✓</div>
             <h4>Technical Competence</h4>
             <p>Engineering expertise</p>
           </div>
           <div class="value-item">
-            <div style="font-size:1.5rem;margin-bottom:0.5rem;">✓</div>
+            <div style="font-size:2rem;margin-bottom:0.5rem;color:var(--accent)">✓</div>
             <h4>Customer-Centered</h4>
             <p>Your success is our priority</p>
           </div>
           <div class="value-item">
-            <div style="font-size:1.5rem;margin-bottom:0.5rem;">✓</div>
+            <div style="font-size:2rem;margin-bottom:0.5rem;color:var(--accent)">✓</div>
             <h4>Long-Term Partnership</h4>
             <p>Growing together</p>
           </div>
@@ -331,7 +484,7 @@
       </div>
     </section>
 
-    <section class="light">
+    <section class="light scroll-reveal">
       <div class="container">
         <h2>Why Customers Choose Premium Power</h2>
         <div class="features-list">
@@ -348,8 +501,8 @@
     <section class="dark">
       <div class="container text-center">
         <h2 style="color:var(--white)">Ready to Power Your Business?</h2>
-        <p style="color:rgba(255,255,255,0.9)">Contact us today to discuss your power generation needs</p>
-        <a class="btn btn-primary" href="#" onclick="showPage('contact');return false" style="margin-top:0.75rem">Get in Touch →</a>
+        <p style="color:rgba(255,255,255,0.9);font-size:1.1rem;max-width:700px;margin:0 auto 1.5rem">Contact us today to discuss your power generation needs</p>
+        <a class="btn btn-primary" href="#" onclick="showPage('contact');return false">Get in Touch →</a>
       </div>
     </section>
   </main>
@@ -357,49 +510,48 @@
   <!-- ABOUT PAGE -->
   <main id="about" class="page" role="main" aria-labelledby="aboutTitle">
     <section class="hero" aria-labelledby="aboutTitle">
-      <div class="hero__bg" aria-hidden="true" style="opacity:0.95"></div>
+      <div class="hero__bg" aria-hidden="true"></div>
       <div class="container hero__content">
         <h1 id="aboutTitle">About Premium Power</h1>
         <p>Powering businesses with reliability, expertise, and trust</p>
-
-        <div class="hero-visual" style="max-width:900px;margin-top:1rem">
-          <div class="numbered-image">6</div>
+        <div class="hero-visual" style="max-width:900px;margin-top:1.5rem">
+          <img src="https://images.unsplash.com/photo-1581092162384-8987c1d64718?w=1200&h=600&fit=crop" alt="Premium Power industrial facility">
         </div>
       </div>
     </section>
 
-    <section>
+    <section class="scroll-reveal">
       <div class="container">
         <h2>Our Story</h2>
-        <p style="max-width:900px;margin:0 auto;color:var(--muted)">Premium Power supplies, sells, and supports diesel generators and power systems. We combine engineering knowledge with hands-on management to deliver reliable, transparent, and durable energy solutions for a variety of sectors.</p>
+        <p style="max-width:900px;margin:0 auto;color:var(--muted);font-size:1.05rem;text-align:center">Premium Power supplies, sells, and supports diesel generators and power systems. We combine engineering knowledge with hands-on management to deliver reliable, transparent, and durable energy solutions for a variety of sectors.</p>
       </div>
     </section>
 
-    <section class="light">
+    <section class="light scroll-reveal">
       <div class="container">
         <h2>Mission & Vision</h2>
-        <div class="grid-2 mission-vision">
+        <div class="grid-2">
           <article class="card">
-            <h3>🎯 Our Mission</h3>
+            <h3 style="font-size:1.5rem;margin-bottom:1rem">🎯 Our Mission</h3>
             <p>Provide accessible, durable energy solutions with honesty, commitment, and technical excellence.</p>
           </article>
           <article class="card">
-            <h3>👁️ Our Vision</h3>
+            <h3 style="font-size:1.5rem;margin-bottom:1rem">👁️ Our Vision</h3>
             <p>Become a leading power solutions provider known for reliability, trust, and exceptional customer experience.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section>
+    <section class="scroll-reveal">
       <div class="container">
         <h2>Core Values</h2>
         <div class="grid-5">
-          <div class="value-item"><div style="font-size:1.25rem;margin-bottom:0.35rem;">✓</div><h4>Reliability</h4><p>We sell products you can depend on</p></div>
-          <div class="value-item"><div style="font-size:1.25rem;margin-bottom:0.35rem;">✓</div><h4>Transparency</h4><p>Fair pricing and clear communication</p></div>
-          <div class="value-item"><div style="font-size:1.25rem;margin-bottom:0.35rem;">✓</div><h4>Technical Competence</h4><p>Engineering and field experience</p></div>
-          <div class="value-item"><div style="font-size:1.25rem;margin-bottom:0.35rem;">✓</div><h4>Customer Service</h4><p>We treat your power challenge as our own</p></div>
-          <div class="value-item"><div style="font-size:1.25rem;margin-bottom:0.35rem;">✓</div><h4>Partnership</h4><p>Long-term support after the sale</p></div>
+          <div class="value-item"><div style="font-size:2rem;margin-bottom:0.5rem;color:var(--accent)">✓</div><h4>Reliability</h4><p>We sell products you can depend on</p></div>
+          <div class="value-item"><div style="font-size:2rem;margin-bottom:0.5rem;color:var(--accent)">✓</div><h4>Transparency</h4><p>Fair pricing and clear communication</p></div>
+          <div class="value-item"><div style="font-size:2rem;margin-bottom:0.5rem;color:var(--accent)">✓</div><h4>Technical Competence</h4><p>Engineering and field experience</p></div>
+          <div class="value-item"><div style="font-size:2rem;margin-bottom:0.5rem;color:var(--accent)">✓</div><h4>Customer Service</h4><p>We treat your power challenge as our own</p></div>
+          <div class="value-item"><div style="font-size:2rem;margin-bottom:0.5rem;color:var(--accent)">✓</div><h4>Partnership</h4><p>Long-term support after the sale</p></div>
         </div>
       </div>
     </section>
@@ -407,7 +559,7 @@
     <section class="dark">
       <div class="container text-center">
         <h2 style="color:var(--white)">Let's Power Your Business</h2>
-        <p style="color:rgba(255,255,255,0.9)">Contact us to learn how Premium Power can meet your energy needs</p>
+        <p style="color:rgba(255,255,255,0.9);font-size:1.1rem;max-width:700px;margin:0 auto 1.5rem">Contact us to learn how Premium Power can meet your energy needs</p>
         <a class="btn btn-primary" href="#" onclick="showPage('contact');return false">Get in Touch</a>
       </div>
     </section>
@@ -423,19 +575,22 @@
       </div>
     </section>
 
-    <section>
+    <section class="scroll-reveal">
       <div class="container">
         <h2>Generator Products</h2>
         <div class="grid-2">
           <article class="card">
             <h3>Residential Generators</h3>
-            <div class="card-image" aria-hidden="false">
-              <div class="numbered-image">7</div>
+            <div class="card-image">
+              <img src="https://images.unsplash.com/photo-1621905252472-b8f2e55ecf5b?w=600&h=400&fit=crop" alt="Residential generator system">
             </div>
-            <p style="color:var(--primary);font-weight:600">5-20 kW</p>
+            <p style="color:var(--primary);font-weight:700;font-size:1.1rem">5-20 kW</p>
             <p>Compact and reliable generators ideal for homes and small offices.</p>
-            <ul style="margin:0.6rem 0 1rem;list-style:none;padding-left:0;color:var(--muted)">
-              <li>✓ Quiet operation</li><li>✓ Fuel efficient</li><li>✓ Easy maintenance</li><li>✓ Portable</li>
+            <ul style="margin:0.75rem 0 1.25rem;list-style:none;padding-left:0;color:var(--muted)">
+              <li style="margin-bottom:0.4rem">✓ Quiet operation</li>
+              <li style="margin-bottom:0.4rem">✓ Fuel efficient</li>
+              <li style="margin-bottom:0.4rem">✓ Easy maintenance</li>
+              <li style="margin-bottom:0.4rem">✓ Portable</li>
             </ul>
             <a class="btn btn-primary" href="#" onclick="showPage('contact');return false" style="display:block;text-align:center">Get Quote</a>
           </article>
@@ -443,12 +598,15 @@
           <article class="card">
             <h3>Commercial Generators</h3>
             <div class="card-image">
-              <div class="numbered-image">8</div>
+              <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?w=600&h=400&fit=crop" alt="Commercial generator installation">
             </div>
-            <p style="color:var(--primary);font-weight:600">25-100 kW</p>
+            <p style="color:var(--primary);font-weight:700;font-size:1.1rem">25-100 kW</p>
             <p>Heavy-duty generators for businesses and commercial facilities.</p>
-            <ul style="margin:0.6rem 0 1rem;list-style:none;padding-left:0;color:var(--muted)">
-              <li>✓ High performance</li><li>✓ Extended runtime</li><li>✓ Professional support</li><li>✓ Scalable</li>
+            <ul style="margin:0.75rem 0 1.25rem;list-style:none;padding-left:0;color:var(--muted)">
+              <li style="margin-bottom:0.4rem">✓ High performance</li>
+              <li style="margin-bottom:0.4rem">✓ Extended runtime</li>
+              <li style="margin-bottom:0.4rem">✓ Professional support</li>
+              <li style="margin-bottom:0.4rem">✓ Scalable</li>
             </ul>
             <a class="btn btn-primary" href="#" onclick="showPage('contact');return false" style="display:block;text-align:center">Get Quote</a>
           </article>
@@ -456,12 +614,15 @@
           <article class="card">
             <h3>Industrial Generators</h3>
             <div class="card-image">
-              <div class="numbered-image">9</div>
+              <img src="https://images.unsplash.com/photo-1581092162384-8987c1d64718?w=600&h=400&fit=crop" alt="Large industrial generator">
             </div>
-            <p style="color:var(--primary);font-weight:600">100-500 kW</p>
+            <p style="color:var(--primary);font-weight:700;font-size:1.1rem">100-500 kW</p>
             <p>Powerful generators for factories, data centers, and industrial operations.</p>
-            <ul style="margin:0.6rem 0 1rem;list-style:none;padding-left:0;color:var(--muted)">
-              <li>✓ Maximum reliability</li><li>✓ 24/7 support</li><li>✓ Custom configurations</li><li>✓ Prime power rated</li>
+            <ul style="margin:0.75rem 0 1.25rem;list-style:none;padding-left:0;color:var(--muted)">
+              <li style="margin-bottom:0.4rem">✓ Maximum reliability</li>
+              <li style="margin-bottom:0.4rem">✓ 24/7 support</li>
+              <li style="margin-bottom:0.4rem">✓ Custom configurations</li>
+              <li style="margin-bottom:0.4rem">✓ Prime power rated</li>
             </ul>
             <a class="btn btn-primary" href="#" onclick="showPage('contact');return false" style="display:block;text-align:center">Get Quote</a>
           </article>
@@ -469,12 +630,15 @@
           <article class="card">
             <h3>Construction Generators</h3>
             <div class="card-image">
-              <div class="numbered-image">10</div>
+              <img src="https://images.unsplash.com/photo-1581092918484-8313e1f7a1e2?w=600&h=400&fit=crop" alt="Construction site generator">
             </div>
-            <p style="color:var(--primary);font-weight:600">10-150 kW</p>
+            <p style="color:var(--primary);font-weight:700;font-size:1.1rem">10-150 kW</p>
             <p>Rugged generators built for construction sites and temporary power needs.</p>
-            <ul style="margin:0.6rem 0 1rem;list-style:none;padding-left:0;color:var(--muted)">
-              <li>✓ Durable design</li><li>✓ Weather resistant</li><li>✓ Quick deployment</li><li>✓ Cost effective</li>
+            <ul style="margin:0.75rem 0 1.25rem;list-style:none;padding-left:0;color:var(--muted)">
+              <li style="margin-bottom:0.4rem">✓ Durable design</li>
+              <li style="margin-bottom:0.4rem">✓ Weather resistant</li>
+              <li style="margin-bottom:0.4rem">✓ Quick deployment</li>
+              <li style="margin-bottom:0.4rem">✓ Cost effective</li>
             </ul>
             <a class="btn btn-primary" href="#" onclick="showPage('contact');return false" style="display:block;text-align:center">Get Quote</a>
           </article>
@@ -482,29 +646,29 @@
       </div>
     </section>
 
-    <section class="light">
+    <section class="light scroll-reveal">
       <div class="container">
         <h2>Our Services</h2>
         <div class="grid-3">
           <article class="card text-center">
-            <div class="card-image" style="height:140px">
-              <div class="numbered-image">11</div>
+            <div class="card-image" style="height:180px">
+              <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=600&h=400&fit=crop" alt="Generator sales showroom">
             </div>
             <div class="card-icon">⚡</div>
             <h3>Generator Sales</h3>
             <p>Wide selection of high-quality diesel generators</p>
           </article>
           <article class="card text-center">
-            <div class="card-image" style="height:140px">
-              <div class="numbered-image">12</div>
+            <div class="card-image" style="height:180px">
+              <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=600&h=400&fit=crop" alt="Technical consultation meeting">
             </div>
             <div class="card-icon">🔧</div>
             <h3>Technical Consultation</h3>
             <p>Load calculation, sizing and installation planning</p>
           </article>
           <article class="card text-center">
-            <div class="card-image" style="height:140px">
-              <div class="numbered-image">13</div>
+            <div class="card-image" style="height:180px">
+              <img src="https://images.unsplash.com/photo-1581092160607-ee67248ab3ea?w=600&h=400&fit=crop" alt="Generator maintenance service">
             </div>
             <div class="card-icon">📞</div>
             <h3>After-Sales Support</h3>
@@ -514,7 +678,7 @@
       </div>
     </section>
 
-    <section>
+    <section class="scroll-reveal">
       <div class="container">
         <h2>Technical Specifications</h2>
         <table aria-describedby="specsNote">
@@ -528,14 +692,14 @@
             <tr><td><strong>Construction</strong></td><td>10-150 kW</td><td>Diesel</td><td>12-20 hours</td><td>2 years</td></tr>
           </tbody>
         </table>
-        <p id="specsNote" class="text-gray" style="margin-top:0.6rem;font-size:0.95rem">Runtime estimates depend on load and fuel tank size. Contact us for a tailored calculation.</p>
+        <p id="specsNote" class="text-gray" style="margin-top:1rem;font-size:0.95rem">Runtime estimates depend on load and fuel tank size. Contact us for a tailored calculation.</p>
       </div>
     </section>
 
     <section class="dark">
       <div class="container text-center">
         <h2 style="color:var(--white)">Ready to Find Your Perfect Generator?</h2>
-        <p style="color:rgba(255,255,255,0.9)">Contact our experts today for a personalized consultation</p>
+        <p style="color:rgba(255,255,255,0.9);font-size:1.1rem;max-width:700px;margin:0 auto 1.5rem">Contact our experts today for a personalized consultation</p>
         <a class="btn btn-primary" href="#" onclick="showPage('contact');return false">Request a Quote</a>
       </div>
     </section>
@@ -544,32 +708,32 @@
   <!-- CONTACT PAGE -->
   <main id="contact" class="page" role="main" aria-labelledby="contactTitle">
     <section class="hero" aria-labelledby="contactTitle">
-      <div class="hero__bg" aria-hidden="true" style="opacity:0.95"></div>
+      <div class="hero__bg" aria-hidden="true"></div>
       <div class="container hero__content">
         <h1 id="contactTitle">Contact Us</h1>
         <p>Get in touch with our team for inquiries, quotes, and support</p>
       </div>
     </section>
 
-    <section>
+    <section class="scroll-reveal">
       <div class="container">
-        <div class="grid-3" style="margin-bottom:1.2rem">
+        <div class="grid-3" style="margin-bottom:2rem">
           <div class="card text-center">
-            <div style="font-size:1.35rem;margin-bottom:0.6rem">📞</div>
+            <div style="font-size:2rem;margin-bottom:0.75rem;color:var(--primary)">📞</div>
             <h3>Phone</h3>
-            <p><a href="tel:01032521321" style="color:var(--primary);text-decoration:none">0103 2521 321</a></p>
-            <p class="text-gray" style="font-size:0.9rem">Available 24/7</p>
+            <p><a href="tel:01032521321" style="color:var(--primary);text-decoration:none;font-weight:600">0103 2521 321</a></p>
+            <p class="text-gray" style="font-size:0.95rem">Available 24/7</p>
           </div>
 
           <div class="card text-center">
-            <div style="font-size:1.35rem;margin-bottom:0.6rem">📧</div>
+            <div style="font-size:2rem;margin-bottom:0.75rem;color:var(--primary)">📧</div>
             <h3>Email</h3>
-            <p><a href="mailto:info@premiumpower-eg.com" style="color:var(--primary);text-decoration:none">info@premiumpower-eg.com</a></p>
-            <p class="text-gray" style="font-size:0.9rem">Response within 24 hours</p>
+            <p><a href="mailto:info@premiumpower-eg.com" style="color:var(--primary);text-decoration:none;font-weight:600">info@premiumpower-eg.com</a></p>
+            <p class="text-gray" style="font-size:0.95rem">Response within 24 hours</p>
           </div>
 
           <div class="card text-center">
-            <div style="font-size:1.35rem;margin-bottom:0.6rem">📍</div>
+            <div style="font-size:2rem;margin-bottom:0.75rem;color:var(--primary)">📍</div>
             <h3>Address</h3>
             <p>40 Elhegaz Street<br>Heliopolis</p>
           </div>
@@ -578,19 +742,19 @@
         <div class="contact-container">
           <!-- Contact Form -->
           <div>
-            <h2>Send us a Message</h2>
+            <h2 style="margin-bottom:1.5rem">Send us a Message</h2>
             <form id="contactForm" onsubmit="handleSubmit(event)" novalidate>
               <div class="form-group">
                 <label for="name">Full Name</label>
-                <input id="name" name="name" type="text" required />
+                <input id="name" name="name" type="text" required placeholder="Your name" />
               </div>
               <div class="form-group">
                 <label for="email">Email Address</label>
-                <input id="email" name="email" type="email" required />
+                <input id="email" name="email" type="email" required placeholder="your@email.com" />
               </div>
               <div class="form-group">
                 <label for="phone">Phone Number</label>
-                <input id="phone" name="phone" type="tel" />
+                <input id="phone" name="phone" type="tel" placeholder="+20 123 456 7890" />
               </div>
               <div class="form-group">
                 <label for="subject">Subject</label>
@@ -608,12 +772,12 @@
               </div>
               <button type="submit" class="btn btn-primary" style="width:100%">Send Message</button>
             </form>
-            <p id="formStatus" class="text-gray" style="margin-top:0.6rem;font-size:0.95rem"></p>
+            <p id="formStatus" class="text-gray" style="margin-top:1rem;font-size:0.95rem"></p>
           </div>
 
           <!-- FAQ + image -->
           <aside>
-            <h2>Frequently Asked Questions</h2>
+            <h2 style="margin-bottom:1.5rem">Frequently Asked Questions</h2>
             <div class="faq-item">
               <h4>What generator size do I need?</h4>
               <p>Our team can calculate the right size based on your appliance list, starting loads, and usage pattern. Provide usage details when you contact us.</p>
@@ -639,26 +803,26 @@
               <p>We work with financing partners to provide accessible purchase options. Ask our team for current programs.</p>
             </div>
 
-            <div class="contact-visual" aria-hidden="false">
-              <div class="numbered-image">14</div>
+            <div class="contact-visual">
+              <img src="https://images.unsplash.com/photo-1581092918484-8f72b62a0674?w=600&h=400&fit=crop" alt="Customer service representative">
             </div>
           </aside>
         </div>
       </div>
     </section>
 
-    <section class="light">
+    <section class="light scroll-reveal">
       <div class="container" style="text-align:center">
         <h2>Business Hours</h2>
         <div class="grid-2" style="max-width:640px;margin:0 auto">
           <div class="card">
             <h3>Weekdays</h3>
-            <p style="font-size:1.05rem;color:var(--primary);font-weight:700">9:00 AM - 6:00 PM</p>
+            <p style="font-size:1.2rem;color:var(--primary);font-weight:700;margin:0.5rem 0">9:00 AM - 6:00 PM</p>
             <p style="color:var(--muted)">Monday to Friday</p>
           </div>
           <div class="card">
             <h3>Weekends</h3>
-            <p style="font-size:1.05rem;color:var(--primary);font-weight:700">10:00 AM - 4:00 PM</p>
+            <p style="font-size:1.2rem;color:var(--primary);font-weight:700;margin:0.5rem 0">10:00 AM - 4:00 PM</p>
             <p style="color:var(--muted)">Saturday & Sunday</p>
           </div>
         </div>
@@ -673,16 +837,16 @@
         <div class="footer-section">
           <h4>Premium Power</h4>
           <p>Leading provider of diesel generators and reliable power solutions for businesses.</p>
-          <div style="display:flex;gap:0.5rem;margin-top:0.6rem">
-            <a href="#" aria-label="Facebook" style="font-size:1.2rem;color:#d1d5db;text-decoration:none">f</a>
-            <a href="#" aria-label="X" style="font-size:1.2rem;color:#d1d5db;text-decoration:none">𝕏</a>
-            <a href="#" aria-label="LinkedIn" style="font-size:1.2rem;color:#d1d5db;text-decoration:none">in</a>
+          <div style="display:flex;gap:0.75rem;margin-top:1rem">
+            <a href="#" aria-label="Facebook" style="font-size:1.3rem;color:#cbd5e1;text-decoration:none;transition:color 0.2s">f</a>
+            <a href="#" aria-label="X" style="font-size:1.3rem;color:#cbd5e1;text-decoration:none;transition:color 0.2s">𝕏</a>
+            <a href="#" aria-label="LinkedIn" style="font-size:1.3rem;color:#cbd5e1;text-decoration:none;transition:color 0.2s">in</a>
           </div>
         </div>
 
         <div class="footer-section">
           <h4>Quick Links</h4>
-          <ul style="list-style:none;padding-left:0">
+          <ul>
             <li><a href="#" onclick="showPage('home');return false">Home</a></li>
             <li><a href="#" onclick="showPage('about');return false">About Us</a></li>
             <li><a href="#" onclick="showPage('products');return false">Products</a></li>
@@ -692,7 +856,7 @@
 
         <div class="footer-section">
           <h4>Services</h4>
-          <ul style="list-style:none;padding-left:0">
+          <ul>
             <li><a href="#" onclick="showPage('products');return false">Generator Sales</a></li>
             <li><a href="#" onclick="showPage('contact');return false">Power Consultation</a></li>
             <li><a href="#" onclick="showPage('contact');return false">After-Sales Support</a></li>
@@ -702,9 +866,9 @@
 
         <div class="footer-section">
           <h4>Contact</h4>
-          <ul style="list-style:none;padding-left:0">
-            <li>📞 <a href="tel:01032521321" style="color:#d1d5db;text-decoration:none">0103 2521 321</a></li>
-            <li>📧 <a href="mailto:info@premiumpower-eg.com" style="color:#d1d5db;text-decoration:none">info@premiumpower-eg.com</a></li>
+          <ul>
+            <li>📞 <a href="tel:01032521321">0103 2521 321</a></li>
+            <li>📧 <a href="mailto:info@premiumpower-eg.com">info@premiumpower-eg.com</a></li>
             <li>📍 40 Elhegaz Street, Heliopolis</li>
           </ul>
         </div>
@@ -712,10 +876,10 @@
 
       <div class="footer-bottom">
         <div>© 2025 Premium Power. All rights reserved.</div>
-        <div style="display:flex;gap:1rem;flex-wrap:wrap">
-          <a href="#" style="color:#d1d5db;text-decoration:none">Privacy Policy</a>
-          <a href="#" style="color:#d1d5db;text-decoration:none">Terms of Service</a>
-          <a href="#" style="color:#d1d5db;text-decoration:none">Sitemap</a>
+        <div style="display:flex;gap:1.5rem;flex-wrap:wrap">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Sitemap</a>
         </div>
       </div>
     </div>
@@ -736,8 +900,16 @@
       const selected = document.getElementById(pageId);
       if(selected) selected.classList.add('active');
       const nav = document.getElementById('navItems');
-      if(nav.classList.contains('show')){ nav.classList.remove('show'); document.getElementById('menuToggle').setAttribute('aria-expanded','false'); }
+      if(nav.classList.contains('show')){
+        nav.classList.remove('show');
+        document.getElementById('menuToggle').setAttribute('aria-expanded','false');
+      }
       window.scrollTo({top:0,behavior:'smooth'});
+      
+      // Re-trigger scroll animations for new page
+      setTimeout(() => {
+        revealOnScroll();
+      }, 100);
     }
 
     // Contact form basic validation and simulated submission
@@ -751,25 +923,60 @@
       const message = form.message.value.trim();
 
       if(!name || !email || !subject || !message){
-        status.textContent = 'Please complete all required fields.';
-        status.style.color = 'crimson';
+        status.textContent = '⚠️ Please complete all required fields.';
+        status.style.color = '#ef4444';
         return;
       }
       const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if(!emailPattern.test(email)){
-        status.textContent = 'Please enter a valid email address.';
-        status.style.color = 'crimson';
+        status.textContent = '⚠️ Please enter a valid email address.';
+        status.style.color = '#ef4444';
         return;
       }
 
-      status.textContent = 'Sending...';
+      status.textContent = '📤 Sending...';
       status.style.color = 'var(--muted)';
       setTimeout(() => {
         form.reset();
-        status.textContent = 'Thank you for your message! We will get back to you soon.';
-        status.style.color = 'green';
+        status.textContent = '✅ Thank you for your message! We will get back to you soon.';
+        status.style.color = '#10b981';
       }, 800);
     }
+
+    // Scroll reveal animation
+    function revealOnScroll() {
+      const reveals = document.querySelectorAll('.scroll-reveal');
+      reveals.forEach(el => {
+        const windowHeight = window.innerHeight;
+        const elementTop = el.getBoundingClientRect().top;
+        const elementVisible = 150;
+        
+        if (elementTop < windowHeight - elementVisible) {
+          el.classList.add('revealed');
+        }
+      });
+    }
+
+    // Header scroll effect
+    function handleHeaderScroll() {
+      const header = document.getElementById('mainHeader');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    }
+
+    // Event listeners
+    window.addEventListener('scroll', () => {
+      revealOnScroll();
+      handleHeaderScroll();
+    });
+
+    // Initial call
+    document.addEventListener('DOMContentLoaded', () => {
+      revealOnScroll();
+    });
 
     // Accessibility: allow Enter to activate nav links
     document.querySelectorAll('.nav-items a').forEach(a => {
