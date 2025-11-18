@@ -3,1282 +3,502 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Power - Diesel Generators & Power Solutions</title>
+    <title>Premium Power - Reliable Diesel Generators & Solutions</title>
+    <!-- Load Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Lucide Icons for professional-looking symbols -->
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        /* Custom scrollbar for aesthetics */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
 
+        /* Custom styles for professional font stack and focus rings */
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
-            color: #333;
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
         }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header & Navigation */
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 50;
-            background: white;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-            height: 64px;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            font-weight: bold;
-            font-size: 1.25rem;
-            cursor: pointer;
-            text-decoration: none;
-        }
-
-        /* PayPal-inspired logo mark */
-        .logo-mark {
-            position: relative;
-            width: 32px;
-            height: 32px;
-        }
-
-        .logo-mark::before,
-        .logo-mark::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 10px;
-        }
-
-        .logo-mark::before {
-            background: #003087;
-            transform: translateX(3px);
-            opacity: 0.95;
-        }
-
-        .logo-mark::after {
-            background: #1994ff;
-            transform: translateX(-3px);
-            opacity: 0.95;
-        }
-
-        .logo-text {
-            display: flex;
-            align-items: baseline;
-            gap: 0.25rem;
-        }
-
-        .logo-text-primary {
-            color: #111827;
-            font-weight: 700;
-        }
-
-        .logo-text-secondary {
-            color: #2563eb;
-            font-weight: 700;
-        }
-
-        .nav-items {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-            list-style: none;
-        }
-
-        .nav-items a {
-            color: #374151;
-            text-decoration: none;
-            font-weight: 500;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-
-        .nav-items a:hover {
-            color: #2563eb;
-        }
-
-        .btn-quote {
-            background: #2563eb;
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 0.375rem;
-            border: none;
-            cursor: pointer;
-            font-weight: 500;
-            transition: background 0.3s;
-        }
-
-        .btn-quote:hover {
-            background: #1d4ed8;
-        }
-
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 1.5rem;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(to right, #2563eb, #1e40af);
-            color: white;
-            padding: 5rem 0;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            font-weight: bold;
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            margin-bottom: 2rem;
-            color: #dbeafe;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 0.75rem 2rem;
-            border: none;
-            border-radius: 0.375rem;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: 500;
-            transition: all 0.3s;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn-primary {
-            background: white;
-            color: #2563eb;
-        }
-
-        .btn-primary:hover {
-            background: #f3f4f6;
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: white;
-            border: 2px solid white;
-        }
-
-        .btn-secondary:hover {
-            background: #1e40af;
-        }
-
-        /* Sections */
-        section {
-            padding: 4rem 0;
-        }
-
-        section.light {
-            background: #f9fafb;
-        }
-
-        section.dark {
-            background: #1f2937;
-            color: white;
-        }
-
-        h2 {
-            font-size: 2rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            color: #111827;
-        }
-
-        section.dark h2 {
-            color: white;
-        }
-
-        /* Grid Layouts */
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .grid-2 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .grid-5 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 1.5rem;
-        }
-
-        /* Cards */
-        .card {
-            background: white;
-            padding: 2rem;
-            border-radius: 0.5rem;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            transition: box-shadow 0.3s;
-        }
-
-        .card:hover {
-            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
-        }
-
-        .card h3 {
-            font-size: 1.25rem;
-            margin-bottom: 1rem;
-            color: #111827;
-        }
-
-        .card p {
-            color: #6b7280;
-            margin-bottom: 1rem;
-        }
-
-        .card-icon {
-            width: 48px;
-            height: 48px;
-            background: #2563eb;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-
-        .text-center {
-            text-align: center;
-        }
-
-        .icon {
-            width: 48px;
-            height: 48px;
-            margin: 0 auto 1rem;
-        }
-
-        /* About Section */
-        .about-text {
-            font-size: 1.125rem;
-            color: #4b5563;
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-        }
-
-        .mission-vision {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .mission-card, .vision-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 0.5rem;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        }
-
-        .mission-card h3, .vision-card h3 {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #111827;
-        }
-
-        /* Values Grid */
-        .value-item {
-            text-align: center;
-        }
-
-        .value-item h4 {
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-            color: #111827;
-        }
-
-        .value-item p {
-            font-size: 0.875rem;
-            color: #6b7280;
-        }
-
-        /* Features List */
-        .features-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .feature-item {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .feature-icon {
-            color: #10b981;
-            font-weight: bold;
-            font-size: 1.25rem;
-            flex-shrink: 0;
-        }
-
-        .feature-text {
-            color: #4b5563;
-        }
-
-        /* Table */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 2rem;
-        }
-
-        table thead {
-            background: #2563eb;
-            color: white;
-        }
-
-        table th {
-            padding: 1rem;
-            text-align: left;
-            font-weight: 600;
-        }
-
-        table td {
-            padding: 1rem;
-            border-bottom: 1px solid #e5e7eb;
-        }
-
-        table tbody tr:hover {
-            background: #f9fafb;
-        }
-
-        /* Contact Form */
-        .contact-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-            color: #111827;
-            font-size: 0.875rem;
-        }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 0.5rem;
-            border: 1px solid #d1d5db;
-            border-radius: 0.375rem;
-            font-family: inherit;
-            font-size: 1rem;
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            outline: none;
-            ring: 2px solid #2563eb;
-            border-color: #2563eb;
-        }
-
-        .faq-item {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 0.5rem;
-            margin-bottom: 1rem;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-        }
-
-        .faq-item h4 {
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-            color: #111827;
-        }
-
-        .faq-item p {
-            color: #6b7280;
-        }
-
-        /* Footer */
-        footer {
-            background: #111827;
-            color: #d1d5db;
-            padding: 3rem 0 1rem;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-section h4 {
-            color: white;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section ul li {
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-section a {
-            color: #d1d5db;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .footer-section a:hover {
-            color: white;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid #374151;
-            padding-top: 2rem;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            font-size: 0.875rem;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 2rem;
-            justify-content: flex-end;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            background: #2563eb;
-            color: white;
-            padding: 3rem 0;
-            text-align: center;
-        }
-
-        .cta-section h2 {
-            color: white;
-            margin-bottom: 1rem;
-        }
-
-        .cta-section p {
-            font-size: 1.125rem;
-            margin-bottom: 2rem;
-            color: #dbeafe;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-items {
-                display: none;
-            }
-
-            .menu-toggle {
-                display: block;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-            }
-
-            .contact-container {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-bottom {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-links {
-                justify-content: flex-start;
-            }
-
-            h2 {
-                font-size: 1.5rem;
-            }
-
-            .grid-5 {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        /* Page Visibility */
+        /* Custom class to manage the single-page application view */
         .page {
             display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
         }
-
         .page.active {
             display: block;
+            opacity: 1;
         }
 
-        /* Utility Classes */
-        .flex {
-            display: flex;
+        /* Hero Image/Background effect */
+        .hero-bg {
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('https://placehold.co/1200x600/1e293b/ffffff?text=Industrial+Power+Generator');
+            background-size: cover;
+            background-position: center;
         }
 
-        .flex-center {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        /* Configuration for Tailwind */
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'power-blue': '#1D4ED8', /* Darker Blue for main brand color */
+                        'power-orange': '#F97316', /* Vibrant Orange for accents/CTAs */
+                        'power-light': '#EFF6FF',
+                        'power-dark': '#0f172a',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
         }
-
-        .gap-1 { gap: 0.5rem; }
-        .gap-2 { gap: 1rem; }
-        .gap-3 { gap: 1.5rem; }
-        .gap-4 { gap: 2rem; }
-
-        .mb-1 { margin-bottom: 0.5rem; }
-        .mb-2 { margin-bottom: 1rem; }
-        .mb-3 { margin-bottom: 1.5rem; }
-        .mb-4 { margin-bottom: 2rem; }
-
-        .mt-1 { margin-top: 0.5rem; }
-        .mt-2 { margin-top: 1rem; }
-        .mt-3 { margin-top: 1.5rem; }
-        .mt-4 { margin-top: 2rem; }
-
-        .text-white { color: white; }
-        .text-gray { color: #6b7280; }
-        .text-blue { color: #2563eb; }
     </style>
 </head>
-<body>
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <nav>
-                <a href="#" class="logo" onclick="showPage('home')">
-                    <div class="logo-mark"></div>
-                    <div class="logo-text">
-                        <span class="logo-text-primary">Premium</span>
-                        <span class="logo-text-secondary">Power</span>
+<body class="text-gray-800">
+
+    <!-- Header & Navigation (Sticky for Professional Feel) -->
+    <header class="sticky top-0 z-50 bg-white shadow-lg border-b border-gray-100">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="flex justify-between items-center h-16">
+                <!-- Logo: PayPal-Inspired Design -->
+                <a href="#" onclick="showPage('home')" class="flex items-center space-x-2 cursor-pointer group">
+                    <div class="relative h-8 w-12">
+                        <!-- Custom SVG Logo: Interlocking Rounded Shapes (Blue/Orange) -->
+                        <svg class="h-8 w-12" viewBox="0 0 100 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="0" y="0" width="60" height="36" rx="8" fill="#1D4ED8"/>
+                            <rect x="40" y="0" width="60" height="36" rx="8" fill="#F97316" opacity="0.8"/>
+                            <text x="5" y="28" font-family="Inter, sans-serif" font-size="28" font-weight="900" fill="white" class="select-none">PP</text>
+                        </svg>
                     </div>
+                    <span class="font-extrabold text-xl text-power-dark tracking-tight">Premium Power</span>
                 </a>
-                <ul class="nav-items">
-                    <li><a onclick="showPage('home')">Home</a></li>
-                    <li><a onclick="showPage('about')">About</a></li>
-                    <li><a onclick="showPage('products')">Products</a></li>
-                    <li><a onclick="showPage('contact')">Contact</a></li>
-                    <li><button class="btn-quote" onclick="showPage('contact')">Get Quote</button></li>
-                </ul>
-                <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+                <!-- Desktop Navigation Items -->
+                <div id="nav-items" class="hidden md:flex space-x-6">
+                    <a href="#" onclick="showPage('home')" class="nav-link text-gray-600 hover:text-power-orange transition duration-150 font-medium">Home</a>
+                    <a href="#" onclick="showPage('about')" class="nav-link text-gray-600 hover:text-power-orange transition duration-150 font-medium">About Us</a>
+                    <a href="#" onclick="showPage('products')" class="nav-link text-gray-600 hover:text-power-orange transition duration-150 font-medium">Products</a>
+                    <a href="#" onclick="showPage('contact')" class="btn-primary">Get a Quote</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="menu-toggle" class="md:hidden p-2 rounded-lg text-gray-600 hover:bg-gray-100" onclick="toggleMenu()">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
             </nav>
+             <!-- Mobile Menu Dropdown -->
+             <div id="mobile-menu" class="hidden md:hidden absolute top-16 left-0 right-0 bg-white shadow-xl border-t border-gray-100 z-40">
+                <div class="flex flex-col p-4 space-y-2">
+                    <a href="#" onclick="showPage('home'); toggleMenu(true);" class="nav-link block px-3 py-2 rounded-md text-gray-700 hover:bg-power-light">Home</a>
+                    <a href="#" onclick="showPage('about'); toggleMenu(true);" class="nav-link block px-3 py-2 rounded-md text-gray-700 hover:bg-power-light">About Us</a>
+                    <a href="#" onclick="showPage('products'); toggleMenu(true);" class="nav-link block px-3 py-2 rounded-md text-gray-700 hover:bg-power-light">Products</a>
+                    <a href="#" onclick="showPage('contact'); toggleMenu(true);" class="btn-primary w-full text-center mt-2">Get a Quote</a>
+                </div>
+            </div>
         </div>
     </header>
 
-    <!-- HOME PAGE -->
-    <div id="home" class="page active">
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="container">
-                <h1>Reliable Power Solutions</h1>
-                <p>Premium diesel generators and power systems for businesses, factories, and contractors</p>
-                <div class="hero-buttons">
-                    <button class="btn btn-primary" onclick="showPage('contact')">Get Started →</button>
-                    <button class="btn btn-secondary" onclick="showPage('about')">Learn More</button>
+    <main class="min-h-screen">
+        <!-- Message/Modal Area -->
+        <div id="message-modal" class="hidden fixed inset-0 bg-gray-900 bg-opacity-75 z-50 flex items-center justify-center p-4" onclick="closeModal()">
+            <div class="bg-white p-8 rounded-xl shadow-2xl max-w-sm w-full transform transition-all duration-300 scale-100" onclick="event.stopPropagation()">
+                <h3 class="text-xl font-bold text-power-blue mb-3">Thank You!</h3>
+                <p id="modal-content" class="text-gray-600">Your message has been received. We will get back to you within 24 hours.</p>
+                <button onclick="closeModal()" class="mt-5 w-full btn-primary bg-power-blue text-white py-2">Close</button>
+            </div>
+        </div>
+
+        <!-- HOME PAGE -->
+        <section id="home" class="page active">
+            <!-- Hero Section -->
+            <div class="hero-bg py-24 md:py-32 text-white shadow-inner">
+                <div class="container mx-auto text-center px-4">
+                    <h1 class="text-5xl md:text-6xl font-extrabold mb-4 leading-tight">
+                        Powering Your Future. Reliably.
+                    </h1>
+                    <p class="text-xl md:text-2xl mb-8 font-light max-w-3xl mx-auto">
+                        We deliver the most reliable diesel generators and comprehensive power solutions for uninterrupted business operations.
+                    </p>
+                    <a href="#" onclick="showPage('products')" class="btn-cta">Explore Our Generators</a>
+                </div>
+            </div>
+
+            <!-- What We Do: Service Features -->
+            <div class="container mx-auto py-16 px-4">
+                <h2 class="text-3xl font-bold text-center mb-12 text-power-dark">Our Integrated Power Services</h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-t-4 border-power-blue">
+                        <i data-lucide="shield-check" class="w-8 h-8 text-power-blue mb-3"></i>
+                        <h3 class="text-xl font-semibold mb-2">Expert Consultation</h3>
+                        <p class="text-gray-600">Engineering-led assessments to determine the perfect power solution for your specific needs and environment.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-t-4 border-power-blue">
+                        <i data-lucide="factory" class="w-8 h-8 text-power-blue mb-3"></i>
+                        <h3 class="text-xl font-semibold mb-2">Installation & Commissioning</h3>
+                        <p class="text-gray-600">Seamless setup and testing of all generator systems by certified, highly trained technicians.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-t-4 border-power-blue">
+                        <i data-lucide="settings" class="w-8 h-8 text-power-blue mb-3"></i>
+                        <h3 class="text-xl font-semibold mb-2">24/7 Support & Maintenance</h3>
+                        <p class="text-gray-600">Proactive and emergency maintenance contracts ensuring zero downtime, guaranteed.</p>
+                    </div>
+                </div>
+            </div>
+
+             <!-- Quality CTA Banner -->
+             <div class="bg-power-dark text-white py-12">
+                <div class="container mx-auto text-center px-4">
+                    <p class="text-2xl font-semibold mb-4">Ready for Guaranteed Uptime?</p>
+                    <a href="#" onclick="showPage('contact')" class="btn-cta-white">Request a Consultation Today</a>
                 </div>
             </div>
         </section>
 
-        <!-- About Premium Power -->
-        <section>
-            <div class="container">
-                <h2>About Premium Power</h2>
-                <p class="about-text" style="text-align: center; max-width: 800px; margin: 0 auto 2rem;">
-                    Premium Power is a modern energy solutions company specializing in the supply, sales, and support of diesel generators and reliable power systems. Established with a commitment to quality, transparency, and high-performance engineering, we help businesses ensure continuous and stable electricity — even in the most demanding environments.
-                </p>
-                <div class="grid-3">
-                    <div class="card text-center">
-                        <div class="card-icon">⚡</div>
-                        <h3>Reliable Power</h3>
-                        <p>High-quality generators built for demanding conditions</p>
-                    </div>
-                    <div class="card text-center">
-                        <div class="card-icon">🛡️</div>
-                        <h3>Expert Support</h3>
-                        <p>Technical guidance from experienced professionals</p>
-                    </div>
-                    <div class="card text-center">
-                        <div class="card-icon">👥</div>
-                        <h3>Customer First</h3>
-                        <p>Dedicated support throughout the product lifetime</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <!-- ABOUT US PAGE -->
+        <section id="about" class="page">
+            <div class="container mx-auto py-16 px-4">
+                <h1 class="text-4xl font-bold text-power-dark mb-6 border-b pb-3">About Premium Power</h1>
 
-        <!-- What We Do -->
-        <section class="light">
-            <div class="container">
-                <h2>What We Do</h2>
-                <div class="grid-2">
-                    <div class="card">
-                        <h3>Diesel Generator Sales</h3>
-                        <p>We supply high-quality diesel generators built to handle the toughest usage conditions. Our offerings include multiple capacities suitable for homes, businesses, industrial facilities, data centers, and construction sites.</p>
-                    </div>
-                    <div class="card">
-                        <h3>Power Consultation</h3>
-                        <p>We help customers choose the right generator based on load calculation, usage pattern, and site conditions. Our team guides clients step-by-step — from selecting the model to installation planning.</p>
-                    </div>
-                    <div class="card">
-                        <h3>After-Sales Support</h3>
-                        <p>Premium Power provides continuous support and guidance throughout the product lifetime, ensuring proper usage, maintenance recommendations, and performance optimization.</p>
-                    </div>
-                    <div class="card">
-                        <h3>End-to-End Experience</h3>
-                        <p>We simplify the entire process: understanding power needs, recommending trusted brands, delivering accurate pricing, and offering guidance even for customers with limited technical knowledge.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Core Values -->
-        <section>
-            <div class="container">
-                <h2>Our Core Values</h2>
-                <div class="grid-5">
-                    <div class="value-item">
-                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">✓</div>
-                        <h4>Reliability</h4>
-                        <p>Products you can depend on</p>
-                    </div>
-                    <div class="value-item">
-                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">✓</div>
-                        <h4>Transparency</h4>
-                        <p>Honest advice and fair pricing</p>
-                    </div>
-                    <div class="value-item">
-                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">✓</div>
-                        <h4>Technical Competence</h4>
-                        <p>Engineering expertise</p>
-                    </div>
-                    <div class="value-item">
-                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">✓</div>
-                        <h4>Customer-Centered</h4>
-                        <p>Your success is our priority</p>
-                    </div>
-                    <div class="value-item">
-                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">✓</div>
-                        <h4>Long-Term Partnership</h4>
-                        <p>Growing together</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Why Choose Us -->
-        <section class="light">
-            <div class="container">
-                <h2>Why Customers Choose Premium Power</h2>
-                <div class="features-list">
-                    <div class="feature-item">
-                        <div class="feature-icon">✓</div>
-                        <div class="feature-text">High-quality generator options that match real needs</div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">✓</div>
-                        <div class="feature-text">Engineering-based recommendations rather than sales-driven choices</div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">✓</div>
-                        <div class="feature-text">Fast communication and professional customer handling</div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">✓</div>
-                        <div class="feature-text">Commitment from top management to ensure every client is satisfied</div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">✓</div>
-                        <div class="feature-text">Flexible engagements even for customers without technical background</div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">✓</div>
-                        <div class="feature-text">Startup mindset — energetic, committed, and detail-oriented</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CTA -->
-        <section class="cta-section">
-            <div class="container">
-                <h2>Ready to Power Your Business?</h2>
-                <p>Contact us today to discuss your power generation needs</p>
-                <button class="btn btn-primary" onclick="showPage('contact')">Get in Touch →</button>
-            </div>
-        </section>
-    </div>
-
-    <!-- ABOUT PAGE -->
-    <div id="about" class="page">
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="container">
-                <h1>About Premium Power</h1>
-                <p>Powering businesses with reliability, expertise, and trust</p>
-            </div>
-        </section>
-
-        <!-- Our Story -->
-        <section>
-            <div class="container">
-                <h2>Our Story</h2>
-                <p class="about-text">
-                    Premium Power is a modern energy solutions company specializing in the supply, sales, and support of diesel generators and reliable power systems. Established with a commitment to quality, transparency, and high-performance engineering, Premium Power helps businesses, factories, contractors, and individuals ensure continuous and stable electricity — even in the most demanding environments.
-                </p>
-                <p class="about-text">
-                    Our approach focuses on delivering premium-grade products, exceptional customer service, and long-term operational reliability. With a strong technical background and hands-on management, Premium Power has quickly positioned itself as a trusted provider in the power generation market.
-                </p>
-            </div>
-        </section>
-
-        <!-- Mission & Vision -->
-        <section class="light">
-            <div class="container">
-                <h2>Mission & Vision</h2>
-                <div class="mission-vision">
-                    <div class="mission-card">
-                        <h3>🎯 Our Mission</h3>
-                        <p>To provide accessible, durable, and high-performance energy solutions while maintaining honesty, commitment, and technical excellence in everything we deliver.</p>
-                    </div>
-                    <div class="vision-card">
-                        <h3>👁️ Our Vision</h3>
-                        <p>To become a leading power solutions provider known for reliability, trust, and exceptional customer experience — enabling individuals and businesses to operate without interruption.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Core Values -->
-        <section>
-            <div class="container">
-                <h2>Core Values</h2>
-                <div class="grid-5">
-                    <div class="value-item">
-                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">✓</div>
-                        <h4>Reliability</h4>
-                        <p>We sell products you can depend on — backed by expert guidance.</p>
-                    </div>
-                    <div class="value-item">
-                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">✓</div>
-                        <h4>Transparency</h4>
-                        <p>Honest advice, fair pricing, and clear communication at every stage.</p>
-                    </div>
-                    <div class="value-item">
-                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">✓</div>
-                        <h4>Technical Competence</h4>
-                        <p>We combine engineering knowledge with real-world field experience.</p>
-                    </div>
-                    <div class="value-item">
-                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">✓</div>
-                        <h4>Customer-Centered Service</h4>
-                        <p>We treat every client's power challenge as if it were our own.</p>
-                    </div>
-                    <div class="value-item">
-                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">✓</div>
-                        <h4>Long-Term Partnership</h4>
-                        <p>Premium Power grows alongside its customers and supports them after the sale.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Why Choose Us -->
-        <section class="light">
-            <div class="container">
-                <h2>Why Customers Choose Premium Power</h2>
-                <div class="features-list">
-                    <div class="feature-item">
-                        <div class="feature-icon">✓</div>
-                        <div class="feature-text">High-quality generator options that match real needs</div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">✓</div>
-                        <div class="feature-text">Engineering-based recommendations rather than sales-driven choices</div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">✓</div>
-                        <div class="feature-text">Fast communication and professional customer handling</div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">✓</div>
-                        <div class="feature-text">Commitment from top management to ensure every client is satisfied</div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">✓</div>
-                        <div class="feature-text">Flexible engagements even for customers without technical background</div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">✓</div>
-                        <div class="feature-text">A startup mindset — energetic, committed, and detail-oriented</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CTA -->
-        <section class="cta-section">
-            <div class="container">
-                <h2>Let's Power Your Business</h2>
-                <p>Contact us today to learn how Premium Power can meet your energy needs</p>
-                <button class="btn btn-primary" onclick="showPage('contact')">Get in Touch</button>
-            </div>
-        </section>
-    </div>
-
-    <!-- PRODUCTS PAGE -->
-    <div id="products" class="page">
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="container">
-                <h1>Our Products & Services</h1>
-                <p>Comprehensive power solutions for every need</p>
-            </div>
-        </section>
-
-        <!-- Products -->
-        <section>
-            <div class="container">
-                <h2>Generator Products</h2>
-                <div class="grid-2">
-                    <div class="card">
-                        <h3>Residential Generators</h3>
-                        <p style="color: #2563eb; font-weight: 600;">5-20 kW</p>
-                        <p>Compact and reliable generators perfect for homes and small offices</p>
-                        <ul style="list-style: none; margin: 1rem 0;">
-                            <li style="margin-bottom: 0.5rem;">✓ Quiet operation</li>
-                            <li style="margin-bottom: 0.5rem;">✓ Fuel efficient</li>
-                            <li style="margin-bottom: 0.5rem;">✓ Easy maintenance</li>
-                            <li style="margin-bottom: 0.5rem;">✓ Portable</li>
-                        </ul>
-                        <button class="btn btn-primary" onclick="showPage('contact')" style="width: 100%;">Get Quote</button>
-                    </div>
-                    <div class="card">
-                        <h3>Commercial Generators</h3>
-                        <p style="color: #2563eb; font-weight: 600;">25-100 kW</p>
-                        <p>Heavy-duty generators designed for businesses and commercial facilities</p>
-                        <ul style="list-style: none; margin: 1rem 0;">
-                            <li style="margin-bottom: 0.5rem;">✓ High performance</li>
-                            <li style="margin-bottom: 0.5rem;">✓ Extended runtime</li>
-                            <li style="margin-bottom: 0.5rem;">✓ Professional support</li>
-                            <li style="margin-bottom: 0.5rem;">✓ Scalable</li>
-                        </ul>
-                        <button class="btn btn-primary" onclick="showPage('contact')" style="width: 100%;">Get Quote</button>
-                    </div>
-                    <div class="card">
-                        <h3>Industrial Generators</h3>
-                        <p style="color: #2563eb; font-weight: 600;">100-500 kW</p>
-                        <p>Powerful generators for factories, data centers, and industrial operations</p>
-                        <ul style="list-style: none; margin: 1rem 0;">
-                            <li style="margin-bottom: 0.5rem;">✓ Maximum reliability</li>
-                            <li style="margin-bottom: 0.5rem;">✓ 24/7 support</li>
-                            <li style="margin-bottom: 0.5rem;">✓ Custom configurations</li>
-                            <li style="margin-bottom: 0.5rem;">✓ Prime power rated</li>
-                        </ul>
-                        <button class="btn btn-primary" onclick="showPage('contact')" style="width: 100%;">Get Quote</button>
-                    </div>
-                    <div class="card">
-                        <h3>Construction Generators</h3>
-                        <p style="color: #2563eb; font-weight: 600;">10-150 kW</p>
-                        <p>Rugged generators built for construction sites and temporary power needs</p>
-                        <ul style="list-style: none; margin: 1rem 0;">
-                            <li style="margin-bottom: 0.5rem;">✓ Durable design</li>
-                            <li style="margin-bottom: 0.5rem;">✓ Weather resistant</li>
-                            <li style="margin-bottom: 0.5rem;">✓ Quick deployment</li>
-                            <li style="margin-bottom: 0.5rem;">✓ Cost effective</li>
-                        </ul>
-                        <button class="btn btn-primary" onclick="showPage('contact')" style="width: 100%;">Get Quote</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Services -->
-        <section class="light">
-            <div class="container">
-                <h2>Our Services</h2>
-                <div class="grid-3">
-                    <div class="card text-center">
-                        <div class="card-icon">⚡</div>
-                        <h3>Generator Sales</h3>
-                        <p>Wide selection of high-quality diesel generators for every application</p>
-                    </div>
-                    <div class="card text-center">
-                        <div class="card-icon">🔧</div>
-                        <h3>Technical Consultation</h3>
-                        <p>Expert guidance on load calculation, sizing, and installation planning</p>
-                    </div>
-                    <div class="card text-center">
-                        <div class="card-icon">📞</div>
-                        <h3>After-Sales Support</h3>
-                        <p>Comprehensive support including maintenance, repairs, and optimization</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Why Our Products -->
-        <section>
-            <div class="container">
-                <h2>Why Choose Our Products</h2>
-                <div class="grid-2">
-                    <div class="feature-item">
-                        <div class="feature-icon">✓</div>
-                        <div><strong>Premium Quality</strong><br>All our generators are built to the highest standards with rigorous quality control</div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">✓</div>
-                        <div><strong>Proven Reliability</strong><br>Tested in demanding environments with proven track record of performance</div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">✓</div>
-                        <div><strong>Expert Support</strong><br>Our team provides comprehensive technical support and guidance</div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">✓</div>
-                        <div><strong>Flexible Options</strong><br>Wide range of capacities and configurations to match your specific needs</div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">✓</div>
-                        <div><strong>Competitive Pricing</strong><br>Transparent pricing with no hidden costs or surprise fees</div>
-                    </div>
-                    <div class="feature-item">
-                        <div class="feature-icon">✓</div>
-                        <div><strong>Long-Term Value</strong><br>Durable products backed by excellent after-sales support</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Specifications Table -->
-        <section class="light">
-            <div class="container">
-                <h2>Technical Specifications</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Category</th>
-                            <th>Power Range</th>
-                            <th>Fuel Type</th>
-                            <th>Runtime</th>
-                            <th>Warranty</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Residential</strong></td>
-                            <td>5-20 kW</td>
-                            <td>Diesel</td>
-                            <td>8-12 hours</td>
-                            <td>2 years</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Commercial</strong></td>
-                            <td>25-100 kW</td>
-                            <td>Diesel</td>
-                            <td>12-24 hours</td>
-                            <td>3 years</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Industrial</strong></td>
-                            <td>100-500 kW</td>
-                            <td>Diesel</td>
-                            <td>24+ hours</td>
-                            <td>5 years</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Construction</strong></td>
-                            <td>10-150 kW</td>
-                            <td>Diesel</td>
-                            <td>12-20 hours</td>
-                            <td>2 years</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <!-- CTA -->
-        <section class="cta-section">
-            <div class="container">
-                <h2>Ready to Find Your Perfect Generator?</h2>
-                <p>Contact our experts today for a personalized consultation</p>
-                <button class="btn btn-primary" onclick="showPage('contact')">Request a Quote</button>
-            </div>
-        </section>
-    </div>
-
-    <!-- CONTACT PAGE -->
-    <div id="contact" class="page">
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="container">
-                <h1>Contact Us</h1>
-                <p>Get in touch with our team for any inquiries</p>
-            </div>
-        </section>
-
-        <!-- Contact Info -->
-        <section>
-            <div class="container">
-                <div class="grid-3" style="margin-bottom: 3rem;">
-                    <div class="card text-center">
-                        <div style="font-size: 2rem; margin-bottom: 1rem;">📞</div>
-                        <h3>Phone</h3>
-                        <p>
-                            <a href="tel:01032521321" style="color: #2563eb; text-decoration: none;">
-                                0103 2521 321
-                            </a>
-                        </p>
-                        <p style="font-size: 0.875rem; color: #6b7280;">Available 24/7</p>
-                    </div>
-                    <div class="card text-center">
-                        <div style="font-size: 2rem; margin-bottom: 1rem;">📧</div>
-                        <h3>Email</h3>
-                        <p>
-                            <a href="mailto:info@premiumpower-eg.com" style="color: #2563eb; text-decoration: none;">
-                                info@premiumpower-eg.com
-                            </a>
-                        </p>
-                        <p style="font-size: 0.875rem; color: #6b7280;">Response within 24 hours</p>
-                    </div>
-                    <div class="card text-center">
-                        <div style="font-size: 2rem; margin-bottom: 1rem;">📍</div>
-                        <h3>Address</h3>
-                        <p>40 Elhegaz street<br>Heliopolis</p>
-                    </div>
-                </div>
-
-                <div class="contact-container">
-                    <!-- Contact Form -->
+                <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
                     <div>
-                        <h2>Send us a Message</h2>
+                        <h2 class="text-2xl font-semibold text-power-orange mb-4">Our Story: Built on Integrity</h2>
+                        <p class="text-gray-600 mb-4">Founded in 2010, Premium Power was established to fill a crucial gap in the market: the need for genuinely reliable and transparent power solutions. We are not just vendors; we are power engineers dedicated to system performance and longevity.</p>
+                        <p class="text-gray-600">Our success is built on long-term client relationships and an unwavering commitment to quality components. We believe that critical power requires critical attention to detail.</p>
+                        <ul class="mt-6 space-y-3 text-gray-600">
+                            <li class="flex items-center"><i data-lucide="check-circle" class="w-5 h-5 text-power-orange mr-2"></i> Over 15 years in the power industry</li>
+                            <li class="flex items-center"><i data-lucide="check-circle" class="w-5 h-5 text-power-orange mr-2"></i> Certified engineers and technicians</li>
+                            <li class="flex items-center"><i data-lucide="check-circle" class="w-5 h-5 text-power-orange mr-2"></i> Trusted by Fortune 500 companies</li>
+                        </ul>
+                    </div>
+                    <!-- Placeholder Image for Culture/Team -->
+                    <img src="https://placehold.co/600x400/e2e8f0/1e293b?text=Engineers+at+Work" alt="Engineers working on a generator" class="rounded-xl shadow-xl border-4 border-white transition duration-500 hover:scale-[1.02]">
+                </div>
+
+                <!-- Mission & Vision -->
+                <div class="grid md:grid-cols-2 gap-8 bg-power-light p-8 rounded-xl shadow-inner">
+                    <div class="p-4 border-l-4 border-power-blue">
+                        <h3 class="flex items-center text-2xl font-bold text-power-dark mb-3"><i data-lucide="target" class="w-6 h-6 mr-2 text-power-orange"></i> Mission</h3>
+                        <p class="text-gray-700">To provide seamless, energy-efficient, and dependable power systems that protect our clients' assets and ensure continuous operations.</p>
+                    </div>
+                    <div class="p-4 border-l-4 border-power-blue">
+                        <h3 class="flex items-center text-2xl font-bold text-power-dark mb-3"><i data-lucide="eye" class="w-6 h-6 mr-2 text-power-orange"></i> Vision</h3>
+                        <p class="text-gray-700">To be the recognized leader in bespoke power generation solutions across the region, setting the benchmark for service excellence and technological integration.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRODUCTS PAGE -->
+        <section id="products" class="page">
+            <div class="container mx-auto py-16 px-4">
+                <h1 class="text-4xl font-bold text-power-dark mb-10 text-center">Our Generator Solutions</h1>
+                <p class="text-center text-lg text-gray-600 max-w-3xl mx-auto mb-12">We offer a complete range of industrial-grade diesel generators, designed for superior performance and fuel efficiency in the most demanding environments.</p>
+
+                <!-- Product Categories -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+
+                    <!-- Industrial Series -->
+                    <div class="product-card">
+                        <img src="https://placehold.co/600x400/475569/ffffff?text=Industrial+Series" alt="Industrial Generator" class="w-full h-48 object-cover rounded-t-xl">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold text-power-blue mb-2">Industrial Series</h3>
+                            <p class="text-sm font-semibold text-power-orange mb-3">500 kW - 2500 kW</p>
+                            <p class="text-gray-600 mb-4">Heavy-duty power for data centers, manufacturing plants, and large utility operations. Maximum durability.</p>
+                            <a href="#" onclick="showPage('contact')" class="text-power-orange hover:text-power-dark font-semibold transition duration-150 flex items-center">
+                                Request Specs <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Commercial Series -->
+                    <div class="product-card">
+                        <img src="https://placehold.co/600x400/334155/ffffff?text=Commercial+Series" alt="Commercial Generator" class="w-full h-48 object-cover rounded-t-xl">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold text-power-blue mb-2">Commercial Series</h3>
+                            <p class="text-sm font-semibold text-power-orange mb-3">150 kW - 450 kW</p>
+                            <p class="text-gray-600 mb-4">Ideal for hospitals, schools, large retail centers, and critical backup power requirements.</p>
+                            <a href="#" onclick="showPage('contact')" class="text-power-orange hover:text-power-dark font-semibold transition duration-150 flex items-center">
+                                Request Specs <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Residential/Small Business -->
+                    <div class="product-card">
+                        <img src="https://placehold.co/600x400/1e293b/ffffff?text=Small+Business+Unit" alt="Small Business Generator" class="w-full h-48 object-cover rounded-t-xl">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold text-power-blue mb-2">Small Business Backup</h3>
+                            <p class="text-sm font-semibold text-power-orange mb-3">25 kW - 125 kW</p>
+                            <p class="text-gray-600 mb-4">Cost-effective, quiet operation for essential home power and small business continuity.</p>
+                            <a href="#" onclick="showPage('contact')" class="text-power-orange hover:text-power-dark font-semibold transition duration-150 flex items-center">
+                                Request Specs <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technical Table -->
+                <h2 class="text-3xl font-bold text-center mb-8 text-power-dark">General Specifications Overview</h2>
+                <div class="overflow-x-auto bg-white rounded-xl shadow-lg">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-power-blue">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Series</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Power Range (kW)</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Fuel Type</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Typical Runtime</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider">Warranty</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                            <tr class="hover:bg-power-light transition duration-150">
+                                <td class="px-6 py-4 whitespace-nowrap font-medium text-power-dark">Industrial</td>
+                                <td class="px-6 py-4 whitespace-nowrap">500 - 2500</td>
+                                <td class="px-6 py-4 whitespace-nowrap">Diesel (Tier 4)</td>
+                                <td class="px-6 py-4 whitespace-nowrap">24-48 Hours (Custom)</td>
+                                <td class="px-6 py-4 whitespace-nowrap">5 Years / 10,000 Hours</td>
+                            </tr>
+                            <tr class="hover:bg-power-light transition duration-150">
+                                <td class="px-6 py-4 whitespace-nowrap font-medium text-power-dark">Commercial</td>
+                                <td class="px-6 py-4 whitespace-nowrap">150 - 450</td>
+                                <td class="px-6 py-4 whitespace-nowrap">Diesel / Natural Gas</td>
+                                <td class="px-6 py-4 whitespace-nowrap">12-24 Hours</td>
+                                <td class="px-6 py-4 whitespace-nowrap">3 Years / 6,000 Hours</td>
+                            </tr>
+                            <tr class="hover:bg-power-light transition duration-150">
+                                <td class="px-6 py-4 whitespace-nowrap font-medium text-power-dark">Small Business</td>
+                                <td class="px-6 py-4 whitespace-nowrap">25 - 125</td>
+                                <td class="px-6 py-4 whitespace-nowrap">Diesel / Propane</td>
+                                <td class="px-6 py-4 whitespace-nowrap">6-12 Hours</td>
+                                <td class="px-6 py-4 whitespace-nowrap">2 Years / 3,000 Hours</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT PAGE -->
+        <section id="contact" class="page">
+            <div class="container mx-auto py-16 px-4">
+                <h1 class="text-4xl font-bold text-power-dark mb-6 text-center">Get a Custom Power Solution Quote</h1>
+                <p class="text-center text-lg text-gray-600 max-w-xl mx-auto mb-12">Contact our engineering team today for a personalized consultation and a detailed, no-obligation quote.</p>
+
+                <div class="grid md:grid-cols-2 gap-12">
+                    <!-- Contact Form -->
+                    <div class="bg-white p-8 rounded-xl shadow-2xl border-t-4 border-power-orange">
+                        <h2 class="text-2xl font-bold text-power-blue mb-6">Quote Request Form</h2>
                         <form onsubmit="handleSubmit(event)">
-                            <div class="form-group">
-                                <label>Full Name</label>
-                                <input type="text" name="name" required>
+                            <div class="space-y-4">
+                                <div>
+                                    <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                                    <input type="text" id="name" name="name" required class="input-field" placeholder="John Doe">
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Work Email</label>
+                                    <input type="email" id="email" name="email" required class="input-field" placeholder="you@company.com">
+                                </div>
+                                <div>
+                                    <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Service Required</label>
+                                    <select id="subject" name="subject" required class="input-field appearance-none">
+                                        <option value="">Select a service type</option>
+                                        <option value="New Generator Installation">New Generator Installation</option>
+                                        <option value="Maintenance Contract">24/7 Maintenance Contract</option>
+                                        <option value="Technical Consultation">Technical Consultation/Site Survey</option>
+                                        <option value="General Inquiry">General Inquiry</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Project Details / Message</label>
+                                    <textarea id="message" name="message" rows="4" required class="input-field" placeholder="Describe your power needs (e.g., required kW, location, application)"></textarea>
+                                </div>
+                                <button type="submit" class="w-full btn-primary bg-power-orange hover:bg-power-dark transition duration-300">Submit Request</button>
                             </div>
-                            <div class="form-group">
-                                <label>Email Address</label>
-                                <input type="email" name="email" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Phone Number</label>
-                                <input type="tel" name="phone">
-                            </div>
-                            <div class="form-group">
-                                <label>Subject</label>
-                                <select name="subject" required>
-                                    <option value="">Select a subject</option>
-                                    <option value="sales">Generator Sales Inquiry</option>
-                                    <option value="consultation">Power Consultation</option>
-                                    <option value="support">Technical Support</option>
-                                    <option value="other">Other</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>Message</label>
-                                <textarea name="message" required placeholder="Tell us about your power needs..."></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary" style="width: 100%; background: #2563eb; color: white; padding: 0.75rem;">Send Message</button>
                         </form>
                     </div>
 
-                    <!-- FAQ -->
-                    <div>
-                        <h2>Frequently Asked Questions</h2>
-                        <div class="faq-item">
-                            <h4>What generator size do I need?</h4>
-                            <p>Our team can help you calculate the right size based on your power requirements. Contact us with your usage details.</p>
+                    <!-- Contact Details & FAQ -->
+                    <div class="space-y-8">
+                        <div>
+                            <h2 class="text-2xl font-bold text-power-blue mb-4 flex items-center"><i data-lucide="map-pin" class="w-6 h-6 mr-2 text-power-orange"></i> Our Location</h2>
+                            <p class="text-gray-600">123 Industrial Park Drive, Power City, CA 90210</p>
+                            <p class="text-gray-600 mt-2">Open Mon - Fri: 8:00 AM - 5:00 PM</p>
+                            <h2 class="text-2xl font-bold text-power-blue mt-6 mb-4 flex items-center"><i data-lucide="phone" class="w-6 h-6 mr-2 text-power-orange"></i> Contact Info</h2>
+                            <p class="text-gray-600 font-semibold">Phone (Sales): <a href="tel:+18005550199" class="hover:text-power-orange">+1 (800) 555-0199</a></p>
+                            <p class="text-gray-600 font-semibold">Support: <a href="tel:+18005550200" class="hover:text-power-orange">+1 (800) 555-0200 (24/7)</a></p>
+                            <p class="text-gray-600 font-semibold">Email: <a href="mailto:sales@premiumpower.com" class="hover:text-power-orange">sales@premiumpower.com</a></p>
                         </div>
-                        <div class="faq-item">
-                            <h4>Do you offer installation services?</h4>
-                            <p>Yes, we provide professional installation services and can guide you through the entire setup process.</p>
-                        </div>
-                        <div class="faq-item">
-                            <h4>What is your warranty coverage?</h4>
-                            <p>Our generators come with comprehensive warranties ranging from 2-5 years depending on the product category.</p>
-                        </div>
-                        <div class="faq-item">
-                            <h4>Do you provide maintenance support?</h4>
-                            <p>Absolutely! We offer ongoing maintenance, repairs, and technical support throughout your generator's lifetime.</p>
-                        </div>
-                        <div class="faq-item">
-                            <h4>How quickly can you deliver?</h4>
-                            <p>Delivery times vary based on location and product availability. Contact us for specific delivery estimates.</p>
-                        </div>
-                        <div class="faq-item">
-                            <h4>Do you offer financing options?</h4>
-                            <p>We work with various financing partners to make our products accessible. Ask our team about available options.</p>
+                        <div id="faq">
+                            <h2 class="text-2xl font-bold text-power-blue mb-4 flex items-center"><i data-lucide="help-circle" class="w-6 h-6 mr-2 text-power-orange"></i> FAQ</h2>
+                            <div class="space-y-3">
+                                <details class="bg-white p-4 rounded-lg shadow border border-gray-100 cursor-pointer">
+                                    <summary class="font-semibold text-power-dark hover:text-power-orange transition duration-150">What is your typical lead time for a new installation?</summary>
+                                    <p class="pt-2 text-sm text-gray-600">Lead times vary by generator size and site readiness, but typically range from 4 to 8 weeks after contract signing and site survey completion.</p>
+                                </details>
+                                <details class="bg-white p-4 rounded-lg shadow border border-gray-100 cursor-pointer">
+                                    <summary class="font-semibold text-power-dark hover:text-power-orange transition duration-150">Do you offer financing options?</summary>
+                                    <p class="pt-2 text-sm text-gray-600">Yes, we partner with specialized industrial lenders to provide competitive financing and leasing packages for our commercial clients. Please inquire during your consultation.</p>
+                                </details>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-
-        <!-- Business Hours -->
-        <section class="light">
-            <div class="container" style="text-align: center;">
-                <h2>Business Hours</h2>
-                <div class="grid-2" style="max-width: 600px; margin: 0 auto;">
-                    <div class="card">
-                        <h3>Weekdays</h3>
-                        <p style="font-size: 1.25rem; color: #2563eb; font-weight: bold;">9:00 AM - 6:00 PM</p>
-                        <p style="color: #6b7280;">Monday to Friday</p>
-                    </div>
-                    <div class="card">
-                        <h3>Weekends</h3>
-                        <p style="font-size: 1.25rem; color: #2563eb; font-weight: bold;">10:00 AM - 4:00 PM</p>
-                        <p style="color: #6b7280;">Saturday & Sunday</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
+    </main>
 
     <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-section">
-                    <h4>Premium Power</h4>
-                    <p>Leading provider of diesel generators and reliable power solutions for businesses worldwide.</p>
-                    <div style="display: flex; gap: 1rem; margin-top: 1rem;">
-                        <a href="#" style="font-size: 1.5rem;">f</a>
-                        <a href="#" style="font-size: 1.5rem;">𝕏</a>
-                        <a href="#" style="font-size: 1.5rem;">in</a>
+    <footer class="bg-power-dark text-white pt-12 pb-6 mt-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 border-b border-gray-700 pb-8 mb-6">
+                <!-- Company Info -->
+                <div class="space-y-3">
+                    <h4 class="text-xl font-bold text-power-orange mb-3">Premium Power</h4>
+                    <p class="text-sm text-gray-300">Your trusted partner for resilient and sustainable power infrastructure. Quality guaranteed, 24/7 support.</p>
+                    <div class="flex space-x-4 pt-2">
+                        <!-- Social Icons (Placeholders) -->
+                        <a href="#" class="text-gray-400 hover:text-power-orange"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-power-orange"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-power-orange"><i data-lucide="twitter" class="w-5 h-5"></i></a>
                     </div>
                 </div>
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a onclick="showPage('home')">Home</a></li>
-                        <li><a onclick="showPage('about')">About Us</a></li>
-                        <li><a onclick="showPage('products')">Products</a></li>
-                        <li><a onclick="showPage('contact')">Contact</a></li>
+
+                <!-- Quick Links -->
+                <div class="space-y-2">
+                    <h4 class="text-lg font-semibold mb-3">Quick Links</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" onclick="showPage('home')" class="text-gray-300 hover:text-white transition duration-150">Home</a></li>
+                        <li><a href="#" onclick="showPage('about')" class="text-gray-300 hover:text-white transition duration-150">Our Expertise</a></li>
+                        <li><a href="#" onclick="showPage('products')" class="text-gray-300 hover:text-white transition duration-150">Generators</a></li>
                     </ul>
                 </div>
-                <div class="footer-section">
-                    <h4>Services</h4>
-                    <ul>
-                        <li><a href="#">Generator Sales</a></li>
-                        <li><a href="#">Power Consultation</a></li>
-                        <li><a href="#">After-Sales Support</a></li>
-                        <li><a href="#">Technical Support</a></li>
+
+                <!-- Support -->
+                <div class="space-y-2">
+                    <h4 class="text-lg font-semibold mb-3">Support</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" onclick="showPage('contact'); scrollToFaq()" class="text-gray-300 hover:text-white transition duration-150">FAQ</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition duration-150">Service Portal</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition duration-150">System Monitoring</a></li>
                     </ul>
                 </div>
-                <div class="footer-section">
-                    <h4>Contact</h4>
-                    <ul>
-                        <li>
-                            📞
-                            <a href="tel:01032521321" style="color: #d1d5db; text-decoration: none;">
-                                0103 2521 321
-                            </a>
-                        </li>
-                        <li>
-                            📧
-                            <a href="mailto:info@premiumpower-eg.com" style="color: #d1d5db; text-decoration: none;">
-                                info@premiumpower-eg.com
-                            </a>
-                        </li>
-                        <li>📍 40 Elhegaz street, Heliopolis</li>
-                    </ul>
+
+                <!-- Contact -->
+                <div class="space-y-2">
+                    <h4 class="text-lg font-semibold mb-3">Contact</h4>
+                    <p class="text-sm text-gray-300">Sales: +1 (800) 555-0199</p>
+                    <p class="text-sm text-gray-300">Email: sales@premiumpower.com</p>
+                    <p class="text-sm text-gray-300">Address: 123 Industrial Park Dr.</p>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <div>© 2025 Premium Power. All rights reserved.</div>
-                <div class="footer-links">
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Service</a>
-                    <a href="#">Sitemap</a>
+
+            <div class="flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
+                <div class="order-2 md:order-1 mt-4 md:mt-0">© 2025 Premium Power. All rights reserved.</div>
+                <div class="order-1 md:order-2 flex space-x-4">
+                    <a href="#" class="hover:text-white">Privacy Policy</a>
+                    <a href="#" class="hover:text-white">Terms of Service</a>
                 </div>
             </div>
         </div>
     </footer>
 
+    <!-- CSS Utility Classes (Defined here for the Tailwind-based components) -->
+    <style>
+        .btn-primary {
+            @apply px-4 py-2 rounded-lg font-semibold text-sm transition duration-300 bg-power-orange text-white hover:bg-power-dark shadow-md;
+        }
+        .btn-cta {
+            @apply px-8 py-3 rounded-xl font-bold text-lg transition duration-300 bg-power-orange text-white hover:bg-power-blue shadow-xl transform hover:scale-[1.02];
+        }
+        .btn-cta-white {
+            @apply px-8 py-3 rounded-xl font-bold text-lg transition duration-300 bg-white text-power-dark hover:bg-gray-200 shadow-xl;
+        }
+        .input-field {
+            @apply w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-power-blue focus:border-power-blue outline-none transition duration-150;
+        }
+        .product-card {
+            @apply bg-white rounded-xl shadow-xl overflow-hidden transform transition duration-300 hover:shadow-2xl hover:scale-[1.01];
+        }
+    </style>
+
+    <!-- JavaScript for SPA and Interactions -->
     <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // --- Core Single Page Navigation ---
         function showPage(pageId) {
-            // Hide all pages
             const pages = document.querySelectorAll('.page');
             pages.forEach(page => page.classList.remove('active'));
 
-            // Show selected page
             const selectedPage = document.getElementById(pageId);
             if (selectedPage) {
                 selectedPage.classList.add('active');
-                window.scrollTo(0, 0);
+                window.scrollTo(0, 0); // Scroll to top on page switch
             }
         }
 
-        function toggleMenu() {
-            const navItems = document.querySelector('.nav-items');
-            navItems.style.display = navItems.style.display === 'flex' ? 'none' : 'flex';
+        // --- Mobile Menu Toggle ---
+        function toggleMenu(forceHide = false) {
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (forceHide) {
+                mobileMenu.classList.add('hidden');
+            } else {
+                mobileMenu.classList.toggle('hidden');
+            }
+        }
+
+        // --- Form Submission and Modal Logic ---
+        function showModal(message) {
+            document.getElementById('modal-content').innerText = message;
+            document.getElementById('message-modal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('message-modal').classList.add('hidden');
         }
 
         function handleSubmit(event) {
             event.preventDefault();
             const formData = new FormData(event.target);
-            const data = Object.fromEntries(formData);
+            const data = Object.fromEntries(formData.entries());
+
+            // Simple validation check (can be expanded)
+            if (!data.name || !data.email || !data.message) {
+                showModal("Please fill out all required fields.");
+                return;
+            }
+
             console.log('Form submitted:', data);
-            alert('Thank you for your message! We will get back to you soon.');
+
+            // Display success message using the custom modal
+            showModal("Thank you for your request! We have received your message and will contact you within 24 hours.");
+
+            // Clear the form fields
             event.target.reset();
+
+            // Hide the mobile menu if it's open
+            toggleMenu(true);
         }
+
+        // --- Utility Function for Footer Link ---
+        function scrollToFaq() {
+            showPage('contact');
+            // Timeout ensures page has rendered before attempting scroll
+            setTimeout(() => {
+                const faq = document.getElementById('faq');
+                if (faq) {
+                    faq.scrollIntoView({ behavior: 'smooth' });
+                }
+            }, 100);
+        }
+
+        // Initialize to Home Page
+        document.addEventListener('DOMContentLoaded', () => {
+            showPage('home');
+        });
     </script>
 </body>
 </html>
