@@ -146,6 +146,20 @@
     .text-gray{color:var(--muted)} .text-blue{color:var(--primary)}
     .hidden{display:none}
 
+    /* Numbered image styling */
+    .numbered-image {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #2563eb;
+      color: white;
+      font-size: 5rem;
+      font-weight: bold;
+      font-family: Arial, sans-serif;
+    }
+
     /* Responsive */
     @media (max-width: 900px){
       .hero h1{font-size:2rem}
@@ -153,6 +167,7 @@
       .contact-container{grid-template-columns:1fr}
       .grid-5{grid-template-columns:repeat(2,1fr)}
       .card-image{height:140px}
+      .numbered-image { font-size: 4rem; }
     }
     @media (max-width: 768px){
       .nav-items{display:none;position:absolute;top:64px;right:0;background:var(--white);width:100%;padding:1rem;border-top:1px solid #eef2ff;flex-direction:column;gap:0.5rem}
@@ -163,6 +178,7 @@
       h2{font-size:1.35rem}
       .card-image{height:120px}
       .hero-visual{display:none} /* hide large hero image on small screens */
+      .numbered-image { font-size: 3rem; }
     }
 
     /* Focus-visible for accessibility */
@@ -207,16 +223,9 @@
           <a class="btn btn-secondary" href="#" onclick="showPage('about');return false">Learn More</a>
         </div>
 
-        <!-- Hero visual: composite power image (replaced with numbered image) -->
+        <!-- Hero visual: numbered image -->
         <div class="hero-visual" aria-hidden="false">
-          <picture>
-            <source srcset="https://via.placeholder.com/1600x900/2563eb/FFFFFF?text=Generator+Image+1 1600w,
-                             https://via.placeholder.com/1200x675/2563eb/FFFFFF?text=Generator+Image+1 1200w,
-                             https://via.placeholder.com/800x450/2563eb/FFFFFF?text=Generator+Image+1 800w"
-                    sizes="(min-width:900px) 980px, 100vw">
-            <img src="https://via.placeholder.com/1200x675/2563eb/FFFFFF?text=Generator+Image+1"
-                 alt="Diesel generator in industrial site with technicians working" loading="lazy">
-          </picture>
+          <div class="numbered-image">1</div>
         </div>
       </div>
     </section>
@@ -257,10 +266,7 @@
           <article class="card">
             <h3>Diesel Generator Sales</h3>
             <div class="card-image" aria-hidden="false">
-              <picture>
-                <source srcset="https://via.placeholder.com/1200x800/2563eb/FFFFFF?text=Generator+Image+2 1200w,https://via.placeholder.com/800x533/2563eb/FFFFFF?text=Generator+Image+2 800w" sizes="(min-width:600px) 420px, 100vw">
-                <img src="https://via.placeholder.com/800x533/2563eb/FFFFFF?text=Generator+Image+2" alt="Close-up of diesel generator engine components" loading="lazy">
-              </picture>
+              <div class="numbered-image">2</div>
             </div>
             <p>We supply high-quality diesel generators for homes, businesses, industrial facilities, data centers, and construction sites.</p>
           </article>
@@ -268,10 +274,7 @@
           <article class="card">
             <h3>Power Consultation</h3>
             <div class="card-image">
-              <picture>
-                <source srcset="https://via.placeholder.com/1200x800/2563eb/FFFFFF?text=Generator+Image+3 1200w,https://via.placeholder.com/800x533/2563eb/FFFFFF?text=Generator+Image+3 800w" sizes="(min-width:600px) 420px,100vw">
-                <img src="https://via.placeholder.com/800x533/2563eb/FFFFFF?text=Generator+Image+3" alt="Engineer reviewing power load diagrams on tablet" loading="lazy">
-              </picture>
+              <div class="numbered-image">3</div>
             </div>
             <p>We guide clients through load calculation, selection, and installation planning to ensure the right solution for the site.</p>
           </article>
@@ -279,10 +282,7 @@
           <article class="card">
             <h3>After-Sales Support</h3>
             <div class="card-image">
-              <picture>
-                <source srcset="https://via.placeholder.com/1200x800/2563eb/FFFFFF?text=Generator+Image+4 1200w,https://via.placeholder.com/800x533/2563eb/FFFFFF?text=Generator+Image+4 800w" sizes="(min-width:600px) 420px,100vw">
-                <img src="https://via.placeholder.com/800x533/2563eb/FFFFFF?text=Generator+Image+4" alt="Technician servicing generator set" loading="lazy">
-              </picture>
+              <div class="numbered-image">4</div>
             </div>
             <p>Continuous maintenance guidance and technical support to maximize uptime and lifetime value.</p>
           </article>
@@ -290,10 +290,7 @@
           <article class="card">
             <h3>End-to-End Experience</h3>
             <div class="card-image">
-              <picture>
-                <source srcset="https://via.placeholder.com/1200x800/2563eb/FFFFFF?text=Generator+Image+5 1200w,https://via.placeholder.com/800x533/2563eb/FFFFFF?text=Generator+Image+5 800w" sizes="(min-width:600px) 420px,100vw">
-                <img src="https://via.placeholder.com/800x533/2563eb/FFFFFF?text=Generator+Image+5" alt="Delivered generator on truck at site ready for installation" loading="lazy">
-              </picture>
+              <div class="numbered-image">5</div>
             </div>
             <p>From needs assessment to delivery and support, we simplify the process for technically diverse customers.</p>
           </article>
@@ -366,10 +363,7 @@
         <p>Powering businesses with reliability, expertise, and trust</p>
 
         <div class="hero-visual" style="max-width:900px;margin-top:1rem">
-          <picture>
-            <source srcset="https://via.placeholder.com/1600x900/2563eb/FFFFFF?text=Generator+Image+6 1600w,https://via.placeholder.com/1200x675/2563eb/FFFFFF?text=Generator+Image+6 1200w" sizes="(min-width:900px) 900px,100vw">
-            <img src="https://via.placeholder.com/1200x675/2563eb/FFFFFF?text=Generator+Image+6" alt="Factory with generator backup infrastructure" loading="lazy">
-          </picture>
+          <div class="numbered-image">6</div>
         </div>
       </div>
     </section>
@@ -436,10 +430,7 @@
           <article class="card">
             <h3>Residential Generators</h3>
             <div class="card-image" aria-hidden="false">
-              <picture>
-                <source srcset="https://via.placeholder.com/1200x800/2563eb/FFFFFF?text=Generator+Image+7 1200w,https://via.placeholder.com/800x533/2563eb/FFFFFF?text=Generator+Image+7 800w" sizes="(min-width:600px) 420px,100vw">
-                <img src="https://via.placeholder.com/800x533/2563eb/FFFFFF?text=Generator+Image+7" alt="Compact residential generator installed in backyard" loading="lazy">
-              </picture>
+              <div class="numbered-image">7</div>
             </div>
             <p style="color:var(--primary);font-weight:600">5-20 kW</p>
             <p>Compact and reliable generators ideal for homes and small offices.</p>
@@ -452,10 +443,7 @@
           <article class="card">
             <h3>Commercial Generators</h3>
             <div class="card-image">
-              <picture>
-                <source srcset="https://via.placeholder.com/1200x800/2563eb/FFFFFF?text=Generator+Image+8 1200w,https://via.placeholder.com/800x533/2563eb/FFFFFF?text=Generator+Image+8 800w" sizes="(min-width:600px) 420px,100vw">
-                <img src="https://via.placeholder.com/800x533/2563eb/FFFFFF?text=Generator+Image+8" alt="Commercial generator set at a business facility" loading="lazy">
-              </picture>
+              <div class="numbered-image">8</div>
             </div>
             <p style="color:var(--primary);font-weight:600">25-100 kW</p>
             <p>Heavy-duty generators for businesses and commercial facilities.</p>
@@ -468,10 +456,7 @@
           <article class="card">
             <h3>Industrial Generators</h3>
             <div class="card-image">
-              <picture>
-                <source srcset="https://via.placeholder.com/1200x800/2563eb/FFFFFF?text=Generator+Image+9 1200w,https://via.placeholder.com/800x533/2563eb/FFFFFF?text=Generator+Image+9 800w" sizes="(min-width:600px) 420px,100vw">
-                <img src="https://via.placeholder.com/800x533/2563eb/FFFFFF?text=Generator+Image+9" alt="Large industrial generator inside a power plant" loading="lazy">
-              </picture>
+              <div class="numbered-image">9</div>
             </div>
             <p style="color:var(--primary);font-weight:600">100-500 kW</p>
             <p>Powerful generators for factories, data centers, and industrial operations.</p>
@@ -484,10 +469,7 @@
           <article class="card">
             <h3>Construction Generators</h3>
             <div class="card-image">
-              <picture>
-                <source srcset="https://via.placeholder.com/1200x800/2563eb/FFFFFF?text=Generator+Image+10 1200w,https://via.placeholder.com/800x533/2563eb/FFFFFF?text=Generator+Image+10 800w" sizes="(min-width:600px) 420px,100vw">
-                <img src="https://via.placeholder.com/800x533/2563eb/FFFFFF?text=Generator+Image+10" alt="Generator on construction site with rugged housing" loading="lazy">
-              </picture>
+              <div class="numbered-image">10</div>
             </div>
             <p style="color:var(--primary);font-weight:600">10-150 kW</p>
             <p>Rugged generators built for construction sites and temporary power needs.</p>
@@ -504,9 +486,30 @@
       <div class="container">
         <h2>Our Services</h2>
         <div class="grid-3">
-          <article class="card text-center"><div class="card-image" style="height:140px"><img src="https://via.placeholder.com/800x600/2563eb/FFFFFF?text=Generator+Image+11" alt="Power distribution control panel" loading="lazy"></div><div class="card-icon">⚡</div><h3>Generator Sales</h3><p>Wide selection of high-quality diesel generators</p></article>
-          <article class="card text-center"><div class="card-image" style="height:140px"><img src="https://via.placeholder.com/800x600/2563eb/FFFFFF?text=Generator+Image+12" alt="Engineer consulting on-site with laptop" loading="lazy"></div><div class="card-icon">🔧</div><h3>Technical Consultation</h3><p>Load calculation, sizing and installation planning</p></article>
-          <article class="card text-center"><div class="card-image" style="height:140px"><img src="https://via.placeholder.com/800x600/2563eb/FFFFFF?text=Generator+Image+13" alt="Technician repairing industrial equipment" loading="lazy"></div><div class="card-icon">📞</div><h3>After-Sales Support</h3><p>Maintenance, repairs and optimization</p></article>
+          <article class="card text-center">
+            <div class="card-image" style="height:140px">
+              <div class="numbered-image">11</div>
+            </div>
+            <div class="card-icon">⚡</div>
+            <h3>Generator Sales</h3>
+            <p>Wide selection of high-quality diesel generators</p>
+          </article>
+          <article class="card text-center">
+            <div class="card-image" style="height:140px">
+              <div class="numbered-image">12</div>
+            </div>
+            <div class="card-icon">🔧</div>
+            <h3>Technical Consultation</h3>
+            <p>Load calculation, sizing and installation planning</p>
+          </article>
+          <article class="card text-center">
+            <div class="card-image" style="height:140px">
+              <div class="numbered-image">13</div>
+            </div>
+            <div class="card-icon">📞</div>
+            <h3>After-Sales Support</h3>
+            <p>Maintenance, repairs and optimization</p>
+          </article>
         </div>
       </div>
     </section>
@@ -637,10 +640,7 @@
             </div>
 
             <div class="contact-visual" aria-hidden="false">
-              <picture>
-                <source srcset="https://via.placeholder.com/1200x800/2563eb/FFFFFF?text=Generator+Image+14 1200w,https://via.placeholder.com/800x533/2563eb/FFFFFF?text=Generator+Image+14 800w" sizes="(min-width:600px) 420px,100vw">
-                <img src="https://via.placeholder.com/800x533/2563eb/FFFFFF?text=Generator+Image+14" alt="Technician talking to client near generators" loading="lazy">
-              </picture>
+              <div class="numbered-image">14</div>
             </div>
           </aside>
         </div>
