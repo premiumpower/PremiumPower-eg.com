@@ -1,989 +1,554 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Premium Power - Diesel generators and power solutions for businesses, factories, and contractors." />
-  <meta name="author" content="Premium Power" />
-  <title>Premium Power — Diesel Generators & Power Solutions</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
-  <style>
-    :root{
-      --primary: #2563eb;
-      --primary-2: #1e40af;
-      --primary-light: #3b82f6;
-      --accent: #10b981;
-      --accent-dark: #059669;
-      --text: #111827;
-      --muted: #6b7280;
-      --bg-light: #f9fafb;
-      --bg-dark: #1f2937;
-      --white: #ffffff;
-      --card-shadow: 0 1px 3px rgba(0,0,0,0.08);
-      --card-shadow-hover: 0 10px 25px rgba(0,0,0,0.12);
-    }
-
-    /* Reset */
-    *{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%}
-    body{
-      font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Segoe UI,Helvetica,Arial,sans-serif;
-      color:var(--text);
-      line-height:1.6;
-      background:var(--white);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-    }
-
-    .container{max-width:1200px;margin:0 auto;padding:0 20px}
-
-    /* Header / Nav */
-    header{
-      position:sticky;top:0;z-index:1000;
-      background:rgba(255,255,255,0.98);
-      backdrop-filter:blur(10px);
-      box-shadow:0 1px 3px rgba(0,0,0,0.08);
-      transition:all 0.3s ease;
-    }
-    header.scrolled{
-      box-shadow:0 4px 12px rgba(0,0,0,0.1);
-    }
-    nav{
-      display:flex;align-items:center;justify-content:space-between;padding:0.75rem 0;
-      height:64px;
-    }
-    .logo{display:flex;align-items:center;gap:0.6rem;text-decoration:none;color:var(--text);cursor:pointer;transition:transform 0.2s}
-    .logo:hover{transform:scale(1.03)}
-    .logo-mark{
-      width:36px;height:36px;position:relative;border-radius:8px;flex:0 0 36px;
-      background:linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
-      box-shadow:0 2px 8px rgba(37,99,235,0.3);
-    }
-    .logo-mark::before{
-      content:'⚡';
-      position:absolute;
-      inset:0;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:1.2rem;
-      color:white;
-    }
-    .logo-text{font-weight:700;font-size:1.1rem}
-    .logo-text .secondary{color:var(--primary)}
-
-    .nav-items{display:flex;gap:1.5rem;align-items:center;list-style:none}
-    .nav-items a{
-      color:#374151;text-decoration:none;font-weight:500;cursor:pointer;
-      position:relative;padding:0.25rem 0;transition:color 0.2s;
-    }
-    .nav-items a::after{
-      content:'';position:absolute;bottom:0;left:0;width:0;height:2px;
-      background:var(--primary);transition:width 0.3s ease;
-    }
-    .nav-items a:hover::after,.nav-items a:focus-visible::after{width:100%}
-    .nav-items a:hover,.nav-items a:focus-visible{color:var(--primary);outline:none}
-    .btn-quote{
-      background:linear-gradient(135deg, var(--primary) 0%, var(--primary-2) 100%);
-      color:var(--white);padding:0.5rem 1.2rem;border-radius:8px;border:none;cursor:pointer;
-      font-weight:600;transition:all 0.3s ease;box-shadow:0 2px 8px rgba(37,99,235,0.3);
-    }
-    .btn-quote:hover,.btn-quote:focus-visible{
-      transform:translateY(-2px);box-shadow:0 4px 12px rgba(37,99,235,0.4);outline:none;
-    }
-
-    .menu-toggle{display:none;background:none;border:none;font-size:1.4rem;cursor:pointer}
-
-    /* Hero */
-    .hero{position:relative;color:var(--white);padding:4.5rem 0;text-align:center;overflow:hidden}
-    .hero__bg{
-      position:absolute;inset:0;
-      background:linear-gradient(135deg,rgba(37,99,235,0.95),rgba(30,64,175,0.92));
-      z-index:0;
-    }
-    .hero__bg::before{
-      content:'';position:absolute;inset:0;
-      background:url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
-      opacity:0.3;
-    }
-    .hero__content{position:relative;z-index:2}
-    .hero h1{
-      font-size:3rem;margin-bottom:1rem;font-weight:800;line-height:1.1;
-      text-shadow:0 2px 10px rgba(0,0,0,0.2);
-      animation:fadeInUp 0.8s ease;
-    }
-    .hero p{
-      color:rgba(255,255,255,0.95);font-size:1.2rem;margin-bottom:1.5rem;
-      text-shadow:0 1px 3px rgba(0,0,0,0.1);
-      animation:fadeInUp 0.8s ease 0.2s both;
-    }
-    .hero-buttons{
-      display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;
-      animation:fadeInUp 0.8s ease 0.4s both;
-    }
-
-    /* Decorative image area in hero */
-    .hero-visual{
-      margin-top:2rem;border-radius:16px;overflow:hidden;
-      box-shadow:0 20px 60px rgba(2,6,23,0.4);
-      max-width:980px;margin-left:auto;margin-right:auto;
-      animation:fadeInUp 0.8s ease 0.6s both;
-      transition:transform 0.3s ease;
-    }
-    .hero-visual:hover{transform:scale(1.02)}
-    .hero-visual img{width:100%;height:auto;display:block;object-fit:cover}
-
-    @keyframes fadeInUp{
-      from{opacity:0;transform:translateY(30px)}
-      to{opacity:1;transform:translateY(0)}
-    }
-
-    .btn{
-      padding:0.75rem 1.8rem;border-radius:10px;border:none;cursor:pointer;
-      font-weight:600;text-decoration:none;display:inline-block;
-      transition:all 0.3s ease;font-size:1rem;
-    }
-    .btn-primary{
-      background:var(--white);color:var(--primary);
-      box-shadow:0 4px 12px rgba(255,255,255,0.3);
-    }
-    .btn-primary:hover{background:#f3f4f6;transform:translateY(-2px);box-shadow:0 6px 20px rgba(255,255,255,0.4)}
-    .btn-secondary{
-      background:rgba(255,255,255,0.1);color:var(--white);
-      border:2px solid rgba(255,255,255,0.3);backdrop-filter:blur(10px);
-    }
-    .btn-secondary:hover{background:rgba(255,255,255,0.2);border-color:rgba(255,255,255,0.5)}
-
-    /* Sections */
-    section{padding:4rem 0}
-    section.light{background:var(--bg-light)}
-    section.dark{
-      background:linear-gradient(135deg, #1f2937 0%, #111827 100%);
-      color:var(--white);position:relative;overflow:hidden;
-    }
-    section.dark::before{
-      content:'';position:absolute;inset:0;
-      background:url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100%" height="100%" fill="url(%23dots)"/></svg>');
-      opacity:0.5;
-    }
-    h2{
-      font-size:2rem;text-align:center;margin-bottom:2.5rem;color:var(--text);
-      position:relative;display:inline-block;width:100%;
-    }
-    h2::after{
-      content:'';position:absolute;bottom:-10px;left:50%;transform:translateX(-50%);
-      width:60px;height:4px;background:linear-gradient(90deg, var(--primary), var(--accent));
-      border-radius:2px;
-    }
-
-    /* Grids & cards */
-    .grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}
-    .grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem}
-    .grid-5{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1.25rem}
-    .card{
-      background:var(--white);padding:1.75rem;border-radius:16px;
-      box-shadow:var(--card-shadow);transition:all 0.3s ease;
-      overflow:hidden;border:1px solid rgba(0,0,0,0.05);
-    }
-    .card:hover{
-      box-shadow:var(--card-shadow-hover);
-      transform:translateY(-5px);
-      border-color:rgba(37,99,235,0.2);
-    }
-    .card h3{font-size:1.25rem;margin-bottom:0.75rem;color:var(--text)}
-    .card p{color:var(--muted);margin-bottom:0.75rem}
-
-    .card-icon{
-      width:56px;height:56px;
-      background:linear-gradient(135deg, var(--primary), var(--primary-light));
-      border-radius:14px;display:flex;align-items:center;justify-content:center;
-      margin:0 auto 1rem;color:var(--white);font-size:1.5rem;
-      box-shadow:0 4px 12px rgba(37,99,235,0.3);
-    }
-
-    .text-center{text-align:center}
-    .value-item{
-      background:var(--white);padding:1.5rem;border-radius:12px;
-      box-shadow:var(--card-shadow);transition:all 0.3s ease;
-      text-align:center;
-    }
-    .value-item:hover{transform:translateY(-3px);box-shadow:var(--card-shadow-hover)}
-    .value-item h4{font-weight:700;margin-bottom:0.5rem;color:var(--text)}
-    .value-item p{font-size:0.95rem;color:var(--muted)}
-
-    .features-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem}
-    .feature-item{
-      display:flex;gap:1rem;align-items:flex-start;
-      background:var(--white);padding:1.25rem;border-radius:12px;
-      box-shadow:var(--card-shadow);transition:all 0.3s ease;
-    }
-    .feature-item:hover{transform:translateX(5px);box-shadow:var(--card-shadow-hover)}
-    .feature-icon{
-      color:var(--accent);font-weight:700;font-size:1.5rem;flex-shrink:0;
-      width:36px;height:36px;display:flex;align-items:center;justify-content:center;
-      background:rgba(16,185,129,0.1);border-radius:8px;
-    }
-    .feature-text{color:var(--muted);line-height:1.6}
-
-    /* Product / image within card */
-    .card-image{
-      width:100%;height:200px;border-radius:12px;overflow:hidden;
-      margin-bottom:1rem;position:relative;
-    }
-    .card-image img{
-      width:100%;height:100%;object-fit:cover;display:block;
-      transition:transform 0.4s ease;
-    }
-    .card:hover .card-image img{transform:scale(1.08)}
-    .card-image::after{
-      content:'';position:absolute;inset:0;
-      background:linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.1) 100%);
-    }
-
-    /* Table */
-    table{
-      width:100%;border-collapse:collapse;margin-top:1.5rem;
-      background:var(--white);border-radius:12px;overflow:hidden;
-      box-shadow:var(--card-shadow);
-    }
-    thead{
-      background:linear-gradient(135deg, var(--primary), var(--primary-2));
-      color:var(--white);
-    }
-    th,td{padding:1rem;text-align:left;border-bottom:1px solid #eef2ff}
-    tbody tr{transition:background 0.2s}
-    tbody tr:hover{background:#f0f7ff}
-
-    /* Contact */
-    .contact-container{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem}
-    .form-group{margin-bottom:1.25rem}
-    label{
-      display:block;margin-bottom:0.5rem;font-weight:600;
-      color:var(--text);font-size:0.95rem;
-    }
-    input,select,textarea{
-      width:100%;padding:0.75rem;border:2px solid #e5e7eb;
-      border-radius:10px;font-family:inherit;font-size:1rem;
-      transition:all 0.3s ease;
-    }
-    textarea{min-height:150px;resize:vertical}
-    input:focus,textarea:focus,select:focus{
-      outline:none;box-shadow:0 0 0 4px rgba(37,99,235,0.1);
-      border-color:var(--primary);
-    }
-    .faq-item{
-      background:var(--white);padding:1.25rem;border-radius:12px;
-      box-shadow:var(--card-shadow);margin-bottom:1rem;
-      border-left:4px solid var(--primary);
-      transition:all 0.3s ease;
-    }
-    .faq-item:hover{transform:translateX(5px);box-shadow:var(--card-shadow-hover)}
-    .faq-item h4{font-weight:700;margin-bottom:0.6rem;color:var(--text)}
-    .faq-item p{color:var(--muted)}
-
-    /* Contact side image */
-    .contact-visual{
-      border-radius:12px;overflow:hidden;box-shadow:var(--card-shadow);
-      margin-bottom:1.5rem;transition:transform 0.3s ease;
-    }
-    .contact-visual:hover{transform:scale(1.02)}
-    .contact-visual img{width:100%;height:auto;display:block;object-fit:cover}
-
-    /* Footer */
-    footer{background:#0f172a;color:#cbd5e1;padding:3rem 0 1.5rem}
-    .footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2rem;margin-bottom:2rem}
-    .footer-section h4{color:var(--white);margin-bottom:1rem;font-size:1.1rem}
-    .footer-section a{color:#cbd5e1;text-decoration:none;transition:color 0.2s}
-    .footer-section a:hover{color:var(--white)}
-    .footer-section ul{list-style:none;padding-left:0}
-    .footer-section ul li{margin-bottom:0.5rem}
-    .footer-bottom{
-      border-top:1px solid rgba(255,255,255,0.1);padding-top:1.5rem;
-      display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
-      font-size:0.9rem;
-    }
-
-    /* Utility */
-    .mb-1{margin-bottom:0.5rem}.mb-2{margin-bottom:1rem}.mb-3{margin-bottom:1.5rem}
-    .text-gray{color:var(--muted)} .text-blue{color:var(--primary)}
-    .hidden{display:none}
-
-    /* Responsive */
-    @media (max-width: 900px){
-      .hero h1{font-size:2.2rem}
-      .hero{padding:3rem 0}
-      .contact-container{grid-template-columns:1fr}
-      .grid-5{grid-template-columns:repeat(2,1fr)}
-      .card-image{height:180px}
-    }
-    @media (max-width: 768px){
-      .nav-items{
-        display:none;position:absolute;top:64px;right:0;
-        background:rgba(255,255,255,0.98);backdrop-filter:blur(10px);
-        width:100%;padding:1rem;border-top:1px solid #eef2ff;
-        flex-direction:column;gap:0.75rem;box-shadow:0 4px 12px rgba(0,0,0,0.1);
-      }
-      .nav-items.show{display:flex}
-      .menu-toggle{display:block}
-      nav{padding:0 12px}
-      .footer-bottom{flex-direction:column;align-items:flex-start}
-      h2{font-size:1.5rem}
-      .card-image{height:160px}
-      .hero-visual{display:none}
-      .hero h1{font-size:1.8rem}
-      section{padding:3rem 0}
-    }
-
-    /* Focus-visible for accessibility */
-    :focus-visible{outline:3px solid rgba(37,99,235,0.3);outline-offset:2px;border-radius:4px}
-
-    /* Page visibility (single page behavior) */
-    .page{display:none}
-    .page.active{display:block}
-
-    /* Scroll animation */
-    .scroll-reveal{opacity:0;transform:translateY(30px);transition:all 0.6s ease}
-    .scroll-reveal.revealed{opacity:1;transform:translateY(0)}
-  </style>
-</head>
-<body>
-  <header role="banner" id="mainHeader">
-    <div class="container">
-      <nav role="navigation" aria-label="Main navigation">
-        <a class="logo" href="#" onclick="showPage('home');return false" aria-label="Go to home">
-          <span class="logo-mark" aria-hidden="true"></span>
-          <span class="logo-text">Premium <span class="secondary">Power</span></span>
-        </a>
-        <ul class="nav-items" id="navItems" role="menubar">
-          <li role="none"><a role="menuitem" href="#" onclick="showPage('home');return false">Home</a></li>
-          <li role="none"><a role="menuitem" href="#" onclick="showPage('about');return false">About</a></li>
-          <li role="none"><a role="menuitem" href="#" onclick="showPage('products');return false">Products</a></li>
-          <li role="none"><a role="menuitem" href="#" onclick="showPage('contact');return false">Contact</a></li>
-          <li role="none"><button class="btn-quote" onclick="showPage('contact');return false">Get Quote</button></li>
-        </ul>
-        <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false" onclick="toggleMenu()">☰</button>
-      </nav>
-    </div>
-  </header>
-
-  <!-- HOME PAGE -->
-  <main id="home" class="page active" role="main" aria-labelledby="homeTitle">
-    <section class="hero" aria-labelledby="homeTitle">
-      <div class="hero__bg" aria-hidden="true"></div>
-      <div class="container hero__content">
-        <h1 id="homeTitle">Reliable Power Solutions</h1>
-        <p>Premium diesel generators and power systems for businesses, factories, and contractors</p>
-        <div class="hero-buttons">
-          <a class="btn btn-primary" href="#" onclick="showPage('contact');return false">Get Started →</a>
-          <a class="btn btn-secondary" href="#" onclick="showPage('about');return false">Learn More</a>
-        </div>
-        <div class="hero-visual">
-          <img src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=1200&h=600&fit=crop" alt="Industrial diesel generator in operation">
-        </div>
-      </div>
-    </section>
-
-    <section class="scroll-reveal">
-      <div class="container">
-        <h2>About Premium Power</h2>
-        <p style="text-align:center;max-width:900px;margin:0 auto 2rem;color:var(--muted);font-size:1.05rem">
-          Premium Power is a modern energy solutions company specializing in the supply, sales, and support of diesel generators and reliable power systems. We combine technical competence with customer-first thinking to ensure continuous electricity where it matters most.
-        </p>
-
-        <div class="grid-3">
-          <article class="card text-center">
-            <div class="card-icon">⚡</div>
-            <h3>Reliable Power</h3>
-            <p>High-quality generators built for demanding conditions</p>
-          </article>
-
-          <article class="card text-center">
-            <div class="card-icon">🛡️</div>
-            <h3>Expert Support</h3>
-            <p>Technical guidance from experienced professionals</p>
-          </article>
-
-          <article class="card text-center">
-            <div class="card-icon">👥</div>
-            <h3>Customer First</h3>
-            <p>Dedicated support throughout the product lifetime</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="light scroll-reveal">
-      <div class="container">
-        <h2>What We Do</h2>
-        <div class="grid-2">
-          <article class="card">
-            <h3>Diesel Generator Sales</h3>
-            <div class="card-image">
-              <img src="https://images.unsplash.com/photo-1581092918484-8313e1f7a1e2?w=600&h=400&fit=crop" alt="Modern diesel generator unit">
-            </div>
-            <p>We supply high-quality diesel generators for homes, businesses, industrial facilities, data centers, and construction sites.</p>
-          </article>
-
-          <article class="card">
-            <h3>Power Consultation</h3>
-            <div class="card-image">
-              <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=600&h=400&fit=crop" alt="Engineers reviewing power system plans">
-            </div>
-            <p>We guide clients through load calculation, selection, and installation planning to ensure the right solution for the site.</p>
-          </article>
-
-          <article class="card">
-            <h3>After-Sales Support</h3>
-            <div class="card-image">
-              <img src="https://images.unsplash.com/photo-1581092160607-ee67248ab3ea?w=600&h=400&fit=crop" alt="Technician performing generator maintenance">
-            </div>
-            <p>Continuous maintenance guidance and technical support to maximize uptime and lifetime value.</p>
-          </article>
-
-          <article class="card">
-            <h3>End-to-End Experience</h3>
-            <div class="card-image">
-              <img src="https://images.unsplash.com/photo-1581092918484-8f72b62a0674?w=600&h=400&fit=crop" alt="Complete power generation facility">
-            </div>
-            <p>From needs assessment to delivery and support, we simplify the process for technically diverse customers.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="scroll-reveal">
-      <div class="container">
-        <h2>Our Core Values</h2>
-        <div class="grid-5">
-          <div class="value-item">
-            <div style="font-size:2rem;margin-bottom:0.5rem;color:var(--accent)">✓</div>
-            <h4>Reliability</h4>
-            <p>Products you can depend on</p>
-          </div>
-          <div class="value-item">
-            <div style="font-size:2rem;margin-bottom:0.5rem;color:var(--accent)">✓</div>
-            <h4>Transparency</h4>
-            <p>Honest advice and fair pricing</p>
-          </div>
-          <div class="value-item">
-            <div style="font-size:2rem;margin-bottom:0.5rem;color:var(--accent)">✓</div>
-            <h4>Technical Competence</h4>
-            <p>Engineering expertise</p>
-          </div>
-          <div class="value-item">
-            <div style="font-size:2rem;margin-bottom:0.5rem;color:var(--accent)">✓</div>
-            <h4>Customer-Centered</h4>
-            <p>Your success is our priority</p>
-          </div>
-          <div class="value-item">
-            <div style="font-size:2rem;margin-bottom:0.5rem;color:var(--accent)">✓</div>
-            <h4>Long-Term Partnership</h4>
-            <p>Growing together</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="light scroll-reveal">
-      <div class="container">
-        <h2>Why Customers Choose Premium Power</h2>
-        <div class="features-list">
-          <div class="feature-item"><div class="feature-icon">✓</div><div class="feature-text">High-quality generator options matched to real needs</div></div>
-          <div class="feature-item"><div class="feature-icon">✓</div><div class="feature-text">Engineering-led recommendations, not sales pitches</div></div>
-          <div class="feature-item"><div class="feature-icon">✓</div><div class="feature-text">Fast communication and professional handling</div></div>
-          <div class="feature-item"><div class="feature-icon">✓</div><div class="feature-text">Top-management commitment to customer satisfaction</div></div>
-          <div class="feature-item"><div class="feature-icon">✓</div><div class="feature-text">Flexible engagement for non-technical customers</div></div>
-          <div class="feature-item"><div class="feature-icon">✓</div><div class="feature-text">Startup mindset — energetic and detail oriented</div></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="dark">
-      <div class="container text-center">
-        <h2 style="color:var(--white)">Ready to Power Your Business?</h2>
-        <p style="color:rgba(255,255,255,0.9);font-size:1.1rem;max-width:700px;margin:0 auto 1.5rem">Contact us today to discuss your power generation needs</p>
-        <a class="btn btn-primary" href="#" onclick="showPage('contact');return false">Get in Touch →</a>
-      </div>
-    </section>
-  </main>
-
-  <!-- ABOUT PAGE -->
-  <main id="about" class="page" role="main" aria-labelledby="aboutTitle">
-    <section class="hero" aria-labelledby="aboutTitle">
-      <div class="hero__bg" aria-hidden="true"></div>
-      <div class="container hero__content">
-        <h1 id="aboutTitle">About Premium Power</h1>
-        <p>Powering businesses with reliability, expertise, and trust</p>
-        <div class="hero-visual" style="max-width:900px;margin-top:1.5rem">
-          <img src="https://images.unsplash.com/photo-1581092162384-8987c1d64718?w=1200&h=600&fit=crop" alt="Premium Power industrial facility">
-        </div>
-      </div>
-    </section>
-
-    <section class="scroll-reveal">
-      <div class="container">
-        <h2>Our Story</h2>
-        <p style="max-width:900px;margin:0 auto;color:var(--muted);font-size:1.05rem;text-align:center">Premium Power supplies, sells, and supports diesel generators and power systems. We combine engineering knowledge with hands-on management to deliver reliable, transparent, and durable energy solutions for a variety of sectors.</p>
-      </div>
-    </section>
-
-    <section class="light scroll-reveal">
-      <div class="container">
-        <h2>Mission & Vision</h2>
-        <div class="grid-2">
-          <article class="card">
-            <h3 style="font-size:1.5rem;margin-bottom:1rem">🎯 Our Mission</h3>
-            <p>Provide accessible, durable energy solutions with honesty, commitment, and technical excellence.</p>
-          </article>
-          <article class="card">
-            <h3 style="font-size:1.5rem;margin-bottom:1rem">👁️ Our Vision</h3>
-            <p>Become a leading power solutions provider known for reliability, trust, and exceptional customer experience.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="scroll-reveal">
-      <div class="container">
-        <h2>Core Values</h2>
-        <div class="grid-5">
-          <div class="value-item"><div style="font-size:2rem;margin-bottom:0.5rem;color:var(--accent)">✓</div><h4>Reliability</h4><p>We sell products you can depend on</p></div>
-          <div class="value-item"><div style="font-size:2rem;margin-bottom:0.5rem;color:var(--accent)">✓</div><h4>Transparency</h4><p>Fair pricing and clear communication</p></div>
-          <div class="value-item"><div style="font-size:2rem;margin-bottom:0.5rem;color:var(--accent)">✓</div><h4>Technical Competence</h4><p>Engineering and field experience</p></div>
-          <div class="value-item"><div style="font-size:2rem;margin-bottom:0.5rem;color:var(--accent)">✓</div><h4>Customer Service</h4><p>We treat your power challenge as our own</p></div>
-          <div class="value-item"><div style="font-size:2rem;margin-bottom:0.5rem;color:var(--accent)">✓</div><h4>Partnership</h4><p>Long-term support after the sale</p></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="dark">
-      <div class="container text-center">
-        <h2 style="color:var(--white)">Let's Power Your Business</h2>
-        <p style="color:rgba(255,255,255,0.9);font-size:1.1rem;max-width:700px;margin:0 auto 1.5rem">Contact us to learn how Premium Power can meet your energy needs</p>
-        <a class="btn btn-primary" href="#" onclick="showPage('contact');return false">Get in Touch</a>
-      </div>
-    </section>
-  </main>
-
-  <!-- PRODUCTS PAGE -->
-  <main id="products" class="page" role="main" aria-labelledby="productsTitle">
-    <section class="hero" aria-labelledby="productsTitle">
-      <div class="hero__bg" aria-hidden="true"></div>
-      <div class="container hero__content">
-        <h1 id="productsTitle">Our Products & Services</h1>
-        <p>Comprehensive power solutions for every need</p>
-      </div>
-    </section>
-
-    <section class="scroll-reveal">
-      <div class="container">
-        <h2>Generator Products</h2>
-        <div class="grid-2">
-          <article class="card">
-            <h3>Residential Generators</h3>
-            <div class="card-image">
-              <img src="https://images.unsplash.com/photo-1621905252472-b8f2e55ecf5b?w=600&h=400&fit=crop" alt="Residential generator system">
-            </div>
-            <p style="color:var(--primary);font-weight:700;font-size:1.1rem">5-20 kW</p>
-            <p>Compact and reliable generators ideal for homes and small offices.</p>
-            <ul style="margin:0.75rem 0 1.25rem;list-style:none;padding-left:0;color:var(--muted)">
-              <li style="margin-bottom:0.4rem">✓ Quiet operation</li>
-              <li style="margin-bottom:0.4rem">✓ Fuel efficient</li>
-              <li style="margin-bottom:0.4rem">✓ Easy maintenance</li>
-              <li style="margin-bottom:0.4rem">✓ Portable</li>
-            </ul>
-            <a class="btn btn-primary" href="#" onclick="showPage('contact');return false" style="display:block;text-align:center">Get Quote</a>
-          </article>
-
-          <article class="card">
-            <h3>Commercial Generators</h3>
-            <div class="card-image">
-              <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?w=600&h=400&fit=crop" alt="Commercial generator installation">
-            </div>
-            <p style="color:var(--primary);font-weight:700;font-size:1.1rem">25-100 kW</p>
-            <p>Heavy-duty generators for businesses and commercial facilities.</p>
-            <ul style="margin:0.75rem 0 1.25rem;list-style:none;padding-left:0;color:var(--muted)">
-              <li style="margin-bottom:0.4rem">✓ High performance</li>
-              <li style="margin-bottom:0.4rem">✓ Extended runtime</li>
-              <li style="margin-bottom:0.4rem">✓ Professional support</li>
-              <li style="margin-bottom:0.4rem">✓ Scalable</li>
-            </ul>
-            <a class="btn btn-primary" href="#" onclick="showPage('contact');return false" style="display:block;text-align:center">Get Quote</a>
-          </article>
-
-          <article class="card">
-            <h3>Industrial Generators</h3>
-            <div class="card-image">
-              <img src="https://images.unsplash.com/photo-1581092162384-8987c1d64718?w=600&h=400&fit=crop" alt="Large industrial generator">
-            </div>
-            <p style="color:var(--primary);font-weight:700;font-size:1.1rem">100-500 kW</p>
-            <p>Powerful generators for factories, data centers, and industrial operations.</p>
-            <ul style="margin:0.75rem 0 1.25rem;list-style:none;padding-left:0;color:var(--muted)">
-              <li style="margin-bottom:0.4rem">✓ Maximum reliability</li>
-              <li style="margin-bottom:0.4rem">✓ 24/7 support</li>
-              <li style="margin-bottom:0.4rem">✓ Custom configurations</li>
-              <li style="margin-bottom:0.4rem">✓ Prime power rated</li>
-            </ul>
-            <a class="btn btn-primary" href="#" onclick="showPage('contact');return false" style="display:block;text-align:center">Get Quote</a>
-          </article>
-
-          <article class="card">
-            <h3>Construction Generators</h3>
-            <div class="card-image">
-              <img src="https://images.unsplash.com/photo-1581092918484-8313e1f7a1e2?w=600&h=400&fit=crop" alt="Construction site generator">
-            </div>
-            <p style="color:var(--primary);font-weight:700;font-size:1.1rem">10-150 kW</p>
-            <p>Rugged generators built for construction sites and temporary power needs.</p>
-            <ul style="margin:0.75rem 0 1.25rem;list-style:none;padding-left:0;color:var(--muted)">
-              <li style="margin-bottom:0.4rem">✓ Durable design</li>
-              <li style="margin-bottom:0.4rem">✓ Weather resistant</li>
-              <li style="margin-bottom:0.4rem">✓ Quick deployment</li>
-              <li style="margin-bottom:0.4rem">✓ Cost effective</li>
-            </ul>
-            <a class="btn btn-primary" href="#" onclick="showPage('contact');return false" style="display:block;text-align:center">Get Quote</a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="light scroll-reveal">
-      <div class="container">
-        <h2>Our Services</h2>
-        <div class="grid-3">
-          <article class="card text-center">
-            <div class="card-image" style="height:180px">
-              <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=600&h=400&fit=crop" alt="Generator sales showroom">
-            </div>
-            <div class="card-icon">⚡</div>
-            <h3>Generator Sales</h3>
-            <p>Wide selection of high-quality diesel generators</p>
-          </article>
-          <article class="card text-center">
-            <div class="card-image" style="height:180px">
-              <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=600&h=400&fit=crop" alt="Technical consultation meeting">
-            </div>
-            <div class="card-icon">🔧</div>
-            <h3>Technical Consultation</h3>
-            <p>Load calculation, sizing and installation planning</p>
-          </article>
-          <article class="card text-center">
-            <div class="card-image" style="height:180px">
-              <img src="https://images.unsplash.com/photo-1581092160607-ee67248ab3ea?w=600&h=400&fit=crop" alt="Generator maintenance service">
-            </div>
-            <div class="card-icon">📞</div>
-            <h3>After-Sales Support</h3>
-            <p>Maintenance, repairs and optimization</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="scroll-reveal">
-      <div class="container">
-        <h2>Technical Specifications</h2>
-        <table aria-describedby="specsNote">
-          <thead>
-            <tr><th>Category</th><th>Power Range</th><th>Fuel Type</th><th>Runtime</th><th>Warranty</th></tr>
-          </thead>
-          <tbody>
-            <tr><td><strong>Residential</strong></td><td>5-20 kW</td><td>Diesel</td><td>8-12 hours</td><td>2 years</td></tr>
-            <tr><td><strong>Commercial</strong></td><td>25-100 kW</td><td>Diesel</td><td>12-24 hours</td><td>3 years</td></tr>
-            <tr><td><strong>Industrial</strong></td><td>100-500 kW</td><td>Diesel</td><td>24+ hours</td><td>5 years</td></tr>
-            <tr><td><strong>Construction</strong></td><td>10-150 kW</td><td>Diesel</td><td>12-20 hours</td><td>2 years</td></tr>
-          </tbody>
-        </table>
-        <p id="specsNote" class="text-gray" style="margin-top:1rem;font-size:0.95rem">Runtime estimates depend on load and fuel tank size. Contact us for a tailored calculation.</p>
-      </div>
-    </section>
-
-    <section class="dark">
-      <div class="container text-center">
-        <h2 style="color:var(--white)">Ready to Find Your Perfect Generator?</h2>
-        <p style="color:rgba(255,255,255,0.9);font-size:1.1rem;max-width:700px;margin:0 auto 1.5rem">Contact our experts today for a personalized consultation</p>
-        <a class="btn btn-primary" href="#" onclick="showPage('contact');return false">Request a Quote</a>
-      </div>
-    </section>
-  </main>
-
-  <!-- CONTACT PAGE -->
-  <main id="contact" class="page" role="main" aria-labelledby="contactTitle">
-    <section class="hero" aria-labelledby="contactTitle">
-      <div class="hero__bg" aria-hidden="true"></div>
-      <div class="container hero__content">
-        <h1 id="contactTitle">Contact Us</h1>
-        <p>Get in touch with our team for inquiries, quotes, and support</p>
-      </div>
-    </section>
-
-    <section class="scroll-reveal">
-      <div class="container">
-        <div class="grid-3" style="margin-bottom:2rem">
-          <div class="card text-center">
-            <div style="font-size:2rem;margin-bottom:0.75rem;color:var(--primary)">📞</div>
-            <h3>Phone</h3>
-            <p><a href="tel:01032521321" style="color:var(--primary);text-decoration:none;font-weight:600">0103 2521 321</a></p>
-            <p class="text-gray" style="font-size:0.95rem">Available 24/7</p>
-          </div>
-
-          <div class="card text-center">
-            <div style="font-size:2rem;margin-bottom:0.75rem;color:var(--primary)">📧</div>
-            <h3>Email</h3>
-            <p><a href="mailto:info@premiumpower-eg.com" style="color:var(--primary);text-decoration:none;font-weight:600">info@premiumpower-eg.com</a></p>
-            <p class="text-gray" style="font-size:0.95rem">Response within 24 hours</p>
-          </div>
-
-          <div class="card text-center">
-            <div style="font-size:2rem;margin-bottom:0.75rem;color:var(--primary)">📍</div>
-            <h3>Address</h3>
-            <p>40 Elhegaz Street<br>Heliopolis</p>
-          </div>
-        </div>
-
-        <div class="contact-container">
-          <!-- Contact Form -->
-          <div>
-            <h2 style="margin-bottom:1.5rem">Send us a Message</h2>
-            <form id="contactForm" onsubmit="handleSubmit(event)" novalidate>
-              <div class="form-group">
-                <label for="name">Full Name</label>
-                <input id="name" name="name" type="text" required placeholder="Your name" />
-              </div>
-              <div class="form-group">
-                <label for="email">Email Address</label>
-                <input id="email" name="email" type="email" required placeholder="your@email.com" />
-              </div>
-              <div class="form-group">
-                <label for="phone">Phone Number</label>
-                <input id="phone" name="phone" type="tel" placeholder="+20 123 456 7890" />
-              </div>
-              <div class="form-group">
-                <label for="subject">Subject</label>
-                <select id="subject" name="subject" required>
-                  <option value="">Select a subject</option>
-                  <option value="sales">Generator Sales Inquiry</option>
-                  <option value="consultation">Power Consultation</option>
-                  <option value="support">Technical Support</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="message">Message</label>
-                <textarea id="message" name="message" placeholder="Tell us about your power needs..." required></textarea>
-              </div>
-              <button type="submit" class="btn btn-primary" style="width:100%">Send Message</button>
-            </form>
-            <p id="formStatus" class="text-gray" style="margin-top:1rem;font-size:0.95rem"></p>
-          </div>
-
-          <!-- FAQ + image -->
-          <aside>
-            <h2 style="margin-bottom:1.5rem">Frequently Asked Questions</h2>
-            <div class="faq-item">
-              <h4>What generator size do I need?</h4>
-              <p>Our team can calculate the right size based on your appliance list, starting loads, and usage pattern. Provide usage details when you contact us.</p>
-            </div>
-
-            <div class="faq-item">
-              <h4>Do you offer installation services?</h4>
-              <p>Yes — we provide professional installation and commissioning services with qualified technicians.</p>
-            </div>
-
-            <div class="faq-item">
-              <h4>What is your warranty coverage?</h4>
-              <p>Warranties vary by category and model; typical coverage ranges from 2 to 5 years. We provide full documentation at purchase.</p>
-            </div>
-
-            <div class="faq-item">
-              <h4>Do you provide maintenance support?</h4>
-              <p>Yes, we offer planned maintenance and emergency repairs to keep your equipment available when you need it most.</p>
-            </div>
-
-            <div class="faq-item">
-              <h4>Do you offer financing options?</h4>
-              <p>We work with financing partners to provide accessible purchase options. Ask our team for current programs.</p>
-            </div>
-
-            <div class="contact-visual">
-              <img src="https://images.unsplash.com/photo-1581092918484-8f72b62a0674?w=600&h=400&fit=crop" alt="Customer service representative">
-            </div>
-          </aside>
-        </div>
-      </div>
-    </section>
-
-    <section class="light scroll-reveal">
-      <div class="container" style="text-align:center">
-        <h2>Business Hours</h2>
-        <div class="grid-2" style="max-width:640px;margin:0 auto">
-          <div class="card">
-            <h3>Weekdays</h3>
-            <p style="font-size:1.2rem;color:var(--primary);font-weight:700;margin:0.5rem 0">9:00 AM - 6:00 PM</p>
-            <p style="color:var(--muted)">Monday to Friday</p>
-          </div>
-          <div class="card">
-            <h3>Weekends</h3>
-            <p style="font-size:1.2rem;color:var(--primary);font-weight:700;margin:0.5rem 0">10:00 AM - 4:00 PM</p>
-            <p style="color:var(--muted)">Saturday & Sunday</p>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- Footer -->
-  <footer role="contentinfo">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-section">
-          <h4>Premium Power</h4>
-          <p>Leading provider of diesel generators and reliable power solutions for businesses.</p>
-          <div style="display:flex;gap:0.75rem;margin-top:1rem">
-            <a href="#" aria-label="Facebook" style="font-size:1.3rem;color:#cbd5e1;text-decoration:none;transition:color 0.2s">f</a>
-            <a href="#" aria-label="X" style="font-size:1.3rem;color:#cbd5e1;text-decoration:none;transition:color 0.2s">𝕏</a>
-            <a href="#" aria-label="LinkedIn" style="font-size:1.3rem;color:#cbd5e1;text-decoration:none;transition:color 0.2s">in</a>
-          </div>
-        </div>
-
-        <div class="footer-section">
-          <h4>Quick Links</h4>
-          <ul>
-            <li><a href="#" onclick="showPage('home');return false">Home</a></li>
-            <li><a href="#" onclick="showPage('about');return false">About Us</a></li>
-            <li><a href="#" onclick="showPage('products');return false">Products</a></li>
-            <li><a href="#" onclick="showPage('contact');return false">Contact</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-section">
-          <h4>Services</h4>
-          <ul>
-            <li><a href="#" onclick="showPage('products');return false">Generator Sales</a></li>
-            <li><a href="#" onclick="showPage('contact');return false">Power Consultation</a></li>
-            <li><a href="#" onclick="showPage('contact');return false">After-Sales Support</a></li>
-            <li><a href="#" onclick="showPage('contact');return false">Technical Support</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-section">
-          <h4>Contact</h4>
-          <ul>
-            <li>📞 <a href="tel:01032521321">0103 2521 321</a></li>
-            <li>📧 <a href="mailto:info@premiumpower-eg.com">info@premiumpower-eg.com</a></li>
-            <li>📍 40 Elhegaz Street, Heliopolis</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <div>© 2025 Premium Power. All rights reserved.</div>
-        <div style="display:flex;gap:1.5rem;flex-wrap:wrap">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Service</a>
-          <a href="#">Sitemap</a>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    // Navigation toggle
-    function toggleMenu(){
-      const nav = document.getElementById('navItems');
-      const btn = document.getElementById('menuToggle');
-      const isShown = nav.classList.toggle('show');
-      btn.setAttribute('aria-expanded', String(isShown));
-    }
-
-    // Single-page-like navigation
-    function showPage(pageId){
-      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-      const selected = document.getElementById(pageId);
-      if(selected) selected.classList.add('active');
-      const nav = document.getElementById('navItems');
-      if(nav.classList.contains('show')){
-        nav.classList.remove('show');
-        document.getElementById('menuToggle').setAttribute('aria-expanded','false');
-      }
-      window.scrollTo({top:0,behavior:'smooth'});
-      
-      // Re-trigger scroll animations for new page
-      setTimeout(() => {
-        revealOnScroll();
-      }, 100);
-    }
-
-    // Contact form basic validation and simulated submission
-    function handleSubmit(event){
-      event.preventDefault();
-      const form = event.target;
-      const status = document.getElementById('formStatus');
-      const name = form.name.value.trim();
-      const email = form.email.value.trim();
-      const subject = form.subject.value;
-      const message = form.message.value.trim();
-
-      if(!name || !email || !subject || !message){
-        status.textContent = '⚠️ Please complete all required fields.';
-        status.style.color = '#ef4444';
-        return;
-      }
-      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if(!emailPattern.test(email)){
-        status.textContent = '⚠️ Please enter a valid email address.';
-        status.style.color = '#ef4444';
-        return;
-      }
-
-      status.textContent = '📤 Sending...';
-      status.style.color = 'var(--muted)';
-      setTimeout(() => {
-        form.reset();
-        status.textContent = '✅ Thank you for your message! We will get back to you soon.';
-        status.style.color = '#10b981';
-      }, 800);
-    }
-
-    // Scroll reveal animation
-    function revealOnScroll() {
-      const reveals = document.querySelectorAll('.scroll-reveal');
-      reveals.forEach(el => {
-        const windowHeight = window.innerHeight;
-        const elementTop = el.getBoundingClientRect().top;
-        const elementVisible = 150;
-        
-        if (elementTop < windowHeight - elementVisible) {
-          el.classList.add('revealed');
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Power LLC | Power You Can Trust</title>
+    <meta name="description" content="Premium diesel generators, installation, and maintenance in Egypt. Authorized Perkins, Volvo, and Doosan suppliers.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        paypal: {
+                            dark: '#003087',
+                            light: '#0070BA',
+                            accent: '#009cde',
+                        }
+                    },
+                    animation: {
+                        'bounce-slow': 'bounce 3s infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
         }
-      });
-    }
+    </script>
+    <style>
+        /* Glassmorphism Utilities */
+        .glass {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .glass-dark {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-gray-50 selection:bg-paypal-light selection:text-white">
 
-    // Header scroll effect
-    function handleHeaderScroll() {
-      const header = document.getElementById('mainHeader');
-      if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
-    }
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/201062070276" target="_blank" class="fixed bottom-6 right-6 z-50 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 hover:scale-110 transition-all duration-300 flex items-center gap-2 group">
+        <i data-lucide="message-circle" class="w-6 h-6 fill-current"></i>
+        <span class="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-500 ease-in-out whitespace-nowrap font-bold">Chat with Engineer</span>
+    </a>
 
-    // Event listeners
-    window.addEventListener('scroll', () => {
-      revealOnScroll();
-      handleHeaderScroll();
-    });
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed w-full z-40 transition-all duration-300 py-6">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <a href="#home" class="flex items-center gap-2 group">
+                <div id="logo-bg" class="w-10 h-10 rounded-full flex items-center justify-center bg-white shadow-lg transition-colors">
+                    <span id="logo-text" class="text-paypal-dark font-bold text-xl italic pr-1">P</span>
+                </div>
+                <div class="flex flex-col leading-none">
+                    <span id="brand-1" class="font-bold text-lg tracking-tight text-white">Premium</span>
+                    <span id="brand-2" class="font-bold text-lg tracking-tight text-blue-200">Power</span>
+                </div>
+            </a>
 
-    // Initial call
-    document.addEventListener('DOMContentLoaded', () => {
-      revealOnScroll();
-    });
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#about" class="nav-link text-white/90 hover:text-white font-medium text-sm transition-colors">About</a>
+                <a href="#products" class="nav-link text-white/90 hover:text-white font-medium text-sm transition-colors">Generators</a>
+                <a href="#calculator" class="nav-link text-white/90 hover:text-white font-medium text-sm transition-colors">Calculator</a>
+                <a href="#contact" class="nav-link text-white/90 hover:text-white font-medium text-sm transition-colors">Contact</a>
+                <button onclick="document.getElementById('contact').scrollIntoView()" id="nav-btn" class="px-6 py-2 rounded-full border-2 border-white/30 text-white font-bold hover:bg-white/10 text-xs transition-all">
+                    Get Quote
+                </button>
+            </div>
 
-    // Accessibility: allow Enter to activate nav links
-    document.querySelectorAll('.nav-items a').forEach(a => {
-      a.addEventListener('keydown', e => {
-        if(e.key === 'Enter') a.click();
-      });
-    });
-  </script>
+            <button class="md:hidden text-white" onclick="toggleMenu()">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden fixed inset-0 bg-white z-40 pt-24 px-6 md:hidden">
+             <a href="#home" class="block text-xl font-bold text-gray-800 border-b border-gray-100 pb-4 mb-4" onclick="toggleMenu()">Home</a>
+             <a href="#about" class="block text-xl font-bold text-gray-800 border-b border-gray-100 pb-4 mb-4" onclick="toggleMenu()">About</a>
+             <a href="#products" class="block text-xl font-bold text-gray-800 border-b border-gray-100 pb-4 mb-4" onclick="toggleMenu()">Generators</a>
+             <a href="#calculator" class="block text-xl font-bold text-gray-800 border-b border-gray-100 pb-4 mb-4" onclick="toggleMenu()">Size Calculator</a>
+             <a href="#contact" class="block text-xl font-bold text-gray-800 border-b border-gray-100 pb-4 mb-4" onclick="toggleMenu()">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center pt-20 overflow-hidden bg-paypal-dark">
+        <div class="absolute inset-0 bg-gradient-to-br from-[#002870] via-paypal-dark to-paypal-light"></div>
+        <div class="absolute -top-40 -right-40 w-[800px] h-[800px] bg-paypal-light rounded-full mix-blend-multiply filter blur-[128px] opacity-40 animate-pulse-slow"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 relative z-10 w-full grid md:grid-cols-2 gap-16 items-center text-white">
+            <div class="space-y-8">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-dark text-blue-100 text-sm font-medium animate-fade-in-up">
+                    <i data-lucide="shield" class="w-4 h-4"></i> Trusted by Top Contractors in Egypt
+                </div>
+                <h1 class="text-5xl md:text-7xl font-bold leading-tight">
+                    Power You Can <br/>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-white">Rely On.</span>
+                </h1>
+                <p class="text-xl text-blue-100/90 max-w-lg leading-relaxed font-light">
+                    Engineering-grade diesel generator solutions from 8 KVA to 3000 KVA. Professional installation and 24/7 support.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <button onclick="document.getElementById('calculator').scrollIntoView()" class="px-8 py-4 rounded-full font-bold bg-white text-paypal-dark hover:bg-blue-50 transition-all shadow-lg shadow-blue-900/50">
+                        Find Your Generator
+                    </button>
+                    <button onclick="document.getElementById('contact').scrollIntoView()" class="px-8 py-4 rounded-full font-bold border border-white/30 hover:bg-white/10 flex items-center gap-2 transition-all">
+                        Contact Sales <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Hero Graphic -->
+            <div class="relative hidden md:block">
+                <div class="glass-dark p-8 rounded-3xl shadow-2xl transform rotate-3 hover:rotate-0 transition-all duration-500 border border-white/10">
+                    <div class="flex justify-between items-start mb-8">
+                        <div class="p-3 bg-blue-500/20 rounded-xl"><i data-lucide="zap" class="w-8 h-8 text-blue-200"></i></div>
+                        <div class="text-right">
+                            <div class="text-sm text-blue-200">Power Capacity</div>
+                            <div class="text-2xl font-bold">3000 KVA</div>
+                        </div>
+                    </div>
+                    <div class="space-y-4 mb-8">
+                        <div class="h-2 bg-white/10 rounded-full overflow-hidden"><div class="h-full w-3/4 bg-gradient-to-r from-blue-400 to-blue-200"></div></div>
+                        <div class="h-2 bg-white/10 rounded-full overflow-hidden w-1/2"><div class="h-full w-full bg-gradient-to-r from-blue-400 to-blue-200"></div></div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-[#002870] p-4 rounded-xl border border-white/5">
+                            <p class="text-xs text-blue-300 mb-1">Engine</p>
+                            <p class="font-bold">Perkins UK</p>
+                        </div>
+                        <div class="bg-[#002870] p-4 rounded-xl border border-white/5">
+                            <p class="text-xs text-blue-300 mb-1">Alternator</p>
+                            <p class="font-bold">Stamford</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculator Section (NEW) -->
+    <section id="calculator" class="py-24 bg-white relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full bg-grid-slate-100 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))] -z-10"></div>
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <span class="text-paypal-light font-bold text-sm uppercase tracking-widest">Interactive Tool</span>
+                <h2 class="text-4xl font-bold mt-2 mb-4 text-paypal-dark">Power Size Calculator</h2>
+                <p class="text-gray-500 max-w-2xl mx-auto">Not sure what capacity you need? Enter your appliances below to get an estimated generator size recommendation.</p>
+            </div>
+
+            <div class="glass-card rounded-3xl p-8 shadow-xl border border-gray-200">
+                <div class="grid md:grid-cols-2 gap-12">
+                    <!-- Inputs -->
+                    <div class="space-y-6">
+                        <h3 class="font-bold text-gray-700 border-b pb-2">Your Equipment</h3>
+                        
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="font-medium">AC (1.5 HP)</p>
+                                <p class="text-xs text-gray-400">Approx 1200W</p>
+                            </div>
+                            <input type="number" id="calc-ac1" min="0" value="0" class="w-20 p-2 border rounded-lg text-center focus:ring-2 focus:ring-paypal-light outline-none" onchange="calculateKVA()">
+                        </div>
+
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="font-medium">AC (3.0 HP)</p>
+                                <p class="text-xs text-gray-400">Approx 2400W</p>
+                            </div>
+                            <input type="number" id="calc-ac3" min="0" value="0" class="w-20 p-2 border rounded-lg text-center focus:ring-2 focus:ring-paypal-light outline-none" onchange="calculateKVA()">
+                        </div>
+
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="font-medium">Water Pump (1 HP)</p>
+                                <p class="text-xs text-gray-400">Approx 750W</p>
+                            </div>
+                            <input type="number" id="calc-pump" min="0" value="0" class="w-20 p-2 border rounded-lg text-center focus:ring-2 focus:ring-paypal-light outline-none" onchange="calculateKVA()">
+                        </div>
+
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="font-medium">Office PC / Laptop</p>
+                                <p class="text-xs text-gray-400">Approx 200W</p>
+                            </div>
+                            <input type="number" id="calc-pc" min="0" value="0" class="w-20 p-2 border rounded-lg text-center focus:ring-2 focus:ring-paypal-light outline-none" onchange="calculateKVA()">
+                        </div>
+
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="font-medium">Standard Lighting (Room)</p>
+                                <p class="text-xs text-gray-400">Approx 100W</p>
+                            </div>
+                            <input type="number" id="calc-light" min="0" value="0" class="w-20 p-2 border rounded-lg text-center focus:ring-2 focus:ring-paypal-light outline-none" onchange="calculateKVA()">
+                        </div>
+                    </div>
+
+                    <!-- Result -->
+                    <div class="bg-paypal-dark text-white rounded-2xl p-8 flex flex-col justify-center items-center text-center relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500 rounded-full blur-3xl opacity-20"></div>
+                        
+                        <p class="text-blue-200 text-sm uppercase tracking-widest mb-2">Estimated Requirement</p>
+                        <div class="text-6xl font-bold mb-2" id="result-kva">0</div>
+                        <div class="text-xl font-medium mb-6">KVA</div>
+                        
+                        <p class="text-xs text-blue-300 mb-8 px-4">
+                            *This is an estimate including a 25% safety margin. Starting currents for motors (ACs/Pumps) may vary.
+                        </p>
+
+                        <button onclick="document.getElementById('contact').scrollIntoView()" class="w-full py-3 bg-white text-paypal-dark font-bold rounded-xl hover:bg-blue-50 transition-colors">
+                            Request Quote for this Size
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Workflow Section -->
+    <section id="process" class="py-24 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-paypal-light font-bold text-sm uppercase tracking-widest">Workflow</span>
+                <h2 class="text-4xl font-bold mt-2 text-paypal-dark">How We Work</h2>
+            </div>
+            <div class="grid md:grid-cols-4 gap-8 text-center relative">
+                <div class="hidden md:block absolute top-8 left-0 w-full h-1 bg-blue-100 z-0"></div>
+                <!-- Steps -->
+                <div class="relative z-10 bg-gray-50 p-4 pt-0">
+                    <div class="w-16 h-16 mx-auto rounded-full bg-paypal-light text-white flex items-center justify-center mb-4 shadow-lg border-4 border-white transition-transform hover:scale-110">
+                        <i data-lucide="file-search"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-paypal-dark">1. Assessment</h3>
+                    <p class="text-sm text-gray-500 mt-2">Technical site survey & load analysis</p>
+                </div>
+                <div class="relative z-10 bg-gray-50 p-4 pt-0">
+                    <div class="w-16 h-16 mx-auto rounded-full bg-paypal-light text-white flex items-center justify-center mb-4 shadow-lg border-4 border-white transition-transform hover:scale-110">
+                        <i data-lucide="pen-tool"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-paypal-dark">2. Proposal</h3>
+                    <p class="text-sm text-gray-500 mt-2">Detailed quotation & Contract</p>
+                </div>
+                <div class="relative z-10 bg-gray-50 p-4 pt-0">
+                    <div class="w-16 h-16 mx-auto rounded-full bg-paypal-light text-white flex items-center justify-center mb-4 shadow-lg border-4 border-white transition-transform hover:scale-110">
+                        <i data-lucide="truck"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-paypal-dark">3. Delivery</h3>
+                    <p class="text-sm text-gray-500 mt-2">Logistics, installation & setup</p>
+                </div>
+                <div class="relative z-10 bg-gray-50 p-4 pt-0">
+                    <div class="w-16 h-16 mx-auto rounded-full bg-paypal-light text-white flex items-center justify-center mb-4 shadow-lg border-4 border-white transition-transform hover:scale-110">
+                        <i data-lucide="check-circle"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-paypal-dark">4. Support</h3>
+                    <p class="text-sm text-gray-500 mt-2">Commissioning, load test & 24/7 care</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detailed Product Catalog (NEW) -->
+    <section id="products" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+                <div>
+                    <span class="text-paypal-light font-bold text-sm uppercase tracking-widest">Catalog</span>
+                    <h2 class="text-4xl font-bold mt-2 text-paypal-dark">Engine Brands</h2>
+                    <p class="text-gray-600 text-lg mt-4 max-w-2xl">
+                        We supply generators powered by the world's most reliable engines. Choose your preferred brand below.
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Brand Card 1 -->
+                <div class="group bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
+                    <div class="h-48 bg-gray-100 flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 opacity-50"></div>
+                        <!-- Placeholder for Engine Image -->
+                        <span class="text-4xl font-black text-gray-300 tracking-tighter select-none group-hover:scale-110 transition-transform duration-500">PERKINS</span>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Perkins Series</h3>
+                        <p class="text-sm text-gray-500 mb-4">United Kingdom • 9 KVA to 2500 KVA</p>
+                        <p class="text-gray-600 mb-6 text-sm">The industry standard for reliability and fuel efficiency. Ideal for all climates.</p>
+                        <div class="space-y-2 border-t border-gray-100 pt-4 mb-6">
+                            <div class="flex justify-between text-sm"><span class="text-gray-500">Warranty</span> <span class="font-bold">1 Year / 1000h</span></div>
+                            <div class="flex justify-between text-sm"><span class="text-gray-500">Origin</span> <span class="font-bold">UK / USA</span></div>
+                        </div>
+                        <button onclick="alert('Spec sheet download starts...')" class="w-full py-2 border border-paypal-light text-paypal-light rounded-lg font-bold hover:bg-blue-50 transition-colors text-sm">
+                            Download Spec Sheet
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Brand Card 2 -->
+                <div class="group bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
+                    <div class="h-48 bg-gray-100 flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 opacity-50"></div>
+                        <span class="text-4xl font-black text-gray-300 tracking-tighter select-none group-hover:scale-110 transition-transform duration-500">VOLVO</span>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Volvo Penta</h3>
+                        <p class="text-sm text-gray-500 mb-4">Sweden • 85 KVA to 700 KVA</p>
+                        <p class="text-gray-600 mb-6 text-sm">Known for rapid load acceptance and superior performance in heavy-duty applications.</p>
+                        <div class="space-y-2 border-t border-gray-100 pt-4 mb-6">
+                            <div class="flex justify-between text-sm"><span class="text-gray-500">Warranty</span> <span class="font-bold">1 Year / 1000h</span></div>
+                            <div class="flex justify-between text-sm"><span class="text-gray-500">Origin</span> <span class="font-bold">Sweden</span></div>
+                        </div>
+                        <button onclick="alert('Spec sheet download starts...')" class="w-full py-2 border border-paypal-light text-paypal-light rounded-lg font-bold hover:bg-blue-50 transition-colors text-sm">
+                            Download Spec Sheet
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Brand Card 3 -->
+                <div class="group bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
+                    <div class="h-48 bg-gray-100 flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 opacity-50"></div>
+                        <span class="text-4xl font-black text-gray-300 tracking-tighter select-none group-hover:scale-110 transition-transform duration-500">DOOSAN</span>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Doosan</h3>
+                        <p class="text-sm text-gray-500 mb-4">South Korea • 150 KVA to 825 KVA</p>
+                        <p class="text-gray-600 mb-6 text-sm">Excellent value for money with robust durability for construction sites.</p>
+                        <div class="space-y-2 border-t border-gray-100 pt-4 mb-6">
+                            <div class="flex justify-between text-sm"><span class="text-gray-500">Warranty</span> <span class="font-bold">1 Year / 1000h</span></div>
+                            <div class="flex justify-between text-sm"><span class="text-gray-500">Origin</span> <span class="font-bold">Korea</span></div>
+                        </div>
+                        <button onclick="alert('Spec sheet download starts...')" class="w-full py-2 border border-paypal-light text-paypal-light rounded-lg font-bold hover:bg-blue-50 transition-colors text-sm">
+                            Download Spec Sheet
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-24 bg-gray-50">
+        <div class="max-w-3xl mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center text-paypal-dark mb-12">Frequently Asked Questions</h2>
+            <div class="space-y-4" id="faq-container">
+                <!-- FAQs injected via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="bg-paypal-dark rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row">
+                <div class="p-10 md:p-16 md:w-5/12 bg-blue-900 text-white">
+                    <h2 class="text-3xl font-bold mb-6">Get In Touch</h2>
+                    <p class="text-blue-200 mb-10">Ready to power your project? Contact our sales team for a quote.</p>
+                    
+                    <div class="space-y-8">
+                        <div class="flex items-start gap-4">
+                            <i data-lucide="phone" class="w-6 h-6 text-blue-400 mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-lg">Call Us</h4>
+                                <p class="text-blue-100">02 01032521321</p>
+                                <p class="text-blue-100">01062070276 (Sales)</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <i data-lucide="mail" class="w-6 h-6 text-blue-400 mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-lg">Email Us</h4>
+                                <p class="text-blue-100 break-all">info@premiumpower-eg.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <i data-lucide="map-pin" class="w-6 h-6 text-blue-400 mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-lg">Visit Us</h4>
+                                <p class="text-blue-100">40 El Hegaz St., Heliopolis, Cairo, Egypt</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-10 md:p-16 md:w-7/12 bg-white">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Send an Inquiry</h3>
+                    <form onsubmit="event.preventDefault(); alert('Message sent!');" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <input type="text" class="w-full p-4 bg-gray-50 border border-gray-200 rounded-xl focus:border-blue-500 outline-none" placeholder="Your Name" required>
+                            <input type="tel" class="w-full p-4 bg-gray-50 border border-gray-200 rounded-xl focus:border-blue-500 outline-none" placeholder="Phone Number" required>
+                        </div>
+                        <textarea class="w-full p-4 bg-gray-50 border border-gray-200 rounded-xl focus:border-blue-500 outline-none h-32" placeholder="How can we help you?" required></textarea>
+                        <button type="submit" class="w-full py-4 text-lg font-bold text-white bg-paypal-light rounded-full hover:bg-paypal-dark transition shadow-lg shadow-blue-200">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-paypal-dark text-white py-16">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="text-2xl font-bold mb-6">Premium Power LLC</h2>
+            <p class="text-blue-200 max-w-md mx-auto mb-8">Delivering high-quality diesel generator solutions with fast service, trusted performance, and professional support.</p>
+            <div class="flex justify-center gap-6 mb-8">
+                 <a href="https://www.facebook.com/profile.php?id=61583941521978" class="text-blue-200 hover:text-white transition-colors"><i data-lucide="facebook"></i></a>
+                 <a href="https://www.linkedin.com/in/premium-power-4430a3399" class="text-blue-200 hover:text-white transition-colors"><i data-lucide="linkedin"></i></a>
+            </div>
+            <p class="text-blue-300/50 text-sm">© 2025 Premium Power LLC. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            const logoBg = document.getElementById('logo-bg');
+            const logoText = document.getElementById('logo-text');
+            const brand1 = document.getElementById('brand-1');
+            const brand2 = document.getElementById('brand-2');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const navBtn = document.getElementById('nav-btn');
+
+            if (window.scrollY > 20) {
+                nav.classList.add('bg-white/90', 'backdrop-blur-md', 'shadow-sm', 'py-3');
+                nav.classList.remove('py-6');
+                
+                logoBg.classList.remove('bg-white');
+                logoBg.classList.add('bg-gradient-to-br', 'from-paypal-dark', 'to-paypal-light');
+                
+                logoText.classList.remove('text-paypal-dark');
+                logoText.classList.add('text-white');
+
+                brand1.classList.remove('text-white');
+                brand1.classList.add('text-paypal-dark');
+                
+                brand2.classList.remove('text-blue-200');
+                brand2.classList.add('text-paypal-light');
+
+                navLinks.forEach(link => {
+                    link.classList.remove('text-white/90', 'hover:text-white');
+                    link.classList.add('text-gray-600', 'hover:text-paypal-dark');
+                });
+
+                navBtn.classList.remove('border-white/30', 'text-white', 'hover:bg-white/10');
+                navBtn.classList.add('bg-paypal-light', 'text-white', 'hover:bg-paypal-dark', 'border-transparent');
+            } else {
+                nav.classList.remove('bg-white/90', 'backdrop-blur-md', 'shadow-sm', 'py-3');
+                nav.classList.add('py-6');
+
+                logoBg.classList.add('bg-white');
+                logoBg.classList.remove('bg-gradient-to-br', 'from-paypal-dark', 'to-paypal-light');
+
+                logoText.classList.add('text-paypal-dark');
+                logoText.classList.remove('text-white');
+
+                brand1.classList.add('text-white');
+                brand1.classList.remove('text-paypal-dark');
+
+                brand2.classList.add('text-blue-200');
+                brand2.classList.remove('text-paypal-light');
+
+                navLinks.forEach(link => {
+                    link.classList.add('text-white/90', 'hover:text-white');
+                    link.classList.remove('text-gray-600', 'hover:text-paypal-dark');
+                });
+
+                navBtn.classList.add('border-white/30', 'text-white', 'hover:bg-white/10');
+                navBtn.classList.remove('bg-paypal-light', 'text-white', 'hover:bg-paypal-dark', 'border-transparent');
+            }
+        });
+
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+
+        // CALCULATOR LOGIC
+        function calculateKVA() {
+            // Wattages
+            const WATTS_AC1 = 1200;  // 1.5HP
+            const WATTS_AC3 = 2400;  // 3.0HP
+            const WATTS_PUMP = 750;  // 1HP Pump
+            const WATTS_PC = 200;
+            const WATTS_LIGHT = 100;
+
+            // Get Quantities
+            const qtyAC1 = parseInt(document.getElementById('calc-ac1').value) || 0;
+            const qtyAC3 = parseInt(document.getElementById('calc-ac3').value) || 0;
+            const qtyPump = parseInt(document.getElementById('calc-pump').value) || 0;
+            const qtyPC = parseInt(document.getElementById('calc-pc').value) || 0;
+            const qtyLight = parseInt(document.getElementById('calc-light').value) || 0;
+
+            // Calculate Total Watts
+            let totalWatts = (qtyAC1 * WATTS_AC1) + (qtyAC3 * WATTS_AC3) + (qtyPump * WATTS_PUMP) + (qtyPC * WATTS_PC) + (qtyLight * WATTS_LIGHT);
+
+            // Convert to KW
+            let totalKW = totalWatts / 1000;
+
+            // Convert to KVA (Assume 0.8 Power Factor)
+            // Formula: KVA = KW / 0.8
+            let requiredKVA = totalKW / 0.8;
+
+            // Add Safety Margin (25% for motor starting currents)
+            let finalKVA = requiredKVA * 1.25;
+
+            // Round up
+            let displayKVA = Math.ceil(finalKVA);
+            
+            // Ensure minimum 0
+            if (displayKVA < 0) displayKVA = 0;
+
+            // Animate number change (simple version)
+            document.getElementById('result-kva').innerText = displayKVA;
+        }
+
+        // FAQ Injection
+        const faqs = [
+            { q: "How long does delivery take?", a: "Standard delivery time is 3–10 working days depending on the generator model." },
+            { q: "Do you provide installation services?", a: "Yes, we offer full turnkey installation, including site assessment, positioning, cabling, and commissioning." },
+            { q: "What is the warranty period?", a: "We provide a standard warranty of 1 year or 1000 operating hours (whichever comes first) covering engine and alternator." },
+            { q: "Do you have spare parts?", a: "Yes, we maintain a stock of genuine spare parts for Perkins, Volvo, and Doosan engines to ensure minimal downtime." }
+        ];
+
+        const faqContainer = document.getElementById('faq-container');
+        faqs.forEach(item => {
+            const div = document.createElement('div');
+            div.className = "border-b border-gray-200 pb-4";
+            div.innerHTML = `
+                <button class="w-full flex justify-between items-center font-bold text-lg text-gray-800 py-2 hover:text-paypal-light transition-colors" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')">
+                    ${item.q} <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 transition-transform duration-300"></i>
+                </button>
+                <p class="hidden text-gray-600 mt-2 leading-relaxed">${item.a}</p>
+            `;
+            faqContainer.appendChild(div);
+        });
+        lucide.createIcons();
+    </script>
 </body>
 </html>
+
