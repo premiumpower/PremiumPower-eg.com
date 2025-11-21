@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="pageTitle">Premium Power LLC | Power You Can Trust</title>
-    <meta name="description" content="Premium diesel generators, installation, and maintenance in Egypt. Authorized Perkins, Volvo, and Doosan suppliers." />
+    <meta name="description" content="Premium diesel generators, installation, and maintenance in Egypt. Authorized Perkins, Volvo, and Doosan suppliers.">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <script>
@@ -13,12 +13,12 @@
                 extend: {
                     colors: {
                         paypal: {
-                            dark: '#003087',
-                            light: '#0070BA',
-                            accent: '#009cde',
+                            dark: '#003087', /* Deep Navy/Primary */
+                            light: '#0070BA', /* Bright Blue/Secondary */
+                            accent: '#009cde', /* Lighter Accent */
                         },
                         fuel: {
-                            main: '#f59e0b',
+                            main: '#f59e0b', /* Amber */
                         }
                     },
                     animation: {
@@ -66,12 +66,12 @@
             text-transform: uppercase;
         }
         .premium-column {
-            background-color: #e0f2fe;
+            background-color: #e0f2fe; /* Light Blue BG */
             color: #003087;
             font-weight: 700;
         }
         .premium-column .lucide {
-            color: #10b981;
+            color: #10b981; /* Green checkmark */
         }
         
         /* Chat Menu Animation */
@@ -92,7 +92,7 @@
             transition: max-height 0.4s ease-in-out;
         }
         .spec-open {
-            max-height: 300px;
+            max-height: 300px; /* Arbitrary large height */
         }
     </style>
 </head>
@@ -192,7 +192,7 @@
                     <i data-lucide="shield" class="w-4 h-4"></i> <span data-i18n="trustedBy">Trusted by Top Contractors in Egypt</span>
                 </div>
                 <h1 class="text-5xl md:text-7xl font-extrabold leading-tight" data-i18n="heroTitle">
-                    Power You Can <br />
+                    Power You Can <br/>
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-white">Rely On.</span>
                 </h1>
                 <p class="text-xl text-blue-100/90 max-w-lg leading-relaxed font-light" data-i18n="heroSub">
@@ -215,7 +215,7 @@
                         <div class="p-3 bg-blue-500/20 rounded-xl"><i data-lucide="zap" class="w-8 h-8 text-blue-200"></i></div>
                         <div class="text-right">
                             <div class="text-sm text-blue-200" data-i18n="capacity">Power Capacity</div>
-                            <div class="text-2xl font-bold"><span id="result-kva">3000</span> KVA</div>
+                            <div class="text-2xl font-bold">3000 KVA</div>
                         </div>
                     </div>
                     <div class="space-y-4 mb-8">
@@ -300,7 +300,7 @@
                         
                         <div class="w-full">
                             <p class="text-blue-200 text-sm uppercase tracking-widest mb-2" data-i18n="estimated">Estimated Requirement</p>
-                            <div class="text-7xl font-extrabold mb-2 transform scale-y-105" id="result-kva-calc">0</div>
+                            <div class="text-7xl font-extrabold mb-2 transform scale-y-105" id="result-kva">0</div>
                             <div class="text-2xl font-medium mb-4" data-i18n="kva">KVA</div>
 
                             <!-- Feature 2: Fuel Estimator -->
@@ -321,6 +321,7 @@
                             <p class="text-xs text-blue-300 mb-4 px-4 font-light italic" data-i18n="safetyNote">
                                 *This is an estimate including a 25% safety margin. Starting currents for motors (ACs/Pumps) may vary.
                             </p>
+                            <!-- Feature 1: Smart Form Button -->
                             <button onclick="fillQuoteRequest()" class="w-full py-3 bg-white text-paypal-dark font-bold rounded-xl hover:bg-blue-50 transition-colors shadow-lg hover:shadow-xl group relative overflow-hidden">
                                 <span class="relative z-10" data-i18n="btnRequestQuote">Request Quote for this Size</span>
                                 <div class="absolute inset-0 bg-blue-100 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
@@ -523,7 +524,8 @@
             <div class="grid md:grid-cols-3 gap-8">
                 <!-- Project 1 -->
                 <div class="group relative overflow-hidden rounded-2xl h-80 shadow-xl hover:shadow-2xl transition-all duration-500 cursor-pointer">
-                    <img loading="lazy" src="https://placehold.co/800x600/003087/ffffff?text=Medical+Center+Backup" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1581094288338-2314dddb7ece?auto=format&fit=crop&q=80';" alt="Industrial Generator" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                    <!-- Feature 10: loading="lazy" added -->
+                    <img loading="lazy" src="https://placehold.co/800x600/003087/ffffff?text=Medical+Center+Backup" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1581094288338-2314dddb7ece?auto=format&fit=crop&q=80';" alt="Industrial Generator" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                     <div class="absolute inset-0 bg-gradient-to-t from-paypal-dark/90 to-transparent flex flex-col justify-end p-8">
                         <span class="text-blue-300 text-xs font-bold uppercase tracking-wider mb-1" data-i18n="proj1Loc">New Cairo</span>
                         <h3 class="text-white text-2xl font-bold mb-2" data-i18n="proj1Title">Medical Center Backup</h3>
@@ -535,24 +537,26 @@
 
                 <!-- Project 2 -->
                 <div class="group relative overflow-hidden rounded-2xl h-80 shadow-xl hover:shadow-2xl transition-all duration-500 cursor-pointer">
-                    <img loading="lazy" src="https://placehold.co/800x600/0070BA/ffffff?text=Construction+Power" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&q=80';" alt="Construction Site" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                    <!-- Feature 10: loading="lazy" added -->
+                    <img loading="lazy" src="https://placehold.co/800x600/0070BA/ffffff?text=Construction+Power" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&q=80';" alt="Construction Site" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                     <div class="absolute inset-0 bg-gradient-to-t from-paypal-dark/90 to-transparent flex flex-col justify-end p-8">
-                        <span class="text-blue-300 text-xs font-bold uppercase tracking-wider mb-1" data-i18n="proj2Loc">6th October City</span>
-                        <h3 class="text-white text-2xl font-bold mb-2" data-i18n="proj2Title">Construction Site Power</h3>
+                        <span class="text-blue-300 text-xs font-bold uppercase tracking-wider mb-1" data-i18n="proj2Loc">New Capital</span>
+                        <h3 class="text-white text-2xl font-bold mb-2" data-i18n="proj2Title">Construction Power</h3>
                         <p class="text-gray-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-4 group-hover:translate-y-0" data-i18n="proj2Desc">
-                            Deployment of 3x 700 KVA Volvo units for continuous power.
+                            Provided 4x 250 KVA Volvo Penta generators for site operations.
                         </p>
                     </div>
                 </div>
 
                 <!-- Project 3 -->
                 <div class="group relative overflow-hidden rounded-2xl h-80 shadow-xl hover:shadow-2xl transition-all duration-500 cursor-pointer">
-                    <img loading="lazy" src="https://placehold.co/800x600/10b981/ffffff?text=Hospital+Emergency+Power" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1581094476933-9518c47c1b2c?auto=format&fit=crop&q=80';" alt="Hospital Generator" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                    <!-- Feature 10: loading="lazy" added -->
+                    <img loading="lazy" src="https://placehold.co/800x600/009cde/ffffff?text=Data+Center+Power" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80';" alt="Commercial Tower" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                     <div class="absolute inset-0 bg-gradient-to-t from-paypal-dark/90 to-transparent flex flex-col justify-end p-8">
-                        <span class="text-green-400 text-xs font-bold uppercase tracking-wider mb-1" data-i18n="proj3Loc">Alexandria</span>
-                        <h3 class="text-white text-2xl font-bold mb-2" data-i18n="proj3Title">Hospital Emergency Power</h3>
+                        <span class="text-blue-300 text-xs font-bold uppercase tracking-wider mb-1" data-i18n="proj3Loc">Maadi</span>
+                        <h3 class="text-white text-2xl font-bold mb-2" data-i18n="proj3Title">Bank HQ Data Center</h3>
                         <p class="text-gray-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-4 group-hover:translate-y-0" data-i18n="proj3Desc">
-                            Emergency diesel generator installation with ATS and automatic startup.
+                            High-precision 1000 KVA Doosan unit with soundproof canopy (65db).
                         </p>
                     </div>
                 </div>
@@ -560,66 +564,526 @@
         </div>
     </section>
 
+    <!-- Comparison Table -->
+    <section id="comparison" class="py-24 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-paypal-light font-extrabold text-sm uppercase tracking-widest" data-i18n="comparisonHeader">The Premium Difference</span>
+                <h2 class="text-4xl font-bold mt-2 text-paypal-dark" data-i18n="comparisonTitle">Why Premium Power is the Right Choice</h2>
+                <p class="text-gray-500 mt-4 max-w-2xl mx-auto text-lg" data-i18n="comparisonSub">We set the standard for quality and service in the Egyptian power generation sector.</p>
+            </div>
+
+            <div class="overflow-x-auto rounded-2xl shadow-2xl border border-gray-100 ring-4 ring-blue-50/50">
+                <table class="min-w-full bg-white divide-y divide-gray-200">
+                    <thead class="comparison-header">
+                        <tr>
+                            <th class="comparison-cell text-left px-4" data-i18n="tableFeature">Feature</th>
+                            <th class="comparison-cell text-center premium-column" data-i18n="tableUs">Premium Power</th>
+                            <th class="comparison-cell text-center" data-i18n="tableCompetitor">Standard Competitor</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-100">
+                        <tr>
+                            <td class="comparison-cell text-left font-medium text-gray-700" data-i18n="tableResponse">Emergency Response Time</td>
+                            <td class="comparison-cell text-center premium-column flex items-center justify-center gap-3">
+                                <i data-lucide="zap" class="w-5 h-5 text-paypal-light"></i> <span data-i18n="tableResponseUs">Within 24 Hours</span>
+                            </td>
+                            <td class="comparison-cell text-center text-gray-500" data-i18n="tableResponseComp">3-5 Days (Often Longer)</td>
+                        </tr>
+                        <tr>
+                            <td class="comparison-cell text-left font-medium text-gray-700" data-i18n="tableParts">Spare Parts Authenticity</td>
+                            <td class="comparison-cell text-center premium-column flex items-center justify-center gap-3">
+                                <i data-lucide="check-circle" class="w-5 h-5"></i> <span data-i18n="tablePartsUs">100% Genuine (OEM)</span>
+                            </td>
+                            <td class="comparison-cell text-center text-gray-500" data-i18n="tablePartsComp">Aftermarket/Generic</td>
+                        </tr>
+                        <tr>
+                            <td class="comparison-cell text-left font-medium text-gray-700" data-i18n="tableWarranty">Standard Warranty</td>
+                            <td class="comparison-cell text-center premium-column" data-i18n="tableWarrantyUs">1 Year / 1000 Hours</td>
+                            <td class="comparison-cell text-center text-gray-500" data-i18n="tableWarrantyComp">6 Months or Less</td>
+                        </tr>
+                        <tr>
+                            <td class="comparison-cell text-left font-medium text-gray-700" data-i18n="tableTechnicians">Technician Expertise</td>
+                            <td class="comparison-cell text-center premium-column flex items-center justify-center gap-3">
+                                <i data-lucide="user-check" class="w-5 h-5"></i> <span data-i18n="tableTechniciansUs">Certified Engineering Team</span>
+                            </td>
+                            <td class="comparison-cell text-center text-gray-500" data-i18n="tableTechniciansComp">Contracted Labor</td>
+                        </tr>
+                        <tr>
+                            <td class="comparison-cell text-left font-medium text-gray-700" data-i18n="tableCommissioning">Load Testing / Commissioning</td>
+                            <td class="comparison-cell text-center premium-column flex items-center justify-center gap-3">
+                                <i data-lucide="activity" class="w-5 h-5 text-paypal-light"></i> <span data-i18n="tableCommissioningUs">Standard Inclusion</span>
+                            </td>
+                            <td class="comparison-cell text-center text-gray-500" data-i18n="tableCommissioningComp">Optional / Extra Charge</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-24 bg-white">
+        <div class="max-w-3xl mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center text-paypal-dark mb-12" data-i18n="faqTitle">Frequently Asked Questions</h2>
+            <div class="space-y-4 shadow-xl rounded-xl bg-white p-6 border border-gray-100" id="faq-container">
+                <!-- FAQs injected via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section (Smart Form) -->
+    <section id="contact" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="bg-paypal-dark rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row shadow-blue-800/20">
+                <div class="p-10 md:p-16 md:w-5/12 bg-blue-900 text-white flex flex-col justify-center">
+                    <h2 class="text-4xl font-extrabold mb-6" data-i18n="contactTitle">Get In Touch</h2>
+                    <p class="text-blue-200 mb-10 text-lg font-light" data-i18n="contactSub">Ready to power your project? Contact our engineering sales team for a precise quote.</p>
+                    
+                    <div class="space-y-8">
+                        <div class="flex items-start gap-4">
+                            <i data-lucide="phone" class="w-7 h-7 text-blue-400 mt-1 flex-shrink-0"></i>
+                            <div>
+                                <h4 class="font-bold text-xl" data-i18n="callUs">Call Us</h4>
+                                <p class="text-blue-100">02 01032521321</p>
+                                <p class="text-blue-100">01062070276 (Sales)</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <i data-lucide="mail" class="w-7 h-7 text-blue-400 mt-1 flex-shrink-0"></i>
+                            <div>
+                                <h4 class="font-bold text-xl" data-i18n="emailUs">Email Us</h4>
+                                <p class="text-blue-100 break-all">info@premiumpower-eg.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <i data-lucide="map-pin" class="w-7 h-7 text-blue-400 mt-1 flex-shrink-0"></i>
+                            <div>
+                                <h4 class="font-bold text-xl" data-i18n="visitUs">Visit Us</h4>
+                                <p class="text-blue-100">40 El Hegaz St., Heliopolis, Cairo, Egypt</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-10 md:p-16 md:w-7/12 bg-white">
+                    <h3 class="text-3xl font-bold text-paypal-dark mb-8" data-i18n="inquiryTitle">Send an Inquiry</h3>
+                    <form onsubmit="event.preventDefault(); showMessageBox(currentLang === 'ar' ? 'تم إرسال رسالتك! سنتواصل معك قريباً.' : 'Message sent! We will contact you shortly.'); this.reset();" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <input type="text" class="w-full p-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-4 focus:ring-paypal-light/50 focus:border-paypal-light outline-none transition-all" placeholder="Your Name" data-i18n-placeholder="yourName" required>
+                            <input type="tel" class="w-full p-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-4 focus:ring-paypal-light/50 focus:border-paypal-light outline-none transition-all" placeholder="Phone Number" data-i18n-placeholder="phoneNumber" required>
+                        </div>
+                        <!-- Feature 1: ID added for Smart Form target -->
+                        <textarea id="contact-message" class="w-full p-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-4 focus:ring-paypal-light/50 focus:border-paypal-light outline-none h-32 resize-none transition-all" placeholder="How can we help you? (e.g., Requesting a 500 KVA Perkins quote)" data-i18n-placeholder="howHelp" required></textarea>
+                        <button type="submit" class="w-full py-4 text-xl font-extrabold text-white bg-paypal-light rounded-full hover:bg-paypal-dark transition shadow-lg shadow-blue-300/50 hover:shadow-xl hover:scale-[1.01]">
+                            <span data-i18n="btnSend">Send Message</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-paypal-dark text-white py-16">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="text-2xl font-bold mb-6">Premium Power LLC</h2>
+            <p class="text-blue-200 max-w-lg mx-auto mb-8 font-light" data-i18n="footerSub">Delivering high-quality diesel generator solutions with fast service, trusted performance, and professional support.</p>
+            <div class="flex justify-center gap-8 mb-8">
+                 <a href="https://www.facebook.com/profile.php?id=61583941521978" target="_blank" class="text-blue-300 hover:text-white transition-colors"><i data-lucide="facebook" class="w-6 h-6"></i></a>
+                 <a href="https://www.linkedin.com/in/premium-power-4430a3399" target="_blank" class="text-blue-300 hover:text-white transition-colors"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
+            </div>
+            <p class="text-blue-300/50 text-sm">© 2025 Premium Power LLC. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Custom Message Box -->
+    <div id="message-box" class="fixed inset-0 bg-black/50 z-[99] hidden flex items-center justify-center p-4 transition-opacity duration-300 opacity-0">
+        <div class="bg-white rounded-xl p-6 w-full max-w-sm shadow-2xl space-y-4 transform scale-95 transition-transform duration-300">
+            <h3 class="text-xl font-bold text-paypal-dark" data-i18n="messageBoxTitle">Notification</h3>
+            <p id="message-box-content" class="text-gray-600"></p>
+            <button onclick="document.getElementById('message-box').classList.add('opacity-0'); document.getElementById('message-box').querySelector('div').classList.add('scale-95'); setTimeout(() => document.getElementById('message-box').classList.add('hidden'), 300);" class="w-full py-2 bg-paypal-light text-white font-bold rounded-lg hover:bg-paypal-dark transition-colors" data-i18n="messageBoxClose">Close</button>
+        </div>
+    </div>
+
+
     <script>
-        // Count-up animation for the hero "3000 KVA" number
-        function animateCountUp(element, start, end, duration) {
-            let startTimestamp = null;
-            const step = (timestamp) => {
-                if (!startTimestamp) startTimestamp = timestamp;
-                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                element.innerText = Math.floor(progress * (end - start) + start);
-                if (progress < 1) {
-                    window.requestAnimationFrame(step);
-                } else {
-                    element.innerText = end;
-                }
-            };
-            window.requestAnimationFrame(step);
-        }
+        // Initialize Icons
+        lucide.createIcons();
+        
+        // --- ARABIC TRANSLATION LOGIC ---
+        const translations = {
+            en: {
+                pageTitle: "Premium Power LLC | Power You Can Trust",
+                chatSales: "Sales Inquiry", chatEmergency: "24/7 Emergency", chatWhatsApp: "WhatsApp", chatCall: "Direct Call",
+                trustedBy: "Trusted by Top Contractors in Egypt",
+                navHome: "Home", navAbout: "About", navProducts: "Generators", navCalc: "Calculator", navContact: "Contact", navProjects: "Projects", navComparison: "Compare",
+                heroTitle: "Power You Can <br/><span class='text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-white'>Rely On.</span>",
+                heroSub: "Engineering-grade diesel generator solutions from 8 KVA to 3000 KVA. Professional installation and 24/7 support.",
+                btnQuote: "Get Quote", btnFindGen: "Find Your Generator", btnContactSales: "Contact Sales",
+                capacity: "Power Capacity", engine: "Engine", alternator: "Alternator",
+                tool: "Interactive Tool", calcTitle: "Power Size Calculator", calcSub: "Not sure what capacity you need? Enter your appliances below to get an estimated generator size recommendation.",
+                equipment: "Your Equipment", ac1: "AC (1.5 HP)", ac1W: "Approx 1200W", ac3: "AC (3.0 HP)", ac3W: "Approx 2400W", pump: "Water Pump (1 HP)", pumpW: "Approx 750W", pc: "Office PC / Laptop", pcW: "Approx 200W", light: "Standard Lighting (Room)", lightW: "Approx 100W",
+                estimated: "Estimated Requirement", kva: "KVA", safetyNote: "*This is an estimate including a 25% safety margin. Starting currents for motors (ACs/Pumps) may vary.", 
+                fuelTitle: "Est. Fuel Consumption", fuelUnit: "Liters/Hour", fuelNote: "@ 75% Prime Load",
+                btnRequestQuote: "Request Quote for this Size",
+                workflow: "Workflow", howWeWork: "How We Work", step1: "1. Assessment", step1D: "Technical site survey & load analysis", step2: "2. Proposal", step2D: "Detailed quotation & Contract", step3: "3. Delivery", step3D: "Logistics, installation & setup", step4: "4. Support", step4D: "Commissioning, load test & 24/7 care",
+                catalog: "Catalog", engineBrands: "Engine Brands", brandsSub: "We supply generators powered by the world's most reliable engines. Choose your preferred brand below.",
+                perkinsTitle: "Perkins Series", perkinsLoc: "United Kingdom • 9 KVA to 2500 KVA", perkinsDesc: "The industry standard for reliability and fuel efficiency. Ideal for all climates and load profiles.",
+                volvoTitle: "Volvo Penta", volvoLoc: "Sweden • 85 KVA to 700 KVA", volvoDesc: "Known for rapid load acceptance and superior performance in heavy-duty applications and mining.",
+                doosanTitle: "Doosan", doosanLoc: "South Korea • 150 KVA to 825 KVA", doosanDesc: "Excellent value for money with robust durability for construction sites and continuous prime power.",
+                btnDownload: "Download Spec Sheet", btnTechSpecs: "View Technical Specs",
+                specCyl: "Cylinders:", specGov: "Governor:", specAsp: "Aspiration:",
+                specMechElec: "Mech / Electronic", specTurbo: "Turbocharged",
+                specEms: "EMS 2.0 (Fully Elec)", specTurboInt: "Turbo + Intercooler",
+                specElectronic: "Electronic (ECU)", specTurboAfter: "Turbo + Aftercooler",
+                soundHeader: "Acoustic Engineering", soundTitle: "Hear the Difference", soundOpen: "Standard (Open)", soundSilent: "Premium Soundproof", soundTraffic: "Traffic Noise", soundOffice: "Office Silence", soundInfo: "Our custom-fabricated soundproof canopies reduce noise levels significantly, making them suitable for residential areas, hospitals, and offices.",
+                portfolio: "Portfolio", recentInstalls: "Recent Installations", projectsSub: "Delivering power to Egypt's most critical sectors.",
+                proj1Loc: "New Cairo", proj1Title: "Medical Center Backup", proj1Desc: "Installed 2x 500 KVA Perkins units with ATS synchronization panel.",
+                proj2Loc: "New Capital", proj2Title: "Construction Power", proj2Desc: "Provided 4x 250 KVA Volvo Penta generators for site operations.",
+                proj3Loc: "Maadi", proj3Title: "Bank HQ Data Center", proj3Desc: "High-precision 1000 KVA Doosan unit with soundproof canopy (65db).",
+                comparisonHeader: "The Premium Difference", comparisonTitle: "Why Premium Power is the Right Choice", comparisonSub: "We set the standard for quality and service in the Egyptian power generation sector.",
+                tableFeature: "Feature", tableUs: "Premium Power", tableCompetitor: "Standard Competitor",
+                tableResponse: "Emergency Response Time", tableResponseUs: "Within 24 Hours", tableResponseComp: "3-5 Days (Often Longer)",
+                tableParts: "Spare Parts Authenticity", tablePartsUs: "100% Genuine (OEM)", tablePartsComp: "Aftermarket/Generic",
+                tableWarranty: "Standard Warranty", tableWarrantyUs: "1 Year / 1000 Hours", tableWarrantyComp: "6 Months or Less",
+                tableTechnicians: "Technician Expertise", tableTechniciansUs: "Certified Engineering Team", tableTechniciansComp: "Contracted Labor",
+                tableCommissioning: "Load Testing / Commissioning", tableCommissioningUs: "Standard Inclusion", tableCommissioningComp: "Optional / Extra Charge",
+                faqTitle: "Frequently Asked Questions",
+                contactTitle: "Get In Touch", contactSub: "Ready to power your project? Contact our engineering sales team for a precise quote.",
+                callUs: "Call Us", emailUs: "Email Us", visitUs: "Visit Us", inquiryTitle: "Send an Inquiry",
+                yourName: "Your Name", phoneNumber: "Phone Number", howHelp: "How can we help you? (e.g., Requesting a 500 KVA Perkins quote)", btnSend: "Send Message",
+                footerSub: "Delivering high-quality diesel generator solutions with fast service, trusted performance, and professional support.",
+                messageBoxTitle: "Notification", messageBoxClose: "Close",
+                downloadStarting: "Spec sheet download is starting now. If the download does not start, please contact us.",
+                formSubmitted: "Message sent! We will contact you shortly."
+            },
+            ar: {
+                pageTitle: "بريميوم باور | طاقة يمكنك الاعتماد عليها",
+                chatSales: "المبيعات", chatEmergency: "طوارئ 24/7", chatWhatsApp: "واتساب", chatCall: "اتصال مباشر",
+                trustedBy: "موثوق به من قبل كبرى المقاولين في مصر",
+                navHome: "الرئيسية", navAbout: "عن الشركة", navProducts: "المولدات", navCalc: "حاسبة القدرة", navContact: "تواصل معنا", navProjects: "المشاريع", navComparison: "مقارنة",
+                heroTitle: "طاقة يمكنك <br/><span class='text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-white'>الاعتماد عليها.</span>",
+                heroSub: "حلول مولدات الديزل الهندسية من 8 ك.ف.أ إلى 3000 ك.ف.أ. تركيب احترافي ودعم 24/7.",
+                btnQuote: "اطلب عرض سعر", btnFindGen: "ابحث عن مولدك", btnContactSales: "اتصل بالمبيعات",
+                capacity: "قدرة المولد", engine: "المحرك", alternator: "المولد الكهربائي",
+                tool: "أداة تفاعلية", calcTitle: "حاسبة قدرة المولد", calcSub: "هل أنت غير متأكد من السعة التي تحتاجها؟ أدخل أجهزتك أدناه للحصول على تقدير لحجم المولد الموصى به.",
+                equipment: "معداتك", ac1: "تكييف (1.5 حصان)", ac1W: "تقريبًا 1200 واط", ac3: "تكييف (3.0 حصان)", ac3W: "تقريبًا 2400 واط", pump: "مضخة مياه (1 حصان)", pumpW: "تقريبًا 750 واط", pc: "كمبيوتر مكتبي / محمول", pcW: "تقريبًا 200 واط", light: "إضاءة قياسية (غرفة)", lightW: "تقريبًا 100 واط",
+                estimated: "المتطلبات المقدرة", kva: "ك.ف.أ", safetyNote: "*هذا تقدير يتضمن هامش أمان بنسبة 25٪. قد تختلف تيارات بدء تشغيل المحركات (مكيفات/مضخات).",
+                fuelTitle: "استهلاك الوقود التقديري", fuelUnit: "لتر/ساعة", fuelNote: "@ 75% حمل أساسي",
+                btnRequestQuote: "اطلب عرض سعر لهذا الحجم",
+                workflow: "سير العمل", howWeWork: "كيف نعمل", step1: "1. تقييم", step1D: "مسح فني للموقع وتحليل الأحمال", step2: "2. عرض سعر", step2D: "عرض أسعار مفصل وعقد", step3: "3. توصيل", step3D: "اللوجستيات والتركيب والإعداد", step4: "4. دعم", step4D: "التشغيل واختبار الحمل والرعاية على مدار الساعة",
+                catalog: "الكتالوج", engineBrands: "ماركات المحركات", brandsSub: "نقوم بتوريد مولدات تعمل بأكثر المحركات موثوقية في العالم. اختر علامتك التجارية المفضلة أدناه.",
+                perkinsTitle: "سلسلة بيركنز", perkinsLoc: "المملكة المتحدة • 9 ك.ف.أ إلى 2500 ك.ف.أ", perkinsDesc: "المعيار الصناعي للموثوقية وكفاءة استهلاك الوقود. مثالية لجميع المناخات وأنماط الأحمال.",
+                volvoTitle: "فولفو بنتا", volvoLoc: "السويد • 85 ك.ف.أ إلى 700 ك.ف.أ", volvoDesc: "تشتهر بالاستجابة السريعة للحمل والأداء المتفوق في التطبيقات الشاقة والتعدين.",
+                doosanTitle: "دوسان", doosanLoc: "كوريا الجنوبية • 150 ك.ف.أ إلى 825 ك.ف.أ", doosanDesc: "قيمة ممتازة مقابل المال مع متانة قوية لمواقع البناء والطاقة الأولية المستمرة.",
+                btnDownload: "تنزيل ورقة المواصفات", btnTechSpecs: "عرض المواصفات الفنية",
+                specCyl: "السلندرات:", specGov: "الحاكم:", specAsp: "التنفس:",
+                specMechElec: "ميكانيكي / إلكتروني", specTurbo: "تيربو",
+                specEms: "EMS 2.0 (إلكتروني كامل)", specTurboInt: "تيربو + مبرد داخلي",
+                specElectronic: "إلكتروني (ECU)", specTurboAfter: "تيربو + مبرد لاحق",
+                soundHeader: "الهندسة الصوتية", soundTitle: "اسمع الفرق", soundOpen: "قياسي (مفتوح)", soundSilent: "كاتم للصوت (بريميوم)", soundTraffic: "ضوضاء المرور", soundOffice: "هدوء المكتب", soundInfo: "تعمل الكبائن الكاتمة للصوت المصنعة خصيصاً لدينا على تقليل مستويات الضوضاء بشكل كبير، مما يجعلها مناسبة للمناطق السكنية والمستشفيات والمكاتب.",
+                portfolio: "معرض الأعمال", recentInstalls: "أحدث التركيبات", projectsSub: "توفير الطاقة لأهم القطاعات في مصر.",
+                proj1Loc: "القاهرة الجديدة", proj1Title: "دعم مركز طبي", proj1Desc: "تم تركيب 2 مولد 500 ك.ف.أ بيركنز مع لوحة تزامن ATS.",
+                proj2Loc: "العاصمة الجديدة", proj2Title: "طاقة مواقع الإنشاءات", proj2Desc: "تم توفير 4 مولدات 250 ك.ف.أ فولفو بنتا لعمليات الموقع.",
+                proj3Loc: "المعادي", proj3Title: "مركز بيانات البنك الرئيسي", proj3Desc: "وحدة دوسان عالية الدقة 1000 ك.ف.أ بكابينة عازلة للصوت (65 ديسيبل).",
+                comparisonHeader: "الفرق المميز", comparisonTitle: "لماذا بريميوم باور هو الخيار الصحيح", comparisonSub: "نحن نضع معيار الجودة والخدمة في قطاع توليد الطاقة المصري.",
+                tableFeature: "الميزة", tableUs: "بريميوم باور", tableCompetitor: "المنافس العادي",
+                tableResponse: "وقت الاستجابة للطوارئ", tableResponseUs: "في غضون 24 ساعة", tableResponseComp: "3-5 أيام (غالباً أطول)",
+                tableParts: "أصالة قطع الغيار", tablePartsUs: "أصلية 100% (OEM)", tablePartsComp: "ما بعد البيع/عامة",
+                tableWarranty: "الضمان القياسي", tableWarrantyUs: "سنة واحدة / 1000 ساعة", tableWarrantyComp: "6 أشهر أو أقل",
+                tableTechnicians: "خبرة الفنيين", tableTechniciansUs: "فريق هندسي معتمد", tableTechniciansComp: "عمالة متعاقدة",
+                tableCommissioning: "اختبار الحمل / التشغيل", tableCommissioningUs: "مضمنة بشكل قياسي", tableCommissioningComp: "اختياري / تكلفة إضافية",
+                faqTitle: "الأسئلة الشائعة",
+                contactTitle: "تواصل معنا", contactSub: "هل أنت مستعد لتزويد مشروعك بالطاقة؟ اتصل بفريق المبيعات الهندسية لدينا للحصول على عرض أسعار دقيق.",
+                callUs: "اتصل بنا", emailUs: "راسلنا بالبريد الإلكتروني", visitUs: "قم بزيارتنا", inquiryTitle: "إرسال استفسار",
+                yourName: "اسمك", phoneNumber: "رقم الهاتف", howHelp: "كيف يمكننا مساعدتك؟ (مثال: طلب عرض سعر لمولد بيركنز 500 ك.ف.أ)", btnSend: "أرسل الرسالة",
+                footerSub: "تقديم حلول مولدات الديزل عالية الجودة مع خدمة سريعة وأداء موثوق وخبرة هندسية.",
+                messageBoxTitle: "إشعار", messageBoxClose: "إغلاق",
+                downloadStarting: "يتم بدء تحميل ورقة المواصفات الآن. إذا لم يبدأ التحميل، يرجى التواصل معنا.",
+                formSubmitted: "تم إرسال رسالتك! سنتواصل معك قريباً."
+            }
+        };
 
-        // Intersection Observer to trigger count-up on scroll into view
-        document.addEventListener("DOMContentLoaded", () => {
-            const targetElement = document.getElementById("result-kva");
-            const targetValue = parseInt(targetElement.innerText, 10);
-            targetElement.innerText = 0; // Start from zero
+        let currentLang = 'en';
 
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        animateCountUp(targetElement, 0, targetValue, 2000);
-                        observer.unobserve(targetElement);
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            observer.observe(targetElement);
-        });
-
-        // Placeholder functions for toggling chat menu etc.
+        // Feature 6: Toggle Chat Menu
         function toggleChatMenu() {
             const menu = document.getElementById('chat-menu');
-            if (menu.classList.contains('chat-open')) {
-                menu.classList.remove('chat-open');
+            menu.classList.toggle('chat-open');
+        }
+
+        // Feature 7: Accordion Toggle
+        function toggleSpec(id) {
+            const element = document.getElementById(id);
+            const icon = document.getElementById('icon-' + id);
+            
+            // Check if currently open
+            if (element.classList.contains('spec-open')) {
+                element.classList.remove('spec-open');
+                icon.style.transform = 'rotate(0deg)';
             } else {
-                menu.classList.add('chat-open');
+                // Close others (optional, keeps it clean)
+                document.querySelectorAll('.spec-content').forEach(el => {
+                    el.classList.remove('spec-open');
+                });
+                document.querySelectorAll('[id^="icon-spec-"]').forEach(el => {
+                    el.style.transform = 'rotate(0deg)';
+                });
+
+                element.classList.add('spec-open');
+                icon.style.transform = 'rotate(180deg)';
             }
         }
 
-        function toggleMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
+        // Feature 4: Sound Visualizer Logic
+        function setSoundMode(mode) {
+            const bar = document.getElementById('sound-bar');
+            const val = document.getElementById('sound-val');
+            const desc = document.getElementById('sound-desc');
+            const btnOpen = document.getElementById('btn-sound-open');
+            const btnSilent = document.getElementById('btn-sound-silent');
+
+            if (mode === 'open') {
+                bar.style.width = '85%';
+                bar.classList.remove('bg-green-500');
+                bar.classList.add('bg-red-500');
+                
+                val.innerText = '85 db';
+                desc.innerText = currentLang === 'ar' ? translations['ar']['soundTraffic'] : translations['en']['soundTraffic'];
+
+                btnOpen.classList.add('bg-red-500', 'text-white', 'border-red-500');
+                btnOpen.classList.remove('text-gray-500', 'border-gray-200');
+
+                btnSilent.classList.remove('bg-paypal-light', 'text-white', 'border-paypal-light');
+                btnSilent.classList.add('text-gray-500', 'border-gray-200');
+
+            } else {
+                bar.style.width = '65%';
+                bar.classList.remove('bg-red-500');
+                bar.classList.add('bg-green-500');
+                
+                val.innerText = '65 db';
+                desc.innerText = currentLang === 'ar' ? translations['ar']['soundOffice'] : translations['en']['soundOffice'];
+
+                btnOpen.classList.remove('bg-red-500', 'text-white', 'border-red-500');
+                btnOpen.classList.add('text-gray-500', 'border-gray-200');
+
+                btnSilent.classList.add('bg-paypal-light', 'text-white', 'border-paypal-light');
+                btnSilent.classList.remove('text-gray-500', 'border-gray-200');
+            }
         }
 
-        // Stub for language switching (expand as needed)
-        let currentLang = 'en';
-        function switchLanguage(lang) {
+        // Feature 1: Smart Form Auto-Fill
+        function fillQuoteRequest() {
+            const kva = document.getElementById('result-kva').innerText;
+            const msgField = document.getElementById('contact-message');
+            
+            let text = "";
+            if (currentLang === 'ar') {
+                text = `مرحباً، بناءً على حساب الأحمال على الموقع، أنا مهتم بمولد بقدرة تقريبية ${kva} ك.ف.أ. يرجى التواصل معي للتفاصيل.`;
+            } else {
+                text = `Hello, based on the load calculator on your website, I am interested in a generator with approximately ${kva} KVA capacity. Please contact me with details.`;
+            }
+
+            msgField.value = text;
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Message Box Logic
+        function showMessageBox(message) {
+            const box = document.getElementById('message-box');
+            const content = document.getElementById('message-box-content');
+            content.innerText = message;
+            
+            // Show the box with fade and scale transition
+            box.classList.remove('hidden');
+            setTimeout(() => {
+                box.classList.add('opacity-100');
+                box.querySelector('div').classList.remove('scale-95');
+            }, 10); // Small delay for transition
+            
+            // Re-run i18n for the modal title/button
+            switchLanguage(currentLang, true);
+        }
+
+        function calculateKVA() {
+            const WATTS_AC1 = 1200;  // 1.5HP
+            const WATTS_AC3 = 2400;  // 3.0HP
+            const WATTS_PUMP = 750;  // 1HP Pump
+            const WATTS_PC = 200;
+            const WATTS_LIGHT = 100;
+
+            const qtyAC1 = parseInt(document.getElementById('calc-ac1').value) || 0;
+            const qtyAC3 = parseInt(document.getElementById('calc-ac3').value) || 0;
+            const qtyPump = parseInt(document.getElementById('calc-pump').value) || 0;
+            const qtyPC = parseInt(document.getElementById('calc-pc').value) || 0;
+            const qtyLight = parseInt(document.getElementById('calc-light').value) || 0;
+
+            let totalWatts = (qtyAC1 * WATTS_AC1) + (qtyAC3 * WATTS_AC3) + (qtyPump * WATTS_PUMP) + (qtyPC * WATTS_PC) + (qtyLight * WATTS_LIGHT);
+            let totalKW = totalWatts / 1000;
+            let requiredKVA = totalKW / 0.8; // Assume 0.8 Power Factor
+            let finalKVA = requiredKVA * 1.25; // 25% Safety Margin
+            let displayKVA = Math.ceil(finalKVA);
+            
+            if (displayKVA < 0) displayKVA = 0;
+            document.getElementById('result-kva').innerText = displayKVA;
+
+            // Feature 2: Fuel Consumption Logic
+            let estimatedFuel = Math.ceil(displayKVA * 0.21);
+            if (displayKVA === 0) estimatedFuel = 0;
+            document.getElementById('result-fuel').innerText = estimatedFuel;
+        }
+
+        // FAQ Data
+        const faqs = [
+            { q_en: "How long does delivery and installation take?", a_en: "Standard delivery and installation is completed within 7–15 working days depending on the generator model and site logistics.", q_ar: "كم تستغرق عملية التوصيل والتركيب؟", a_ar: "يتراوح وقت التسليم والتركيب القياسي من 7 إلى 15 يوم عمل حسب طراز المولد واللوجستيات الخاصة بالموقع." },
+            { q_en: "Do you provide installation services and ATS panels?", a_en: "Yes, we offer full turnkey installation, including site assessment, positioning, cabling, Automatic Transfer Switch (ATS) panels, and commissioning.", q_ar: "هل تقدمون خدمات التركيب ولوحات ATS؟", a_ar: "نعم، نحن نقدم تركيبًا كاملاً وشاملاً، بما في ذلك تقييم الموقع، وتحديد الموقع، والكابلات، ولوحات مفاتيح التحويل التلقائي (ATS)، والتشغيل." },
+            { q_en: "What is the warranty period and coverage?", a_en: "We provide a standard warranty of 1 year or 1000 operating hours (whichever comes first) covering manufacturing defects in the engine and alternator, supported locally.", q_ar: "ما هي فترة الضمان والتغطية؟", a_ar: "نقدم ضمانًا قياسيًا لمدة عام واحد أو 1000 ساعة تشغيل (أيهما يأتي أولاً) يغطي عيوب التصنيع في المحرك والمولد الكهربائي، مع دعم محلي." },
+            { q_en: "Do you have spare parts and maintenance contracts?", a_en: "Yes, we maintain a comprehensive stock of genuine OEM spare parts for all our brands. We also offer tailored preventative maintenance contracts.", q_ar: "هل تتوفر لديكم قطع غيار وعقود صيانة؟", a_ar: "نعم، نحتفظ بمخزون شامل من قطع الغيار الأصلية (OEM) لجميع علاماتنا التجارية. كما نقدم عقود صيانة وقائية مصممة خصيصًا." }
+        ];
+
+        function renderFAQs(lang) {
+            const faqContainer = document.getElementById('faq-container');
+            faqContainer.innerHTML = ''; // Clear existing
+            faqs.forEach(item => {
+                const q = lang === 'ar' ? item.q_ar : item.q_en;
+                const a = lang === 'ar' ? item.a_ar : item.a_en;
+                
+                const div = document.createElement('div');
+                div.className = "border-b border-gray-100 last:border-b-0";
+                div.innerHTML = `
+                    <button class="w-full flex justify-between items-center font-bold text-lg text-paypal-dark py-4 hover:text-paypal-light transition-colors" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')" dir="${lang === 'ar' ? 'rtl' : 'ltr'}">
+                        ${q} <i data-lucide="chevron-down" class="w-6 h-6 text-paypal-light transition-transform duration-300 transform"></i>
+                    </button>
+                    <p class="hidden text-gray-600 pb-4 leading-relaxed" dir="${lang === 'ar' ? 'rtl' : 'ltr'}">${a}</p>
+                `;
+                faqContainer.appendChild(div);
+            });
+            lucide.createIcons();
+        }
+
+        // Language Switcher Logic
+        function switchLanguage(lang, skipBody = false) {
             currentLang = lang;
-            // Localization logic here
-            // For example, fetch translations and update elements with data-i18n attributes
-            // This is a stub for demonstration
-            console.log('Switched language to', lang);
-        }
-    </script>
+            const elements = document.querySelectorAll('[data-i18n]');
+            const placeholders = document.querySelectorAll('[data-i18n-placeholder]');
+            const body = document.body;
+            
+            if (!skipBody) {
+                if (lang === 'ar') {
+                    body.dir = "rtl";
+                    body.classList.add('font-arabic');
+                } else {
+                    body.dir = "ltr";
+                    body.classList.remove('font-arabic');
+                }
+            }
 
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+
+            placeholders.forEach(el => {
+                const key = el.getAttribute('data-i18n-placeholder');
+                if (translations[lang][key]) {
+                    el.placeholder = translations[lang][key];
+                }
+            });
+            
+            renderFAQs(lang);
+            lucide.createIcons();
+            
+            // Refresh Sound Display Text if active
+            const isSilent = document.getElementById('btn-sound-silent').classList.contains('bg-paypal-light');
+            setSoundMode(isSilent ? 'silent' : 'open');
+        }
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            const logoBg = document.getElementById('logo-bg');
+            const logoText = document.getElementById('logo-text');
+            const brand1 = document.getElementById('brand-1');
+            const brand2 = document.getElementById('brand-2');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const navBtn = document.getElementById('nav-btn');
+            const langBtns = document.querySelectorAll('.lang-btn');
+
+            if (window.scrollY > 20) {
+                // Scrolled State
+                nav.classList.add('bg-white/95', 'backdrop-blur-md', 'shadow-lg', 'py-3');
+                nav.classList.remove('py-6');
+                
+                logoBg.classList.remove('bg-white');
+                logoBg.classList.add('bg-paypal-light');
+                
+                logoText.classList.remove('text-paypal-dark');
+                logoText.classList.add('text-white');
+
+                brand1.classList.remove('text-white');
+                brand1.classList.add('text-paypal-dark');
+                
+                brand2.classList.remove('text-blue-200');
+                brand2.classList.add('text-paypal-light');
+
+                navLinks.forEach(link => {
+                    link.classList.remove('text-white/90', 'hover:text-white');
+                    link.classList.add('text-gray-600', 'hover:text-paypal-dark');
+                });
+
+                langBtns.forEach(btn => {
+                    btn.classList.remove('text-white/80', 'hover:text-white');
+                    btn.classList.add('text-gray-600', 'hover:text-paypal-dark');
+                });
+
+                navBtn.classList.remove('border-white/30', 'text-white', 'hover:bg-white/10');
+                navBtn.classList.add('bg-paypal-light', 'text-white', 'hover:bg-paypal-dark', 'border-transparent');
+            } else {
+                // Top State
+                nav.classList.remove('bg-white/95', 'backdrop-blur-md', 'shadow-lg', 'py-3');
+                nav.classList.add('py-6');
+
+                logoBg.classList.add('bg-white');
+                logoBg.classList.remove('bg-paypal-light');
+
+                logoText.classList.add('text-paypal-dark');
+                logoText.classList.remove('text-white');
+
+                brand1.classList.add('text-white');
+                brand1.classList.remove('text-paypal-dark');
+
+                brand2.classList.add('text-blue-200');
+                brand2.classList.remove('text-paypal-light');
+
+                navLinks.forEach(link => {
+                    link.classList.add('text-white/90', 'hover:text-white');
+                    link.classList.remove('text-gray-600', 'hover:text-paypal-dark');
+                });
+
+                langBtns.forEach(btn => {
+                    btn.classList.add('text-white/80', 'hover:text-white');
+                    btn.classList.remove('text-gray-600', 'hover:text-paypal-dark');
+                });
+
+                navBtn.classList.add('border-white/30', 'text-white', 'hover:bg-white/10');
+                navBtn.classList.remove('bg-paypal-light', 'text-white', 'hover:bg-paypal-dark', 'border-transparent');
+            }
+        });
+
+        function toggleMenu() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+
+        // Initial Load
+        document.addEventListener('DOMContentLoaded', () => {
+            switchLanguage('en');
+            calculateKVA(); 
+        });
+    </script>
 </body>
 </html>
+
