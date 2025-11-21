@@ -90,6 +90,14 @@
             transform: scale(1) translateY(0) !important;
             pointer-events: auto !important;
         }
+
+        /* Engineering Grid Pattern (New Style) */
+        .bg-grid-pattern {
+            background-image: radial-gradient(#003087 1px, transparent 1px);
+            background-size: 24px 24px;
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0));
+            -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0));
+        }
     </style>
 </head>
 <body class="font-sans text-gray-800 bg-gray-50 selection:bg-paypal-light selection:text-white" dir="ltr">
@@ -219,97 +227,138 @@
         </div>
     </section>
 
-    <section id="products-services" class="py-24 bg-white relative">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <span class="text-paypal-light font-extrabold text-sm uppercase tracking-widest" data-i18n="prodHeader">Our Solutions</span>
-                <h2 class="text-4xl font-bold mt-2 text-paypal-dark" data-i18n="prodTitle">Products & Services</h2>
-                <p class="text-gray-500 max-w-2xl mx-auto text-lg mt-4" data-i18n="prodSub">We provide end-to-end power generation solutions, from supply to lifecycle maintenance.</p>
+    <section id="products-services" class="py-24 bg-gray-50 relative overflow-hidden">
+        <div class="absolute inset-0 bg-grid-pattern opacity-[0.03] pointer-events-none"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+                <div class="max-w-2xl">
+                    <span class="text-paypal-light font-extrabold text-sm uppercase tracking-widest" data-i18n="prodHeader">Our Solutions</span>
+                    <h2 class="text-4xl font-bold mt-2 text-paypal-dark" data-i18n="prodTitle">Products & Services</h2>
+                    <p class="text-gray-500 text-lg mt-4" data-i18n="prodSub">Comprehensive power solutions engineered for reliability.</p>
+                </div>
+                <button onclick="document.getElementById('contact').scrollIntoView()" class="hidden md:flex items-center gap-2 text-paypal-light font-bold hover:text-paypal-dark transition-colors group">
+                    <span data-i18n="btnRequestCatalog">Request Full Catalog</span>
+                    <i data-lucide="arrow-right" class="w-5 h-5 transform group-hover:translate-x-1 transition-transform"></i>
+                </button>
             </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[minmax(200px,auto)]">
                 
-                <div class="group p-8 border border-gray-100 rounded-2xl hover:shadow-xl hover:border-paypal-light/30 transition-all bg-gradient-to-b from-white to-gray-50">
-                    <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-6 text-paypal-dark group-hover:bg-paypal-dark group-hover:text-white transition-colors">
-                        <i data-lucide="zap" class="w-7 h-7"></i>
+                <div class="group md:col-span-2 relative bg-paypal-dark rounded-3xl p-8 overflow-hidden text-white shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-1">
+                    <div class="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity transform group-hover:scale-110 duration-700 origin-top-right">
+                        <i data-lucide="zap" class="w-48 h-48"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3" data-i18n="pOpenTitle">Open-Type Generators</h3>
-                    <p class="text-sm text-gray-500 mb-4 leading-relaxed" data-i18n="pOpenDesc">Heavy-duty industrial generators (9KVA to 3000KVA) designed for plant rooms and high-performance needs.</p>
-                    <ul class="text-xs text-gray-500 space-y-2 mb-6">
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-green-500"></i> Perkins / Volvo / Doosan</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-green-500"></i> High Cooling Efficiency</li>
-                    </ul>
-                </div>
-
-                <div class="group p-8 border border-gray-100 rounded-2xl hover:shadow-xl hover:border-paypal-light/30 transition-all bg-gradient-to-b from-white to-gray-50">
-                    <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-6 text-paypal-dark group-hover:bg-paypal-dark group-hover:text-white transition-colors">
-                        <i data-lucide="volume-x" class="w-7 h-7"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3" data-i18n="pSoundTitle">Soundproof Canopies</h3>
-                    <p class="text-sm text-gray-500 mb-4 leading-relaxed" data-i18n="pSoundDesc">Weather-resistant, acoustic enclosures reducing noise to 65db. Ideal for hospitals, offices, and residential areas.</p>
-                    <ul class="text-xs text-gray-500 space-y-2 mb-6">
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-green-500"></i> Galvanized Steel</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-green-500"></i> Rockwool Insulation</li>
-                    </ul>
-                </div>
-
-                <div class="group p-8 border border-gray-100 rounded-2xl hover:shadow-xl hover:border-paypal-light/30 transition-all bg-gradient-to-b from-white to-gray-50">
-                    <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-6 text-paypal-dark group-hover:bg-paypal-dark group-hover:text-white transition-colors">
-                        <i data-lucide="settings" class="w-7 h-7"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3" data-i18n="pPanelTitle">Low Voltage Panels</h3>
-                    <p class="text-sm text-gray-500 mb-4 leading-relaxed" data-i18n="pPanelDesc">Custom assembled ATS (Automatic Transfer Switch), Synchronization, and Distribution panels using ABB/Schneider components.</p>
-                    <ul class="text-xs text-gray-500 space-y-2 mb-6">
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-green-500"></i> Smart Controllers (DeepSea)</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-green-500"></i> Auto Start/Stop</li>
-                    </ul>
-                </div>
-
-                <div class="group p-8 border border-gray-100 rounded-2xl hover:shadow-xl hover:border-paypal-light/30 transition-all bg-gradient-to-b from-white to-gray-50">
-                    <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-6 text-paypal-dark group-hover:bg-paypal-dark group-hover:text-white transition-colors">
-                        <i data-lucide="container" class="w-7 h-7"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3" data-i18n="pTankTitle">External Fuel Tanks</h3>
-                    <p class="text-sm text-gray-500 mb-4 leading-relaxed" data-i18n="pTankDesc">Custom fabricated fuel storage solutions to extend generator runtime for days or weeks without refueling.</p>
-                    <ul class="text-xs text-gray-500 space-y-2 mb-6">
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-green-500"></i> 500L to 20,000L Capacity</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-green-500"></i> Leak Detection Systems</li>
-                    </ul>
-                </div>
-
-                <div class="group p-8 border border-gray-100 rounded-2xl hover:shadow-xl hover:border-paypal-light/30 transition-all bg-gradient-to-b from-white to-gray-50">
-                    <div class="w-14 h-14 bg-orange-100 rounded-xl flex items-center justify-center mb-6 text-orange-600 group-hover:bg-orange-500 group-hover:text-white transition-colors">
-                        <i data-lucide="wrench" class="w-7 h-7"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3" data-i18n="pPartsTitle">Spare Parts</h3>
-                    <p class="text-sm text-gray-500 mb-4 leading-relaxed" data-i18n="pPartsDesc">100% Genuine OEM consumables and parts. Filters, belts, alternators, and AVRs for all major engine brands.</p>
-                </div>
-
-                <div class="group p-8 border border-gray-100 rounded-2xl hover:shadow-xl hover:border-paypal-light/30 transition-all bg-gradient-to-b from-white to-gray-50">
-                    <div class="w-14 h-14 bg-orange-100 rounded-xl flex items-center justify-center mb-6 text-orange-600 group-hover:bg-orange-500 group-hover:text-white transition-colors">
-                        <i data-lucide="truck" class="w-7 h-7"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3" data-i18n="sInstallTitle">Installation Services</h3>
-                    <p class="text-sm text-gray-500 mb-4 leading-relaxed" data-i18n="sInstallDesc">Complete turnkey installation including civil work, cabling, exhaust ducting, and sound attenuation systems.</p>
-                </div>
-
-                <div class="group p-8 border border-gray-100 rounded-2xl hover:shadow-xl hover:border-paypal-light/30 transition-all bg-gradient-to-b from-white to-gray-50 md:col-span-2 lg:col-span-2">
-                    <div class="flex flex-col md:flex-row items-center gap-6">
-                        <div class="w-14 h-14 bg-orange-100 rounded-xl flex items-center justify-center flex-shrink-0 text-orange-600 group-hover:bg-orange-500 group-hover:text-white transition-colors">
-                            <i data-lucide="activity" class="w-7 h-7"></i>
+                    <div class="relative z-10 h-full flex flex-col justify-between">
+                        <div class="w-12 h-12 bg-white/10 backdrop-blur-md rounded-xl flex items-center justify-center mb-4 border border-white/20">
+                            <i data-lucide="zap" class="w-6 h-6 text-blue-200"></i>
                         </div>
                         <div>
-                            <h3 class="text-xl font-bold text-gray-800 mb-2" data-i18n="sMaintTitle">Maintenance & Annual Contracts</h3>
-                            <p class="text-sm text-gray-500 leading-relaxed" data-i18n="sMaintDesc">We offer flexible Service Level Agreements (SLAs). Our certified engineers provide 24/7 emergency response, periodic preventive maintenance, and load testing to ensure your power never fails.</p>
+                            <h3 class="text-2xl font-bold mb-2" data-i18n="pOpenTitle">Open-Type Generators</h3>
+                            <p class="text-blue-100/80 mb-6 max-w-md" data-i18n="pOpenDesc">Heavy-duty industrial generators (9KVA to 3000KVA) designed for plant rooms and high-performance needs.</p>
+                            <ul class="flex flex-wrap gap-3 text-xs font-semibold text-blue-900">
+                                <li class="bg-blue-200 px-3 py-1 rounded-full">Perkins</li>
+                                <li class="bg-blue-200 px-3 py-1 rounded-full">Volvo</li>
+                                <li class="bg-blue-200 px-3 py-1 rounded-full">Doosan</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group md:row-span-2 bg-white border border-gray-100 rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 relative overflow-hidden">
+                    <div class="absolute -bottom-10 -right-10 opacity-5 group-hover:opacity-10 transition-opacity transform group-hover:rotate-12 duration-700">
+                        <i data-lucide="volume-x" class="w-40 h-40 text-paypal-dark"></i>
+                    </div>
+                    <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-6 text-paypal-light group-hover:bg-paypal-light group-hover:text-white transition-colors">
+                        <i data-lucide="volume-x" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-3" data-i18n="pSoundTitle">Soundproof Canopies</h3>
+                    <p class="text-gray-500 mb-6 text-sm leading-relaxed" data-i18n="pSoundDesc">Weather-resistant, acoustic enclosures reducing noise to 65db. Ideal for hospitals, offices, and residential areas.</p>
+                    
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3 p-3 rounded-lg bg-gray-50 group-hover:bg-blue-50 transition-colors">
+                            <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                            <span class="text-xs font-bold text-gray-600" data-i18n="pSoundFeat1">Galvanized Steel</span>
+                        </div>
+                        <div class="flex items-center gap-3 p-3 rounded-lg bg-gray-50 group-hover:bg-blue-50 transition-colors">
+                            <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                            <span class="text-xs font-bold text-gray-600" data-i18n="pSoundFeat2">Rockwool Insulation</span>
+                        </div>
+                        <div class="flex items-center gap-3 p-3 rounded-lg bg-gray-50 group-hover:bg-blue-50 transition-colors">
+                            <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                            <span class="text-xs font-bold text-gray-600" data-i18n="pSoundFeat3">Custom Colors</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group bg-white border border-gray-100 rounded-3xl p-8 shadow hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-10 h-10 bg-orange-50 rounded-lg flex items-center justify-center text-fuel-main">
+                            <i data-lucide="container" class="w-5 h-5"></i>
+                        </div>
+                        <i data-lucide="arrow-up-right" class="w-5 h-5 text-gray-300 group-hover:text-paypal-light transition-colors"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2" data-i18n="pTankTitle">External Fuel Tanks</h3>
+                    <p class="text-xs text-gray-500" data-i18n="pTankDesc">Custom fabricated fuel storage solutions (500L - 20,000L).</p>
+                </div>
+
+                <div class="group bg-white border border-gray-100 rounded-3xl p-8 shadow hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center text-paypal-light">
+                            <i data-lucide="settings" class="w-5 h-5"></i>
+                        </div>
+                        <i data-lucide="arrow-up-right" class="w-5 h-5 text-gray-300 group-hover:text-paypal-light transition-colors"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-800 mb-2" data-i18n="pPanelTitle">Low Voltage Panels</h3>
+                    <p class="text-xs text-gray-500" data-i18n="pPanelDesc">ATS, Synchronization, and Distribution panels (ABB/Schneider).</p>
+                </div>
+
+                <div class="group md:col-span-2 bg-blue-50/50 border border-blue-100 rounded-3xl p-8 flex flex-col md:flex-row items-center gap-6 hover:bg-blue-50 transition-colors">
+                    <div class="w-16 h-16 bg-white rounded-2xl shadow-sm flex items-center justify-center flex-shrink-0 text-paypal-light">
+                        <i data-lucide="wrench" class="w-8 h-8"></i>
+                    </div>
+                    <div class="flex-1 text-center md:text-left">
+                        <h3 class="text-xl font-bold text-gray-800 mb-1" data-i18n="pPartsTitle">Genuine Spare Parts</h3>
+                        <p class="text-sm text-gray-600" data-i18n="pPartsDesc">100% OEM consumables. Filters, belts, and AVRs for all major brands available in stock.</p>
+                    </div>
+                    <button onclick="document.getElementById('contact').scrollIntoView()" class="bg-white text-paypal-dark px-6 py-3 rounded-xl text-sm font-bold shadow-sm hover:shadow-md hover:scale-105 transition-all whitespace-nowrap" data-i18n="btnOrderParts">
+                        Order Parts
+                    </button>
+                </div>
+
+                <div class="group md:col-span-1 bg-gradient-to-br from-paypal-dark to-blue-900 rounded-3xl p-8 text-white relative overflow-hidden hover:shadow-2xl transition-all duration-300">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-orange-400 to-orange-600"></div>
+                    <div class="relative z-10">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center">
+                                <i data-lucide="hard-hat" class="w-5 h-5 text-orange-400"></i>
+                            </div>
+                            <span class="font-bold text-sm uppercase tracking-wider text-orange-100" data-i18n="srvTitle">Services</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4" data-i18n="srvSubtitle">Installation & Maintenance</h3>
+                        <div class="space-y-3 mb-6">
+                            <div class="flex items-center gap-3 text-sm text-blue-100">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-orange-400"></i>
+                                <span data-i18n="srvFeat1">Turnkey Installation</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-sm text-blue-100">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-orange-400"></i>
+                                <span data-i18n="srvFeat2">Annual Contracts (SLA)</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-sm text-blue-100">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-orange-400"></i>
+                                <span data-i18n="srvFeat3">24/7 Emergency Response</span>
+                            </div>
                         </div>
                     </div>
                 </div>
 
             </div>
-            
-            <div class="mt-12 text-center">
-                <button onclick="document.getElementById('contact').scrollIntoView()" class="px-8 py-4 rounded-full font-bold bg-paypal-dark text-white hover:bg-paypal-light transition-all shadow-xl" data-i18n="btnRequestCatalog">
-                    Request Full Catalog
+
+            <div class="mt-8 text-center md:hidden">
+                <button onclick="document.getElementById('contact').scrollIntoView()" class="flex items-center justify-center w-full gap-2 text-paypal-light font-bold hover:text-paypal-dark transition-colors group bg-white p-4 rounded-xl shadow-sm border border-gray-100">
+                    <span data-i18n="btnRequestCatalog">Request Full Catalog</span>
+                    <i data-lucide="arrow-right" class="w-5 h-5"></i>
                 </button>
             </div>
         </div>
@@ -393,7 +442,7 @@
                         
                         <div class="w-full">
                             <p class="text-xs text-blue-300 mb-4 px-4 font-light italic" data-i18n="safetyNote">
-                                *This is an estimate including a 25% safety margin. Starting currents for motors (ACs/Pumps) may vary.
+                                *This is an estimate including a **25% safety margin**. Starting currents for motors (ACs/Pumps) may vary.
                             </p>
                             <button onclick="fillQuoteRequest()" class="w-full py-3 bg-white text-paypal-dark font-bold rounded-xl hover:bg-blue-50 transition-colors shadow-lg hover:shadow-xl group relative overflow-hidden">
                                 <span class="relative z-10" data-i18n="btnRequestQuote">Request Quote for this Size</span>
@@ -584,19 +633,25 @@
                 capacity: "Power Capacity", engine: "Engine", alternator: "Alternator",
                 
                 // Products & Services
-                prodHeader: "Our Solutions", prodTitle: "Products & Services", prodSub: "We provide end-to-end power generation solutions, from supply to lifecycle maintenance.",
+                prodHeader: "Our Solutions", prodTitle: "Products & Services", prodSub: "Comprehensive power solutions engineered for reliability.",
                 pOpenTitle: "Open-Type Generators", pOpenDesc: "Heavy-duty industrial generators (9KVA to 3000KVA) designed for plant rooms and high-performance needs.",
                 pSoundTitle: "Soundproof Canopies", pSoundDesc: "Weather-resistant, acoustic enclosures reducing noise to 65db. Ideal for hospitals, offices, and residential areas.",
                 pPanelTitle: "Low Voltage Panels", pPanelDesc: "Custom assembled ATS (Automatic Transfer Switch), Synchronization, and Distribution panels using ABB/Schneider components.",
                 pTankTitle: "External Fuel Tanks", pTankDesc: "Custom fabricated fuel storage solutions to extend generator runtime for days or weeks without refueling.",
-                pPartsTitle: "Genuine Spare Parts", pPartsDesc: "100% Genuine OEM consumables and parts. Filters, belts, alternators, and AVRs for all major engine brands.",
-                sInstallTitle: "Installation Services", sInstallDesc: "Complete turnkey installation including civil work, cabling, exhaust ducting, and sound attenuation systems.",
-                sMaintTitle: "Maintenance & Annual Contracts", sMaintDesc: "We offer flexible Service Level Agreements (SLAs). Our certified engineers provide 24/7 emergency response, periodic preventive maintenance, and load testing to ensure your power never fails.",
-                btnRequestCatalog: "Request Full Catalog",
+                pPartsTitle: "Genuine Spare Parts", pPartsDesc: "100% OEM consumables. Filters, belts, and AVRs for all major brands available in stock.",
+                btnOrderParts: "Order Parts", // New Key
+                pSoundFeat1: "Galvanized Steel", // New Key
+                pSoundFeat2: "Rockwool Insulation", // New Key
+                pSoundFeat3: "Custom Colors", // New Key
+                srvTitle: "Field Services", // New Key
+                srvSubtitle: "Installation & Maintenance", // New Key
+                srvFeat1: "Turnkey Installation", // New Key
+                srvFeat2: "Annual Contracts (SLA)", // New Key
+                srvFeat3: "24/7 Emergency Response", // New Key
 
                 tool: "Interactive Tool", calcTitle: "Power Size Calculator", calcSub: "Not sure what capacity you need? Enter your appliances below to get an estimated generator size recommendation.",
                 equipment: "Your Equipment", ac1: "AC (1.5 HP)", ac1W: "Approx 1200W", ac3: "AC (3.0 HP)", ac3W: "Approx 2400W", pump: "Water Pump (1 HP)", pumpW: "Approx 750W", pc: "Office PC / Laptop", pcW: "Approx 200W", light: "Standard Lighting (Room)", lightW: "Approx 100W",
-                estimated: "Estimated Requirement", kva: "KVA", safetyNote: "*This is an estimate including a 25% safety margin. Starting currents for motors (ACs/Pumps) may vary.", 
+                estimated: "Estimated Requirement", kva: "KVA", safetyNote: "*This is an estimate including a **25% safety margin**. Starting currents for motors (ACs/Pumps) may vary.", 
                 fuelTitle: "Est. Fuel Consumption", fuelUnit: "Liters/Hour", fuelNote: "@ 75% Prime Load",
                 btnRequestQuote: "Request Quote for this Size",
                 workflow: "Workflow", howWeWork: "How We Work", step1: "1. Assessment", step1D: "Technical site survey & load analysis", step2: "2. Proposal", step2D: "Detailed quotation & Contract", step3: "3. Delivery", step3D: "Logistics, installation & setup", step4: "4. Support", step4D: "Commissioning, load test & 24/7 care",
@@ -611,7 +666,8 @@
                 yourName: "Your Name", phoneNumber: "Phone Number", howHelp: "How can we help you? (e.g., Requesting a 500 KVA Perkins quote)", btnSend: "Send Message",
                 footerSub: "Delivering high-quality diesel generator solutions with fast service, trusted performance, and professional support.",
                 messageBoxTitle: "Notification", messageBoxClose: "Close",
-                formSubmitted: "Message sent! We will contact you shortly."
+                formSubmitted: "Message sent! We will contact you shortly.",
+                btnRequestCatalog: "Request Full Catalog"
             },
             ar: {
                 pageTitle: "بريميوم باور | طاقة يمكنك الاعتماد عليها",
@@ -630,9 +686,15 @@
                 pPanelTitle: "لوحات الجهد المنخفض", pPanelDesc: "تجميع لوحات ATS (مفتاح التحويل التلقائي) ولوحات التزامن والتوزيع باستخدام مكونات ABB/Schneider.",
                 pTankTitle: "خزانات وقود خارجية", pTankDesc: "حلول تخزين الوقود المصنعة خصيصاً لتمديد وقت تشغيل المولد لأيام أو أسابيع دون إعادة التزود بالوقود.",
                 pPartsTitle: "قطع غيار أصلية", pPartsDesc: "مستهلكات وقطع غيار أصلية 100% (OEM). فلاتر، سيور، ودينامو ومنظمات جهد لجميع ماركات المحركات الرئيسية.",
-                sInstallTitle: "خدمات التركيب", sInstallDesc: "تسليم مفتاح كامل يشمل الأعمال المدنية، والكابلات، ومجاري العادم، وأنظمة عزل الصوت.",
-                sMaintTitle: "الصيانة والعقود السنوية", sMaintDesc: "نقدم اتفاقيات مستوى خدمة مرنة (SLAs). يوفر مهندسونا المعتمدون استجابة للطوارئ على مدار الساعة، وصيانة وقائية دورية، واختبار الحمل لضمان عدم انقطاع الطاقة لديك.",
-                btnRequestCatalog: "طلب الكتالوج الكامل",
+                btnOrderParts: "طلب قطع غيار",
+                pSoundFeat1: "فولاذ مجلفن",
+                pSoundFeat2: "عزل الصوف الصخري",
+                pSoundFeat3: "ألوان مخصصة",
+                srvTitle: "الخدمات الميدانية",
+                srvSubtitle: "التركيب والصيانة",
+                srvFeat1: "تركيب تسليم مفتاح",
+                srvFeat2: "عقود صيانة سنوية",
+                srvFeat3: "استجابة للطوارئ 24/7",
 
                 tool: "أداة تفاعلية", calcTitle: "حاسبة قدرة المولد", calcSub: "هل أنت غير متأكد من السعة التي تحتاجها؟ أدخل أجهزتك أدناه للحصول على تقدير لحجم المولد الموصى به.",
                 equipment: "معداتك", ac1: "تكييف (1.5 حصان)", ac1W: "تقريبًا 1200 واط", ac3: "تكييف (3.0 حصان)", ac3W: "تقريبًا 2400 واط", pump: "مضخة مياه (1 حصان)", pumpW: "تقريبًا 750 واط", pc: "كمبيوتر مكتبي / محمول", pcW: "تقريبًا 200 واط", light: "إضاءة قياسية (غرفة)", lightW: "تقريبًا 100 واط",
@@ -651,7 +713,8 @@
                 yourName: "اسمك", phoneNumber: "رقم الهاتف", howHelp: "كيف يمكننا مساعدتك؟ (مثال: طلب عرض سعر لمولد بيركنز 500 ك.ف.أ)", btnSend: "أرسل الرسالة",
                 footerSub: "تقديم حلول مولدات الديزل عالية الجودة مع خدمة سريعة وأداء موثوق وخبرة هندسية.",
                 messageBoxTitle: "إشعار", messageBoxClose: "إغلاق",
-                formSubmitted: "تم إرسال رسالتك! سنتواصل معك قريباً."
+                formSubmitted: "تم إرسال رسالتك! سنتواصل معك قريباً.",
+                btnRequestCatalog: "طلب الكتالوج الكامل"
             }
         };
 
@@ -692,6 +755,7 @@
         }
 
         function calculateKVA() {
+            // Load inrush multiplier for motors is handled by the 25% safety margin in the final KVA calculation.
             const WATTS_AC1 = 1200;
             const WATTS_AC3 = 2400;
             const WATTS_PUMP = 750;
@@ -706,13 +770,16 @@
 
             let totalWatts = (qtyAC1 * WATTS_AC1) + (qtyAC3 * WATTS_AC3) + (qtyPump * WATTS_PUMP) + (qtyPC * WATTS_PC) + (qtyLight * WATTS_LIGHT);
             let totalKW = totalWatts / 1000;
-            let requiredKVA = totalKW / 0.8;
-            let finalKVA = requiredKVA * 1.25;
+            // Assumed Power Factor (PF) of 0.8 is standard for estimating load. KVA = KW / PF
+            let requiredKVA = totalKW / 0.8; 
+            // Add 25% safety margin for starting current (inrush) and future expansion.
+            let finalKVA = requiredKVA * 1.25; 
             let displayKVA = Math.ceil(finalKVA);
             
             if (displayKVA < 0) displayKVA = 0;
             document.getElementById('result-kva').innerText = displayKVA;
 
+            // Simple fuel consumption approximation: ~0.21 L/hr per KVA @ 75% load
             let estimatedFuel = Math.ceil(displayKVA * 0.21);
             if (displayKVA === 0) estimatedFuel = 0;
             document.getElementById('result-fuel').innerText = estimatedFuel;
@@ -774,6 +841,8 @@
                 return;
             }
 
+            // Uncomment this section when you have entered your EmailJS keys
+            /*
             emailjs.sendForm(serviceID, templateID, '#contact-form')
                 .then(() => {
                     btn.innerText = originalText;
@@ -785,6 +854,7 @@
                     btn.disabled = false;
                     showMessageBox('Error: ' + JSON.stringify(err));
                 });
+            */
         }
 
         window.addEventListener('scroll', () => {
