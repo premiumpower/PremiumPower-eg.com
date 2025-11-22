@@ -138,23 +138,23 @@
     <nav id="navbar" class="fixed w-full z-40 transition-all duration-300 py-6">
         <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
             <a href="#home" class="flex items-center gap-2 group">
-                <div id="logo-bg" class="w-10 h-10 rounded-full flex items-center justify-center bg-white shadow-lg transition-colors">
-                    <span id="logo-text" class="font-bold text-xl italic pr-1 text-paypal-dark">P</span>
+                <div class="relative w-10 h-10 flex items-center justify-center">
+                    <span class="absolute left-0 top-0 font-bold text-4xl italic text-paypal-dark/90 z-10 transform translate-x-1 translate-y-1" style="font-family: sans-serif;">P</span>
+                    <span class="absolute left-0 top-0 font-bold text-4xl italic text-paypal-light/90 z-20 transform" style="font-family: sans-serif; mix-blend-mode: multiply;">P</span>
                 </div>
-                <div class="flex flex-col leading-none">
+                <div class="flex flex-col leading-none ml-2">
                     <span id="brand-1" class="font-bold text-lg tracking-tight text-white">Premium</span>
                     <span id="brand-2" class="font-bold text-lg tracking-tight text-blue-200">Power</span>
                 </div>
             </a>
+
             <div class="hidden md:flex items-center gap-8">
-                <!-- Language Toggle FIRST (LEFT side) -->
                 <div class="flex items-center gap-2 mr-4">
                     <button onclick="switchLanguage('en')" class="lang-btn text-white/80 hover:text-white font-bold transition-colors text-sm" data-lang="en">EN</button>
                     <span class="text-white/30">|</span>
                     <button onclick="switchLanguage('ar')" class="lang-btn text-white/80 hover:text-white font-bold transition-colors text-sm" data-lang="ar">ع</button>
                 </div>
 
-                <!-- Navigation Links -->
                 <a href="#about" class="nav-link text-white/90 hover:text-white font-medium text-sm transition-colors" data-i18n="navAbout">About</a>
                 <a href="#clients" class="nav-link text-white/90 hover:text-white font-medium text-sm transition-colors" data-i18n="navClients">Clients</a>
                 <a href="#services" class="nav-link text-white/90 hover:text-white font-medium text-sm transition-colors" data-i18n="navProducts">Products</a>
@@ -1264,5 +1264,59 @@
             calculateKVA(); 
         });
     </script>
+<script>
+        // Scroll Effect & Active Link Highlighting
+        const navbar = document.getElementById('navbar');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const langBtns = document.querySelectorAll('.lang-btn');
+        const brand1 = document.getElementById('brand-1');
+        const brand2 = document.getElementById('brand-2');
+        const navBtn = document.getElementById('nav-btn');
+        const menuIcon = document.querySelector('[data-lucide="menu"]');
+
+        function updateNavColors(isScrolled) {
+            if (isScrolled) {
+                navbar.classList.add('bg-white/90', 'backdrop-blur-md', 'shadow-sm', 'py-3');
+                navbar.classList.remove('py-6');
+                navLinks.forEach(link => {
+                    link.classList.remove('text-white/90', 'hover:text-white');
+                    link.classList.add('text-gray-600', 'hover:text-paypal-light');
+                });
+                langBtns.forEach(btn => {
+                     btn.classList.remove('text-white/80', 'hover:text-white');
+                     btn.classList.add('text-gray-600', 'hover:text-paypal-dark');
+                });
+                brand1.classList.remove('text-white');
+                brand1.classList.add('text-paypal-dark');
+                brand2.classList.remove('text-blue-200');
+                brand2.classList.add('text-paypal-light');
+                navBtn.classList.remove('border-white/30', 'text-white', 'hover:bg-white/10');
+                navBtn.classList.add('bg-paypal-light', 'text-white', 'hover:bg-paypal-dark', 'border-transparent');
+                if(menuIcon) menuIcon.classList.replace('text-white', 'text-paypal-dark');
+            } else {
+                navbar.classList.remove('bg-white/90', 'backdrop-blur-md', 'shadow-sm', 'py-3');
+                navbar.classList.add('py-6');
+                navLinks.forEach(link => {
+                    link.classList.add('text-white/90', 'hover:text-white');
+                    link.classList.remove('text-gray-600', 'hover:text-paypal-light');
+                });
+                langBtns.forEach(btn => {
+                     btn.classList.add('text-white/80', 'hover:text-white');
+                     btn.classList.remove('text-gray-600', 'hover:text-paypal-dark');
+                });
+                brand1.classList.add('text-white');
+                brand1.classList.remove('text-paypal-dark');
+                brand2.classList.add('text-blue-200');
+                brand2.classList.remove('text-paypal-light');
+                navBtn.classList.add('border-white/30', 'text-white', 'hover:bg-white/10');
+                navBtn.classList.remove('bg-paypal-light', 'hover:bg-paypal-dark', 'border-transparent');
+                if(menuIcon) menuIcon.classList.replace('text-paypal-dark', 'text-white');
+            }
+        }
+
+        window.addEventListener('scroll', () => {
+            updateNavColors(window.scrollY > 50);
+        });
+</script>
 </body>
 </html>
