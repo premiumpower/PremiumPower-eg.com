@@ -62,7 +62,7 @@
             opacity: 0;
             transform: translateY(30px);
             transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
-            will-change: opacity, transform; /* GPU Optimization */
+            will-change: opacity, transform;
         }
         
         .reveal.active {
@@ -91,12 +91,11 @@
             transform: translateX(0);
         }
 
-        /* Staggered Delays (up to 8 items) */
+        /* Staggered Delays */
         .delay-100 { transition-delay: 100ms; }
         .delay-200 { transition-delay: 200ms; }
         .delay-300 { transition-delay: 300ms; }
         .delay-400 { transition-delay: 400ms; }
-        .delay-500 { transition-delay: 500ms; }
         
         /* Font Support */
         .font-arabic { font-family: Tahoma, 'Noto Sans Arabic', sans-serif; }
@@ -109,13 +108,6 @@
         }
         .spec-open { max-height: 300px; }
 
-        /* Comparison Table */
-        .premium-column {
-            background-color: #e0f2fe;
-            color: #003087;
-            font-weight: 700;
-        }
-        
         /* Canvas Hero Background */
         #hero-canvas {
             position: absolute;
@@ -251,7 +243,7 @@
         </div>
     </section>
 
-    <!-- Client Logos (Staggered Animation) -->
+    <!-- Client Logos (Staggered Animation - RESTORED 8 CLIENTS) -->
     <section id="clients" class="py-16 bg-gradient-to-b from-gray-50 to-white border-y border-gray-100">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-12 reveal">
@@ -260,7 +252,7 @@
             </div>
             
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
-                <!-- Items with staggered delays -->
+                <!-- Row 1 -->
                 <div class="reveal delay-100 group flex items-center justify-center p-6 bg-white rounded-xl border border-gray-200 hover:border-paypal-light transition-all duration-300 hover:shadow-lg cursor-default">
                     <div class="text-center opacity-60 group-hover:opacity-100 transition-opacity">
                         <div class="text-3xl mb-1 grayscale group-hover:grayscale-0 transition-all">🏥</div>
@@ -283,6 +275,31 @@
                     <div class="text-center opacity-60 group-hover:opacity-100 transition-opacity">
                         <div class="text-3xl mb-1 grayscale group-hover:grayscale-0 transition-all">🏗️</div>
                         <p class="text-xs font-semibold text-gray-600" data-i18n="client4">6th October Construction</p>
+                    </div>
+                </div>
+                <!-- Row 2 -->
+                <div class="reveal delay-100 group flex items-center justify-center p-6 bg-white rounded-xl border border-gray-200 hover:border-paypal-light transition-all duration-300 hover:shadow-lg cursor-default">
+                    <div class="text-center opacity-60 group-hover:opacity-100 transition-opacity">
+                        <div class="text-3xl mb-1 grayscale group-hover:grayscale-0 transition-all">🏢</div>
+                        <p class="text-xs font-semibold text-gray-600" data-i18n="client5">Menofia Business Park</p>
+                    </div>
+                </div>
+                <div class="reveal delay-200 group flex items-center justify-center p-6 bg-white rounded-xl border border-gray-200 hover:border-paypal-light transition-all duration-300 hover:shadow-lg cursor-default">
+                    <div class="text-center opacity-60 group-hover:opacity-100 transition-opacity">
+                        <div class="text-3xl mb-1 grayscale group-hover:grayscale-0 transition-all">🏪</div>
+                        <p class="text-xs font-semibold text-gray-600" data-i18n="client6">Al-Ahram Shopping Center</p>
+                    </div>
+                </div>
+                <div class="reveal delay-300 group flex items-center justify-center p-6 bg-white rounded-xl border border-gray-200 hover:border-paypal-light transition-all duration-300 hover:shadow-lg cursor-default">
+                    <div class="text-center opacity-60 group-hover:opacity-100 transition-opacity">
+                        <div class="text-3xl mb-1 grayscale group-hover:grayscale-0 transition-all">🏫</div>
+                        <p class="text-xs font-semibold text-gray-600" data-i18n="client7">International School Cairo</p>
+                    </div>
+                </div>
+                <div class="reveal delay-400 group flex items-center justify-center p-6 bg-white rounded-xl border border-gray-200 hover:border-paypal-light transition-all duration-300 hover:shadow-lg cursor-default">
+                    <div class="text-center opacity-60 group-hover:opacity-100 transition-opacity">
+                        <div class="text-3xl mb-1 grayscale group-hover:grayscale-0 transition-all">🏛️</div>
+                        <p class="text-xs font-semibold text-gray-600" data-i18n="client8">Ministry of Housing</p>
                     </div>
                 </div>
             </div>
@@ -309,7 +326,7 @@
         </div>
     </section>
 
-    <!-- Products & Services (Scroll Reveal) -->
+    <!-- Products & Services (Scroll Reveal - RESTORED 8 CARDS) -->
     <section id="services" class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16 reveal">
@@ -319,7 +336,7 @@
             </div>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Standard Service Cards with Hover Lift -->
+                <!-- Row 1 -->
                 <div class="reveal delay-100 group bg-gray-50 border border-gray-200 rounded-2xl p-6 hover:border-paypal-light hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
                     <div class="w-14 h-14 bg-paypal-light/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-paypal-light group-hover:scale-110 transition-all duration-300">
                         <i data-lucide="zap" class="w-7 h-7 text-paypal-light group-hover:text-white"></i>
@@ -346,10 +363,42 @@
 
                 <div class="reveal delay-400 group bg-gray-50 border border-gray-200 rounded-2xl p-6 hover:border-paypal-light hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
                     <div class="w-14 h-14 bg-paypal-light/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-paypal-light group-hover:scale-110 transition-all duration-300">
+                        <i data-lucide="droplets" class="w-7 h-7 text-paypal-light group-hover:text-white"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-paypal-dark mb-2" data-i18n="service4Title">External Fuel Tanks</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed" data-i18n="service4Desc">Double-wall fuel storage tanks from 500L to 10,000L with leak detection systems.</p>
+                </div>
+
+                <!-- Row 2 -->
+                <div class="reveal delay-100 group bg-gray-50 border border-gray-200 rounded-2xl p-6 hover:border-paypal-light hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+                    <div class="w-14 h-14 bg-paypal-light/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-paypal-light group-hover:scale-110 transition-all duration-300">
                         <i data-lucide="package" class="w-7 h-7 text-paypal-light group-hover:text-white"></i>
                     </div>
                     <h3 class="text-lg font-bold text-paypal-dark mb-2" data-i18n="service5Title">Spare Parts</h3>
                     <p class="text-sm text-gray-600 leading-relaxed" data-i18n="service5Desc">100% genuine OEM parts for Perkins, Volvo, and Doosan available from local stock.</p>
+                </div>
+
+                 <div class="reveal delay-200 group bg-gray-50 border border-gray-200 rounded-2xl p-6 hover:border-paypal-light hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+                    <div class="w-14 h-14 bg-paypal-light/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-paypal-light group-hover:scale-110 transition-all duration-300">
+                        <i data-lucide="wrench" class="w-7 h-7 text-paypal-light group-hover:text-white"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-paypal-dark mb-2" data-i18n="service6Title">Installation Services</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed" data-i18n="service6Desc">Complete turnkey installation including foundation, fuel lines, and commissioning.</p>
+                </div>
+
+                <div class="reveal delay-300 group bg-gray-50 border border-gray-200 rounded-2xl p-6 hover:border-paypal-light hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+                    <div class="w-14 h-14 bg-paypal-light/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-paypal-light group-hover:scale-110 transition-all duration-300">
+                        <i data-lucide="settings" class="w-7 h-7 text-paypal-light group-hover:text-white"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-paypal-dark mb-2" data-i18n="service7Title">Maintenance Services</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed" data-i18n="service7Desc">Preventative and corrective maintenance contracts with 24/7 emergency response.</p>
+                </div>
+
+                <div class="reveal delay-400 group bg-gradient-to-br from-paypal-dark to-paypal-light text-white rounded-2xl p-6 flex flex-col justify-center items-center text-center hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 cursor-pointer" onclick="document.getElementById('contact').scrollIntoView()">
+                    <i data-lucide="headset" class="w-12 h-12 mb-3 opacity-90"></i>
+                    <h3 class="text-lg font-bold mb-2" data-i18n="servicesCTA">Need a Custom Solution?</h3>
+                    <p class="text-sm text-blue-100 mb-4" data-i18n="servicesCTADesc">Contact our engineering team for tailored packages.</p>
+                    <button class="px-4 py-2 bg-white/20 rounded-full text-sm font-bold hover:bg-white/30 transition-colors" data-i18n="servicesCTABtn">Get Started</button>
                 </div>
             </div>
         </div>
@@ -610,10 +659,13 @@
                 trustedBy: "Trusted by Top Contractors in Egypt",
                 clientsHeader: "Our Partners", clientsTitle: "Trusted by Leading Organizations",
                 client1: "Cairo Medical Center", client2: "Delta Steel", client3: "Grand Nile Hotel", client4: "6th Oct Construction",
+                client5: "Menofia Business Park", client6: "Al-Ahram Shopping Center", client7: "Intl School Cairo", client8: "Ministry of Housing",
                 stat1: "Projects Completed", stat2: "Years Experience", stat3: "Active Contracts", stat4: "Uptime Guarantee",
                 servicesHeader: "Offerings", servicesTitle: "Products & Services", servicesSub: "Complete power solutions.",
                 service1Title: "Generators", service1Desc: "Open & Silent", service2Title: "Canopies", service2Desc: "Soundproof",
-                service3Title: "Panels", service3Desc: "ATS & Sync", service5Title: "Spare Parts", service5Desc: "Genuine OEM",
+                service3Title: "Panels", service3Desc: "ATS & Sync", service4Title: "Fuel Tanks", service4Desc: "Double-wall",
+                service5Title: "Spare Parts", service5Desc: "Genuine OEM", service6Title: "Installation", service6Desc: "Turnkey",
+                service7Title: "Maintenance", service7Desc: "Preventative", servicesCTA: "Custom Solution", servicesCTADesc: "Tailored packages.", servicesCTABtn: "Get Started",
                 catalog: "Catalog", engineBrands: "Engine Brands",
                 perkinsTitle: "Perkins", perkinsLoc: "UK", volvoTitle: "Volvo Penta", volvoLoc: "Sweden", doosanTitle: "Doosan", doosanLoc: "Korea",
                 btnTechSpecs: "Technical Specs", btnDownload: "Download Spec Sheet",
@@ -635,10 +687,13 @@
                 trustedBy: "موثوق به من كبرى المقاولين في مصر",
                 clientsHeader: "شركاؤنا", clientsTitle: "موثوق بها من المؤسسات الرائدة",
                 client1: "مركز القاهرة الطبي", client2: "صناعات الدلتا", client3: "فندق جراند النيل", client4: "إنشاءات 6 أكتوبر",
+                client5: "حديقة المنوفية للأعمال", client6: "مركز الأهرام التجاري", client7: "المدرسة الدولية بالقاهرة", client8: "وزارة الإسكان",
                 stat1: "مشروع مكتمل", stat2: "سنة خبرة", stat3: "عقد نشط", stat4: "ضمان تشغيل",
                 servicesHeader: "عروضنا", servicesTitle: "المنتجات والخدمات", servicesSub: "حلول طاقة متكاملة.",
                 service1Title: "مولدات", service1Desc: "مفتوحة وكاتمة", service2Title: "كبائن", service2Desc: "عازلة للصوت",
-                service3Title: "لوحات", service3Desc: "ATS وتزامن", service5Title: "قطع غيار", service5Desc: "أصلية",
+                service3Title: "لوحات", service3Desc: "ATS وتزامن", service4Title: "خزانات وقود", service4Desc: "جدار مزدوج",
+                service5Title: "قطع غيار", service5Desc: "أصلية", service6Title: "تركيب", service6Desc: "تسليم مفتاح",
+                service7Title: "صيانة", service7Desc: "وقائية", servicesCTA: "حل مخصص", servicesCTADesc: "باقات مفصلة", servicesCTABtn: "ابدأ الآن",
                 catalog: "الكتالوج", engineBrands: "الماركات",
                 perkinsTitle: "بيركنز", perkinsLoc: "المملكة المتحدة", volvoTitle: "فولفو", volvoLoc: "السويد", doosanTitle: "دوسان", doosanLoc: "كوريا",
                 btnTechSpecs: "مواصفات فنية", btnDownload: "تنزيل المواصفات",
@@ -891,3 +946,4 @@
     </script>
 </body>
 </html>
+
