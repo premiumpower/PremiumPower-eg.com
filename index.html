@@ -5,23 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="pageTitle">Premium Power LLC | Power You Can Trust</title>
     <meta name="description" content="Premium diesel generators, installation, and maintenance in Egypt. Authorized Perkins, Volvo, and Doosan suppliers.">
-    
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
-    
-    <!-- Tailwind Configuration -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
                         paypal: {
-                            dark: '#003087', /* Deep Navy */
-                            light: '#0070BA', /* Bright Blue */
-                            accent: '#009cde', /* Sky Blue */
+                            dark: '#003087', /* Deep Navy/Primary */
+                            light: '#0070BA', /* Bright Blue/Secondary */
+                            accent: '#009cde', /* Lighter Accent */
                         },
                         fuel: {
                             main: '#f59e0b', /* Amber */
@@ -29,102 +23,87 @@
                     },
                     animation: {
                         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'float': 'float 6s ease-in-out infinite',
+                        'fade-in-up': 'fadeInUp 0.5s ease-out forwards',
                     },
                     keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-20px)' },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
                         }
                     }
                 }
             }
         }
     </script>
-
     <style>
-        /* --- Performance & Animation Styles --- */
-        
-        /* Glassmorphism */
+        /* Glassmorphism Utilities */
         .glass-dark {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
         .glass-card {
             background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(12px);
+            backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.5);
         }
+        /* Custom Font for Arabic to improve RTL display */
+        .font-arabic {
+            font-family: Tahoma, 'Noto Sans Arabic', sans-serif;
+        }
 
-        /* Scroll Reveal Base Classes */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
-            will-change: opacity, transform;
+        /* Comparison Table Styles */
+        .comparison-cell {
+            padding: 1.25rem 1rem;
+            border-bottom: 1px solid #e5e7eb;
+            transition: background-color 0.3s ease;
+        }
+        .comparison-header {
+            font-weight: 800;
+            color: #003087;
+            background-color: #f3f4f6;
+            text-transform: uppercase;
+        }
+        .premium-column {
+            background-color: #e0f2fe; /* Light Blue BG */
+            color: #003087;
+            font-weight: 700;
+        }
+        .premium-column .lucide {
+            color: #10b981; /* Green checkmark */
         }
         
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
+        /* Chat Menu Animation */
+        #chat-menu {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-origin: bottom right;
+        }
+        .chat-open {
+            opacity: 1 !important;
+            transform: scale(1) translateY(0) !important;
+            pointer-events: auto !important;
         }
 
-        /* Directional Reveals */
-        .reveal-left {
-            opacity: 0;
-            transform: translateX(-50px);
-            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
-        }
-        .reveal-left.active {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .reveal-right {
-            opacity: 0;
-            transform: translateX(50px);
-            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
-        }
-        .reveal-right.active {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        /* Staggered Delays */
-        .delay-100 { transition-delay: 100ms; }
-        .delay-200 { transition-delay: 200ms; }
-        .delay-300 { transition-delay: 300ms; }
-        .delay-400 { transition-delay: 400ms; }
-        
-        /* Font Support */
-        .font-arabic { font-family: Tahoma, 'Noto Sans Arabic', sans-serif; }
-
-        /* Spec Accordion */
+        /* Tech Spec Accordion Transition */
         .spec-content {
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.4s ease-in-out;
         }
-        .spec-open { max-height: 300px; }
-
-        /* Canvas Hero Background */
-        #hero-canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            pointer-events: none;
+        .spec-open {
+            max-height: 300px; /* Arbitrary large height */
         }
     </style>
 </head>
 <body class="font-sans text-gray-800 bg-gray-50 selection:bg-paypal-light selection:text-white" dir="ltr">
 
-    <!-- FAB (Floating Action Button) -->
+    <!-- Feature 6: Improved Floating Action Button (Dual Mode) -->
     <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-4">
-        <div id="chat-menu" class="opacity-0 transform scale-90 translate-y-4 pointer-events-none flex flex-col gap-3 mb-2 transition-all duration-300 origin-bottom-right">
+        
+        <!-- The Menu (Hidden by default) -->
+        <div id="chat-menu" class="opacity-0 transform scale-90 translate-y-4 pointer-events-none flex flex-col gap-3 mb-2">
+            <!-- Option 1: Sales -->
             <a href="https://wa.me/201062070276" target="_blank" class="flex items-center gap-3 bg-white text-gray-800 p-3 pr-6 pl-4 rounded-full shadow-xl hover:bg-green-50 transition-colors border border-green-100 group">
                 <div class="bg-green-500 text-white p-2 rounded-full shadow-sm group-hover:scale-110 transition-transform">
                     <i data-lucide="message-circle" class="w-5 h-5"></i>
@@ -134,6 +113,8 @@
                     <span class="text-[10px] text-gray-500" data-i18n="chatWhatsApp">WhatsApp</span>
                 </div>
             </a>
+            
+            <!-- Option 2: Emergency -->
             <a href="tel:+201062070276" class="flex items-center gap-3 bg-white text-gray-800 p-3 pr-6 pl-4 rounded-full shadow-xl hover:bg-red-50 transition-colors border border-red-100 group">
                 <div class="bg-red-600 text-white p-2 rounded-full shadow-sm group-hover:scale-110 transition-transform animate-pulse">
                     <i data-lucide="phone-call" class="w-5 h-5"></i>
@@ -144,7 +125,9 @@
                 </div>
             </a>
         </div>
-        <button onclick="document.getElementById('chat-menu').classList.toggle('opacity-0'); document.getElementById('chat-menu').classList.toggle('pointer-events-none'); document.getElementById('chat-menu').classList.toggle('translate-y-4');" class="bg-paypal-dark text-white p-4 rounded-full shadow-xl hover:bg-paypal-light hover:scale-110 transition-all duration-300 flex items-center justify-center w-14 h-14 group ring-4 ring-blue-500/20">
+
+        <!-- The Trigger Button -->
+        <button onclick="toggleChatMenu()" class="bg-paypal-dark text-white p-4 rounded-full shadow-xl hover:bg-paypal-light hover:scale-110 transition-all duration-300 flex items-center justify-center w-14 h-14 group ring-4 ring-blue-500/20">
             <i data-lucide="headset" class="w-7 h-7 fill-current transform group-hover:rotate-12 transition-transform"></i>
         </button>
     </div>
@@ -158,8 +141,8 @@
                     <span class="absolute left-0 top-0 font-bold text-4xl italic text-paypal-light/90 z-20 transform" style="font-family: sans-serif; mix-blend-mode: multiply;">P</span>
                 </div>
                 <div class="flex flex-col leading-none ml-2">
-                    <span id="brand-1" class="font-bold text-lg tracking-tight text-white transition-colors duration-300">Premium</span>
-                    <span id="brand-2" class="font-bold text-lg tracking-tight text-blue-200 transition-colors duration-300">Power</span>
+                    <span id="brand-1" class="font-bold text-lg tracking-tight text-white">Premium</span>
+                    <span id="brand-2" class="font-bold text-lg tracking-tight text-blue-200">Power</span>
                 </div>
             </a>
 
@@ -169,32 +152,37 @@
                     <span class="text-white/30">|</span>
                     <button onclick="switchLanguage('ar')" class="lang-btn text-white/80 hover:text-white font-bold transition-colors text-sm" data-lang="ar">ع</button>
                 </div>
+
                 <a href="#about" class="nav-link text-white/90 hover:text-white font-medium text-sm transition-colors" data-i18n="navAbout">About</a>
+                <a href="#clients" class="nav-link text-white/90 hover:text-white font-medium text-sm transition-colors" data-i18n="navClients">Clients</a>
                 <a href="#services" class="nav-link text-white/90 hover:text-white font-medium text-sm transition-colors" data-i18n="navProducts">Products</a>
                 <a href="#calculator" class="nav-link text-white/90 hover:text-white font-medium text-sm transition-colors" data-i18n="navCalc">Calculator</a>
                 <a href="#projects-gallery" class="nav-link text-white/90 hover:text-white font-medium text-sm transition-colors" data-i18n="navProjects">Projects</a>
-                <button onclick="document.getElementById('contact').scrollIntoView()" id="nav-btn" class="px-6 py-2 rounded-full border-2 border-white/30 text-white font-bold hover:bg-white/10 text-xs transition-all shadow-md" data-i18n="btnQuote">Get Quote</button>
+                <a href="#contact" class="nav-link text-white/90 hover:text-white font-medium text-sm transition-colors" data-i18n="navContact">Contact</a>
+
+                <button onclick="document.getElementById('contact').scrollIntoView()" id="nav-btn" class="px-6 py-2 rounded-full border-2 border-white/30 text-white font-bold hover:bg-white/10 text-xs transition-all shadow-md" data-i18n="btnQuote"> Get Quote </button>
             </div>
-            <button class="md:hidden text-white" id="mobile-menu-btn" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')"><i data-lucide="menu"></i></button>
+            <button class="md:hidden text-white" onclick="toggleMenu()"><i data-lucide="menu"></i></button>
         </div>
         <div id="mobile-menu" class="hidden fixed inset-0 bg-white z-40 pt-24 px-6 md:hidden">
-            <a href="#home" class="block text-xl font-bold text-gray-800 border-b border-gray-100 pb-4 mb-4" onclick="document.getElementById('mobile-menu').classList.add('hidden')" data-i18n="navHome">Home</a>
-            <a href="#about" class="block text-xl font-bold text-gray-800 border-b border-gray-100 pb-4 mb-4" onclick="document.getElementById('mobile-menu').classList.add('hidden')" data-i18n="navAbout">About</a>
-            <a href="#services" class="block text-xl font-bold text-gray-800 border-b border-gray-100 pb-4 mb-4" onclick="document.getElementById('mobile-menu').classList.add('hidden')" data-i18n="navProducts">Products</a>
-            <a href="#calculator" class="block text-xl font-bold text-gray-800 border-b border-gray-100 pb-4 mb-4" onclick="document.getElementById('mobile-menu').classList.add('hidden')" data-i18n="navCalc">Calculator</a>
-            <a href="#contact" class="block text-xl font-bold text-gray-800 border-b border-gray-100 pb-4 mb-4" onclick="document.getElementById('mobile-menu').classList.add('hidden')" data-i18n="navContact">Contact</a>
+            <a href="#home" class="block text-xl font-bold text-gray-800 border-b border-gray-100 pb-4 mb-4" onclick="toggleMenu()" data-i18n="navHome">Home</a>
+            <a href="#about" class="block text-xl font-bold text-gray-800 border-b border-gray-100 pb-4 mb-4" onclick="toggleMenu()" data-i18n="navAbout">About</a>
+            <a href="#clients" class="block text-xl font-bold text-gray-800 border-b border-gray-100 pb-4 mb-4" onclick="toggleMenu()" data-i18n="navClients">Clients</a>
+            <a href="#services" class="block text-xl font-bold text-gray-800 border-b border-gray-100 pb-4 mb-4" onclick="toggleMenu()" data-i18n="navProducts">Products</a>
+            <a href="#calculator" class="block text-xl font-bold text-gray-800 border-b border-gray-100 pb-4 mb-4" onclick="toggleMenu()" data-i18n="navCalc">Calculator</a>
+            <a href="#projects-gallery" class="block text-xl font-bold text-gray-800 border-b border-gray-100 pb-4 mb-4" onclick="toggleMenu()" data-i18n="navProjects">Projects</a>
+            <a href="#contact" class="block text-xl font-bold text-gray-800 border-b border-gray-100 pb-4 mb-4" onclick="toggleMenu()" data-i18n="navContact">Contact</a>
         </div>
     </nav>
 
-    <!-- Hero Section with Canvas Animation -->
+    <!-- Hero Section -->
     <section id="home" class="relative min-h-screen flex items-center pt-20 overflow-hidden bg-paypal-dark">
-        <!-- Canvas Background -->
-        <canvas id="hero-canvas"></canvas>
-        <div class="absolute inset-0 bg-gradient-to-br from-[#002870]/80 via-paypal-dark/60 to-paypal-light/20 pointer-events-none"></div>
+        <div class="absolute inset-0 bg-gradient-to-br from-[#002870] via-paypal-dark to-paypal-light"></div>
+        <div class="absolute -top-40 -right-40 w-[800px] h-[800px] bg-paypal-light rounded-full mix-blend-multiply filter blur-[128px] opacity-40 animate-pulse-slow"></div>
         
         <div class="max-w-7xl mx-auto px-6 relative z-10 w-full grid md:grid-cols-2 gap-16 items-center text-white">
-            <div class="space-y-8 py-16 reveal-left">
-                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-dark text-blue-100 text-sm font-medium shadow-inner border border-white/20">
+            <div class="space-y-8 py-16">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-dark text-blue-100 text-sm font-medium animate-fade-in-up shadow-inner">
                     <i data-lucide="shield" class="w-4 h-4"></i> <span data-i18n="trustedBy">Trusted by Top Contractors in Egypt</span>
                 </div>
                 <h1 class="text-5xl md:text-7xl font-extrabold leading-tight" data-i18n="heroTitle">
@@ -205,7 +193,7 @@
                     Engineering-grade diesel generator solutions from 8 KVA to 3000 KVA. Professional installation and 24/7 support.
                 </p>
                 <div class="flex flex-wrap gap-4">
-                    <button onclick="document.getElementById('calculator').scrollIntoView()" class="px-8 py-4 rounded-full font-bold bg-white text-paypal-dark hover:bg-blue-50 transition-all shadow-xl shadow-blue-900/50 hover:shadow-2xl hover:-translate-y-1" data-i18n="btnFindGen">
+                    <button onclick="document.getElementById('calculator').scrollIntoView()" class="px-8 py-4 rounded-full font-bold bg-white text-paypal-dark hover:bg-blue-50 transition-all shadow-xl shadow-blue-900/50 hover:shadow-2xl" data-i18n="btnFindGen">
                         Find Your Generator
                     </button>
                     <button onclick="document.getElementById('contact').scrollIntoView()" class="px-8 py-4 rounded-full font-bold border border-white/30 hover:bg-white/20 flex items-center gap-2 transition-all shadow-md" data-i18n="btnContactSales">
@@ -214,9 +202,9 @@
                 </div>
             </div>
 
-            <!-- Animated Hero Graphic -->
-            <div class="relative hidden md:block reveal-right animate-float">
-                <div class="glass-dark p-8 rounded-3xl shadow-2xl border border-white/10 hover:shadow-blue-500/30 transition-all duration-500">
+            <!-- Hero Graphic -->
+            <div class="relative hidden md:block">
+                <div class="glass-dark p-8 rounded-3xl shadow-2xl transform rotate-3 hover:rotate-0 transition-all duration-500 border border-white/10 hover:shadow-blue-500/30">
                     <div class="flex justify-between items-start mb-8">
                         <div class="p-3 bg-blue-500/20 rounded-xl"><i data-lucide="zap" class="w-8 h-8 text-blue-200"></i></div>
                         <div class="text-right">
@@ -225,8 +213,8 @@
                         </div>
                     </div>
                     <div class="space-y-4 mb-8">
-                        <div class="h-2 bg-white/10 rounded-full overflow-hidden"><div class="h-full w-3/4 bg-gradient-to-r from-blue-400 to-blue-200 animate-pulse"></div></div>
-                        <div class="h-2 bg-white/10 rounded-full overflow-hidden w-1/2"><div class="h-full w-full bg-gradient-to-r from-blue-400 to-blue-200 animate-pulse"></div></div>
+                        <div class="h-2 bg-white/10 rounded-full overflow-hidden"><div class="h-full w-3/4 bg-gradient-to-r from-blue-400 to-blue-200"></div></div>
+                        <div class="h-2 bg-white/10 rounded-full overflow-hidden w-1/2"><div class="h-full w-full bg-gradient-to-r from-blue-400 to-blue-200"></div></div>
                     </div>
                     <div class="grid grid-cols-2 gap-4">
                         <div class="bg-[#002870] p-4 rounded-xl border border-white/5 shadow-inner">
@@ -243,158 +231,145 @@
         </div>
     </section>
 
-    <!-- Client Logos (Staggered Animation - RESTORED 8 CLIENTS) -->
+    <!-- Client Logos Section (Trust Signal) -->
     <section id="clients" class="py-16 bg-gradient-to-b from-gray-50 to-white border-y border-gray-100">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-12 reveal">
+            <div class="text-center mb-12">
                 <span class="text-paypal-light font-extrabold text-sm uppercase tracking-widest" data-i18n="clientsHeader">Our Partners</span>
                 <h2 class="text-3xl font-bold mt-2 text-paypal-dark" data-i18n="clientsTitle">Trusted by Leading Organizations</h2>
+                <p class="text-gray-500 mt-3 max-w-2xl mx-auto" data-i18n="clientsSub">Powering critical operations across healthcare, manufacturing, hospitality, and infrastructure sectors.</p>
             </div>
-            
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
-                <!-- Row 1 -->
-                <div class="reveal delay-100 group flex items-center justify-center p-6 bg-white rounded-xl border border-gray-200 hover:border-paypal-light transition-all duration-300 hover:shadow-lg cursor-default">
-                    <div class="text-center opacity-60 group-hover:opacity-100 transition-opacity">
-                        <div class="text-3xl mb-1 grayscale group-hover:grayscale-0 transition-all">🏥</div>
+                <div class="group flex items-center justify-center p-6 bg-white rounded-xl border border-gray-200 hover:border-paypal-light transition-all duration-300 hover:shadow-lg">
+                    <div class="text-center opacity-50 group-hover:opacity-100 transition-opacity">
+                        <div class="text-2xl font-bold text-gray-700 mb-1">🏥</div>
                         <p class="text-xs font-semibold text-gray-600" data-i18n="client1">Cairo Medical Center</p>
                     </div>
                 </div>
-                <div class="reveal delay-200 group flex items-center justify-center p-6 bg-white rounded-xl border border-gray-200 hover:border-paypal-light transition-all duration-300 hover:shadow-lg cursor-default">
-                    <div class="text-center opacity-60 group-hover:opacity-100 transition-opacity">
-                        <div class="text-3xl mb-1 grayscale group-hover:grayscale-0 transition-all">🏭</div>
+                <div class="group flex items-center justify-center p-6 bg-white rounded-xl border border-gray-200 hover:border-paypal-light transition-all duration-300 hover:shadow-lg">
+                    <div class="text-center opacity-50 group-hover:opacity-100 transition-opacity">
+                        <div class="text-2xl font-bold text-gray-700 mb-1">🏭</div>
                         <p class="text-xs font-semibold text-gray-600" data-i18n="client2">Delta Steel Industries</p>
                     </div>
                 </div>
-                <div class="reveal delay-300 group flex items-center justify-center p-6 bg-white rounded-xl border border-gray-200 hover:border-paypal-light transition-all duration-300 hover:shadow-lg cursor-default">
-                    <div class="text-center opacity-60 group-hover:opacity-100 transition-opacity">
-                        <div class="text-3xl mb-1 grayscale group-hover:grayscale-0 transition-all">🏨</div>
+                <div class="group flex items-center justify-center p-6 bg-white rounded-xl border border-gray-200 hover:border-paypal-light transition-all duration-300 hover:shadow-lg">
+                    <div class="text-center opacity-50 group-hover:opacity-100 transition-opacity">
+                        <div class="text-2xl font-bold text-gray-700 mb-1">🏨</div>
                         <p class="text-xs font-semibold text-gray-600" data-i18n="client3">Grand Nile Hotel</p>
                     </div>
                 </div>
-                <div class="reveal delay-400 group flex items-center justify-center p-6 bg-white rounded-xl border border-gray-200 hover:border-paypal-light transition-all duration-300 hover:shadow-lg cursor-default">
-                    <div class="text-center opacity-60 group-hover:opacity-100 transition-opacity">
-                        <div class="text-3xl mb-1 grayscale group-hover:grayscale-0 transition-all">🏗️</div>
+                <div class="group flex items-center justify-center p-6 bg-white rounded-xl border border-gray-200 hover:border-paypal-light transition-all duration-300 hover:shadow-lg">
+                    <div class="text-center opacity-50 group-hover:opacity-100 transition-opacity">
+                        <div class="text-2xl font-bold text-gray-700 mb-1">🏗️</div>
                         <p class="text-xs font-semibold text-gray-600" data-i18n="client4">6th October Construction</p>
                     </div>
                 </div>
-                <!-- Row 2 -->
-                <div class="reveal delay-100 group flex items-center justify-center p-6 bg-white rounded-xl border border-gray-200 hover:border-paypal-light transition-all duration-300 hover:shadow-lg cursor-default">
-                    <div class="text-center opacity-60 group-hover:opacity-100 transition-opacity">
-                        <div class="text-3xl mb-1 grayscale group-hover:grayscale-0 transition-all">🏢</div>
+                <div class="group flex items-center justify-center p-6 bg-white rounded-xl border border-gray-200 hover:border-paypal-light transition-all duration-300 hover:shadow-lg">
+                    <div class="text-center opacity-50 group-hover:opacity-100 transition-opacity">
+                        <div class="text-2xl font-bold text-gray-700 mb-1">🏢</div>
                         <p class="text-xs font-semibold text-gray-600" data-i18n="client5">Menofia Business Park</p>
                     </div>
                 </div>
-                <div class="reveal delay-200 group flex items-center justify-center p-6 bg-white rounded-xl border border-gray-200 hover:border-paypal-light transition-all duration-300 hover:shadow-lg cursor-default">
-                    <div class="text-center opacity-60 group-hover:opacity-100 transition-opacity">
-                        <div class="text-3xl mb-1 grayscale group-hover:grayscale-0 transition-all">🏪</div>
+                <div class="group flex items-center justify-center p-6 bg-white rounded-xl border border-gray-200 hover:border-paypal-light transition-all duration-300 hover:shadow-lg">
+                    <div class="text-center opacity-50 group-hover:opacity-100 transition-opacity">
+                        <div class="text-2xl font-bold text-gray-700 mb-1">🏪</div>
                         <p class="text-xs font-semibold text-gray-600" data-i18n="client6">Al-Ahram Shopping Center</p>
                     </div>
                 </div>
-                <div class="reveal delay-300 group flex items-center justify-center p-6 bg-white rounded-xl border border-gray-200 hover:border-paypal-light transition-all duration-300 hover:shadow-lg cursor-default">
-                    <div class="text-center opacity-60 group-hover:opacity-100 transition-opacity">
-                        <div class="text-3xl mb-1 grayscale group-hover:grayscale-0 transition-all">🏫</div>
+                <div class="group flex items-center justify-center p-6 bg-white rounded-xl border border-gray-200 hover:border-paypal-light transition-all duration-300 hover:shadow-lg">
+                    <div class="text-center opacity-50 group-hover:opacity-100 transition-opacity">
+                        <div class="text-2xl font-bold text-gray-700 mb-1">🏫</div>
                         <p class="text-xs font-semibold text-gray-600" data-i18n="client7">International School Cairo</p>
                     </div>
                 </div>
-                <div class="reveal delay-400 group flex items-center justify-center p-6 bg-white rounded-xl border border-gray-200 hover:border-paypal-light transition-all duration-300 hover:shadow-lg cursor-default">
-                    <div class="text-center opacity-60 group-hover:opacity-100 transition-opacity">
-                        <div class="text-3xl mb-1 grayscale group-hover:grayscale-0 transition-all">🏛️</div>
+                <div class="group flex items-center justify-center p-6 bg-white rounded-xl border border-gray-200 hover:border-paypal-light transition-all duration-300 hover:shadow-lg">
+                    <div class="text-center opacity-50 group-hover:opacity-100 transition-opacity">
+                        <div class="text-2xl font-bold text-gray-700 mb-1">🏛️</div>
                         <p class="text-xs font-semibold text-gray-600" data-i18n="client8">Ministry of Housing</p>
                     </div>
                 </div>
             </div>
-
-            <!-- Animated Stats Counter -->
-            <div id="stats-container" class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 reveal">
+            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6">
                 <div class="text-center">
-                    <div class="text-3xl font-extrabold text-paypal-dark flex justify-center"><span class="counter" data-target="250">0</span>+</div>
+                    <div class="text-3xl font-extrabold text-paypal-dark">250+</div>
                     <p class="text-sm text-gray-600 mt-1" data-i18n="stat1">Projects Completed</p>
                 </div>
                 <div class="text-center">
-                    <div class="text-3xl font-extrabold text-paypal-dark flex justify-center"><span class="counter" data-target="15">0</span>+</div>
+                    <div class="text-3xl font-extrabold text-paypal-dark">15+</div>
                     <p class="text-sm text-gray-600 mt-1" data-i18n="stat2">Years Experience</p>
                 </div>
                 <div class="text-center">
-                    <div class="text-3xl font-extrabold text-paypal-dark flex justify-center"><span class="counter" data-target="50">0</span>+</div>
+                    <div class="text-3xl font-extrabold text-paypal-dark">50+</div>
                     <p class="text-sm text-gray-600 mt-1" data-i18n="stat3">Active Contracts</p>
                 </div>
                 <div class="text-center">
-                    <div class="text-3xl font-extrabold text-paypal-dark flex justify-center"><span class="counter" data-target="99">0</span>.2%</div>
+                    <div class="text-3xl font-extrabold text-paypal-dark">99.2%</div>
                     <p class="text-sm text-gray-600 mt-1" data-i18n="stat4">Uptime Guarantee</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Products & Services (Scroll Reveal - RESTORED 8 CARDS) -->
+
+    <!-- Products & Services Section -->
     <section id="services" class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16 reveal">
+            <div class="text-center mb-16">
                 <span class="text-paypal-light font-extrabold text-sm uppercase tracking-widest" data-i18n="servicesHeader">Our Offerings</span>
                 <h2 class="text-4xl font-bold mt-2 text-paypal-dark" data-i18n="servicesTitle">Products & Services</h2>
                 <p class="text-gray-500 mt-4 max-w-2xl mx-auto text-lg" data-i18n="servicesSub">Complete power solutions from equipment supply to long-term maintenance support.</p>
             </div>
-            
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Row 1 -->
-                <div class="reveal delay-100 group bg-gray-50 border border-gray-200 rounded-2xl p-6 hover:border-paypal-light hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+                <div class="group bg-gray-50 border border-gray-200 rounded-2xl p-6 hover:border-paypal-light hover:shadow-xl transition-all duration-300 cursor-default">
                     <div class="w-14 h-14 bg-paypal-light/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-paypal-light group-hover:scale-110 transition-all duration-300">
                         <i data-lucide="zap" class="w-7 h-7 text-paypal-light group-hover:text-white"></i>
                     </div>
                     <h3 class="text-lg font-bold text-paypal-dark mb-2" data-i18n="service1Title">Open-Type Generators</h3>
                     <p class="text-sm text-gray-600 leading-relaxed" data-i18n="service1Desc">Standard generators for industrial sites with robust frames and weather protection.</p>
                 </div>
-                
-                <div class="reveal delay-200 group bg-gray-50 border border-gray-200 rounded-2xl p-6 hover:border-paypal-light hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+                <div class="group bg-gray-50 border border-gray-200 rounded-2xl p-6 hover:border-paypal-light hover:shadow-xl transition-all duration-300 cursor-default">
                     <div class="w-14 h-14 bg-paypal-light/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-paypal-light group-hover:scale-110 transition-all duration-300">
                         <i data-lucide="volume-x" class="w-7 h-7 text-paypal-light group-hover:text-white"></i>
                     </div>
                     <h3 class="text-lg font-bold text-paypal-dark mb-2" data-i18n="service2Title">Soundproof Canopies</h3>
                     <p class="text-sm text-gray-600 leading-relaxed" data-i18n="service2Desc">Custom acoustic enclosures reducing noise to 65dB for residential and sensitive areas.</p>
                 </div>
-                
-                <div class="reveal delay-300 group bg-gray-50 border border-gray-200 rounded-2xl p-6 hover:border-paypal-light hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+                <div class="group bg-gray-50 border border-gray-200 rounded-2xl p-6 hover:border-paypal-light hover:shadow-xl transition-all duration-300 cursor-default">
                     <div class="w-14 h-14 bg-paypal-light/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-paypal-light group-hover:scale-110 transition-all duration-300">
                         <i data-lucide="activity" class="w-7 h-7 text-paypal-light group-hover:text-white"></i>
                     </div>
                     <h3 class="text-lg font-bold text-paypal-dark mb-2" data-i18n="service3Title">Low Voltage Panels</h3>
                     <p class="text-sm text-gray-600 leading-relaxed" data-i18n="service3Desc">ATS, synchronization, and distribution panels engineered to meet your load profile.</p>
                 </div>
-
-                <div class="reveal delay-400 group bg-gray-50 border border-gray-200 rounded-2xl p-6 hover:border-paypal-light hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+                <div class="group bg-gray-50 border border-gray-200 rounded-2xl p-6 hover:border-paypal-light hover:shadow-xl transition-all duration-300 cursor-default">
                     <div class="w-14 h-14 bg-paypal-light/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-paypal-light group-hover:scale-110 transition-all duration-300">
                         <i data-lucide="droplets" class="w-7 h-7 text-paypal-light group-hover:text-white"></i>
                     </div>
                     <h3 class="text-lg font-bold text-paypal-dark mb-2" data-i18n="service4Title">External Fuel Tanks</h3>
                     <p class="text-sm text-gray-600 leading-relaxed" data-i18n="service4Desc">Double-wall fuel storage tanks from 500L to 10,000L with leak detection systems.</p>
                 </div>
-
-                <!-- Row 2 -->
-                <div class="reveal delay-100 group bg-gray-50 border border-gray-200 rounded-2xl p-6 hover:border-paypal-light hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+                <div class="group bg-gray-50 border border-gray-200 rounded-2xl p-6 hover:border-paypal-light hover:shadow-xl transition-all duration-300 cursor-default">
                     <div class="w-14 h-14 bg-paypal-light/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-paypal-light group-hover:scale-110 transition-all duration-300">
                         <i data-lucide="package" class="w-7 h-7 text-paypal-light group-hover:text-white"></i>
                     </div>
                     <h3 class="text-lg font-bold text-paypal-dark mb-2" data-i18n="service5Title">Spare Parts</h3>
                     <p class="text-sm text-gray-600 leading-relaxed" data-i18n="service5Desc">100% genuine OEM parts for Perkins, Volvo, and Doosan available from local stock.</p>
                 </div>
-
-                 <div class="reveal delay-200 group bg-gray-50 border border-gray-200 rounded-2xl p-6 hover:border-paypal-light hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+                <div class="group bg-gray-50 border border-gray-200 rounded-2xl p-6 hover:border-paypal-light hover:shadow-xl transition-all duration-300 cursor-default">
                     <div class="w-14 h-14 bg-paypal-light/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-paypal-light group-hover:scale-110 transition-all duration-300">
                         <i data-lucide="wrench" class="w-7 h-7 text-paypal-light group-hover:text-white"></i>
                     </div>
                     <h3 class="text-lg font-bold text-paypal-dark mb-2" data-i18n="service6Title">Installation Services</h3>
                     <p class="text-sm text-gray-600 leading-relaxed" data-i18n="service6Desc">Complete turnkey installation including foundation, fuel lines, and commissioning.</p>
                 </div>
-
-                <div class="reveal delay-300 group bg-gray-50 border border-gray-200 rounded-2xl p-6 hover:border-paypal-light hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+                <div class="group bg-gray-50 border border-gray-200 rounded-2xl p-6 hover:border-paypal-light hover:shadow-xl transition-all duration-300 cursor-default">
                     <div class="w-14 h-14 bg-paypal-light/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-paypal-light group-hover:scale-110 transition-all duration-300">
                         <i data-lucide="settings" class="w-7 h-7 text-paypal-light group-hover:text-white"></i>
                     </div>
                     <h3 class="text-lg font-bold text-paypal-dark mb-2" data-i18n="service7Title">Maintenance Services</h3>
                     <p class="text-sm text-gray-600 leading-relaxed" data-i18n="service7Desc">Preventative and corrective maintenance contracts with 24/7 emergency response.</p>
                 </div>
-
-                <div class="reveal delay-400 group bg-gradient-to-br from-paypal-dark to-paypal-light text-white rounded-2xl p-6 flex flex-col justify-center items-center text-center hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 cursor-pointer" onclick="document.getElementById('contact').scrollIntoView()">
+                <div class="group bg-gradient-to-br from-paypal-dark to-paypal-light text-white rounded-2xl p-6 flex flex-col justify-center items-center text-center hover:shadow-2xl transition-all duration-300 cursor-pointer" onclick="document.getElementById('contact').scrollIntoView()">
                     <i data-lucide="headset" class="w-12 h-12 mb-3 opacity-90"></i>
                     <h3 class="text-lg font-bold mb-2" data-i18n="servicesCTA">Need a Custom Solution?</h3>
                     <p class="text-sm text-blue-100 mb-4" data-i18n="servicesCTADesc">Contact our engineering team for tailored packages.</p>
@@ -404,17 +379,22 @@
         </div>
     </section>
 
-    <!-- Catalog (Accordion + Reveal) -->
-    <section id="products" class="py-24 bg-white border-t border-gray-100">
+    <!-- Detailed Product Catalog (Feature 7: Accordion Specs Added) -->
+    <section id="products" class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16 reveal">
-                <span class="text-paypal-light font-extrabold text-sm uppercase tracking-widest" data-i18n="catalog">Catalog</span>
-                <h2 class="text-4xl font-bold mt-2 text-paypal-dark" data-i18n="engineBrands">Engine Brands</h2>
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                <div>
+                    <span class="text-paypal-light font-extrabold text-sm uppercase tracking-widest" data-i18n="catalog">Catalog</span>
+                    <h2 class="text-4xl font-bold mt-2 text-paypal-dark" data-i18n="engineBrands">Engine Brands</h2>
+                    <p class="text-gray-600 text-lg mt-4 max-w-2xl" data-i18n="brandsSub">
+                        We supply generators powered by the world's most reliable engines. Choose your preferred brand below.
+                    </p>
+                </div>
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
-                <!-- Card 1 -->
-                <div class="reveal delay-100 group bg-white border border-gray-200 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-gray-200/50 transition-all duration-500 transform hover:-translate-y-2">
+                <!-- Brand Card 1: Perkins -->
+                <div class="group bg-white border border-gray-200 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-gray-200/50 transition-all duration-500 transform hover:-translate-y-1">
                     <div class="h-48 bg-gray-100 flex items-center justify-center relative overflow-hidden">
                         <div class="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 opacity-50"></div>
                         <span class="text-5xl font-black text-gray-300 tracking-tighter select-none group-hover:scale-105 transition-transform duration-500">PERKINS</span>
@@ -422,8 +402,9 @@
                     <div class="p-8">
                         <h3 class="text-2xl font-bold text-gray-800 mb-2" data-i18n="perkinsTitle">Perkins Series</h3>
                         <p class="text-sm text-gray-500 mb-4" data-i18n="perkinsLoc">United Kingdom • 9 KVA to 2500 KVA</p>
+                        <p class="text-gray-600 mb-6 text-sm leading-relaxed" data-i18n="perkinsDesc">The industry standard for reliability and fuel efficiency. Ideal for all climates and load profiles.</p>
                         
-                        <!-- Accordion -->
+                        <!-- Feature 7: Accordion -->
                         <button onclick="toggleSpec('spec-perkins')" class="w-full flex justify-between items-center text-sm font-bold text-paypal-light mb-4 hover:text-paypal-dark transition-colors">
                             <span data-i18n="btnTechSpecs">View Technical Specs</span>
                             <i data-lucide="chevron-down" class="w-4 h-4 transition-transform duration-300" id="icon-spec-perkins"></i>
@@ -435,12 +416,15 @@
                                 <li class="flex justify-between"><span class="font-bold" data-i18n="specAsp">Aspiration:</span> <span data-i18n="specTurbo">Turbocharged</span></li>
                             </ul>
                         </div>
-                        <button class="w-full py-3 border-2 border-paypal-light text-paypal-light rounded-xl font-bold hover:bg-paypal-light hover:text-white transition-all text-sm shadow-md" data-i18n="btnDownload">Download Spec Sheet</button>
+
+                        <button onclick="showMessageBox(currentLang === 'ar' ? 'يتم بدء تحميل ورقة المواصفات الآن.' : 'Spec sheet download is starting now.');" class="w-full py-3 border-2 border-paypal-light text-paypal-light rounded-xl font-bold hover:bg-paypal-light hover:text-white transition-all text-sm shadow-md">
+                            <span data-i18n="btnDownload">Download Spec Sheet</span>
+                        </button>
                     </div>
                 </div>
 
-                <!-- Card 2 -->
-                <div class="reveal delay-200 group bg-white border border-gray-200 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-gray-200/50 transition-all duration-500 transform hover:-translate-y-2">
+                <!-- Brand Card 2: Volvo -->
+                <div class="group bg-white border border-gray-200 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-gray-200/50 transition-all duration-500 transform hover:-translate-y-1">
                     <div class="h-48 bg-gray-100 flex items-center justify-center relative overflow-hidden">
                         <div class="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 opacity-50"></div>
                         <span class="text-5xl font-black text-gray-300 tracking-tighter select-none group-hover:scale-105 transition-transform duration-500">VOLVO</span>
@@ -448,7 +432,9 @@
                     <div class="p-8">
                         <h3 class="text-2xl font-bold text-gray-800 mb-2" data-i18n="volvoTitle">Volvo Penta</h3>
                         <p class="text-sm text-gray-500 mb-4" data-i18n="volvoLoc">Sweden • 85 KVA to 700 KVA</p>
+                        <p class="text-gray-600 mb-6 text-sm leading-relaxed" data-i18n="volvoDesc">Known for rapid load acceptance and superior performance in heavy-duty applications and mining.</p>
                         
+                        <!-- Feature 7: Accordion -->
                         <button onclick="toggleSpec('spec-volvo')" class="w-full flex justify-between items-center text-sm font-bold text-paypal-light mb-4 hover:text-paypal-dark transition-colors">
                             <span data-i18n="btnTechSpecs">View Technical Specs</span>
                             <i data-lucide="chevron-down" class="w-4 h-4 transition-transform duration-300" id="icon-spec-volvo"></i>
@@ -460,12 +446,15 @@
                                 <li class="flex justify-between"><span class="font-bold" data-i18n="specAsp">Aspiration:</span> <span data-i18n="specTurboInt">Turbo + Intercooler</span></li>
                             </ul>
                         </div>
-                        <button class="w-full py-3 border-2 border-paypal-light text-paypal-light rounded-xl font-bold hover:bg-paypal-light hover:text-white transition-all text-sm shadow-md" data-i18n="btnDownload">Download Spec Sheet</button>
+
+                        <button onclick="showMessageBox(currentLang === 'ar' ? 'يتم بدء تحميل ورقة المواصفات الآن.' : 'Spec sheet download is starting now.');" class="w-full py-3 border-2 border-paypal-light text-paypal-light rounded-xl font-bold hover:bg-paypal-light hover:text-white transition-all text-sm shadow-md">
+                            <span data-i18n="btnDownload">Download Spec Sheet</span>
+                        </button>
                     </div>
                 </div>
 
-                <!-- Card 3 -->
-                <div class="reveal delay-300 group bg-white border border-gray-200 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-gray-200/50 transition-all duration-500 transform hover:-translate-y-2">
+                <!-- Brand Card 3: Doosan -->
+                <div class="group bg-white border border-gray-200 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-gray-200/50 transition-all duration-500 transform hover:-translate-y-1">
                     <div class="h-48 bg-gray-100 flex items-center justify-center relative overflow-hidden">
                         <div class="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 opacity-50"></div>
                         <span class="text-5xl font-black text-gray-300 tracking-tighter select-none group-hover:scale-105 transition-transform duration-500">DOOSAN</span>
@@ -473,8 +462,10 @@
                     <div class="p-8">
                         <h3 class="text-2xl font-bold text-gray-800 mb-2" data-i18n="doosanTitle">Doosan</h3>
                         <p class="text-sm text-gray-500 mb-4" data-i18n="doosanLoc">South Korea • 150 KVA to 825 KVA</p>
+                        <p class="text-gray-600 mb-6 text-sm leading-relaxed" data-i18n="doosanDesc">Excellent value for money with robust durability for construction sites and continuous prime power.</p>
                         
-                        <button onclick="toggleSpec('spec-doosan')" class="w-full flex justify-between items-center text-sm font-bold text-paypal-light mb-4 hover:text-paypal-dark transition-colors">
+                         <!-- Feature 7: Accordion -->
+                         <button onclick="toggleSpec('spec-doosan')" class="w-full flex justify-between items-center text-sm font-bold text-paypal-light mb-4 hover:text-paypal-dark transition-colors">
                             <span data-i18n="btnTechSpecs">View Technical Specs</span>
                             <i data-lucide="chevron-down" class="w-4 h-4 transition-transform duration-300" id="icon-spec-doosan"></i>
                         </button>
@@ -485,60 +476,9 @@
                                 <li class="flex justify-between"><span class="font-bold" data-i18n="specAsp">Aspiration:</span> <span data-i18n="specTurboAfter">Turbo + Aftercooler</span></li>
                             </ul>
                         </div>
-                        <button class="w-full py-3 border-2 border-paypal-light text-paypal-light rounded-xl font-bold hover:bg-paypal-light hover:text-white transition-all text-sm shadow-md" data-i18n="btnDownload">Download Spec Sheet</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Calculator Section -->
-    <section id="calculator" class="py-24 bg-white relative overflow-hidden">
-        <div class="absolute top-0 left-0 w-full h-full bg-grid-slate-100 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))] -z-10"></div>
-        <div class="max-w-5xl mx-auto px-6">
-            <div class="text-center mb-16 reveal">
-                <span class="text-paypal-light font-extrabold text-sm uppercase tracking-widest" data-i18n="tool">Interactive Tool</span>
-                <h2 class="text-4xl font-bold mt-2 mb-4 text-paypal-dark" data-i18n="calcTitle">Power Size Calculator</h2>
-            </div>
-
-            <div class="glass-card rounded-3xl p-8 shadow-2xl border border-gray-200 reveal">
-                <div class="grid md:grid-cols-2 gap-12">
-                    <div class="space-y-6">
-                        <h3 class="font-bold text-xl text-paypal-dark border-b pb-3 mb-4" data-i18n="equipment">Your Equipment</h3>
-                        
-                        <!-- Inputs with focus ring animation -->
-                        <div class="flex items-center justify-between hover:bg-gray-100 p-2 rounded-lg transition-colors">
-                            <div><p class="font-medium" data-i18n="ac1">AC (1.5 HP)</p></div>
-                            <input type="number" id="calc-ac1" min="0" value="0" oninput="calculateKVA()" class="w-20 p-2 border rounded-lg text-center focus:ring-4 focus:ring-paypal-light/50 outline-none transition-all">
-                        </div>
-                        <div class="flex items-center justify-between hover:bg-gray-100 p-2 rounded-lg transition-colors">
-                            <div><p class="font-medium" data-i18n="ac3">AC (3.0 HP)</p></div>
-                            <input type="number" id="calc-ac3" min="0" value="0" oninput="calculateKVA()" class="w-20 p-2 border rounded-lg text-center focus:ring-4 focus:ring-paypal-light/50 outline-none transition-all">
-                        </div>
-                        <div class="flex items-center justify-between hover:bg-gray-100 p-2 rounded-lg transition-colors">
-                            <div><p class="font-medium" data-i18n="pump">Water Pump (1 HP)</p></div>
-                            <input type="number" id="calc-pump" min="0" value="0" oninput="calculateKVA()" class="w-20 p-2 border rounded-lg text-center focus:ring-4 focus:ring-paypal-light/50 outline-none transition-all">
-                        </div>
-                        <div class="flex items-center justify-between hover:bg-gray-100 p-2 rounded-lg transition-colors">
-                            <div><p class="font-medium" data-i18n="light">Lighting</p></div>
-                            <input type="number" id="calc-light" min="0" value="0" oninput="calculateKVA()" class="w-20 p-2 border rounded-lg text-center focus:ring-4 focus:ring-paypal-light/50 outline-none transition-all">
-                        </div>
-                    </div>
-
-                    <div class="bg-paypal-dark text-white rounded-2xl p-8 flex flex-col justify-between items-center text-center relative overflow-hidden shadow-2xl">
-                        <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500 rounded-full blur-3xl opacity-20 animate-pulse"></div>
-                        <div class="w-full">
-                            <p class="text-blue-200 text-sm uppercase tracking-widest mb-2" data-i18n="estimated">Estimated Requirement</p>
-                            <div class="text-7xl font-extrabold mb-2 transition-all duration-300 transform" id="result-kva">0</div>
-                            <div class="text-2xl font-medium mb-4" data-i18n="kva">KVA</div>
-                            <div class="bg-white/10 rounded-lg p-3 mb-6 border border-white/10 backdrop-blur-sm">
-                                <span class="font-bold text-sm text-fuel-main uppercase tracking-wider" data-i18n="fuelTitle">Est. Fuel Consumption</span>
-                                <div class="text-xl font-bold text-white mt-1"><span id="result-fuel">0</span> <span class="text-sm text-gray-300">L/Hr</span></div>
-                            </div>
-                        </div>
-                        <button onclick="document.getElementById('contact').scrollIntoView()" class="w-full py-3 bg-white text-paypal-dark font-bold rounded-xl hover:bg-blue-50 transition-colors shadow-lg hover:shadow-xl group relative overflow-hidden">
-                            <span class="relative z-10" data-i18n="btnRequestQuote">Request Quote</span>
-                            <div class="absolute inset-0 bg-blue-100 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
+                        <button onclick="showMessageBox(currentLang === 'ar' ? 'يتم بدء تحميل ورقة المواصفات الآن.' : 'Spec sheet download is starting now.');" class="w-full py-3 border-2 border-paypal-light text-paypal-light rounded-xl font-bold hover:bg-paypal-light hover:text-white transition-all text-sm shadow-md">
+                            <span data-i18n="btnDownload">Download Spec Sheet</span>
                         </button>
                     </div>
                 </div>
@@ -546,86 +486,345 @@
         </div>
     </section>
 
-    <!-- Sound Attenuation (Interactive) -->
+
+    <!-- Workflow Section (About) -->
+    <section id="about" class="py-24 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-paypal-light font-extrabold text-sm uppercase tracking-widest" data-i18n="workflow">Workflow</span>
+                <h2 class="text-4xl font-bold mt-2 text-paypal-dark" data-i18n="howWeWork">How We Work</h2>
+            </div>
+            <div class="grid md:grid-cols-4 gap-8 text-center relative">
+                <div class="hidden md:block absolute top-8 left-0 w-full h-1 bg-blue-100 z-0"></div>
+                <!-- Steps -->
+                <div class="relative z-10 bg-gray-50 p-4 pt-0 group cursor-default">
+                    <div class="w-16 h-16 mx-auto rounded-full bg-paypal-light text-white flex items-center justify-center mb-4 shadow-xl border-4 border-white transition-transform group-hover:scale-110 group-hover:shadow-paypal-light/50 duration-300">
+                        <i data-lucide="file-search" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="font-bold text-xl text-paypal-dark" data-i18n="step1">1. Assessment</h3>
+                    <p class="text-sm text-gray-500 mt-2" data-i18n="step1D">Technical site survey & load analysis</p>
+                </div>
+                <div class="relative z-10 bg-gray-50 p-4 pt-0 group cursor-default">
+                    <div class="w-16 h-16 mx-auto rounded-full bg-paypal-light text-white flex items-center justify-center mb-4 shadow-xl border-4 border-white transition-transform group-hover:scale-110 group-hover:shadow-paypal-light/50 duration-300">
+                        <i data-lucide="pen-tool" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="font-bold text-xl text-paypal-dark" data-i18n="step2">2. Proposal</h3>
+                    <p class="text-sm text-gray-500 mt-2" data-i18n="step2D">Detailed quotation & Contract</p>
+                </div>
+                <div class="relative z-10 bg-gray-50 p-4 pt-0 group cursor-default">
+                    <div class="w-16 h-16 mx-auto rounded-full bg-paypal-light text-white flex items-center justify-center mb-4 shadow-xl border-4 border-white transition-transform group-hover:scale-110 group-hover:shadow-paypal-light/50 duration-300">
+                        <i data-lucide="truck" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="font-bold text-xl text-paypal-dark" data-i18n="step3">3. Delivery</h3>
+                    <p class="text-sm text-gray-500 mt-2" data-i18n="step3D">Logistics, installation & setup</p>
+                </div>
+                <div class="relative z-10 bg-gray-50 p-4 pt-0 group cursor-default">
+                    <div class="w-16 h-16 mx-auto rounded-full bg-paypal-light text-white flex items-center justify-center mb-4 shadow-xl border-4 border-white transition-transform group-hover:scale-110 group-hover:shadow-paypal-light/50 duration-300">
+                        <i data-lucide="check-circle" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="font-bold text-xl text-paypal-dark" data-i18n="step4">4. Support</h3>
+                    <p class="text-sm text-gray-500 mt-2" data-i18n="step4D">Commissioning, load test & 24/7 care</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Calculator Section -->
+    <section id="calculator" class="py-24 bg-white relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full bg-grid-slate-100 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))] -z-10"></div>
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-paypal-light font-extrabold text-sm uppercase tracking-widest" data-i18n="tool">Interactive Tool</span>
+                <h2 class="text-4xl font-bold mt-2 mb-4 text-paypal-dark" data-i18n="calcTitle">Power Size Calculator</h2>
+                <p class="text-gray-500 max-w-2xl mx-auto text-lg" data-i18n="calcSub">Not sure what capacity you need? Enter your appliances below to get an estimated generator size recommendation.</p>
+            </div>
+
+            <div class="glass-card rounded-3xl p-8 shadow-2xl border border-gray-200 hover:shadow-blue-100/50 transition-shadow duration-500">
+                <div class="grid md:grid-cols-2 gap-12">
+                    <!-- Inputs -->
+                    <div class="space-y-6">
+                        <h3 class="font-bold text-xl text-paypal-dark border-b pb-3 mb-4" data-i18n="equipment">Your Equipment</h3>
+                        
+                        <div class="flex items-center justify-between hover:bg-gray-100 p-2 rounded-lg transition-colors">
+                            <div>
+                                <p class="font-medium" data-i18n="ac1">AC (1.5 HP)</p>
+                                <p class="text-xs text-gray-400" data-i18n="ac1W">Approx 1200W</p>
+                            </div>
+                            <input type="number" id="calc-ac1" min="0" value="0" oninput="calculateKVA()" class="w-20 p-2 border rounded-lg text-center focus:ring-4 focus:ring-paypal-light/50 focus:border-paypal-light outline-none transition-all">
+                        </div>
+
+                        <div class="flex items-center justify-between hover:bg-gray-100 p-2 rounded-lg transition-colors">
+                            <div>
+                                <p class="font-medium" data-i18n="ac3">AC (3.0 HP)</p>
+                                <p class="text-xs text-gray-400" data-i18n="ac3W">Approx 2400W</p>
+                            </div>
+                            <input type="number" id="calc-ac3" min="0" value="0" oninput="calculateKVA()" class="w-20 p-2 border rounded-lg text-center focus:ring-4 focus:ring-paypal-light/50 focus:border-paypal-light outline-none transition-all">
+                        </div>
+
+                        <div class="flex items-center justify-between hover:bg-gray-100 p-2 rounded-lg transition-colors">
+                            <div>
+                                <p class="font-medium" data-i18n="pump">Water Pump (1 HP)</p>
+                                <p class="text-xs text-gray-400" data-i18n="pumpW">Approx 750W</p>
+                            </div>
+                            <input type="number" id="calc-pump" min="0" value="0" oninput="calculateKVA()" class="w-20 p-2 border rounded-lg text-center focus:ring-4 focus:ring-paypal-light/50 focus:border-paypal-light outline-none transition-all">
+                        </div>
+
+                        <div class="flex items-center justify-between hover:bg-gray-100 p-2 rounded-lg transition-colors">
+                            <div>
+                                <p class="font-medium" data-i18n="pc">Office PC / Laptop</p>
+                                <p class="text-xs text-gray-400" data-i18n="pcW">Approx 200W</p>
+                            </div>
+                            <input type="number" id="calc-pc" min="0" value="0" oninput="calculateKVA()" class="w-20 p-2 border rounded-lg text-center focus:ring-4 focus:ring-paypal-light/50 focus:border-paypal-light outline-none transition-all">
+                        </div>
+
+                        <div class="flex items-center justify-between hover:bg-gray-100 p-2 rounded-lg transition-colors">
+                            <div>
+                                <p class="font-medium" data-i18n="light">Standard Lighting (Room)</p>
+                                <p class="text-xs text-gray-400" data-i18n="lightW">Approx 100W</p>
+                            </div>
+                            <input type="number" id="calc-light" min="0" value="0" oninput="calculateKVA()" class="w-20 p-2 border rounded-lg text-center focus:ring-4 focus:ring-paypal-light/50 focus:border-paypal-light outline-none transition-all">
+                        </div>
+                    </div>
+
+                    <!-- Result -->
+                    <div class="bg-paypal-dark text-white rounded-2xl p-8 flex flex-col justify-between items-center text-center relative overflow-hidden shadow-2xl shadow-blue-800/50">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500 rounded-full blur-3xl opacity-20"></div>
+                        
+                        <div class="w-full">
+                            <p class="text-blue-200 text-sm uppercase tracking-widest mb-2" data-i18n="estimated">Estimated Requirement</p>
+                            <div class="text-7xl font-extrabold mb-2 transform scale-y-105" id="result-kva">0</div>
+                            <div class="text-2xl font-medium mb-4" data-i18n="kva">KVA</div>
+
+                            <!-- Feature 2: Fuel Estimator -->
+                            <div class="bg-white/10 rounded-lg p-3 mb-6 border border-white/10 backdrop-blur-sm">
+                                <div class="flex items-center justify-center gap-2 text-fuel-main mb-1">
+                                    <i data-lucide="droplets" class="w-4 h-4 fill-current"></i>
+                                    <span class="font-bold text-sm uppercase tracking-wider" data-i18n="fuelTitle">Est. Fuel Consumption</span>
+                                </div>
+                                <div class="flex items-baseline justify-center gap-1">
+                                    <span class="text-2xl font-bold text-white" id="result-fuel">0</span>
+                                    <span class="text-sm text-gray-300" data-i18n="fuelUnit">Liters/Hour</span>
+                                </div>
+                                <p class="text-[10px] text-gray-400 mt-1" data-i18n="fuelNote">@ 75% Prime Load</p>
+                            </div>
+                        </div>
+                        
+                        <div class="w-full">
+                            <p class="text-xs text-blue-300 mb-4 px-4 font-light italic" data-i18n="safetyNote">
+                                *This is an estimate including a 25% safety margin. Starting currents for motors (ACs/Pumps) may vary.
+                            </p>
+                            <!-- Feature 1: Smart Form Button -->
+                            <button onclick="fillQuoteRequest()" class="w-full py-3 bg-white text-paypal-dark font-bold rounded-xl hover:bg-blue-50 transition-colors shadow-lg hover:shadow-xl group relative overflow-hidden">
+                                <span class="relative z-10" data-i18n="btnRequestQuote">Request Quote for this Size</span>
+                                <div class="absolute inset-0 bg-blue-100 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Feature 4: Sound Attenuation Visualizer -->
     <section class="py-20 bg-gray-50 relative overflow-hidden border-t border-b border-gray-200">
         <div class="max-w-4xl mx-auto px-6 text-center">
-            <h2 class="text-4xl font-bold mt-2 mb-8 text-paypal-dark reveal" data-i18n="soundTitle">Hear the Difference</h2>
+            <span class="text-paypal-light font-extrabold text-sm uppercase tracking-widest" data-i18n="soundHeader">Acoustic Engineering</span>
+            <h2 class="text-4xl font-bold mt-2 mb-8 text-paypal-dark" data-i18n="soundTitle">Hear the Difference</h2>
             
-            <div class="bg-white rounded-3xl shadow-xl p-8 border border-gray-100 reveal">
+            <div class="bg-white rounded-3xl shadow-xl p-8 border border-gray-100">
                 <div class="flex justify-center gap-6 mb-8">
                     <button onclick="setSoundMode('open')" id="btn-sound-open" class="px-6 py-2 rounded-full border-2 border-red-500 bg-red-500 text-white font-bold transition-all" data-i18n="soundOpen">Standard (Open)</button>
                     <button onclick="setSoundMode('silent')" id="btn-sound-silent" class="px-6 py-2 rounded-full border-2 border-gray-200 text-gray-500 font-bold hover:border-paypal-light hover:text-paypal-light transition-all" data-i18n="soundSilent">Premium Soundproof</button>
                 </div>
 
                 <div class="relative h-32 bg-gray-100 rounded-xl overflow-hidden mb-6 flex items-center justify-center">
-                    <!-- Animated Bar -->
+                    <!-- Dynamic Bar -->
                     <div id="sound-bar" class="absolute left-0 h-full bg-red-500 transition-all duration-700 ease-out w-[85%] opacity-80"></div>
+                    
+                    <!-- Label on Bar -->
                     <div class="relative z-10 flex flex-col items-center">
                         <span id="sound-val" class="text-5xl font-black text-gray-800 drop-shadow-lg transition-all duration-300">85 db</span>
                         <span id="sound-desc" class="text-sm font-bold text-gray-600 uppercase tracking-widest bg-white/80 px-3 py-1 rounded-full mt-2 backdrop-blur-sm" data-i18n="soundTraffic">Traffic Noise</span>
                     </div>
                 </div>
+
+                <p class="text-gray-500 text-sm max-w-lg mx-auto" data-i18n="soundInfo">
+                    Our custom-fabricated soundproof canopies reduce noise levels significantly, making them suitable for residential areas, hospitals, and offices.
+                </p>
             </div>
         </div>
     </section>
 
-    <!-- Project Gallery (Lazy Load + Hover Zoom) -->
+
+    <!-- Featured Projects Section (Feature 10: Lazy Loading Added) -->
     <section id="projects-gallery" class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16 reveal">
+            <div class="text-center mb-16">
+                <span class="text-paypal-light font-extrabold text-sm uppercase tracking-widest" data-i18n="portfolio">Portfolio</span>
                 <h2 class="text-4xl font-bold mt-2 text-paypal-dark" data-i18n="recentInstalls">Recent Installations</h2>
+                <p class="text-gray-500 mt-4 text-lg" data-i18n="projectsSub">Delivering power to Egypt's most critical sectors.</p>
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
                 <!-- Project 1 -->
-                <div class="reveal delay-100 group relative overflow-hidden rounded-2xl h-80 shadow-xl hover:shadow-2xl transition-all duration-500 cursor-pointer">
-                    <!-- Aspect Ratio fix for CLS -->
-                    <img loading="lazy" src="https://placehold.co/800x600/003087/ffffff?text=Medical+Center" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-paypal-dark/90 to-transparent flex flex-col justify-end p-8 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                <div class="group relative overflow-hidden rounded-2xl h-80 shadow-xl hover:shadow-2xl transition-all duration-500 cursor-pointer">
+                    <!-- Feature 10: loading="lazy" added -->
+                    <img loading="lazy" src="https://placehold.co/800x600/003087/ffffff?text=Medical+Center+Backup" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1581094288338-2314dddb7ece?auto=format&fit=crop&q=80';" alt="Industrial Generator" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-paypal-dark/90 to-transparent flex flex-col justify-end p-8">
                         <span class="text-blue-300 text-xs font-bold uppercase tracking-wider mb-1" data-i18n="proj1Loc">New Cairo</span>
-                        <h3 class="text-white text-2xl font-bold mb-2" data-i18n="proj1Title">Medical Center</h3>
+                        <h3 class="text-white text-2xl font-bold mb-2" data-i18n="proj1Title">Medical Center Backup</h3>
+                        <p class="text-gray-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-4 group-hover:translate-y-0" data-i18n="proj1Desc">
+                            Installed 2x 500 KVA Perkins units with ATS synchronization panel.
+                        </p>
                     </div>
                 </div>
+
                 <!-- Project 2 -->
-                <div class="reveal delay-200 group relative overflow-hidden rounded-2xl h-80 shadow-xl hover:shadow-2xl transition-all duration-500 cursor-pointer">
-                    <img loading="lazy" src="https://placehold.co/800x600/0070BA/ffffff?text=Construction+Site" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-paypal-dark/90 to-transparent flex flex-col justify-end p-8 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                <div class="group relative overflow-hidden rounded-2xl h-80 shadow-xl hover:shadow-2xl transition-all duration-500 cursor-pointer">
+                    <!-- Feature 10: loading="lazy" added -->
+                    <img loading="lazy" src="https://placehold.co/800x600/0070BA/ffffff?text=Construction+Power" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&q=80';" alt="Construction Site" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-paypal-dark/90 to-transparent flex flex-col justify-end p-8">
                         <span class="text-blue-300 text-xs font-bold uppercase tracking-wider mb-1" data-i18n="proj2Loc">New Capital</span>
                         <h3 class="text-white text-2xl font-bold mb-2" data-i18n="proj2Title">Construction Power</h3>
+                        <p class="text-gray-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-4 group-hover:translate-y-0" data-i18n="proj2Desc">
+                            Provided 4x 250 KVA Volvo Penta generators for site operations.
+                        </p>
                     </div>
                 </div>
+
                 <!-- Project 3 -->
-                <div class="reveal delay-300 group relative overflow-hidden rounded-2xl h-80 shadow-xl hover:shadow-2xl transition-all duration-500 cursor-pointer">
-                    <img loading="lazy" src="https://placehold.co/800x600/009cde/ffffff?text=Data+Center" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-paypal-dark/90 to-transparent flex flex-col justify-end p-8 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                <div class="group relative overflow-hidden rounded-2xl h-80 shadow-xl hover:shadow-2xl transition-all duration-500 cursor-pointer">
+                    <!-- Feature 10: loading="lazy" added -->
+                    <img loading="lazy" src="https://placehold.co/800x600/009cde/ffffff?text=Data+Center+Power" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80';" alt="Commercial Tower" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-paypal-dark/90 to-transparent flex flex-col justify-end p-8">
                         <span class="text-blue-300 text-xs font-bold uppercase tracking-wider mb-1" data-i18n="proj3Loc">Maadi</span>
-                        <h3 class="text-white text-2xl font-bold mb-2" data-i18n="proj3Title">Bank Data Center</h3>
+                        <h3 class="text-white text-2xl font-bold mb-2" data-i18n="proj3Title">Bank HQ Data Center</h3>
+                        <p class="text-gray-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-4 group-hover:translate-y-0" data-i18n="proj3Desc">
+                            High-precision 1000 KVA Doosan unit with soundproof canopy (65db).
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Form -->
+
+    <!-- Comparison Table -->
+    <section id="comparison" class="py-24 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-paypal-light font-extrabold text-sm uppercase tracking-widest" data-i18n="comparisonHeader">The Premium Difference</span>
+                <h2 class="text-4xl font-bold mt-2 text-paypal-dark" data-i18n="comparisonTitle">Why Premium Power is the Right Choice</h2>
+                <p class="text-gray-500 mt-4 max-w-2xl mx-auto text-lg" data-i18n="comparisonSub">We set the standard for quality and service in the Egyptian power generation sector.</p>
+            </div>
+
+            <div class="overflow-x-auto rounded-2xl shadow-2xl border border-gray-100 ring-4 ring-blue-50/50">
+                <table class="min-w-full bg-white divide-y divide-gray-200">
+                    <thead class="comparison-header">
+                        <tr>
+                            <th class="comparison-cell text-left px-4" data-i18n="tableFeature">Feature</th>
+                            <th class="comparison-cell text-center premium-column" data-i18n="tableUs">Premium Power</th>
+                            <th class="comparison-cell text-center" data-i18n="tableCompetitor">Standard Competitor</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-100">
+                        <tr>
+                            <td class="comparison-cell text-left font-medium text-gray-700" data-i18n="tableResponse">Emergency Response Time</td>
+                            <td class="comparison-cell text-center premium-column flex items-center justify-center gap-3">
+                                <i data-lucide="zap" class="w-5 h-5 text-paypal-light"></i> <span data-i18n="tableResponseUs">Within 24 Hours</span>
+                            </td>
+                            <td class="comparison-cell text-center text-gray-500" data-i18n="tableResponseComp">3-5 Days (Often Longer)</td>
+                        </tr>
+                        <tr>
+                            <td class="comparison-cell text-left font-medium text-gray-700" data-i18n="tableParts">Spare Parts Authenticity</td>
+                            <td class="comparison-cell text-center premium-column flex items-center justify-center gap-3">
+                                <i data-lucide="check-circle" class="w-5 h-5"></i> <span data-i18n="tablePartsUs">100% Genuine (OEM)</span>
+                            </td>
+                            <td class="comparison-cell text-center text-gray-500" data-i18n="tablePartsComp">Aftermarket/Generic</td>
+                        </tr>
+                        <tr>
+                            <td class="comparison-cell text-left font-medium text-gray-700" data-i18n="tableWarranty">Standard Warranty</td>
+                            <td class="comparison-cell text-center premium-column" data-i18n="tableWarrantyUs">1 Year / 1000 Hours</td>
+                            <td class="comparison-cell text-center text-gray-500" data-i18n="tableWarrantyComp">6 Months or Less</td>
+                        </tr>
+                        <tr>
+                            <td class="comparison-cell text-left font-medium text-gray-700" data-i18n="tableTechnicians">Technician Expertise</td>
+                            <td class="comparison-cell text-center premium-column flex items-center justify-center gap-3">
+                                <i data-lucide="user-check" class="w-5 h-5"></i> <span data-i18n="tableTechniciansUs">Certified Engineering Team</span>
+                            </td>
+                            <td class="comparison-cell text-center text-gray-500" data-i18n="tableTechniciansComp">Contracted Labor</td>
+                        </tr>
+                        <tr>
+                            <td class="comparison-cell text-left font-medium text-gray-700" data-i18n="tableCommissioning">Load Testing / Commissioning</td>
+                            <td class="comparison-cell text-center premium-column flex items-center justify-center gap-3">
+                                <i data-lucide="activity" class="w-5 h-5 text-paypal-light"></i> <span data-i18n="tableCommissioningUs">Standard Inclusion</span>
+                            </td>
+                            <td class="comparison-cell text-center text-gray-500" data-i18n="tableCommissioningComp">Optional / Extra Charge</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- FAQ Section -->
+    <section class="py-24 bg-white">
+        <div class="max-w-3xl mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center text-paypal-dark mb-12" data-i18n="faqTitle">Frequently Asked Questions</h2>
+            <div class="space-y-4 shadow-xl rounded-xl bg-white p-6 border border-gray-100" id="faq-container">
+                <!-- FAQs injected via JS -->
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Contact Section (Smart Form) -->
     <section id="contact" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-6 reveal">
+        <div class="max-w-7xl mx-auto px-6">
             <div class="bg-paypal-dark rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row shadow-blue-800/20">
                 <div class="p-10 md:p-16 md:w-5/12 bg-blue-900 text-white flex flex-col justify-center">
                     <h2 class="text-4xl font-extrabold mb-6" data-i18n="contactTitle">Get In Touch</h2>
-                    <p class="text-blue-200 mb-10 text-lg font-light" data-i18n="contactSub">Ready to power your project? Contact our engineering sales team.</p>
-                    <div class="space-y-6">
-                        <div class="flex items-center gap-4"><i data-lucide="phone" class="w-6 h-6 text-blue-400"></i> <div><p class="font-bold">01062070276</p></div></div>
-                        <div class="flex items-center gap-4"><i data-lucide="mail" class="w-6 h-6 text-blue-400"></i> <div><p>info@premiumpower-eg.com</p></div></div>
+                    <p class="text-blue-200 mb-10 text-lg font-light" data-i18n="contactSub">Ready to power your project? Contact our engineering sales team for a precise quote.</p>
+                    
+                    <div class="space-y-8">
+                        <div class="flex items-start gap-4">
+                            <i data-lucide="phone" class="w-7 h-7 text-blue-400 mt-1 flex-shrink-0"></i>
+                            <div>
+                                <h4 class="font-bold text-xl" data-i18n="callUs">Call Us</h4>
+                                <p class="text-blue-100">02 01032521321</p>
+                                <p class="text-blue-100">01062070276 (Sales)</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <i data-lucide="mail" class="w-7 h-7 text-blue-400 mt-1 flex-shrink-0"></i>
+                            <div>
+                                <h4 class="font-bold text-xl" data-i18n="emailUs">Email Us</h4>
+                                <p class="text-blue-100 break-all">info@premiumpower-eg.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <i data-lucide="map-pin" class="w-7 h-7 text-blue-400 mt-1 flex-shrink-0"></i>
+                            <div>
+                                <h4 class="font-bold text-xl" data-i18n="visitUs">Visit Us</h4>
+                                <p class="text-blue-100">40 El Hegaz St., Heliopolis, Cairo, Egypt</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
                 <div class="p-10 md:p-16 md:w-7/12 bg-white">
-                    <form onsubmit="event.preventDefault(); alert('Message Sent!');" class="space-y-6">
+                    <h3 class="text-3xl font-bold text-paypal-dark mb-8" data-i18n="inquiryTitle">Send an Inquiry</h3>
+                    <form onsubmit="event.preventDefault(); showMessageBox(currentLang === 'ar' ? 'تم إرسال رسالتك! سنتواصل معك قريباً.' : 'Message sent! We will contact you shortly.'); this.reset();" class="space-y-6">
                         <div class="grid md:grid-cols-2 gap-6">
-                            <input type="text" class="w-full p-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-4 focus:ring-paypal-light/50 outline-none transition-all" placeholder="Your Name" required>
-                            <input type="tel" class="w-full p-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-4 focus:ring-paypal-light/50 outline-none transition-all" placeholder="Phone" required>
+                            <input type="text" class="w-full p-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-4 focus:ring-paypal-light/50 focus:border-paypal-light outline-none transition-all" placeholder="Your Name" data-i18n-placeholder="yourName" required>
+                            <input type="tel" class="w-full p-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-4 focus:ring-paypal-light/50 focus:border-paypal-light outline-none transition-all" placeholder="Phone Number" data-i18n-placeholder="phoneNumber" required>
                         </div>
-                        <textarea class="w-full p-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-4 focus:ring-paypal-light/50 outline-none h-32 resize-none transition-all" placeholder="How can we help?" required></textarea>
-                        <button type="submit" class="w-full py-4 text-xl font-extrabold text-white bg-paypal-light rounded-full hover:bg-paypal-dark transition shadow-lg hover:scale-[1.01]">
+                        <!-- Feature 1: ID added for Smart Form target -->
+                        <textarea id="contact-message" class="w-full p-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-4 focus:ring-paypal-light/50 focus:border-paypal-light outline-none h-32 resize-none transition-all" placeholder="How can we help you? (e.g., Requesting a 500 KVA Perkins quote)" data-i18n-placeholder="howHelp" required></textarea>
+                        <button type="submit" class="w-full py-4 text-xl font-extrabold text-white bg-paypal-light rounded-full hover:bg-paypal-dark transition shadow-lg shadow-blue-300/50 hover:shadow-xl hover:scale-[1.01]">
                             <span data-i18n="btnSend">Send Message</span>
                         </button>
                     </form>
@@ -634,256 +833,188 @@
         </div>
     </section>
 
+
     <!-- Footer -->
     <footer class="bg-paypal-dark text-white py-16">
         <div class="max-w-7xl mx-auto px-6 text-center">
             <h2 class="text-2xl font-bold mb-6">Premium Power LLC</h2>
+            <p class="text-blue-200 max-w-lg mx-auto mb-8 font-light" data-i18n="footerSub">Delivering high-quality diesel generator solutions with fast service, trusted performance, and professional support.</p>
             <div class="flex justify-center gap-8 mb-8">
-                 <a href="#" class="text-blue-300 hover:text-white transition-colors"><i data-lucide="facebook" class="w-6 h-6"></i></a>
-                 <a href="#" class="text-blue-300 hover:text-white transition-colors"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
+                 <a href="https://www.facebook.com/profile.php?id=61583941521978" target="_blank" class="text-blue-300 hover:text-white transition-colors"><i data-lucide="facebook" class="w-6 h-6"></i></a>
+                 <a href="https://www.linkedin.com/in/premium-power-4430a3399" target="_blank" class="text-blue-300 hover:text-white transition-colors"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
             </div>
             <p class="text-blue-300/50 text-sm">© 2025 Premium Power LLC. All rights reserved.</p>
         </div>
     </footer>
 
+    <!-- Custom Message Box -->
+    <div id="message-box" class="fixed inset-0 bg-black/50 z-[99] hidden flex items-center justify-center p-4 transition-opacity duration-300 opacity-0">
+        <div class="bg-white rounded-xl p-6 w-full max-w-sm shadow-2xl space-y-4 transform scale-95 transition-transform duration-300">
+            <h3 class="text-xl font-bold text-paypal-dark" data-i18n="messageBoxTitle">Notification</h3>
+            <p id="message-box-content" class="text-gray-600"></p>
+            <button onclick="document.getElementById('message-box').classList.add('opacity-0'); document.getElementById('message-box').querySelector('div').classList.add('scale-95'); setTimeout(() => document.getElementById('message-box').classList.add('hidden'), 300);" class="w-full py-2 bg-paypal-light text-white font-bold rounded-lg hover:bg-paypal-dark transition-colors" data-i18n="messageBoxClose">Close</button>
+        </div>
+    </div>
+
+
     <script>
-        /* --- 1. Translation Data --- */
+        // Initialize Icons
+        lucide.createIcons();
+        
+        // --- ARABIC TRANSLATION LOGIC ---
         const translations = {
             en: {
-                pageTitle: "Premium Power LLC", chatSales: "Sales Inquiry", chatWhatsApp: "WhatsApp", chatCall: "Direct Call", chatEmergency: "24/7 Emergency",
-                navHome: "Home", navAbout: "About", navProducts: "Products", navCalc: "Calculator", navContact: "Contact", navProjects: "Projects",
-                heroTitle: "Power You Can <br/><span class='text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-white'>Rely On.</span>",
-                heroSub: "Engineering-grade diesel generator solutions from 8 KVA to 3000 KVA.",
-                btnQuote: "Get Quote", btnFindGen: "Find Your Generator", btnContactSales: "Contact Sales",
-                capacity: "Capacity", engine: "Engine", alternator: "Alternator",
+                pageTitle: "Premium Power LLC | Power You Can Trust",
+                chatSales: "Sales Inquiry", chatEmergency: "24/7 Emergency", chatWhatsApp: "WhatsApp", chatCall: "Direct Call",
                 trustedBy: "Trusted by Top Contractors in Egypt",
-                clientsHeader: "Our Partners", clientsTitle: "Trusted by Leading Organizations",
-                client1: "Cairo Medical Center", client2: "Delta Steel", client3: "Grand Nile Hotel", client4: "6th Oct Construction",
-                client5: "Menofia Business Park", client6: "Al-Ahram Shopping Center", client7: "Intl School Cairo", client8: "Ministry of Housing",
+                navHome: "Home", navAbout: "About", navProducts: "Generators", navCalc: "Calculator", navContact: "Contact", navProjects: "Projects", navComparison: "Compare",
+                heroTitle: "Power You Can <br/><span class='text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-white'>Rely On.</span>",
+                heroSub: "Engineering-grade diesel generator solutions from 8 KVA to 3000 KVA. Professional installation and 24/7 support.",
+                btnQuote: "Get Quote", btnFindGen: "Find Your Generator", btnContactSales: "Contact Sales",
+                capacity: "Power Capacity", engine: "Engine", alternator: "Alternator",
+                tool: "Interactive Tool", calcTitle: "Power Size Calculator", calcSub: "Not sure what capacity you need? Enter your appliances below to get an estimated generator size recommendation.",
+                equipment: "Your Equipment", ac1: "AC (1.5 HP)", ac1W: "Approx 1200W", ac3: "AC (3.0 HP)", ac3W: "Approx 2400W", pump: "Water Pump (1 HP)", pumpW: "Approx 750W", pc: "Office PC / Laptop", pcW: "Approx 200W", light: "Standard Lighting (Room)", lightW: "Approx 100W",
+                estimated: "Estimated Requirement", kva: "KVA", safetyNote: "*This is an estimate including a 25% safety margin. Starting currents for motors (ACs/Pumps) may vary.", 
+                fuelTitle: "Est. Fuel Consumption", fuelUnit: "Liters/Hour", fuelNote: "@ 75% Prime Load",
+                btnRequestQuote: "Request Quote for this Size",
+                workflow: "Workflow", howWeWork: "How We Work", step1: "1. Assessment", step1D: "Technical site survey & load analysis", step2: "2. Proposal", step2D: "Detailed quotation & Contract", step3: "3. Delivery", step3D: "Logistics, installation & setup", step4: "4. Support", step4D: "Commissioning, load test & 24/7 care",
+                catalog: "Catalog", engineBrands: "Engine Brands", brandsSub: "We supply generators powered by the world's most reliable engines. Choose your preferred brand below.",
+                perkinsTitle: "Perkins Series", perkinsLoc: "United Kingdom • 9 KVA to 2500 KVA", perkinsDesc: "The industry standard for reliability and fuel efficiency. Ideal for all climates and load profiles.",
+                volvoTitle: "Volvo Penta", volvoLoc: "Sweden • 85 KVA to 700 KVA", volvoDesc: "Known for rapid load acceptance and superior performance in heavy-duty applications and mining.",
+                doosanTitle: "Doosan", doosanLoc: "South Korea • 150 KVA to 825 KVA", doosanDesc: "Excellent value for money with robust durability for construction sites and continuous prime power.",
+                navClients: "Clients", navProducts: "Products",
+                servicesHeader: "Our Offerings", servicesTitle: "Products & Services", servicesSub: "Complete power solutions from equipment supply to long-term maintenance support.",
+                service1Title: "Open-Type Generators", service1Desc: "Standard generators for industrial sites with robust frames and weather protection.",
+                service2Title: "Soundproof Canopies", service2Desc: "Custom acoustic enclosures reducing noise to 65dB for residential and sensitive areas.",
+                service3Title: "Low Voltage Panels", service3Desc: "ATS, synchronization, and distribution panels engineered to meet your load profile.",
+                service4Title: "External Fuel Tanks", service4Desc: "Double-wall fuel storage tanks from 500L to 10,000L with leak detection systems.",
+                service5Title: "Spare Parts", service5Desc: "100% genuine OEM parts for Perkins, Volvo, and Doosan available from local stock.",
+                service6Title: "Installation Services", service6Desc: "Complete turnkey installation including foundation, fuel lines, and commissioning.",
+                service7Title: "Maintenance Services", service7Desc: "Preventative and corrective maintenance contracts with 24/7 emergency response.",
+                servicesCTA: "Need a Custom Solution?", servicesCTADesc: "Contact our engineering team for tailored packages.", servicesCTABtn: "Get Started",
+                clientsHeader: "Our Partners", clientsTitle: "Trusted by Leading Organizations", clientsSub: "Powering critical operations across healthcare, manufacturing, hospitality, and infrastructure sectors.",
+                client1: "Cairo Medical Center", client2: "Delta Steel Industries", client3: "Grand Nile Hotel", client4: "6th October Construction",
+                client5: "Menofia Business Park", client6: "Al-Ahram Shopping Center", client7: "International School Cairo", client8: "Ministry of Housing",
                 stat1: "Projects Completed", stat2: "Years Experience", stat3: "Active Contracts", stat4: "Uptime Guarantee",
-                servicesHeader: "Offerings", servicesTitle: "Products & Services", servicesSub: "Complete power solutions.",
-                service1Title: "Generators", service1Desc: "Open & Silent", service2Title: "Canopies", service2Desc: "Soundproof",
-                service3Title: "Panels", service3Desc: "ATS & Sync", service4Title: "Fuel Tanks", service4Desc: "Double-wall",
-                service5Title: "Spare Parts", service5Desc: "Genuine OEM", service6Title: "Installation", service6Desc: "Turnkey",
-                service7Title: "Maintenance", service7Desc: "Preventative", servicesCTA: "Custom Solution", servicesCTADesc: "Tailored packages.", servicesCTABtn: "Get Started",
-                catalog: "Catalog", engineBrands: "Engine Brands",
-                perkinsTitle: "Perkins", perkinsLoc: "UK", volvoTitle: "Volvo Penta", volvoLoc: "Sweden", doosanTitle: "Doosan", doosanLoc: "Korea",
-                btnTechSpecs: "Technical Specs", btnDownload: "Download Spec Sheet",
-                tool: "Interactive Tool", calcTitle: "Power Calculator", equipment: "Your Equipment",
-                ac1: "AC (1.5HP)", ac3: "AC (3.0HP)", pump: "Water Pump", light: "Lighting",
-                estimated: "Estimated", kva: "KVA", fuelTitle: "Fuel Consumption", btnRequestQuote: "Request Quote",
-                soundTitle: "Hear the Difference", soundOpen: "Standard", soundSilent: "Silent", soundTraffic: "Traffic Noise",
-                recentInstalls: "Recent Installations", proj1Title: "Medical Center", proj1Loc: "New Cairo", proj2Title: "Construction Power", proj2Loc: "New Capital", proj3Title: "Data Center", proj3Loc: "Maadi",
-                contactTitle: "Get In Touch", contactSub: "Contact our engineering sales team.", btnSend: "Send Message",
-                specCyl: "Cylinders:", specGov: "Governor:", specAsp: "Aspiration:", specMechElec: "Mech/Elec", specTurbo: "Turbo", specEms: "EMS 2.0", specTurboInt: "Turbo+Int", specElectronic: "Electronic", specTurboAfter: "Turbo+After"
+                btnDownload: "Download Spec Sheet", btnTechSpecs: "View Technical Specs",
+                specCyl: "Cylinders:", specGov: "Governor:", specAsp: "Aspiration:",
+                specMechElec: "Mech / Electronic", specTurbo: "Turbocharged",
+                specEms: "EMS 2.0 (Fully Elec)", specTurboInt: "Turbo + Intercooler",
+                specElectronic: "Electronic (ECU)", specTurboAfter: "Turbo + Aftercooler",
+                soundHeader: "Acoustic Engineering", soundTitle: "Hear the Difference", soundOpen: "Standard (Open)", soundSilent: "Premium Soundproof", soundTraffic: "Traffic Noise", soundOffice: "Office Silence", soundInfo: "Our custom-fabricated soundproof canopies reduce noise levels significantly, making them suitable for residential areas, hospitals, and offices.",
+                portfolio: "Portfolio", recentInstalls: "Recent Installations", projectsSub: "Delivering power to Egypt's most critical sectors.",
+                proj1Loc: "New Cairo", proj1Title: "Medical Center Backup", proj1Desc: "Installed 2x 500 KVA Perkins units with ATS synchronization panel.",
+                proj2Loc: "New Capital", proj2Title: "Construction Power", proj2Desc: "Provided 4x 250 KVA Volvo Penta generators for site operations.",
+                proj3Loc: "Maadi", proj3Title: "Bank HQ Data Center", proj3Desc: "High-precision 1000 KVA Doosan unit with soundproof canopy (65db).",
+                comparisonHeader: "The Premium Difference", comparisonTitle: "Why Premium Power is the Right Choice", comparisonSub: "We set the standard for quality and service in the Egyptian power generation sector.",
+                tableFeature: "Feature", tableUs: "Premium Power", tableCompetitor: "Standard Competitor",
+                tableResponse: "Emergency Response Time", tableResponseUs: "Within 24 Hours", tableResponseComp: "3-5 Days (Often Longer)",
+                tableParts: "Spare Parts Authenticity", tablePartsUs: "100% Genuine (OEM)", tablePartsComp: "Aftermarket/Generic",
+                tableWarranty: "Standard Warranty", tableWarrantyUs: "1 Year / 1000 Hours", tableWarrantyComp: "6 Months or Less",
+                tableTechnicians: "Technician Expertise", tableTechniciansUs: "Certified Engineering Team", tableTechniciansComp: "Contracted Labor",
+                tableCommissioning: "Load Testing / Commissioning", tableCommissioningUs: "Standard Inclusion", tableCommissioningComp: "Optional / Extra Charge",
+                faqTitle: "Frequently Asked Questions",
+                contactTitle: "Get In Touch", contactSub: "Ready to power your project? Contact our engineering sales team for a precise quote.",
+                callUs: "Call Us", emailUs: "Email Us", visitUs: "Visit Us", inquiryTitle: "Send an Inquiry",
+                yourName: "Your Name", phoneNumber: "Phone Number", howHelp: "How can we help you? (e.g., Requesting a 500 KVA Perkins quote)", btnSend: "Send Message",
+                footerSub: "Delivering high-quality diesel generator solutions with fast service, trusted performance, and professional support.",
+                messageBoxTitle: "Notification", messageBoxClose: "Close",
+                downloadStarting: "Spec sheet download is starting now. If the download does not start, please contact us.",
+                formSubmitted: "Message sent! We will contact you shortly."
             },
             ar: {
-                pageTitle: "بريميوم باور", chatSales: "المبيعات", chatWhatsApp: "واتساب", chatCall: "اتصال", chatEmergency: "طوارئ",
-                navHome: "الرئيسية", navAbout: "عن الشركة", navProducts: "المنتجات", navCalc: "الحاسبة", navContact: "تواصل معنا", navProjects: "المشاريع",
+                pageTitle: "بريميوم باور | طاقة يمكنك الاعتماد عليها",
+                chatSales: "المبيعات", chatEmergency: "طوارئ 24/7", chatWhatsApp: "واتساب", chatCall: "اتصال مباشر",
+                trustedBy: "موثوق به من قبل كبرى المقاولين في مصر",
+                navHome: "الرئيسية", navAbout: "عن الشركة", navProducts: "المولدات", navCalc: "حاسبة القدرة", navContact: "تواصل معنا", navProjects: "المشاريع", navComparison: "مقارنة",
                 heroTitle: "طاقة يمكنك <br/><span class='text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-white'>الاعتماد عليها.</span>",
-                heroSub: "حلول مولدات الديزل الهندسية من 8 إلى 3000 ك.ف.أ.",
-                btnQuote: "اطلب عرض", btnFindGen: "ابحث عن مولد", btnContactSales: "المبيعات",
-                capacity: "القدرة", engine: "المحرك", alternator: "المولد",
-                trustedBy: "موثوق به من كبرى المقاولين في مصر",
-                clientsHeader: "شركاؤنا", clientsTitle: "موثوق بها من المؤسسات الرائدة",
-                client1: "مركز القاهرة الطبي", client2: "صناعات الدلتا", client3: "فندق جراند النيل", client4: "إنشاءات 6 أكتوبر",
+                heroSub: "حلول مولدات الديزل الهندسية من 8 ك.ف.أ إلى 3000 ك.ف.أ. تركيب احترافي ودعم 24/7.",
+                btnQuote: "اطلب عرض سعر", btnFindGen: "ابحث عن مولدك", btnContactSales: "اتصل بالمبيعات",
+                capacity: "قدرة المولد", engine: "المحرك", alternator: "المولد الكهربائي",
+                tool: "أداة تفاعلية", calcTitle: "حاسبة قدرة المولد", calcSub: "هل أنت غير متأكد من السعة التي تحتاجها؟ أدخل أجهزتك أدناه للحصول على تقدير لحجم المولد الموصى به.",
+                equipment: "معداتك", ac1: "تكييف (1.5 حصان)", ac1W: "تقريبًا 1200 واط", ac3: "تكييف (3.0 حصان)", ac3W: "تقريبًا 2400 واط", pump: "مضخة مياه (1 حصان)", pumpW: "تقريبًا 750 واط", pc: "كمبيوتر مكتبي / محمول", pcW: "تقريبًا 200 واط", light: "إضاءة قياسية (غرفة)", lightW: "تقريبًا 100 واط",
+                estimated: "المتطلبات المقدرة", kva: "ك.ف.أ", safetyNote: "*هذا تقدير يتضمن هامش أمان بنسبة 25٪. قد تختلف تيارات بدء تشغيل المحركات (مكيفات/مضخات).",
+                fuelTitle: "استهلاك الوقود التقديري", fuelUnit: "لتر/ساعة", fuelNote: "@ 75% حمل أساسي",
+                btnRequestQuote: "اطلب عرض سعر لهذا الحجم",
+                workflow: "سير العمل", howWeWork: "كيف نعمل", step1: "1. تقييم", step1D: "مسح فني للموقع وتحليل الأحمال", step2: "2. عرض سعر", step2D: "عرض أسعار مفصل وعقد", step3: "3. توصيل", step3D: "اللوجستيات والتركيب والإعداد", step4: "4. دعم", step4D: "التشغيل واختبار الحمل والرعاية على مدار الساعة",
+                catalog: "الكتالوج", engineBrands: "ماركات المحركات", brandsSub: "نقوم بتوريد مولدات تعمل بأكثر المحركات موثوقية في العالم. اختر علامتك التجارية المفضلة أدناه.",
+                perkinsTitle: "سلسلة بيركنز", perkinsLoc: "المملكة المتحدة • 9 ك.ف.أ إلى 2500 ك.ف.أ", perkinsDesc: "المعيار الصناعي للموثوقية وكفاءة استهلاك الوقود. مثالية لجميع المناخات وأنماط الأحمال.",
+                volvoTitle: "فولفو بنتا", volvoLoc: "السويد • 85 ك.ف.أ إلى 700 ك.ف.أ", volvoDesc: "تشتهر بالاستجابة السريعة للحمل والأداء المتفوق في التطبيقات الشاقة والتعدين.",
+                doosanTitle: "دوسان", doosanLoc: "كوريا الجنوبية • 150 ك.ف.أ إلى 825 ك.ف.أ", doosanDesc: "قيمة ممتازة مقابل المال مع متانة قوية لمواقع البناء والطاقة الأولية المستمرة.",
+                navClients: "العملاء", navProducts: "المنتجات",
+                servicesHeader: "عروضنا", servicesTitle: "المنتجات والخدمات", servicesSub: "حلول طاقة كاملة من توريد المعدات إلى دعم الصيانة طويلة الأجل.",
+                service1Title: "مولدات مفتوحة", service1Desc: "مولدات قياسية للمواقع الصناعية بإطارات قوية وحماية من الطقس.",
+                service2Title: "كبائن عازلة للصوت", service2Desc: "هياكل صوتية مخصصة تقلل الضوضاء إلى 65 ديسيبل للمناطق السكنية والحساسة.",
+                service3Title: "لوحات الجهد المنخفض", service3Desc: "لوحات ATS والمزامنة والتوزيع المصممة هندسيًا لتناسب ملف الحمل الخاص بك.",
+                service4Title: "خزانات وقود خارجية", service4Desc: "خزانات تخزين وقود بجدار مزدوج من 500 لتر إلى 10,000 لتر مع أنظمة كشف التسرب.",
+                service5Title: "قطع غيار", service5Desc: "قطع غيار أصلية 100% من OEM لبيركنز وفولفو ودوسان متاحة من المخزون المحلي.",
+                service6Title: "خدمات التركيب", service6Desc: "تركيب كامل وشامل بما في ذلك الأساس وخطوط الوقود والتشغيل.",
+                service7Title: "خدمات الصيانة", service7Desc: "عقود صيانة وقائية وتصحيحية مع استجابة طوارئ على مدار الساعة.",
+                servicesCTA: "هل تحتاج إلى حل مخصص؟", servicesCTADesc: "اتصل بفريقنا الهندسي للحصول على باقات مخصصة.", servicesCTABtn: "ابدأ الآن",
+                clientsHeader: "شركاؤنا", clientsTitle: "موثوق بها من قبل المؤسسات الرائدة", clientsSub: "تشغيل العمليات الحيوية في قطاعات الرعاية الصحية والتصنيع والضيافة والبنية التحتية.",
+                client1: "مركز القاهرة الطبي", client2: "صناعات الدلتا للصلب", client3: "فندق جراند النيل", client4: "إنشاءات 6 أكتوبر",
                 client5: "حديقة المنوفية للأعمال", client6: "مركز الأهرام التجاري", client7: "المدرسة الدولية بالقاهرة", client8: "وزارة الإسكان",
-                stat1: "مشروع مكتمل", stat2: "سنة خبرة", stat3: "عقد نشط", stat4: "ضمان تشغيل",
-                servicesHeader: "عروضنا", servicesTitle: "المنتجات والخدمات", servicesSub: "حلول طاقة متكاملة.",
-                service1Title: "مولدات", service1Desc: "مفتوحة وكاتمة", service2Title: "كبائن", service2Desc: "عازلة للصوت",
-                service3Title: "لوحات", service3Desc: "ATS وتزامن", service4Title: "خزانات وقود", service4Desc: "جدار مزدوج",
-                service5Title: "قطع غيار", service5Desc: "أصلية", service6Title: "تركيب", service6Desc: "تسليم مفتاح",
-                service7Title: "صيانة", service7Desc: "وقائية", servicesCTA: "حل مخصص", servicesCTADesc: "باقات مفصلة", servicesCTABtn: "ابدأ الآن",
-                catalog: "الكتالوج", engineBrands: "الماركات",
-                perkinsTitle: "بيركنز", perkinsLoc: "المملكة المتحدة", volvoTitle: "فولفو", volvoLoc: "السويد", doosanTitle: "دوسان", doosanLoc: "كوريا",
-                btnTechSpecs: "مواصفات فنية", btnDownload: "تنزيل المواصفات",
-                tool: "أداة", calcTitle: "حاسبة القدرة", equipment: "معداتك",
-                ac1: "تكييف 1.5", ac3: "تكييف 3.0", pump: "مضخة", light: "إضاءة",
-                estimated: "تقديري", kva: "ك.ف.أ", fuelTitle: "استهلاك الوقود", btnRequestQuote: "طلب عرض سعر",
-                soundTitle: "اسمع الفرق", soundOpen: "قياسي", soundSilent: "كاتم", soundTraffic: "ضوضاء المرور",
-                recentInstalls: "أحدث المشاريع", proj1Title: "مركز طبي", proj1Loc: "القاهرة الجديدة", proj2Title: "موقع إنشاء", proj2Loc: "العاصمة الجديدة", proj3Title: "مركز بيانات", proj3Loc: "المعادي",
-                contactTitle: "تواصل معنا", contactSub: "اتصل بفريق المبيعات.", btnSend: "إرسال",
-                specCyl: "سلندرات", specGov: "حاكم", specAsp: "تنفس", specMechElec: "ميكانيكي", specTurbo: "تيربو", specEms: "EMS إلكتروني", specTurboInt: "تيربو+مبرد", specElectronic: "إلكتروني", specTurboAfter: "تيربو+مبرد"
+                stat1: "المشاريع المكتملة", stat2: "سنوات الخبرة", stat3: "العقود النشطة", stat4: "ضمان وقت التشغيل",
+                btnDownload: "تنزيل ورقة المواصفات", btnTechSpecs: "عرض المواصفات الفنية",
+                specCyl: "السلندرات:", specGov: "الحاكم:", specAsp: "التنفس:",
+                specMechElec: "ميكانيكي / إلكتروني", specTurbo: "تيربو",
+                specEms: "EMS 2.0 (إلكتروني كامل)", specTurboInt: "تيربو + مبرد داخلي",
+                specElectronic: "إلكتروني (ECU)", specTurboAfter: "تيربو + مبرد لاحق",
+                soundHeader: "الهندسة الصوتية", soundTitle: "اسمع الفرق", soundOpen: "قياسي (مفتوح)", soundSilent: "كاتم للصوت (بريميوم)", soundTraffic: "ضوضاء المرور", soundOffice: "هدوء المكتب", soundInfo: "تعمل الكبائن الكاتمة للصوت المصنعة خصيصاً لدينا على تقليل مستويات الضوضاء بشكل كبير، مما يجعلها مناسبة للمناطق السكنية والمستشفيات والمكاتب.",
+                portfolio: "معرض الأعمال", recentInstalls: "أحدث التركيبات", projectsSub: "توفير الطاقة لأهم القطاعات في مصر.",
+                proj1Loc: "القاهرة الجديدة", proj1Title: "دعم مركز طبي", proj1Desc: "تم تركيب 2 مولد 500 ك.ف.أ بيركنز مع لوحة تزامن ATS.",
+                proj2Loc: "العاصمة الجديدة", proj2Title: "طاقة مواقع الإنشاءات", proj2Desc: "تم توفير 4 مولدات 250 ك.ف.أ فولفو بنتا لعمليات الموقع.",
+                proj3Loc: "المعادي", proj3Title: "مركز بيانات البنك الرئيسي", proj3Desc: "وحدة دوسان عالية الدقة 1000 ك.ف.أ بكابينة عازلة للصوت (65 ديسيبل).",
+                comparisonHeader: "الفرق المميز", comparisonTitle: "لماذا بريميوم باور هو الخيار الصحيح", comparisonSub: "نحن نضع معيار الجودة والخدمة في قطاع توليد الطاقة المصري.",
+                tableFeature: "الميزة", tableUs: "بريميوم باور", tableCompetitor: "المنافس العادي",
+                tableResponse: "وقت الاستجابة للطوارئ", tableResponseUs: "في غضون 24 ساعة", tableResponseComp: "3-5 أيام (غالباً أطول)",
+                tableParts: "أصالة قطع الغيار", tablePartsUs: "أصلية 100% (OEM)", tablePartsComp: "ما بعد البيع/عامة",
+                tableWarranty: "الضمان القياسي", tableWarrantyUs: "سنة واحدة / 1000 ساعة", tableWarrantyComp: "6 أشهر أو أقل",
+                tableTechnicians: "خبرة الفنيين", tableTechniciansUs: "فريق هندسي معتمد", tableTechniciansComp: "عمالة متعاقدة",
+                tableCommissioning: "اختبار الحمل / التشغيل", tableCommissioningUs: "مضمنة بشكل قياسي", tableCommissioningComp: "اختياري / تكلفة إضافية",
+                faqTitle: "الأسئلة الشائعة",
+                contactTitle: "تواصل معنا", contactSub: "هل أنت مستعد لتزويد مشروعك بالطاقة؟ اتصل بفريق المبيعات الهندسية لدينا للحصول على عرض أسعار دقيق.",
+                callUs: "اتصل بنا", emailUs: "راسلنا بالبريد الإلكتروني", visitUs: "قم بزيارتنا", inquiryTitle: "إرسال استفسار",
+                yourName: "اسمك", phoneNumber: "رقم الهاتف", howHelp: "كيف يمكننا مساعدتك؟ (مثال: طلب عرض سعر لمولد بيركنز 500 ك.ف.أ)", btnSend: "أرسل الرسالة",
+                footerSub: "تقديم حلول مولدات الديزل عالية الجودة مع خدمة سريعة وأداء موثوق وخبرة هندسية.",
+                messageBoxTitle: "إشعار", messageBoxClose: "إغلاق",
+                downloadStarting: "يتم بدء تحميل ورقة المواصفات الآن. إذا لم يبدأ التحميل، يرجى التواصل معنا.",
+                formSubmitted: "تم إرسال رسالتك! سنتواصل معك قريباً."
             }
         };
 
         let currentLang = 'en';
 
-        /* --- 2. Animations & Interactivity --- */
-
-        // A. Scroll Reveal Engine (Intersection Observer)
-        // Optimized: Uses native browser API, no scroll listeners on main thread
-        const observerOptions = { threshold: 0.15, rootMargin: "0px" };
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                    
-                    // Special trigger for Stats Counter
-                    if(entry.target.id === 'stats-container') {
-                        startCounters();
-                        observer.unobserve(entry.target); // Run only once
-                    }
-                }
-            });
-        }, observerOptions);
-
-        // B. Animated Number Counters
-        function startCounters() {
-            const counters = document.querySelectorAll('.counter');
-            counters.forEach(counter => {
-                const target = +counter.getAttribute('data-target');
-                const duration = 2000; // 2 seconds
-                const increment = target / (duration / 16); // 60fps
-                
-                let current = 0;
-                const updateCounter = () => {
-                    current += increment;
-                    if(current < target) {
-                        counter.innerText = Math.ceil(current);
-                        requestAnimationFrame(updateCounter);
-                    } else {
-                        counter.innerText = target;
-                    }
-                };
-                updateCounter();
-            });
+        // Feature 6: Toggle Chat Menu
+        function toggleChatMenu() {
+            const menu = document.getElementById('chat-menu');
+            menu.classList.toggle('chat-open');
         }
 
-        // C. Hero Canvas Animation (Power Grid)
-        // Optimized: Pauses when not in viewport
-        function initHeroCanvas() {
-            const canvas = document.getElementById('hero-canvas');
-            const ctx = canvas.getContext('2d');
-            let width, height;
-            let particles = [];
-            let animationFrameId;
-
-            // Resize Handler
-            const resize = () => {
-                width = canvas.width = window.innerWidth;
-                height = canvas.height = window.innerHeight;
-            };
-            window.addEventListener('resize', resize);
-            resize();
-
-            // Particle Class
-            class Particle {
-                constructor() {
-                    this.x = Math.random() * width;
-                    this.y = Math.random() * height;
-                    this.vx = (Math.random() - 0.5) * 0.5;
-                    this.vy = (Math.random() - 0.5) * 0.5;
-                    this.size = Math.random() * 2;
-                }
-                update() {
-                    this.x += this.vx;
-                    this.y += this.vy;
-                    if (this.x < 0 || this.x > width) this.vx *= -1;
-                    if (this.y < 0 || this.y > height) this.vy *= -1;
-                }
-                draw() {
-                    ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                    ctx.fill();
-                }
-            }
-
-            // Create Particles
-            for (let i = 0; i < 50; i++) particles.push(new Particle());
-
-            // Animation Loop
-            const animate = () => {
-                ctx.clearRect(0, 0, width, height);
-                
-                // Draw Connections
-                for (let i = 0; i < particles.length; i++) {
-                    const p1 = particles[i];
-                    p1.update();
-                    p1.draw();
-                    
-                    for (let j = i + 1; j < particles.length; j++) {
-                        const p2 = particles[j];
-                        const dx = p1.x - p2.x;
-                        const dy = p1.y - p2.y;
-                        const dist = Math.sqrt(dx * dx + dy * dy);
-                        
-                        if (dist < 150) {
-                            ctx.strokeStyle = `rgba(255, 255, 255, ${0.1 - dist/1500})`;
-                            ctx.lineWidth = 1;
-                            ctx.beginPath();
-                            ctx.moveTo(p1.x, p1.y);
-                            ctx.lineTo(p2.x, p2.y);
-                            ctx.stroke();
-                        }
-                    }
-                }
-                animationFrameId = requestAnimationFrame(animate);
-            };
-
-            // Optimization: Only animate when Hero is visible
-            const heroObserver = new IntersectionObserver((entries) => {
-                if(entries[0].isIntersecting) {
-                    animate();
-                } else {
-                    cancelAnimationFrame(animationFrameId);
-                }
-            });
-            heroObserver.observe(document.getElementById('home'));
-        }
-
-        /* --- 3. Utilities & Logic --- */
-
-        function switchLanguage(lang) {
-            currentLang = lang;
-            document.body.dir = lang === 'ar' ? 'rtl' : 'ltr';
-            if(lang === 'ar') document.body.classList.add('font-arabic');
-            else document.body.classList.remove('font-arabic');
-
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if(translations[lang][key]) el.innerHTML = translations[lang][key];
-            });
-            lucide.createIcons();
-        }
-
-        function calculateKVA() {
-            const vals = {
-                ac1: parseInt(document.getElementById('calc-ac1').value) || 0,
-                ac3: parseInt(document.getElementById('calc-ac3').value) || 0,
-                pump: parseInt(document.getElementById('calc-pump').value) || 0,
-                light: parseInt(document.getElementById('calc-light').value) || 0
-            };
-            
-            const totalWatts = (vals.ac1 * 1200) + (vals.ac3 * 2400) + (vals.pump * 750) + (vals.light * 100);
-            const kva = Math.ceil((totalWatts / 1000 / 0.8) * 1.25);
-            
-            // Animated Number Update
-            document.getElementById('result-kva').innerText = kva;
-            document.getElementById('result-fuel').innerText = kva > 0 ? Math.ceil(kva * 0.21) : 0;
-            
-            // Scale Effect
-            const res = document.getElementById('result-kva');
-            res.classList.add('scale-125');
-            setTimeout(() => res.classList.remove('scale-125'), 150);
-        }
-
+        // Feature 7: Accordion Toggle
         function toggleSpec(id) {
-            const el = document.getElementById(id);
+            const element = document.getElementById(id);
             const icon = document.getElementById('icon-' + id);
             
-            // Close all others
-            document.querySelectorAll('.spec-content').forEach(i => i.classList.remove('spec-open'));
-            document.querySelectorAll('[id^="icon-spec-"]').forEach(i => i.style.transform = 'rotate(0deg)');
-            
-            // Toggle current
-            if (!el.classList.contains('spec-open')) {
-                el.classList.add('spec-open');
+            // Check if currently open
+            if (element.classList.contains('spec-open')) {
+                element.classList.remove('spec-open');
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                // Close others (optional, keeps it clean)
+                document.querySelectorAll('.spec-content').forEach(el => {
+                    el.classList.remove('spec-open');
+                });
+                document.querySelectorAll('[id^="icon-spec-"]').forEach(el => {
+                    el.style.transform = 'rotate(0deg)';
+                });
+
+                element.classList.add('spec-open');
                 icon.style.transform = 'rotate(180deg)';
             }
         }
 
+        // Feature 4: Sound Visualizer Logic
         function setSoundMode(mode) {
             const bar = document.getElementById('sound-bar');
             const val = document.getElementById('sound-val');
@@ -893,57 +1024,297 @@
 
             if (mode === 'open') {
                 bar.style.width = '85%';
-                bar.classList.replace('bg-green-500', 'bg-red-500');
+                bar.classList.remove('bg-green-500');
+                bar.classList.add('bg-red-500');
+                
                 val.innerText = '85 db';
-                desc.innerText = translations[currentLang].soundTraffic;
+                desc.innerText = currentLang === 'ar' ? translations['ar']['soundTraffic'] : translations['en']['soundTraffic'];
+
                 btnOpen.classList.add('bg-red-500', 'text-white', 'border-red-500');
+                btnOpen.classList.remove('text-gray-500', 'border-gray-200');
+
                 btnSilent.classList.remove('bg-paypal-light', 'text-white', 'border-paypal-light');
+                btnSilent.classList.add('text-gray-500', 'border-gray-200');
+
             } else {
                 bar.style.width = '65%';
-                bar.classList.replace('bg-red-500', 'bg-green-500');
+                bar.classList.remove('bg-red-500');
+                bar.classList.add('bg-green-500');
+                
                 val.innerText = '65 db';
-                desc.innerText = "Office Silence"; // Simplified for demo
+                desc.innerText = currentLang === 'ar' ? translations['ar']['soundOffice'] : translations['en']['soundOffice'];
+
                 btnOpen.classList.remove('bg-red-500', 'text-white', 'border-red-500');
+                btnOpen.classList.add('text-gray-500', 'border-gray-200');
+
                 btnSilent.classList.add('bg-paypal-light', 'text-white', 'border-paypal-light');
+                btnSilent.classList.remove('text-gray-500', 'border-gray-200');
             }
         }
 
-        // --- Init ---
-        document.addEventListener('DOMContentLoaded', () => {
+        // Feature 1: Smart Form Auto-Fill
+        function fillQuoteRequest() {
+            const kva = document.getElementById('result-kva').innerText;
+            const msgField = document.getElementById('contact-message');
+            
+            let text = "";
+            if (currentLang === 'ar') {
+                text = `مرحباً، بناءً على حساب الأحمال على الموقع، أنا مهتم بمولد بقدرة تقريبية ${kva} ك.ف.أ. يرجى التواصل معي للتفاصيل.`;
+            } else {
+                text = `Hello, based on the load calculator on your website, I am interested in a generator with approximately ${kva} KVA capacity. Please contact me with details.`;
+            }
+
+            msgField.value = text;
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Message Box Logic
+        function showMessageBox(message) {
+            const box = document.getElementById('message-box');
+            const content = document.getElementById('message-box-content');
+            content.innerText = message;
+            
+            // Show the box with fade and scale transition
+            box.classList.remove('hidden');
+            setTimeout(() => {
+                box.classList.add('opacity-100');
+                box.querySelector('div').classList.remove('scale-95');
+            }, 10); // Small delay for transition
+            
+            // Re-run i18n for the modal title/button
+            switchLanguage(currentLang, true);
+        }
+
+        function calculateKVA() {
+            const WATTS_AC1 = 1200;  // 1.5HP
+            const WATTS_AC3 = 2400;  // 3.0HP
+            const WATTS_PUMP = 750;  // 1HP Pump
+            const WATTS_PC = 200;
+            const WATTS_LIGHT = 100;
+
+            const qtyAC1 = parseInt(document.getElementById('calc-ac1').value) || 0;
+            const qtyAC3 = parseInt(document.getElementById('calc-ac3').value) || 0;
+            const qtyPump = parseInt(document.getElementById('calc-pump').value) || 0;
+            const qtyPC = parseInt(document.getElementById('calc-pc').value) || 0;
+            const qtyLight = parseInt(document.getElementById('calc-light').value) || 0;
+
+            let totalWatts = (qtyAC1 * WATTS_AC1) + (qtyAC3 * WATTS_AC3) + (qtyPump * WATTS_PUMP) + (qtyPC * WATTS_PC) + (qtyLight * WATTS_LIGHT);
+            let totalKW = totalWatts / 1000;
+            let requiredKVA = totalKW / 0.8; // Assume 0.8 Power Factor
+            let finalKVA = requiredKVA * 1.25; // 25% Safety Margin
+            let displayKVA = Math.ceil(finalKVA);
+            
+            if (displayKVA < 0) displayKVA = 0;
+            document.getElementById('result-kva').innerText = displayKVA;
+
+            // Feature 2: Fuel Consumption Logic
+            let estimatedFuel = Math.ceil(displayKVA * 0.21);
+            if (displayKVA === 0) estimatedFuel = 0;
+            document.getElementById('result-fuel').innerText = estimatedFuel;
+        }
+
+        // FAQ Data
+        const faqs = [
+            { q_en: "How long does delivery and installation take?", a_en: "Standard delivery and installation is completed within 7–15 working days depending on the generator model and site logistics.", q_ar: "كم تستغرق عملية التوصيل والتركيب؟", a_ar: "يتراوح وقت التسليم والتركيب القياسي من 7 إلى 15 يوم عمل حسب طراز المولد واللوجستيات الخاصة بالموقع." },
+            { q_en: "Do you provide installation services and ATS panels?", a_en: "Yes, we offer full turnkey installation, including site assessment, positioning, cabling, Automatic Transfer Switch (ATS) panels, and commissioning.", q_ar: "هل تقدمون خدمات التركيب ولوحات ATS؟", a_ar: "نعم، نحن نقدم تركيبًا كاملاً وشاملاً، بما في ذلك تقييم الموقع، وتحديد الموقع، والكابلات، ولوحات مفاتيح التحويل التلقائي (ATS)، والتشغيل." },
+            { q_en: "What is the warranty period and coverage?", a_en: "We provide a standard warranty of 1 year or 1000 operating hours (whichever comes first) covering manufacturing defects in the engine and alternator, supported locally.", q_ar: "ما هي فترة الضمان والتغطية؟", a_ar: "نقدم ضمانًا قياسيًا لمدة عام واحد أو 1000 ساعة تشغيل (أيهما يأتي أولاً) يغطي عيوب التصنيع في المحرك والمولد الكهربائي، مع دعم محلي." },
+            { q_en: "Do you have spare parts and maintenance contracts?", a_en: "Yes, we maintain a comprehensive stock of genuine OEM spare parts for all our brands. We also offer tailored preventative maintenance contracts.", q_ar: "هل تتوفر لديكم قطع غيار وعقود صيانة؟", a_ar: "نعم، نحتفظ بمخزون شامل من قطع الغيار الأصلية (OEM) لجميع علاماتنا التجارية. كما نقدم عقود صيانة وقائية مصممة خصيصًا." }
+        ];
+
+        function renderFAQs(lang) {
+            const faqContainer = document.getElementById('faq-container');
+            faqContainer.innerHTML = ''; // Clear existing
+            faqs.forEach(item => {
+                const q = lang === 'ar' ? item.q_ar : item.q_en;
+                const a = lang === 'ar' ? item.a_ar : item.a_en;
+                
+                const div = document.createElement('div');
+                div.className = "border-b border-gray-100 last:border-b-0";
+                div.innerHTML = `
+                    <button class="w-full flex justify-between items-center font-bold text-lg text-paypal-dark py-4 hover:text-paypal-light transition-colors" onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180')" dir="${lang === 'ar' ? 'rtl' : 'ltr'}">
+                        ${q} <i data-lucide="chevron-down" class="w-6 h-6 text-paypal-light transition-transform duration-300 transform"></i>
+                    </button>
+                    <p class="hidden text-gray-600 pb-4 leading-relaxed" dir="${lang === 'ar' ? 'rtl' : 'ltr'}">${a}</p>
+                `;
+                faqContainer.appendChild(div);
+            });
             lucide.createIcons();
-            initHeroCanvas();
+        }
+
+        // Language Switcher Logic
+        function switchLanguage(lang, skipBody = false) {
+            currentLang = lang;
+            const elements = document.querySelectorAll('[data-i18n]');
+            const placeholders = document.querySelectorAll('[data-i18n-placeholder]');
+            const body = document.body;
             
-            // Initialize Scroll Reveal
-            document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
-            
-            // Navbar Scroll Effect
-            window.addEventListener('scroll', () => {
-                const nav = document.getElementById('navbar');
-                const isScrolled = window.scrollY > 50;
-                
-                nav.classList.toggle('bg-white/95', isScrolled);
-                nav.classList.toggle('backdrop-blur-md', isScrolled);
-                nav.classList.toggle('shadow-md', isScrolled);
-                nav.classList.toggle('py-3', isScrolled);
-                nav.classList.toggle('py-6', !isScrolled);
-                
-                // Color switching logic simplified for brevity
-                const textClass = isScrolled ? 'text-gray-600' : 'text-white/90';
-                document.querySelectorAll('.nav-link').forEach(l => l.className = `nav-link ${textClass} hover:text-paypal-light font-medium text-sm transition-colors`);
-                document.getElementById('brand-1').className = `font-bold text-lg tracking-tight ${isScrolled ? 'text-paypal-dark' : 'text-white'} transition-colors`;
-                document.getElementById('brand-2').className = `font-bold text-lg tracking-tight ${isScrolled ? 'text-paypal-light' : 'text-blue-200'} transition-colors`;
-                
-                const btn = document.getElementById('nav-btn');
-                if(isScrolled) {
-                    btn.classList.add('bg-paypal-light', 'border-transparent');
-                    btn.classList.remove('border-white/30');
+            if (!skipBody) {
+                if (lang === 'ar') {
+                    body.dir = "rtl";
+                    body.classList.add('font-arabic');
                 } else {
-                    btn.classList.remove('bg-paypal-light', 'border-transparent');
-                    btn.classList.add('border-white/30');
+                    body.dir = "ltr";
+                    body.classList.remove('font-arabic');
+                }
+            }
+
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
                 }
             });
+
+            placeholders.forEach(el => {
+                const key = el.getAttribute('data-i18n-placeholder');
+                if (translations[lang][key]) {
+                    el.placeholder = translations[lang][key];
+                }
+            });
+            
+            renderFAQs(lang);
+            lucide.createIcons();
+            
+            // Refresh Sound Display Text if active
+            const isSilent = document.getElementById('btn-sound-silent').classList.contains('bg-paypal-light');
+            setSoundMode(isSilent ? 'silent' : 'open');
+        }
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            const logoBg = document.getElementById('logo-bg');
+            const logoText = document.getElementById('logo-text');
+            const brand1 = document.getElementById('brand-1');
+            const brand2 = document.getElementById('brand-2');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const navBtn = document.getElementById('nav-btn');
+            const langBtns = document.querySelectorAll('.lang-btn');
+
+            if (window.scrollY > 20) {
+                // Scrolled State
+                nav.classList.add('bg-white/95', 'backdrop-blur-md', 'shadow-lg', 'py-3');
+                nav.classList.remove('py-6');
+                
+                logoBg.classList.remove('bg-white');
+                logoBg.classList.add('bg-paypal-light');
+                
+                logoText.classList.remove('text-paypal-dark');
+                logoText.classList.add('text-white');
+
+                brand1.classList.remove('text-white');
+                brand1.classList.add('text-paypal-dark');
+                
+                brand2.classList.remove('text-blue-200');
+                brand2.classList.add('text-paypal-light');
+
+                navLinks.forEach(link => {
+                    link.classList.remove('text-white/90', 'hover:text-white');
+                    link.classList.add('text-gray-600', 'hover:text-paypal-dark');
+                });
+
+                langBtns.forEach(btn => {
+                    btn.classList.remove('text-white/80', 'hover:text-white');
+                    btn.classList.add('text-gray-600', 'hover:text-paypal-dark');
+                });
+
+                navBtn.classList.remove('border-white/30', 'text-white', 'hover:bg-white/10');
+                navBtn.classList.add('bg-paypal-light', 'text-white', 'hover:bg-paypal-dark', 'border-transparent');
+            } else {
+                // Top State
+                nav.classList.remove('bg-white/95', 'backdrop-blur-md', 'shadow-lg', 'py-3');
+                nav.classList.add('py-6');
+
+                logoBg.classList.add('bg-white');
+                logoBg.classList.remove('bg-paypal-light');
+
+                logoText.classList.add('text-paypal-dark');
+                logoText.classList.remove('text-white');
+
+                brand1.classList.add('text-white');
+                brand1.classList.remove('text-paypal-dark');
+
+                brand2.classList.add('text-blue-200');
+                brand2.classList.remove('text-paypal-light');
+
+                navLinks.forEach(link => {
+                    link.classList.add('text-white/90', 'hover:text-white');
+                    link.classList.remove('text-gray-600', 'hover:text-paypal-dark');
+                });
+
+                langBtns.forEach(btn => {
+                    btn.classList.add('text-white/80', 'hover:text-white');
+                    btn.classList.remove('text-gray-600', 'hover:text-paypal-dark');
+                });
+
+                navBtn.classList.add('border-white/30', 'text-white', 'hover:bg-white/10');
+                navBtn.classList.remove('bg-paypal-light', 'text-white', 'hover:bg-paypal-dark', 'border-transparent');
+            }
+        });
+
+        function toggleMenu() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+
+        // Initial Load
+        document.addEventListener('DOMContentLoaded', () => {
+            switchLanguage('en');
+            calculateKVA(); 
         });
     </script>
+<script>
+        // Scroll Effect & Active Link Highlighting
+        const navbar = document.getElementById('navbar');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const langBtns = document.querySelectorAll('.lang-btn');
+        const brand1 = document.getElementById('brand-1');
+        const brand2 = document.getElementById('brand-2');
+        const navBtn = document.getElementById('nav-btn');
+        const menuIcon = document.querySelector('[data-lucide="menu"]');
+
+        function updateNavColors(isScrolled) {
+            if (isScrolled) {
+                navbar.classList.add('bg-white/90', 'backdrop-blur-md', 'shadow-sm', 'py-3');
+                navbar.classList.remove('py-6');
+                navLinks.forEach(link => {
+                    link.classList.remove('text-white/90', 'hover:text-white');
+                    link.classList.add('text-gray-600', 'hover:text-paypal-light');
+                });
+                langBtns.forEach(btn => {
+                     btn.classList.remove('text-white/80', 'hover:text-white');
+                     btn.classList.add('text-gray-600', 'hover:text-paypal-dark');
+                });
+                brand1.classList.remove('text-white');
+                brand1.classList.add('text-paypal-dark');
+                brand2.classList.remove('text-blue-200');
+                brand2.classList.add('text-paypal-light');
+                navBtn.classList.remove('border-white/30', 'text-white', 'hover:bg-white/10');
+                navBtn.classList.add('bg-paypal-light', 'text-white', 'hover:bg-paypal-dark', 'border-transparent');
+                if(menuIcon) menuIcon.classList.replace('text-white', 'text-paypal-dark');
+            } else {
+                navbar.classList.remove('bg-white/90', 'backdrop-blur-md', 'shadow-sm', 'py-3');
+                navbar.classList.add('py-6');
+                navLinks.forEach(link => {
+                    link.classList.add('text-white/90', 'hover:text-white');
+                    link.classList.remove('text-gray-600', 'hover:text-paypal-light');
+                });
+                langBtns.forEach(btn => {
+                     btn.classList.add('text-white/80', 'hover:text-white');
+                     btn.classList.remove('text-gray-600', 'hover:text-paypal-dark');
+                });
+                brand1.classList.add('text-white');
+                brand1.classList.remove('text-paypal-dark');
+                brand2.classList.add('text-blue-200');
+                brand2.classList.remove('text-paypal-light');
+                navBtn.classList.add('border-white/30', 'text-white', 'hover:bg-white/10');
+                navBtn.classList.remove('bg-paypal-light', 'hover:bg-paypal-dark', 'border-transparent');
+                if(menuIcon) menuIcon.classList.replace('text-paypal-dark', 'text-white');
+            }
+        }
+
+        window.addEventListener('scroll', () => {
+            updateNavColors(window.scrollY > 50);
+        });
+</script>
 </body>
 </html>
-
