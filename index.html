@@ -24,10 +24,20 @@
                     animation: {
                         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                         'fade-in-up': 'fadeInUp 0.5s ease-out forwards',
+                        'fade-in': 'fadeIn 0.5s ease-out forwards',
+                        'fade-in-down': 'fadeInDown 0.5s ease-out forwards',
                     },
                     keyframes: {
                         fadeInUp: {
                             '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        fadeInDown: {
+                            '0%': { opacity: '0', transform: 'translateY(-10px)' },
                             '100%': { opacity: '1', transform: 'translateY(0)' },
                         }
                     }
@@ -182,17 +192,17 @@
         
         <div class="max-w-7xl mx-auto px-6 relative z-10 w-full grid md:grid-cols-2 gap-16 items-center text-white">
             <div class="space-y-8 py-16">
-                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-dark text-blue-100 text-sm font-medium animate-fade-in-up shadow-inner">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-dark text-blue-100 text-sm font-medium animate-fade-in-up shadow-inner" style="animation-delay: 0.1s;">
                     <i data-lucide="shield" class="w-4 h-4"></i> <span data-i18n="trustedBy">Trusted by Top Contractors in Egypt</span>
                 </div>
-                <h1 class="text-5xl md:text-7xl font-extrabold leading-tight" data-i18n="heroTitle">
+                <h1 class="text-5xl md:text-7xl font-extrabold leading-tight animate-fade-in-up" style="animation-delay: 0.2s;" data-i18n="heroTitle">
                     Power You Can <br/>
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-white">Rely On.</span>
                 </h1>
-                <p class="text-xl text-blue-100/90 max-w-lg leading-relaxed font-light" data-i18n="heroSub">
+                <p class="text-xl text-blue-100/90 max-w-lg leading-relaxed font-light animate-fade-in-up" style="animation-delay: 0.3s;" data-i18n="heroSub">
                     Engineering-grade diesel generator solutions from 8 KVA to 3000 KVA. Professional installation and 24/7 support.
                 </p>
-                <div class="flex flex-wrap gap-4">
+                <div class="flex flex-wrap gap-4 animate-fade-in-up" style="animation-delay: 0.4s;">
                     <button onclick="document.getElementById('calculator').scrollIntoView()" class="px-8 py-4 rounded-full font-bold bg-white text-paypal-dark hover:bg-blue-50 transition-all shadow-xl shadow-blue-900/50 hover:shadow-2xl" data-i18n="btnFindGen">
                         Find Your Generator
                     </button>
@@ -203,7 +213,7 @@
             </div>
 
             <!-- Hero Graphic -->
-            <div class="relative hidden md:block">
+            <div class="relative hidden md:block animate-fade-in" style="animation-delay: 0.5s;">
                 <div class="glass-dark p-8 rounded-3xl shadow-2xl transform rotate-3 hover:rotate-0 transition-all duration-500 border border-white/10 hover:shadow-blue-500/30">
                     <div class="flex justify-between items-start mb-8">
                         <div class="p-3 bg-blue-500/20 rounded-xl"><i data-lucide="zap" class="w-8 h-8 text-blue-200"></i></div>
@@ -239,70 +249,72 @@
                 <h2 class="text-3xl font-bold mt-2 text-paypal-dark" data-i18n="clientsTitle">Trusted by Leading Organizations</h2>
                 <p class="text-gray-500 mt-3 max-w-2xl mx-auto" data-i18n="clientsSub">Powering critical operations across healthcare, manufacturing, hospitality, and infrastructure sectors.</p>
             </div>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
-                <div class="group flex items-center justify-center p-6 bg-white rounded-xl border border-gray-200 hover:border-paypal-light transition-all duration-300 hover:shadow-lg">
+	            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center" id="client-logos">
+	                <!-- Apply staggered animation to children -->
+	                <div class="group flex items-center justify-center p-6 bg-white rounded-xl border border-gray-200 hover:border-paypal-light transition-all duration-300 hover:shadow-lg opacity-0 animate-fade-in-up" style="animation-delay: 0.1s; animation-fill-mode: forwards;">
                     <div class="text-center opacity-50 group-hover:opacity-100 transition-opacity">
                         <div class="text-2xl font-bold text-gray-700 mb-1">🏥</div>
                         <p class="text-xs font-semibold text-gray-600" data-i18n="client1">Cairo Medical Center</p>
                     </div>
                 </div>
-                <div class="group flex items-center justify-center p-6 bg-white rounded-xl border border-gray-200 hover:border-paypal-light transition-all duration-300 hover:shadow-lg">
+	                <div class="group flex items-center justify-center p-6 bg-white rounded-xl border border-gray-200 hover:border-paypal-light transition-all duration-300 hover:shadow-lg opacity-0 animate-fade-in-up" style="animation-delay: 0.2s; animation-fill-mode: forwards;">
                     <div class="text-center opacity-50 group-hover:opacity-100 transition-opacity">
                         <div class="text-2xl font-bold text-gray-700 mb-1">🏭</div>
                         <p class="text-xs font-semibold text-gray-600" data-i18n="client2">Delta Steel Industries</p>
                     </div>
                 </div>
-                <div class="group flex items-center justify-center p-6 bg-white rounded-xl border border-gray-200 hover:border-paypal-light transition-all duration-300 hover:shadow-lg">
+	                <div class="group flex items-center justify-center p-6 bg-white rounded-xl border border-gray-200 hover:border-paypal-light transition-all duration-300 hover:shadow-lg opacity-0 animate-fade-in-up" style="animation-delay: 0.3s; animation-fill-mode: forwards;">
                     <div class="text-center opacity-50 group-hover:opacity-100 transition-opacity">
                         <div class="text-2xl font-bold text-gray-700 mb-1">🏨</div>
                         <p class="text-xs font-semibold text-gray-600" data-i18n="client3">Grand Nile Hotel</p>
                     </div>
                 </div>
-                <div class="group flex items-center justify-center p-6 bg-white rounded-xl border border-gray-200 hover:border-paypal-light transition-all duration-300 hover:shadow-lg">
+	                <div class="group flex items-center justify-center p-6 bg-white rounded-xl border border-gray-200 hover:border-paypal-light transition-all duration-300 hover:shadow-lg opacity-0 animate-fade-in-up" style="animation-delay: 0.4s; animation-fill-mode: forwards;">
                     <div class="text-center opacity-50 group-hover:opacity-100 transition-opacity">
                         <div class="text-2xl font-bold text-gray-700 mb-1">🏗️</div>
                         <p class="text-xs font-semibold text-gray-600" data-i18n="client4">6th October Construction</p>
                     </div>
                 </div>
-                <div class="group flex items-center justify-center p-6 bg-white rounded-xl border border-gray-200 hover:border-paypal-light transition-all duration-300 hover:shadow-lg">
+	                <div class="group flex items-center justify-center p-6 bg-white rounded-xl border border-gray-200 hover:border-paypal-light transition-all duration-300 hover:shadow-lg opacity-0 animate-fade-in-up" style="animation-delay: 0.5s; animation-fill-mode: forwards;">
                     <div class="text-center opacity-50 group-hover:opacity-100 transition-opacity">
                         <div class="text-2xl font-bold text-gray-700 mb-1">🏢</div>
                         <p class="text-xs font-semibold text-gray-600" data-i18n="client5">Menofia Business Park</p>
                     </div>
                 </div>
-                <div class="group flex items-center justify-center p-6 bg-white rounded-xl border border-gray-200 hover:border-paypal-light transition-all duration-300 hover:shadow-lg">
+	                <div class="group flex items-center justify-center p-6 bg-white rounded-xl border border-gray-200 hover:border-paypal-light transition-all duration-300 hover:shadow-lg opacity-0 animate-fade-in-up" style="animation-delay: 0.6s; animation-fill-mode: forwards;">
                     <div class="text-center opacity-50 group-hover:opacity-100 transition-opacity">
                         <div class="text-2xl font-bold text-gray-700 mb-1">🏪</div>
                         <p class="text-xs font-semibold text-gray-600" data-i18n="client6">Al-Ahram Shopping Center</p>
                     </div>
                 </div>
-                <div class="group flex items-center justify-center p-6 bg-white rounded-xl border border-gray-200 hover:border-paypal-light transition-all duration-300 hover:shadow-lg">
+	                <div class="group flex items-center justify-center p-6 bg-white rounded-xl border border-gray-200 hover:border-paypal-light transition-all duration-300 hover:shadow-lg opacity-0 animate-fade-in-up" style="animation-delay: 0.7s; animation-fill-mode: forwards;">
                     <div class="text-center opacity-50 group-hover:opacity-100 transition-opacity">
                         <div class="text-2xl font-bold text-gray-700 mb-1">🏫</div>
                         <p class="text-xs font-semibold text-gray-600" data-i18n="client7">International School Cairo</p>
                     </div>
                 </div>
-                <div class="group flex items-center justify-center p-6 bg-white rounded-xl border border-gray-200 hover:border-paypal-light transition-all duration-300 hover:shadow-lg">
+	                <div class="group flex items-center justify-center p-6 bg-white rounded-xl border border-gray-200 hover:border-paypal-light transition-all duration-300 hover:shadow-lg opacity-0 animate-fade-in-up" style="animation-delay: 0.8s; animation-fill-mode: forwards;">
                     <div class="text-center opacity-50 group-hover:opacity-100 transition-opacity">
                         <div class="text-2xl font-bold text-gray-700 mb-1">🏛️</div>
                         <p class="text-xs font-semibold text-gray-600" data-i18n="client8">Ministry of Housing</p>
                     </div>
                 </div>
             </div>
-            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6">
-                <div class="text-center">
+	            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6" id="stats">
+	                <!-- Apply staggered animation to children -->
+	                <div class="text-center opacity-0 animate-fade-in-up" style="animation-delay: 0.9s; animation-fill-mode: forwards;">
                     <div class="text-3xl font-extrabold text-paypal-dark">250+</div>
                     <p class="text-sm text-gray-600 mt-1" data-i18n="stat1">Projects Completed</p>
                 </div>
-                <div class="text-center">
+	                <div class="text-center opacity-0 animate-fade-in-up" style="animation-delay: 1.0s; animation-fill-mode: forwards;">
                     <div class="text-3xl font-extrabold text-paypal-dark">15+</div>
                     <p class="text-sm text-gray-600 mt-1" data-i18n="stat2">Years Experience</p>
                 </div>
-                <div class="text-center">
+	                <div class="text-center opacity-0 animate-fade-in-up" style="animation-delay: 1.1s; animation-fill-mode: forwards;">
                     <div class="text-3xl font-extrabold text-paypal-dark">50+</div>
                     <p class="text-sm text-gray-600 mt-1" data-i18n="stat3">Active Contracts</p>
                 </div>
-                <div class="text-center">
+	                <div class="text-center opacity-0 animate-fade-in-up" style="animation-delay: 1.2s; animation-fill-mode: forwards;">
                     <div class="text-3xl font-extrabold text-paypal-dark">99.2%</div>
                     <p class="text-sm text-gray-600 mt-1" data-i18n="stat4">Uptime Guarantee</p>
                 </div>
@@ -319,57 +331,58 @@
                 <h2 class="text-4xl font-bold mt-2 text-paypal-dark" data-i18n="servicesTitle">Products & Services</h2>
                 <p class="text-gray-500 mt-4 max-w-2xl mx-auto text-lg" data-i18n="servicesSub">Complete power solutions from equipment supply to long-term maintenance support.</p>
             </div>
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="group bg-gray-50 border border-gray-200 rounded-2xl p-6 hover:border-paypal-light hover:shadow-xl transition-all duration-300 cursor-default">
+	            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6" id="services-grid">
+	                <!-- Apply staggered animation to children -->
+	                <div class="group bg-gray-50 border border-gray-200 rounded-2xl p-6 hover:border-paypal-light hover:shadow-xl transition-all duration-300 cursor-default opacity-0 animate-fade-in-up" style="animation-delay: 0.1s; animation-fill-mode: forwards;">
                     <div class="w-14 h-14 bg-paypal-light/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-paypal-light group-hover:scale-110 transition-all duration-300">
                         <i data-lucide="zap" class="w-7 h-7 text-paypal-light group-hover:text-white"></i>
                     </div>
                     <h3 class="text-lg font-bold text-paypal-dark mb-2" data-i18n="service1Title">Open-Type Generators</h3>
                     <p class="text-sm text-gray-600 leading-relaxed" data-i18n="service1Desc">Standard generators for industrial sites with robust frames and weather protection.</p>
                 </div>
-                <div class="group bg-gray-50 border border-gray-200 rounded-2xl p-6 hover:border-paypal-light hover:shadow-xl transition-all duration-300 cursor-default">
+	                <div class="group bg-gray-50 border border-gray-200 rounded-2xl p-6 hover:border-paypal-light hover:shadow-xl transition-all duration-300 cursor-default opacity-0 animate-fade-in-up" style="animation-delay: 0.2s; animation-fill-mode: forwards;">
                     <div class="w-14 h-14 bg-paypal-light/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-paypal-light group-hover:scale-110 transition-all duration-300">
                         <i data-lucide="volume-x" class="w-7 h-7 text-paypal-light group-hover:text-white"></i>
                     </div>
                     <h3 class="text-lg font-bold text-paypal-dark mb-2" data-i18n="service2Title">Soundproof Canopies</h3>
                     <p class="text-sm text-gray-600 leading-relaxed" data-i18n="service2Desc">Custom acoustic enclosures reducing noise to 65dB for residential and sensitive areas.</p>
                 </div>
-                <div class="group bg-gray-50 border border-gray-200 rounded-2xl p-6 hover:border-paypal-light hover:shadow-xl transition-all duration-300 cursor-default">
+	                <div class="group bg-gray-50 border border-gray-200 rounded-2xl p-6 hover:border-paypal-light hover:shadow-xl transition-all duration-300 cursor-default opacity-0 animate-fade-in-up" style="animation-delay: 0.3s; animation-fill-mode: forwards;">
                     <div class="w-14 h-14 bg-paypal-light/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-paypal-light group-hover:scale-110 transition-all duration-300">
                         <i data-lucide="activity" class="w-7 h-7 text-paypal-light group-hover:text-white"></i>
                     </div>
                     <h3 class="text-lg font-bold text-paypal-dark mb-2" data-i18n="service3Title">Low Voltage Panels</h3>
                     <p class="text-sm text-gray-600 leading-relaxed" data-i18n="service3Desc">ATS, synchronization, and distribution panels engineered to meet your load profile.</p>
                 </div>
-                <div class="group bg-gray-50 border border-gray-200 rounded-2xl p-6 hover:border-paypal-light hover:shadow-xl transition-all duration-300 cursor-default">
+	                <div class="group bg-gray-50 border border-gray-200 rounded-2xl p-6 hover:border-paypal-light hover:shadow-xl transition-all duration-300 cursor-default opacity-0 animate-fade-in-up" style="animation-delay: 0.4s; animation-fill-mode: forwards;">
                     <div class="w-14 h-14 bg-paypal-light/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-paypal-light group-hover:scale-110 transition-all duration-300">
                         <i data-lucide="droplets" class="w-7 h-7 text-paypal-light group-hover:text-white"></i>
                     </div>
                     <h3 class="text-lg font-bold text-paypal-dark mb-2" data-i18n="service4Title">External Fuel Tanks</h3>
                     <p class="text-sm text-gray-600 leading-relaxed" data-i18n="service4Desc">Double-wall fuel storage tanks from 500L to 10,000L with leak detection systems.</p>
                 </div>
-                <div class="group bg-gray-50 border border-gray-200 rounded-2xl p-6 hover:border-paypal-light hover:shadow-xl transition-all duration-300 cursor-default">
+	                <div class="group bg-gray-50 border border-gray-200 rounded-2xl p-6 hover:border-paypal-light hover:shadow-xl transition-all duration-300 cursor-default opacity-0 animate-fade-in-up" style="animation-delay: 0.5s; animation-fill-mode: forwards;">
                     <div class="w-14 h-14 bg-paypal-light/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-paypal-light group-hover:scale-110 transition-all duration-300">
                         <i data-lucide="package" class="w-7 h-7 text-paypal-light group-hover:text-white"></i>
                     </div>
                     <h3 class="text-lg font-bold text-paypal-dark mb-2" data-i18n="service5Title">Spare Parts</h3>
                     <p class="text-sm text-gray-600 leading-relaxed" data-i18n="service5Desc">100% genuine OEM parts for Perkins, Volvo, and Doosan available from local stock.</p>
                 </div>
-                <div class="group bg-gray-50 border border-gray-200 rounded-2xl p-6 hover:border-paypal-light hover:shadow-xl transition-all duration-300 cursor-default">
+	                <div class="group bg-gray-50 border border-gray-200 rounded-2xl p-6 hover:border-paypal-light hover:shadow-xl transition-all duration-300 cursor-default opacity-0 animate-fade-in-up" style="animation-delay: 0.6s; animation-fill-mode: forwards;">
                     <div class="w-14 h-14 bg-paypal-light/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-paypal-light group-hover:scale-110 transition-all duration-300">
                         <i data-lucide="wrench" class="w-7 h-7 text-paypal-light group-hover:text-white"></i>
                     </div>
                     <h3 class="text-lg font-bold text-paypal-dark mb-2" data-i18n="service6Title">Installation Services</h3>
                     <p class="text-sm text-gray-600 leading-relaxed" data-i18n="service6Desc">Complete turnkey installation including foundation, fuel lines, and commissioning.</p>
                 </div>
-                <div class="group bg-gray-50 border border-gray-200 rounded-2xl p-6 hover:border-paypal-light hover:shadow-xl transition-all duration-300 cursor-default">
+	                <div class="group bg-gray-50 border border-gray-200 rounded-2xl p-6 hover:border-paypal-light hover:shadow-xl transition-all duration-300 cursor-default opacity-0 animate-fade-in-up" style="animation-delay: 0.7s; animation-fill-mode: forwards;">
                     <div class="w-14 h-14 bg-paypal-light/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-paypal-light group-hover:scale-110 transition-all duration-300">
                         <i data-lucide="settings" class="w-7 h-7 text-paypal-light group-hover:text-white"></i>
                     </div>
                     <h3 class="text-lg font-bold text-paypal-dark mb-2" data-i18n="service7Title">Maintenance Services</h3>
                     <p class="text-sm text-gray-600 leading-relaxed" data-i18n="service7Desc">Preventative and corrective maintenance contracts with 24/7 emergency response.</p>
                 </div>
-                <div class="group bg-gradient-to-br from-paypal-dark to-paypal-light text-white rounded-2xl p-6 flex flex-col justify-center items-center text-center hover:shadow-2xl transition-all duration-300 cursor-pointer" onclick="document.getElementById('contact').scrollIntoView()">
+	                <div class="group bg-gradient-to-br from-paypal-dark to-paypal-light text-white rounded-2xl p-6 flex flex-col justify-center items-center text-center hover:shadow-2xl transition-all duration-300 cursor-pointer opacity-0 animate-fade-in-up" style="animation-delay: 0.8s; animation-fill-mode: forwards;" onclick="document.getElementById('contact').scrollIntoView()">
                     <i data-lucide="headset" class="w-12 h-12 mb-3 opacity-90"></i>
                     <h3 class="text-lg font-bold mb-2" data-i18n="servicesCTA">Need a Custom Solution?</h3>
                     <p class="text-sm text-blue-100 mb-4" data-i18n="servicesCTADesc">Contact our engineering team for tailored packages.</p>
@@ -392,9 +405,10 @@
                 </div>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Brand Card 1: Perkins -->
-                <div class="group bg-white border border-gray-200 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-gray-200/50 transition-all duration-500 transform hover:-translate-y-1">
+	            <div class="grid md:grid-cols-3 gap-8" id="brands-grid">
+	                <!-- Apply staggered animation to children -->
+	                <!-- Brand Card 1: Perkins -->
+	                <div class="group bg-white border border-gray-200 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-gray-200/50 transition-all duration-500 transform hover:-translate-y-1 opacity-0 animate-fade-in-up" style="animation-delay: 0.1s; animation-fill-mode: forwards;">
                     <div class="h-48 bg-gray-100 flex items-center justify-center relative overflow-hidden">
                         <div class="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 opacity-50"></div>
                         <span class="text-5xl font-black text-gray-300 tracking-tighter select-none group-hover:scale-105 transition-transform duration-500">PERKINS</span>
@@ -423,8 +437,8 @@
                     </div>
                 </div>
 
-                <!-- Brand Card 2: Volvo -->
-                <div class="group bg-white border border-gray-200 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-gray-200/50 transition-all duration-500 transform hover:-translate-y-1">
+	                <!-- Brand Card 2: Volvo -->
+	                <div class="group bg-white border border-gray-200 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-gray-200/50 transition-all duration-500 transform hover:-translate-y-1 opacity-0 animate-fade-in-up" style="animation-delay: 0.3s; animation-fill-mode: forwards;">
                     <div class="h-48 bg-gray-100 flex items-center justify-center relative overflow-hidden">
                         <div class="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 opacity-50"></div>
                         <span class="text-5xl font-black text-gray-300 tracking-tighter select-none group-hover:scale-105 transition-transform duration-500">VOLVO</span>
@@ -453,8 +467,8 @@
                     </div>
                 </div>
 
-                <!-- Brand Card 3: Doosan -->
-                <div class="group bg-white border border-gray-200 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-gray-200/50 transition-all duration-500 transform hover:-translate-y-1">
+	                <!-- Brand Card 3: Doosan -->
+	                <div class="group bg-white border border-gray-200 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-gray-200/50 transition-all duration-500 transform hover:-translate-y-1 opacity-0 animate-fade-in-up" style="animation-delay: 0.5s; animation-fill-mode: forwards;">
                     <div class="h-48 bg-gray-100 flex items-center justify-center relative overflow-hidden">
                         <div class="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 opacity-50"></div>
                         <span class="text-5xl font-black text-gray-300 tracking-tighter select-none group-hover:scale-105 transition-transform duration-500">DOOSAN</span>
@@ -494,31 +508,32 @@
                 <span class="text-paypal-light font-extrabold text-sm uppercase tracking-widest" data-i18n="workflow">Workflow</span>
                 <h2 class="text-4xl font-bold mt-2 text-paypal-dark" data-i18n="howWeWork">How We Work</h2>
             </div>
-            <div class="grid md:grid-cols-4 gap-8 text-center relative">
+	            <div class="grid md:grid-cols-4 gap-8 text-center relative" id="workflow-steps">
+	                <!-- Apply staggered animation to children -->
                 <div class="hidden md:block absolute top-8 left-0 w-full h-1 bg-blue-100 z-0"></div>
-                <!-- Steps -->
-                <div class="relative z-10 bg-gray-50 p-4 pt-0 group cursor-default">
+	                <!-- Steps -->
+	                <div class="relative z-10 bg-gray-50 p-4 pt-0 group cursor-default opacity-0 animate-fade-in-up" style="animation-delay: 0.1s; animation-fill-mode: forwards;">
                     <div class="w-16 h-16 mx-auto rounded-full bg-paypal-light text-white flex items-center justify-center mb-4 shadow-xl border-4 border-white transition-transform group-hover:scale-110 group-hover:shadow-paypal-light/50 duration-300">
                         <i data-lucide="file-search" class="w-8 h-8"></i>
                     </div>
                     <h3 class="font-bold text-xl text-paypal-dark" data-i18n="step1">1. Assessment</h3>
                     <p class="text-sm text-gray-500 mt-2" data-i18n="step1D">Technical site survey & load analysis</p>
                 </div>
-                <div class="relative z-10 bg-gray-50 p-4 pt-0 group cursor-default">
+	                <div class="relative z-10 bg-gray-50 p-4 pt-0 group cursor-default opacity-0 animate-fade-in-up" style="animation-delay: 0.3s; animation-fill-mode: forwards;">
                     <div class="w-16 h-16 mx-auto rounded-full bg-paypal-light text-white flex items-center justify-center mb-4 shadow-xl border-4 border-white transition-transform group-hover:scale-110 group-hover:shadow-paypal-light/50 duration-300">
                         <i data-lucide="pen-tool" class="w-8 h-8"></i>
                     </div>
                     <h3 class="font-bold text-xl text-paypal-dark" data-i18n="step2">2. Proposal</h3>
                     <p class="text-sm text-gray-500 mt-2" data-i18n="step2D">Detailed quotation & Contract</p>
                 </div>
-                <div class="relative z-10 bg-gray-50 p-4 pt-0 group cursor-default">
+	                <div class="relative z-10 bg-gray-50 p-4 pt-0 group cursor-default opacity-0 animate-fade-in-up" style="animation-delay: 0.5s; animation-fill-mode: forwards;">
                     <div class="w-16 h-16 mx-auto rounded-full bg-paypal-light text-white flex items-center justify-center mb-4 shadow-xl border-4 border-white transition-transform group-hover:scale-110 group-hover:shadow-paypal-light/50 duration-300">
                         <i data-lucide="truck" class="w-8 h-8"></i>
                     </div>
                     <h3 class="font-bold text-xl text-paypal-dark" data-i18n="step3">3. Delivery</h3>
                     <p class="text-sm text-gray-500 mt-2" data-i18n="step3D">Logistics, installation & setup</p>
                 </div>
-                <div class="relative z-10 bg-gray-50 p-4 pt-0 group cursor-default">
+	                <div class="relative z-10 bg-gray-50 p-4 pt-0 group cursor-default opacity-0 animate-fade-in-up" style="animation-delay: 0.7s; animation-fill-mode: forwards;">
                     <div class="w-16 h-16 mx-auto rounded-full bg-paypal-light text-white flex items-center justify-center mb-4 shadow-xl border-4 border-white transition-transform group-hover:scale-110 group-hover:shadow-paypal-light/50 duration-300">
                         <i data-lucide="check-circle" class="w-8 h-8"></i>
                     </div>
@@ -541,9 +556,9 @@
             </div>
 
             <div class="glass-card rounded-3xl p-8 shadow-2xl border border-gray-200 hover:shadow-blue-100/50 transition-shadow duration-500">
-                <div class="grid md:grid-cols-2 gap-12">
-                    <!-- Inputs -->
-                    <div class="space-y-6">
+	            <div class="grid md:grid-cols-2 gap-12" id="contact-form-grid">
+	                <!-- Apply staggered animation to children 	                    <!-- Contact Info -->
+	                    <div class="space-y-8 opacity-0 animate-fade-in-up" style="animation-delay: 0.3s; animation-fill-mode: forwards;">city-0 animate-fade-in-up" style="animation-delay: 0.1s; animation-fill-mode: forwards;">
                         <h3 class="font-bold text-xl text-paypal-dark border-b pb-3 mb-4" data-i18n="equipment">Your Equipment</h3>
                         
                         <div class="flex items-center justify-between hover:bg-gray-100 p-2 rounded-lg transition-colors">
@@ -667,9 +682,9 @@
                 <p class="text-gray-500 mt-4 text-lg" data-i18n="projectsSub">Delivering power to Egypt's most critical sectors.</p>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Project 1 -->
-                <div class="group relative overflow-hidden rounded-2xl h-80 shadow-xl hover:shadow-2xl transition-all duration-500 cursor-pointer">
+	            <div class="grid md:grid-cols-3 gap-8" id="gallery-grid">
+	                <!-- Apply staggered animation to children --	                <!-- Project 5 -->
+	                <div class="group relative overflow-hidden rounded-2xl h-80 shadow-xl hover:shadow-2xl transition-all duration-500 cursor-pointer opacity-0 animate-fade-in-up" style="animation-delay: 0.9s; animation-fill-mode: forwards;">pacity-0 animate-fade-in-up" style="animation-delay: 0.7s; animation-fill-mode: forwards;"> opacity-0 animate-fade-in-up" style="animation-delay: 0.1s; animation-fill-mode: forwards;">
                     <!-- Feature 10: loading="lazy" added -->
                     <img loading="lazy" src="https://placehold.co/800x600/003087/ffffff?text=Medical+Center+Backup" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1581094288338-2314dddb7ece?auto=format&fit=crop&q=80';" alt="Industrial Generator" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                     <div class="absolute inset-0 bg-gradient-to-t from-paypal-dark/90 to-transparent flex flex-col justify-end p-8">
@@ -680,9 +695,8 @@
                         </p>
                     </div>
                 </div>
-
-                <!-- Project 2 -->
-                <div class="group relative overflow-hidden rounded-2xl h-80 shadow-xl hover:shadow-2xl transition-all duration-500 cursor-pointer">
+	                <!-- Project 6 -->
+	                <div class="group relative overflow-hidden rounded-2xl h-80 shadow-xl hover:shadow-2xl transition-all duration-500 cursor-pointer opacity-0 animate-fade-in-up" style="animation-delay: 1.1s; animation-fill-mode: forwards;">opacity-0 animate-fade-in-up" style="animation-delay: 0.3s; animation-fill-mode: forwards;">
                     <!-- Feature 10: loading="lazy" added -->
                     <img loading="lazy" src="https://placehold.co/800x600/0070BA/ffffff?text=Construction+Power" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&q=80';" alt="Construction Site" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                     <div class="absolute inset-0 bg-gradient-to-t from-paypal-dark/90 to-transparent flex flex-col justify-end p-8">
@@ -694,8 +708,8 @@
                     </div>
                 </div>
 
-                <!-- Project 3 -->
-                <div class="group relative overflow-hidden rounded-2xl h-80 shadow-xl hover:shadow-2xl transition-all duration-500 cursor-pointer">
+	                <!-- Project 3 -->
+	                <div class="group relative overflow-hidden rounded-2xl h-80 shadow-xl hover:shadow-2xl transition-all duration-500 cursor-pointer opacity-0 animate-fade-in-up" style="animation-delay: 0.5s; animation-fill-mode: forwards;">
                     <!-- Feature 10: loading="lazy" added -->
                     <img loading="lazy" src="https://placehold.co/800x600/009cde/ffffff?text=Data+Center+Power" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80';" alt="Commercial Tower" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                     <div class="absolute inset-0 bg-gradient-to-t from-paypal-dark/90 to-transparent flex flex-col justify-end p-8">
@@ -818,7 +832,7 @@
                 <div class="p-10 md:p-16 md:w-7/12 bg-white">
                     <h3 class="text-3xl font-bold text-paypal-dark mb-8" data-i18n="inquiryTitle">Send an Inquiry</h3>
                     <form onsubmit="event.preventDefault(); showMessageBox(currentLang === 'ar' ? 'تم إرسال رسالتك! سنتواصل معك قريباً.' : 'Message sent! We will contact you shortly.'); this.reset();" class="space-y-6">
-                        <div class="grid md:grid-cols-2 gap-6">
+           	            <div class="grid md:grid-cols-2 gap-8" id="comparison-grid">
                             <input type="text" class="w-full p-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-4 focus:ring-paypal-light/50 focus:border-paypal-light outline-none transition-all" placeholder="Your Name" data-i18n-placeholder="yourName" required>
                             <input type="tel" class="w-full p-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-4 focus:ring-paypal-light/50 focus:border-paypal-light outline-none transition-all" placeholder="Phone Number" data-i18n-placeholder="phoneNumber" required>
                         </div>
@@ -834,9 +848,9 @@
     </section>
 
 
-    <!-- Footer -->
-    <footer class="bg-paypal-dark text-white py-16">
-        <div class="max-w-7xl mx-auto px-6 text-center">
+	    <!-- Footer -->
+	    <footer class="bg-paypal-dark text-white py-16 opacity-0 animate-fade-in" style="animation-delay: 0.1s; animation-fill-mode: forwards;">
+	        <div class="max-w-7xl mx-auto px-6 text-center opacity-0 animate-fade-in-up" style="animation-delay: 0.3s; animation-fill-mode: forwards;">
             <h2 class="text-2xl font-bold mb-6">Premium Power LLC</h2>
             <p class="text-blue-200 max-w-lg mx-auto mb-8 font-light" data-i18n="footerSub">Delivering high-quality diesel generator solutions with fast service, trusted performance, and professional support.</p>
             <div class="flex justify-center gap-8 mb-8">
