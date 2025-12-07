@@ -21,28 +21,28 @@
                 extend: {
                     colors: {
                         paypal: {
-                            dark: '#003087', /* Deep Navy/Primary */
-                            light: '#0070BA', /* Bright Blue/Secondary */
-                            accent: '#009cde', /* Lighter Accent */
+                            dark: '#003087',
+                            light: '#0070BA',
+                            accent: '#009cde',
                         },
                         fuel: {
-                            main: '#f59e0b', /* Amber */
+                            main: '#f59e0b',
                         }
                     },
                     animation: {
                         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                         'float': 'float 6s ease-in-out infinite',
-                        'marquee': 'marquee 80s linear infinite', /* Added Slow Motion Scroll */
+                        'marquee': 'marquee 80s linear infinite', /* 80s for slow motion */
                     },
                     keyframes: {
                         float: {
                             '0%, 100%': { transform: 'translateY(0)' },
                             '50%': { transform: 'translateY(-20px)' },
                         },
-                        /* Added Marquee Keyframes */
+                        /* Move exactly 50% (the width of one set) then snap back */
                         marquee: {
                             '0%': { transform: 'translateX(0%)' },
-                            '100%': { transform: 'translateX(-100%)' },
+                            '100%': { transform: 'translateX(-50%)' },
                         }
                     }
                 }
@@ -275,7 +275,7 @@
 
             <div class="flex w-max animate-marquee hover:[animation-play-state:paused]">
                 
-                <div class="flex gap-8 px-4">
+                <div class="flex gap-8 pr-8">
                     
                     <div class="relative flex-none w-[350px] h-64 rounded-2xl overflow-hidden shadow-xl border border-blue-900/10 group cursor-pointer">
                         <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80" alt="Hospital" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
@@ -336,13 +336,14 @@
                     <div class="relative flex-none w-[350px] h-64 rounded-2xl overflow-hidden shadow-xl border border-blue-900/10 group cursor-pointer">
                         <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&q=80" alt="Government" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-t from-paypal-dark/95 via-paypal-dark/60 to-transparent flex flex-col justify-end p-6">
-                            <div class="text-2xl mb-2">🏛️</div>
                             <h3 class="text-white text-lg font-bold leading-tight" data-i18n="client8">New Urban Communities Authority</h3>
                         </div>
                     </div>
+
                 </div>
 
-                <div class="flex gap-8 px-4">
+                <div class="flex gap-8 pr-8">
+                    
                     <div class="relative flex-none w-[350px] h-64 rounded-2xl overflow-hidden shadow-xl border border-blue-900/10 group cursor-pointer">
                         <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80" alt="Hospital" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-t from-paypal-dark/95 via-paypal-dark/60 to-transparent flex flex-col justify-end p-6">
@@ -402,11 +403,12 @@
                     <div class="relative flex-none w-[350px] h-64 rounded-2xl overflow-hidden shadow-xl border border-blue-900/10 group cursor-pointer">
                         <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&q=80" alt="Government" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-t from-paypal-dark/95 via-paypal-dark/60 to-transparent flex flex-col justify-end p-6">
-                            <div class="text-2xl mb-2">🏛️</div>
                             <h3 class="text-white text-lg font-bold leading-tight" data-i18n="client8">New Urban Communities Authority</h3>
                         </div>
                     </div>
+
                 </div>
+
             </div>
         </div>
 
