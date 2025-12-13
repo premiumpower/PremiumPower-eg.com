@@ -336,17 +336,18 @@
     <!-- Navbar -->
     <nav id="navbar" class="fixed w-full z-40 transition-all duration-300 py-6">
         <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
-            <a href="#home" class="flex items-center gap-2 group">
-                <div class="relative w-10 h-10 flex items-center justify-center">
-                    <span class="absolute left-0 top-0 font-bold text-4xl italic text-paypal-dark/90 z-10 transform translate-x-1 translate-y-1" style="font-family: sans-serif;">P</span>
-                    <span class="absolute left-0 top-0 font-bold text-4xl italic text-paypal-light/90 z-20 transform" style="font-family: sans-serif; mix-blend-mode: multiply;">P</span>
-                </div>
-                <div class="flex flex-col leading-none ml-2">
+            <a href="#home" class="flex items-center gap-3 group">
+                <img id="nav-logo" 
+                     src="images/logo.svg" 
+                     alt="Premium Power Logo" 
+                     class="h-12 w-auto object-contain transition-all duration-300 brightness-0 invert">
+                
+                <div class="flex flex-col leading-none">
                     <span id="brand-1" class="font-bold text-lg tracking-tight text-white transition-colors duration-300">Premium</span>
                     <span id="brand-2" class="font-bold text-lg tracking-tight text-blue-200 transition-colors duration-300">Power</span>
                 </div>
             </a>
-
+            
             <div class="hidden md:flex items-center gap-8">
                 <div class="flex items-center gap-2 mr-4">
                     <button onclick="switchLanguage('en')" class="lang-btn text-white/80 hover:text-white font-bold transition-colors text-sm" data-lang="en">EN</button>
@@ -1577,19 +1578,26 @@
         function updateNavColors(isScrolled) {
             // Force white bg if menu is open on mobile to match dropdown
             const isMenuOpen = !document.getElementById('mobile-menu').classList.contains('hidden');
+            const logo = document.getElementById('nav-logo'); // Get the logo element
             
             if (isScrolled || isMenuOpen) {
                 navbar.classList.add('bg-white/95', 'backdrop-blur-md', 'shadow-lg', 'py-3');
                 navbar.classList.remove('py-6');
                 
+                // LOGO LOGIC: Show original colors when scrolled
+                // We remove the filter that makes it white
+                if(logo) {
+                    logo.classList.remove('brightness-0', 'invert');
+                }
+
                 navLinks.forEach(link => {
                     link.classList.remove('text-white/90', 'hover:text-white');
                     link.classList.add('text-gray-600', 'hover:text-paypal-dark');
                 });
                 
                 langBtns.forEach(btn => {
-                     btn.classList.remove('text-white/80', 'hover:text-white');
-                     btn.classList.add('text-gray-600', 'hover:text-paypal-dark');
+                      btn.classList.remove('text-white/80', 'hover:text-white');
+                      btn.classList.add('text-gray-600', 'hover:text-paypal-dark');
                 });
                 
                 brand1.classList.remove('text-white');
@@ -1606,6 +1614,12 @@
             } else {
                 navbar.classList.remove('bg-white/95', 'backdrop-blur-md', 'shadow-lg', 'py-3');
                 navbar.classList.add('py-6');
+
+                // LOGO LOGIC: Turn white on dark background
+                // We add the filter to invert colors (works best if logo is dark/colored)
+                if(logo) {
+                    logo.classList.add('brightness-0', 'invert');
+                }
                 
                 navLinks.forEach(link => {
                     link.classList.add('text-white/90', 'hover:text-white');
@@ -1613,8 +1627,8 @@
                 });
                 
                 langBtns.forEach(btn => {
-                     btn.classList.add('text-white/80', 'hover:text-white');
-                     btn.classList.remove('text-gray-600', 'hover:text-paypal-dark');
+                      btn.classList.add('text-white/80', 'hover:text-white');
+                      btn.classList.remove('text-gray-600', 'hover:text-paypal-dark');
                 });
                 
                 brand1.classList.add('text-white');
@@ -1630,11 +1644,6 @@
                 mobileMenuBtn.classList.remove('text-paypal-dark');
             }
         }
-
-        window.addEventListener('scroll', () => {
-            updateNavColors(window.scrollY > 20);
-        });
-
         function toggleMenu() {
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
