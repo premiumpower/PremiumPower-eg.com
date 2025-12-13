@@ -1573,20 +1573,14 @@
 
         function updateNavColors(isScrolled) {
             const isMenuOpen = !document.getElementById('mobile-menu').classList.contains('hidden');
-            const logoContainer = document.getElementById('logo-container');
-            
+            // Removed logoContainer reference
+
             if (isScrolled || isMenuOpen) {
-                // Scrolled State (White Background)
-                navbar.classList.add('bg-white/95', 'backdrop-blur-md', 'shadow-lg', 'py-3');
+                // --- Scrolled State (White Background) ---
+                navbar.classList.add('bg-white/95', 'backdrop-blur-md', 'shadow-lg', 'py-2'); // Reduced py for compact look on scroll
                 navbar.classList.remove('py-6');
                 
-                // Remove the white box background from the logo, so it blends with the navbar
-                if(logoContainer) {
-                    logoContainer.classList.remove('bg-white', 'shadow-md', 'p-2');
-                    logoContainer.classList.add('bg-transparent', 'p-0');
-                }
-
-                // Update text colors for links
+                // Update text colors for links to dark
                 navLinks.forEach(link => {
                     link.classList.remove('text-white/90', 'hover:text-white');
                     link.classList.add('text-gray-600', 'hover:text-paypal-dark');
@@ -1597,6 +1591,7 @@
                       btn.classList.add('text-gray-600', 'hover:text-paypal-dark');
                 });
                 
+                // Update buttons to dark style
                 navBtn.classList.remove('border-white/30', 'text-white', 'hover:bg-white/10');
                 navBtn.classList.add('bg-paypal-light', 'text-white', 'hover:bg-paypal-dark', 'border-transparent');
                 
@@ -1604,17 +1599,11 @@
                 mobileMenuBtn.classList.add('text-paypal-dark');
 
             } else {
-                // Top State (Dark Background)
-                navbar.classList.remove('bg-white/95', 'backdrop-blur-md', 'shadow-lg', 'py-3');
-                navbar.classList.add('py-6');
+                // --- Top State (Dark/Transparent Background) ---
+                navbar.classList.remove('bg-white/95', 'backdrop-blur-md', 'shadow-lg', 'py-2');
+                navbar.classList.add('py-6'); // More spacing at the top
 
-                // Add the white box background back so the logo pops against the dark blue
-                if(logoContainer) {
-                    logoContainer.classList.add('bg-white', 'shadow-md', 'p-2');
-                    logoContainer.classList.remove('bg-transparent', 'p-0');
-                }
-                
-                // Update text colors for links
+                // Update text colors for links to white
                 navLinks.forEach(link => {
                     link.classList.add('text-white/90', 'hover:text-white');
                     link.classList.remove('text-gray-600', 'hover:text-paypal-dark');
@@ -1625,14 +1614,14 @@
                       btn.classList.remove('text-gray-600', 'hover:text-paypal-dark');
                 });
                 
+                // Update buttons to white style
                 navBtn.classList.add('border-white/30', 'text-white', 'hover:bg-white/10');
                 navBtn.classList.remove('bg-paypal-light', 'text-white', 'hover:bg-paypal-dark', 'border-transparent');
 
                 mobileMenuBtn.classList.add('text-white');
                 mobileMenuBtn.classList.remove('text-paypal-dark');
             }
-        }
-        
+        }        
         function toggleMenu() {
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
