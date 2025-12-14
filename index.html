@@ -1574,57 +1574,67 @@
         const menuIcon = document.querySelector('[data-lucide="menu"]');
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
 
-        function updateNavColors(isScrolled) {
+         function updateNavColors(isScrolled) {
+            // Force white bg if menu is open on mobile to match dropdown
             const isMenuOpen = !document.getElementById('mobile-menu').classList.contains('hidden');
-            // Removed logoContainer reference
-
+            
             if (isScrolled || isMenuOpen) {
-                // --- Scrolled State (White Background) ---
-                navbar.classList.add('bg-white/95', 'backdrop-blur-md', 'shadow-lg', 'py-2'); // Reduced py for compact look on scroll
+                navbar.classList.add('bg-white/95', 'backdrop-blur-md', 'shadow-lg', 'py-3');
                 navbar.classList.remove('py-6');
                 
-                // Update text colors for links to dark
                 navLinks.forEach(link => {
                     link.classList.remove('text-white/90', 'hover:text-white');
                     link.classList.add('text-gray-600', 'hover:text-paypal-dark');
                 });
                 
                 langBtns.forEach(btn => {
-                      btn.classList.remove('text-white/80', 'hover:text-white');
-                      btn.classList.add('text-gray-600', 'hover:text-paypal-dark');
+                     btn.classList.remove('text-white/80', 'hover:text-white');
+                     btn.classList.add('text-gray-600', 'hover:text-paypal-dark');
                 });
                 
-                // Update buttons to dark style
+                brand1.classList.remove('text-white');
+                brand1.classList.add('text-paypal-dark');
+                
+                brand2.classList.remove('text-blue-200');
+                brand2.classList.add('text-paypal-light');
+                
                 navBtn.classList.remove('border-white/30', 'text-white', 'hover:bg-white/10');
                 navBtn.classList.add('bg-paypal-light', 'text-white', 'hover:bg-paypal-dark', 'border-transparent');
                 
                 mobileMenuBtn.classList.remove('text-white');
                 mobileMenuBtn.classList.add('text-paypal-dark');
-
             } else {
-                // --- Top State (Dark/Transparent Background) ---
-                navbar.classList.remove('bg-white/95', 'backdrop-blur-md', 'shadow-lg', 'py-2');
-                navbar.classList.add('py-6'); // More spacing at the top
-
-                // Update text colors for links to white
+                navbar.classList.remove('bg-white/95', 'backdrop-blur-md', 'shadow-lg', 'py-3');
+                navbar.classList.add('py-6');
+                
                 navLinks.forEach(link => {
                     link.classList.add('text-white/90', 'hover:text-white');
                     link.classList.remove('text-gray-600', 'hover:text-paypal-dark');
                 });
                 
                 langBtns.forEach(btn => {
-                      btn.classList.add('text-white/80', 'hover:text-white');
-                      btn.classList.remove('text-gray-600', 'hover:text-paypal-dark');
+                     btn.classList.add('text-white/80', 'hover:text-white');
+                     btn.classList.remove('text-gray-600', 'hover:text-paypal-dark');
                 });
                 
-                // Update buttons to white style
+                brand1.classList.add('text-white');
+                brand1.classList.remove('text-paypal-dark');
+                
+                brand2.classList.add('text-blue-200');
+                brand2.classList.remove('text-paypal-light');
+                
                 navBtn.classList.add('border-white/30', 'text-white', 'hover:bg-white/10');
                 navBtn.classList.remove('bg-paypal-light', 'text-white', 'hover:bg-paypal-dark', 'border-transparent');
 
                 mobileMenuBtn.classList.add('text-white');
                 mobileMenuBtn.classList.remove('text-paypal-dark');
             }
-        }        
+        }
+
+        window.addEventListener('scroll', () => {
+            updateNavColors(window.scrollY > 20);
+        });
+
         function toggleMenu() {
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
